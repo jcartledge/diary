@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import * as breakpoint from "../breakpoints";
-import { LocaleContext } from "../contexts/LocaleContext";
 import { Cell, Grid } from "../grid";
+import { FormattedDate } from "./FormattedDate";
 import { TextArea } from "./TextArea";
 
 const H1 = styled.h1`
@@ -84,19 +84,11 @@ interface DiaryProps {
 }
 
 export const Diary: React.FC<DiaryProps> = ({ date }) => {
-  const locale = useContext(LocaleContext);
   return (
     <Grid>
       <Header>
         <H1>Diary</H1>
-        <small>
-          {new Intl.DateTimeFormat(locale, {
-            weekday: "long",
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          }).format(date)}
-        </small>
+        <FormattedDate date={date} />
       </Header>
       <WhatHappened>
         <H2>What happened?</H2>
