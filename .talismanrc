@@ -1,0 +1,6 @@
+fileignoreconfig:
+- filename: src/react-app-env.d.ts
+  checksum: f0045b3f8905880e17671222a920193a34a64f59b0d5fe52d8829b8da70e50dd
+  ignore_detectors: []
+scopeconfig:
+- scope: node
