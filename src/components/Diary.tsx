@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import * as breakpoint from "../breakpoints";
+import { LocaleContext } from "../contexts/LocaleContext";
 import { Cell, Grid } from "../grid";
 import { TextArea } from "./TextArea";
 
@@ -80,40 +81,43 @@ const Risk = styled(Cell)`
 
 interface DiaryProps {
   date: Date;
-  locale?: string;
 }
-export const Diary: React.FC<DiaryProps> = ({ date, locale }) => (
-  <Grid>
-    <Header>
-      <H1>Diary</H1>
-      <small>
-        {new Intl.DateTimeFormat(locale, {
-          weekday: "long",
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        }).format(date)}
-      </small>
-    </Header>
-    <WhatHappened>
-      <H2>What happened?</H2>
-      <TextArea>[placeholder]</TextArea>
-    </WhatHappened>
-    <WentWell>
-      <H2>Went well</H2>
-      <TextArea>[placeholder]</TextArea>
-    </WentWell>
-    <CouldBeImproved>
-      <H2>Could be improved</H2>
-      <TextArea>[placeholder]</TextArea>
-    </CouldBeImproved>
-    <NotWell>
-      <H2>Didn't go well</H2>
-      <TextArea>[placeholder]</TextArea>
-    </NotWell>
-    <Risk>
-      <H2>Might be a risk</H2>
-      <TextArea>[placeholder]</TextArea>
-    </Risk>
-  </Grid>
-);
+
+export const Diary: React.FC<DiaryProps> = ({ date }) => {
+  const locale = useContext(LocaleContext);
+  return (
+    <Grid>
+      <Header>
+        <H1>Diary</H1>
+        <small>
+          {new Intl.DateTimeFormat(locale, {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          }).format(date)}
+        </small>
+      </Header>
+      <WhatHappened>
+        <H2>What happened?</H2>
+        <TextArea>[placeholder]</TextArea>
+      </WhatHappened>
+      <WentWell>
+        <H2>Went well</H2>
+        <TextArea>[placeholder]</TextArea>
+      </WentWell>
+      <CouldBeImproved>
+        <H2>Could be improved</H2>
+        <TextArea>[placeholder]</TextArea>
+      </CouldBeImproved>
+      <NotWell>
+        <H2>Didn't go well</H2>
+        <TextArea>[placeholder]</TextArea>
+      </NotWell>
+      <Risk>
+        <H2>Might be a risk</H2>
+        <TextArea>[placeholder]</TextArea>
+      </Risk>
+    </Grid>
+  );
+};
