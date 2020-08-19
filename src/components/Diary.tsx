@@ -78,17 +78,21 @@ const Risk = styled(Cell)`
   }
 `;
 
-export const Diary: React.FC = () => (
+interface DiaryProps {
+  date: Date;
+  locale?: string;
+}
+export const Diary: React.FC<DiaryProps> = ({ date, locale }) => (
   <Grid>
     <Header>
       <H1>Diary</H1>
       <small>
-        {new Intl.DateTimeFormat(undefined, {
+        {new Intl.DateTimeFormat(locale, {
           weekday: "long",
           day: "numeric",
           month: "long",
           year: "numeric",
-        }).format(new Date())}
+        }).format(date)}
       </small>
     </Header>
     <WhatHappened>
