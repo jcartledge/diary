@@ -63,4 +63,22 @@ describe("Diary", () => {
       "More arguments"
     );
   });
+
+  it("renders and empty entry if there is no entry for the date in the store", () => {
+    const date = new Date(Date.UTC(2010, 0, 1, 12, 0, 0));
+    const initialState = buildState({ date });
+    const store = createStore(rootReducer, initialState);
+
+    render(
+      <Provider store={store}>
+        <Diary />
+      </Provider>
+    );
+
+    expect(screen.getByLabelText("What happened?")).toHaveTextContent("");
+    expect(screen.getByLabelText("Went well")).toHaveTextContent("");
+    expect(screen.getByLabelText("Could be improved")).toHaveTextContent("");
+    expect(screen.getByLabelText("Didn't go well")).toHaveTextContent("");
+    expect(screen.getByLabelText("Might be a risk")).toHaveTextContent("");
+  });
 });
