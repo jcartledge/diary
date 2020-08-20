@@ -1,7 +1,8 @@
-import { createStore } from "redux";
+import { Action, createStore } from "redux";
+import { convertDateToEntryKey } from "../util/convertDateToEntryKey";
 
 export interface DiaryEntry {
-  date: Date;
+  date: string;
   whatHappened: string;
   wentWell: string;
   couldBeImproved: string;
@@ -12,7 +13,7 @@ export interface DiaryEntry {
 export const buildDiaryEntry = (
   overrides: Partial<DiaryEntry> = {}
 ): DiaryEntry => ({
-  date: new Date(),
+  date: convertDateToEntryKey(new Date()),
   whatHappened: "",
   wentWell: "",
   couldBeImproved: "",
@@ -32,7 +33,7 @@ export const buildState = (overrides: Partial<AppState> = {}): AppState => ({
   ...overrides,
 });
 
-export const rootReducer = (state: AppState | undefined, action) =>
+export const rootReducer = (state: AppState | undefined, action: Action) =>
   state || buildState();
 
 export const store = createStore(rootReducer);

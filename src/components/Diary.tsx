@@ -86,6 +86,7 @@ export const Diary: React.FC = () => {
   const date = useSelector(selectDate);
   const { whatHappened, wentWell, notWell, risk, couldBeImproved } =
     useSelector(selectEntry) ?? buildDiaryEntry();
+
   return (
     <Grid>
       <Header>

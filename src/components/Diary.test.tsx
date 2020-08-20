@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { LocaleContext } from "../contexts/LocaleContext";
 import { buildDiaryEntry, buildState, rootReducer } from "../redux";
+import { convertDateToEntryKey } from "../util/convertDateToEntryKey";
 import { Diary } from "./Diary";
 
 describe("Diary", () => {
@@ -32,7 +33,7 @@ describe("Diary", () => {
       date,
       entries: [
         buildDiaryEntry({
-          date,
+          date: convertDateToEntryKey(date),
           whatHappened: "Lots",
           wentWell: "Nothing went well",
           couldBeImproved: "Everything",
