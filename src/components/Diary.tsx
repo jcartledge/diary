@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import * as breakpoint from "../breakpoints";
 import { Cell, Grid } from "../grid";
-import { selectDate } from "../redux/selectors";
+import { buildDiaryEntry } from "../redux";
+import { selectDate, selectEntry } from "../redux/selectors";
 import { FormattedDate } from "./FormattedDate";
 import { TextArea } from "./TextArea";
 
@@ -83,6 +84,8 @@ const Risk = styled(Cell)`
 
 export const Diary: React.FC = () => {
   const date = useSelector(selectDate);
+  const { whatHappened, wentWell, notWell, risk, couldBeImproved } =
+    useSelector(selectEntry) ?? buildDiaryEntry();
   return (
     <Grid>
       <Header>
@@ -91,23 +94,27 @@ export const Diary: React.FC = () => {
       </Header>
       <WhatHappened>
         <H2 id="what-happened-label">What happened?</H2>
-        <TextArea aria-labelledby="what-happened-label">[placeholder]</TextArea>
+        <TextArea aria-labelledby="what-happened-label">
+          {whatHappened}
+        </TextArea>
       </WhatHappened>
       <WentWell>
-        <H2>Went well</H2>
-        <TextArea>[placeholder]</TextArea>
+        <H2 id="went-well-label">Went well</H2>
+        <TextArea aria-labelledby="went-well-label">{wentWell}</TextArea>
       </WentWell>
       <CouldBeImproved>
-        <H2>Could be improved</H2>
-        <TextArea>[placeholder]</TextArea>
+        <H2 id="could-be-improved-label">Could be improved</H2>
+        <TextArea aria-labelledby="could-be-improved-label">
+          {couldBeImproved}
+        </TextArea>
       </CouldBeImproved>
       <NotWell>
-        <H2>Didn't go well</H2>
-        <TextArea>[placeholder]</TextArea>
+        <H2 id="not-well-label">Didn't go well</H2>
+        <TextArea aria-labelledby="not-well-label">{notWell}</TextArea>
       </NotWell>
       <Risk>
-        <H2>Might be a risk</H2>
-        <TextArea>[placeholder]</TextArea>
+        <H2 id="risk-label">Might be a risk</H2>
+        <TextArea aria-labelledby="risk-label">{risk}</TextArea>
       </Risk>
     </Grid>
   );

@@ -26,7 +26,7 @@ describe("Diary", () => {
     ).toBeInTheDocument();
   });
 
-  it.skip("renders the diary content from the store", () => {
+  it("renders the diary content from the store", () => {
     const date = new Date(Date.UTC(2010, 0, 1, 12, 0, 0));
     const initialState = buildState({
       date,
@@ -45,10 +45,22 @@ describe("Diary", () => {
 
     render(
       <Provider store={store}>
-        <Diary date={date} />
+        <Diary />
       </Provider>
     );
 
     expect(screen.getByLabelText("What happened?")).toHaveTextContent("Lots");
+    expect(screen.getByLabelText("Went well")).toHaveTextContent(
+      "Nothing went well"
+    );
+    expect(screen.getByLabelText("Could be improved")).toHaveTextContent(
+      "Everything"
+    );
+    expect(screen.getByLabelText("Didn't go well")).toHaveTextContent(
+      "Too many arguments"
+    );
+    expect(screen.getByLabelText("Might be a risk")).toHaveTextContent(
+      "More arguments"
+    );
   });
 });
