@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import * as breakpoint from "../breakpoints";
 import { Cell, Grid } from "../grid";
+import { selectDate } from "../redux/selectors";
 import { FormattedDate } from "./FormattedDate";
 import { TextArea } from "./TextArea";
 
@@ -79,11 +81,8 @@ const Risk = styled(Cell)`
   }
 `;
 
-interface DiaryProps {
-  date: Date;
-}
-
-export const Diary: React.FC<DiaryProps> = ({ date }) => {
+export const Diary: React.FC = () => {
+  const date = useSelector(selectDate);
   return (
     <Grid>
       <Header>
@@ -91,8 +90,8 @@ export const Diary: React.FC<DiaryProps> = ({ date }) => {
         <FormattedDate date={date} />
       </Header>
       <WhatHappened>
-        <H2>What happened?</H2>
-        <TextArea>[placeholder]</TextArea>
+        <H2 id="what-happened-label">What happened?</H2>
+        <TextArea aria-labelledby="what-happened-label">[placeholder]</TextArea>
       </WhatHappened>
       <WentWell>
         <H2>Went well</H2>
