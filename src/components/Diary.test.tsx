@@ -1,9 +1,11 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import React from "react";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { LocaleContext } from "../contexts/LocaleContext";
-import { buildDiaryEntry, buildState, rootReducer } from "../redux";
+import { rootReducer } from "../redux/reducers";
+import { buildDiaryEntry, buildState } from "../redux/state";
 import { convertDateToEntryKey } from "../util/convertDateToEntryKey";
 import { Diary } from "./Diary";
 
@@ -81,5 +83,34 @@ describe("Diary", () => {
     expect(screen.getByLabelText("Could be improved")).toHaveTextContent("");
     expect(screen.getByLabelText("Didn't go well")).toHaveTextContent("");
     expect(screen.getByLabelText("Might be a risk")).toHaveTextContent("");
+  });
+
+  it("retains the entry for the date when it is edited", () => {
+    const date = new Date(Date.UTC(2010, 0, 1, 12, 0, 0));
+    const initialState = buildState({ date });
+    const store = createStore(rootReducer, initialState);
+
+    const { unmount } = render(
+      <Provider store={store}>
+        <Diary />
+      </Provider>
+    );
+
+    userEvent.type(
+      screen.getByLabelText("What happened?"),
+      "Something happened"
+    );
+
+    unmount();
+
+    render(
+      <Provider store={store}>
+        <Diary />
+      </Provider>
+    );
+
+    expect(screen.getByLabelText("What happened?")).toHaveTextContent(
+      "Something happened"
+    );
   });
 });

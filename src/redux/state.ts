@@ -1,4 +1,3 @@
-import { Action, createStore } from "redux";
 import { convertDateToEntryKey } from "../util/convertDateToEntryKey";
 
 export interface DiaryEntry {
@@ -9,6 +8,8 @@ export interface DiaryEntry {
   notWell: string;
   risk: string;
 }
+
+export type DiaryEntryFields = keyof Omit<DiaryEntry, "date">;
 
 export const buildDiaryEntry = (
   overrides: Partial<DiaryEntry> = {}
@@ -32,8 +33,3 @@ export const buildState = (overrides: Partial<AppState> = {}): AppState => ({
   entries: [],
   ...overrides,
 });
-
-export const rootReducer = (state: AppState | undefined, action: Action) =>
-  state || buildState();
-
-export const store = createStore(rootReducer);

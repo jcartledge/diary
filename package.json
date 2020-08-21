@@ -5,7 +5,7 @@
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^10.4.8",
-    "@testing-library/user-event": "^7.1.2",
+    "@testing-library/user-event": "^12.1.1",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
@@ -14,10 +14,11 @@
     "@types/redux": "^3.6.0",
     "@types/reselect": "^2.2.0",
     "@types/styled-components": "^5.1.2",
+    "immer": "^7.0.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
-    "react-scripts": "3.4.3",
+    "react-scripts": "^4.0.0-next.77",
     "redux": "^4.0.5",
     "reselect": "^4.0.0",
     "styled-components": "^5.1.1",
@@ -26,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom-fourteen",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^7.22.3"
   }
 }
