@@ -3,19 +3,12 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import * as breakpoint from "../breakpoints";
 import { Cell, Grid } from "../grid";
-import { useDispatchFieldChangedAction } from "../redux/actions";
 import { selectDate, selectEntry } from "../redux/selectors";
 import { buildDiaryEntry } from "../redux/state";
 import { FormattedDate } from "./FormattedDate";
+import { H1, H2 } from "./styled";
 import { TextArea } from "./TextArea";
-
-const H1 = styled.h1`
-  text-transform: uppercase;
-`;
-
-const H2 = styled.h2`
-  text-transform: uppercase;
-`;
+import WhatHappened from "./WhatHappened";
 
 const Header = styled(Cell)`
   grid-row: 1;
@@ -25,17 +18,6 @@ const Header = styled(Cell)`
   }
   ${breakpoint.md} {
     grid-column: 1 / span 3;
-  }
-`;
-
-const WhatHappened = styled(Cell)`
-  ${breakpoint.sm} {
-    grid-column: 1 / span 2;
-    grid-row: 2;
-  }
-  ${breakpoint.md} {
-    grid-column: 1;
-    grid-row: 2 / span 2;
   }
 `;
 
@@ -85,11 +67,7 @@ const Risk = styled(Cell)`
 
 export const Diary: React.FC = () => {
   const date = useSelector(selectDate);
-  const dispatchWhatHappenedChangedAction = useDispatchFieldChangedAction(
-    "whatHappened"
-  );
-
-  const { whatHappened, wentWell, notWell, risk, couldBeImproved } =
+  const { wentWell, notWell, risk, couldBeImproved } =
     useSelector(selectEntry) ?? buildDiaryEntry();
 
   return (
@@ -98,15 +76,7 @@ export const Diary: React.FC = () => {
         <H1>Diary</H1>
         <FormattedDate date={date} />
       </Header>
-      <WhatHappened>
-        <H2 id="what-happened-label">What happened?</H2>
-        <TextArea
-          aria-labelledby="what-happened-label"
-          onChange={dispatchWhatHappenedChangedAction}
-        >
-          {whatHappened}
-        </TextArea>
-      </WhatHappened>
+      <WhatHappened />
       <WentWell>
         <H2 id="went-well-label">Went well</H2>
         <TextArea aria-labelledby="went-well-label">{wentWell}</TextArea>

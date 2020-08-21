@@ -19,13 +19,16 @@ export const useDispatchFieldChangedAction = (field: DiaryEntryFields) => {
   const date = useSelector(selectDate);
 
   return useCallback(
-    ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) =>
+    ({
+      target: { value },
+    }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       dispatch<FieldChangedAction>({
         type: ActionType.FIELD_CHANGED_ACTION,
         date,
         field,
         value,
-      }),
+      });
+    },
     [field, date, dispatch]
   );
 };

@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import React from "react";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
@@ -67,7 +66,7 @@ describe("Diary", () => {
     );
   });
 
-  it("renders and empty entry if there is no entry for the date in the store", () => {
+  it("renders an empty entry if there is no entry for the date in the store", () => {
     const date = new Date(Date.UTC(2010, 0, 1, 12, 0, 0));
     const initialState = buildState({ date });
     const store = createStore(rootReducer, initialState);
@@ -83,34 +82,5 @@ describe("Diary", () => {
     expect(screen.getByLabelText("Could be improved")).toHaveTextContent("");
     expect(screen.getByLabelText("Didn't go well")).toHaveTextContent("");
     expect(screen.getByLabelText("Might be a risk")).toHaveTextContent("");
-  });
-
-  it("retains the entry for the date when it is edited", () => {
-    const date = new Date(Date.UTC(2010, 0, 1, 12, 0, 0));
-    const initialState = buildState({ date });
-    const store = createStore(rootReducer, initialState);
-
-    const { unmount } = render(
-      <Provider store={store}>
-        <Diary />
-      </Provider>
-    );
-
-    userEvent.type(
-      screen.getByLabelText("What happened?"),
-      "Something happened"
-    );
-
-    unmount();
-
-    render(
-      <Provider store={store}>
-        <Diary />
-      </Provider>
-    );
-
-    expect(screen.getByLabelText("What happened?")).toHaveTextContent(
-      "Something happened"
-    );
   });
 });
