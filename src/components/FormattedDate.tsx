@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
+import { useSelector } from "react-redux";
 import { LocaleContext } from "../contexts/LocaleContext";
+import { selectDate } from "../redux/selectors";
 
-interface FormattedDateProps {
-  date: Date;
-}
-
-export const FormattedDate: React.FC<FormattedDateProps> = ({ date }) => {
+export const FormattedDate: React.FC = () => {
   const locale = useContext(LocaleContext);
   return (
     <small>
@@ -14,7 +12,7 @@ export const FormattedDate: React.FC<FormattedDateProps> = ({ date }) => {
         day: "numeric",
         month: "long",
         year: "numeric",
-      }).format(date)}
+      }).format(useSelector(selectDate))}
     </small>
   );
 };
