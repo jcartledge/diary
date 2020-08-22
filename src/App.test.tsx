@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import App from "App";
 import React from "react";
 import { buildDiaryEntry } from "store/state";
-import { buildMockStorage } from "test/mockStorage";
+import { buildMockStorage } from "util/test/mockStorage";
 
 describe("App", () => {
   it("loads entries from localStorage", () => {

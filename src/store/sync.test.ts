@@ -1,4 +1,4 @@
-import { buildMockStorage } from "test/mockStorage";
+import { buildMockStorage } from "util/test/mockStorage";
 import { buildDiaryEntry, DiaryEntry } from "./state";
 import {
   getEntriesFromLocalStorage,
