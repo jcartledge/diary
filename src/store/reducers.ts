@@ -1,10 +1,9 @@
 import { produce } from "immer";
 import { combineReducers } from "redux";
 import { convertDateToEntryKey, decrementDate, incrementDate } from "util/date";
+import { Maybe } from "util/types";
 import { ActionType, DateAction, EntriesAction } from "./actions";
 import { AppState, buildDiaryEntry, DiaryEntry } from "./state";
-
-type Maybe<T> = T | undefined;
 
 export const dateReducer = (maybeDate: Maybe<Date>, action: DateAction) => {
   const definitelyDate = maybeDate ?? new Date();
