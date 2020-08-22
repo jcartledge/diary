@@ -1,5 +1,5 @@
 import React from "react";
-import { useDecrementDateAction } from "store/actions";
+import { useDecrementDateAction } from "store/actions/date";
 
 const DatePrevButton: React.FC = () => (
   <button className="border rounded" onClick={useDecrementDateAction()}>

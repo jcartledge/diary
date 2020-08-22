@@ -4,7 +4,7 @@ import TextArea from "components/atoms/TextArea";
 import React from "react";
 import { useSelector } from "react-redux";
 import { OutputSelector } from "reselect";
-import { useDispatchFieldChangedAction } from "store/actions";
+import { useDispatchFieldChangedAction } from "store/actions/entries";
 import { AppState, DiaryEntry, DiaryEntryField } from "store/state";
 
 interface DiaryEntryInputProps {

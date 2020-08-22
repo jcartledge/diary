@@ -1,4 +1,4 @@
-import DiaryPage from "pages/DiaryPage";
+import DiaryPage from "components/pages/DiaryPage";
 import React from "react";
 import { Provider } from "react-redux";
 import { createStore } from "redux";

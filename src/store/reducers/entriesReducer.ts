@@ -1,5 +1,5 @@
 import produce from "immer";
-import { ActionType, EntriesAction } from "store/actions";
+import { EntriesAction, EntriesActionType } from "store/actions/entries";
 import { buildDiaryEntry, DiaryEntry } from "store/state";
 import { convertDateToEntryKey } from "util/date";
 import { Maybe } from "util/types";
@@ -10,7 +10,7 @@ export const entriesReducer = (
 ) =>
   produce(maybeEntries ?? [], (draftEntries) => {
     switch (action.type) {
-      case ActionType.FIELD_CHANGED_ACTION:
+      case EntriesActionType.FIELD_CHANGED_ACTION:
         const { date, field, value } = action;
         const dateKey = convertDateToEntryKey(date);
 
