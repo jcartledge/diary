@@ -6,7 +6,7 @@ import { selectDate } from "store/selectors";
 export const FormattedDate: React.FC = () => {
   const locale = useContext(LocaleContext);
   return (
-    <small>
+    <small className="p-2">
       {new Intl.DateTimeFormat(locale, {
         weekday: "long",
         day: "numeric",

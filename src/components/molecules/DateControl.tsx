@@ -4,11 +4,17 @@ import { FormattedDate } from "components/atoms/FormattedDate";
 import React from "react";
 
 const DateControl: React.FC = () => (
-  <>
-    <DatePrevButton />
-    <FormattedDate />
-    <DateNextButton />
-  </>
+  <div className="flex">
+    <div className="flex-none">
+      <DatePrevButton />
+    </div>
+    <div className="flex-grow">
+      <FormattedDate />
+    </div>
+    <div className="flex-none">
+      <DateNextButton />
+    </div>
+  </div>
 );
 
 export default DateControl;
