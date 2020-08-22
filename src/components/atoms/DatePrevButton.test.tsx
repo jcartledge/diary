@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { rootReducer } from "store/reducers";
 import { selectDate } from "store/selectors";
-import { buildState } from "store/state";
-import { convertDateToEntryKey } from "util/date";
+import { buildDiaryEntry, buildState } from "store/state";
+import { convertDateToEntryKey, decrementDate } from "util/date";
 import DatePrevButton from "./DatePrevButton";
 
 describe("DatePrevButton", () => {
@@ -47,5 +47,25 @@ describe("DatePrevButton", () => {
     expect(convertDateToEntryKey(selectDate(store.getState()))).toEqual(
       "2009-12-29"
     );
+  });
+
+  it("bolds the button text if there is an entry on the previous date", () => {
+    const date = new Date(Date.UTC(2010, 0, 1, 12, 0, 0));
+    const entries = [
+      buildDiaryEntry({ date: convertDateToEntryKey(date) }),
+      buildDiaryEntry({ date: convertDateToEntryKey(decrementDate(date)) }),
+    ];
+    const initialState = buildState({ date, entries });
+    const store = createStore(rootReducer, initialState);
+    render(
+      <Provider store={store}>
+        <DatePrevButton />
+      </Provider>
+    );
+    const prevButton = screen.getByRole("button", { name: "prev" });
+
+    expect(prevButton).toHaveClass("font-bold");
+    userEvent.click(prevButton);
+    expect(prevButton).not.toHaveClass("font-bold");
   });
 });

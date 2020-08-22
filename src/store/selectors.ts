@@ -1,8 +1,19 @@
 import { createSelector } from "reselect";
-import { convertDateToEntryKey } from "util/date";
-import { AppState, buildDiaryEntry } from "./state";
+import { convertDateToEntryKey, decrementDate, incrementDate } from "util/date";
+import { AppState, buildDiaryEntry, DiaryEntry } from "./state";
+
+const isEntryForDateKey = (dateKey: string, entries: DiaryEntry[]) =>
+  entries.findIndex(({ date }) => dateKey === date) > -1;
 
 export const selectDate = ({ date }: AppState) => date;
+
+const selectPreviousDateKey = createSelector(selectDate, (date) =>
+  convertDateToEntryKey(decrementDate(date))
+);
+
+const selectNextDateKey = createSelector(selectDate, (date) =>
+  convertDateToEntryKey(incrementDate(date))
+);
 
 const selectEntries = ({ entries }: AppState) => entries;
 
@@ -15,6 +26,16 @@ export const selectEntry = createSelector(
       buildDiaryEntry({ date: dateKey })
     );
   }
+);
+
+export const selectIsEntryForPreviousDate = createSelector(
+  [selectPreviousDateKey, selectEntries],
+  isEntryForDateKey
+);
+
+export const selectIsEntryForNextDate = createSelector(
+  [selectNextDateKey, selectEntries],
+  isEntryForDateKey
 );
 
 export const selectWhatHappened = createSelector(

@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { rootReducer } from "store/reducers";
 import { selectDate } from "store/selectors";
-import { buildState } from "store/state";
-import { convertDateToEntryKey } from "util/date";
+import { buildDiaryEntry, buildState } from "store/state";
+import { convertDateToEntryKey, incrementDate } from "util/date";
 import DateNextButton from "./DateNextButton";
 
 describe("DateNextButton", () => {
@@ -65,5 +65,25 @@ describe("DateNextButton", () => {
     expect(nextButton).toBeDisabled();
     userEvent.click(nextButton);
     expect(selectDate(store.getState()).getTime()).toEqual(date.getTime());
+  });
+
+  it("bolds the button text if there is an entry on the next date", () => {
+    const date = new Date(Date.UTC(2010, 0, 1, 12, 0, 0));
+    const entries = [
+      buildDiaryEntry({ date: convertDateToEntryKey(date) }),
+      buildDiaryEntry({ date: convertDateToEntryKey(incrementDate(date)) }),
+    ];
+    const initialState = buildState({ date, entries });
+    const store = createStore(rootReducer, initialState);
+    render(
+      <Provider store={store}>
+        <DateNextButton />
+      </Provider>
+    );
+    const nextButton = screen.getByRole("button", { name: "next" });
+
+    expect(nextButton).toHaveClass("font-bold");
+    userEvent.click(nextButton);
+    expect(nextButton).not.toHaveClass("font-bold");
   });
 });
