@@ -1,4 +1,9 @@
-import { convertDateToEntryKey, decrementDate, incrementDate } from "./date";
+import {
+  convertDateToEntryKey,
+  dateIsToday,
+  decrementDate,
+  incrementDate,
+} from "./date";
 
 describe("convertDateToEntryKey", () => {
   it("converts a date object to a string representing the date part only", () => {
@@ -27,5 +32,18 @@ describe("incrementDate", () => {
     expect(incrementedDate.getFullYear()).toEqual(2020);
     expect(incrementedDate.getMonth()).toEqual(3);
     expect(incrementedDate.getDate()).toEqual(23);
+  });
+});
+
+describe("isDateToday", () => {
+  it("returns true if the date is today", () => {
+    expect(dateIsToday(new Date())).toBe(true);
+  });
+
+  it("returns false if the date is not today", () => {
+    const date = new Date();
+    date.setDate(date.getDate() + 1);
+
+    expect(dateIsToday(date)).toBe(false);
   });
 });

@@ -39,13 +39,31 @@ describe("DateNextButton", () => {
       </Provider>
     );
 
-    const prevButton = screen.getByRole("button", { name: "next" });
-    userEvent.click(prevButton);
-    userEvent.click(prevButton);
-    userEvent.click(prevButton);
+    const nextButton = screen.getByRole("button", { name: "next" });
+    userEvent.click(nextButton);
+    userEvent.click(nextButton);
+    userEvent.click(nextButton);
 
     expect(convertDateToEntryKey(selectDate(store.getState()))).toEqual(
       "2011-01-03"
     );
+  });
+
+  it("does not increment past the current date", () => {
+    const date = new Date();
+    const initialState = buildState({ date });
+    const store = createStore(rootReducer, initialState);
+
+    render(
+      <Provider store={store}>
+        <DateNextButton />
+      </Provider>
+    );
+
+    const nextButton = screen.getByRole("button", { name: "next" });
+
+    expect(nextButton).toBeDisabled();
+    userEvent.click(nextButton);
+    expect(selectDate(store.getState()).getTime()).toEqual(date.getTime());
   });
 });
