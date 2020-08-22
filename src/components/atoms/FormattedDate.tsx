@@ -1,4 +1,4 @@
-import { LocaleContext } from "contexts/LocaleContext";
+import { LocaleContext } from "context/LocaleContext";
 import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import { selectDate } from "store/selectors";

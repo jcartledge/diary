@@ -13,8 +13,6 @@ describe("saveEntriesToLocalStorage", () => {
     expect(saveEntriesToLocalStorage(entries)).toEqual({ result: true });
   });
 
-  beforeEach(() => localStorage.clear());
-
   it("returns an error if setItem fails", () => {
     const entries = [buildDiaryEntry()];
     const mockLocalStorage = buildMockStorage({

@@ -8,7 +8,7 @@ import {
   getEntriesFromLocalStorage,
   saveEntriesToLocalStorage,
 } from "store/sync";
-import { LocaleContext } from "./contexts/LocaleContext";
+import { LocaleContext } from "./context/LocaleContext";
 import { rootReducer } from "./store/reducers";
 
 interface AppProps {

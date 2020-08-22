@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { LocaleContext } from "contexts/LocaleContext";
+import { LocaleContext } from "context/LocaleContext";
 import React from "react";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
