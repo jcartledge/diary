@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-import { convertDateToEntryKey } from "../util/convertDateToEntryKey";
+import { convertDateToEntryKey } from "util/convertDateToEntryKey";
 import { AppState, buildDiaryEntry } from "./state";
 
 export const selectDate = ({ date }: AppState) => date;

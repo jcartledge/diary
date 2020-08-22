@@ -1,7 +1,7 @@
+import { LocaleContext } from "contexts/LocaleContext";
 import React, { useContext } from "react";
 import { useSelector } from "react-redux";
-import { LocaleContext } from "../contexts/LocaleContext";
-import { selectDate } from "../redux/selectors";
+import { selectDate } from "store/selectors";
 
 export const FormattedDate: React.FC = () => {
   const locale = useContext(LocaleContext);

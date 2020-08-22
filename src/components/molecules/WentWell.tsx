@@ -1,9 +1,9 @@
+import { H2 } from "components/atoms/styled";
+import TextArea from "components/atoms/TextArea";
 import React from "react";
-import { H2 } from "./styled";
-import { TextArea } from "./TextArea";
 import { useSelector } from "react-redux";
-import { selectWentWell } from "../redux/selectors";
-import { useDispatchFieldChangedAction } from "../redux/actions";
+import { useDispatchFieldChangedAction } from "store/actions";
+import { selectWentWell } from "store/selectors";
 
 const WentWell: React.FC = () => (
   <>

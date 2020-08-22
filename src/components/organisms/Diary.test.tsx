@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { LocaleContext } from "contexts/LocaleContext";
 import React from "react";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import { LocaleContext } from "../contexts/LocaleContext";
-import { rootReducer } from "../redux/reducers";
-import { buildDiaryEntry, buildState } from "../redux/state";
-import { convertDateToEntryKey } from "../util/convertDateToEntryKey";
+import { rootReducer } from "store/reducers";
+import { buildDiaryEntry, buildState } from "store/state";
+import { convertDateToEntryKey } from "util/convertDateToEntryKey";
 import { Diary } from "./Diary";
 
 describe("Diary", () => {

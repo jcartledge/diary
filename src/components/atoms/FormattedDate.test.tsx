@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
+import { LocaleContext } from "contexts/LocaleContext";
 import React from "react";
-import { LocaleContext } from "../contexts/LocaleContext";
-import { FormattedDate } from "./FormattedDate";
-import { buildState } from "../redux/state";
-import { createStore } from "redux";
-import { rootReducer } from "../redux/reducers";
 import { Provider } from "react-redux";
+import { createStore } from "redux";
+import { rootReducer } from "store/reducers";
+import { buildState } from "store/state";
+import { FormattedDate } from "./FormattedDate";
 
 describe("Diary", () => {
   it("renders the date in the locale passed to it", () => {

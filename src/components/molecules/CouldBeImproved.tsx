@@ -1,9 +1,9 @@
+import { H2 } from "components/atoms/styled";
+import TextArea from "components/atoms/TextArea";
 import React from "react";
 import { useSelector } from "react-redux";
-import { useDispatchFieldChangedAction } from "../redux/actions";
-import { selectCouldBeImproved } from "../redux/selectors";
-import { H2 } from "./styled";
-import { TextArea } from "./TextArea";
+import { useDispatchFieldChangedAction } from "store/actions";
+import { selectCouldBeImproved } from "store/selectors";
 
 const CouldBeImproved: React.FC = () => (
   <>

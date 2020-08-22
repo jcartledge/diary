@@ -1,9 +1,9 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import { Diary } from "./components/Diary";
+import { Diary } from "./components/organisms/Diary";
 import { LocaleContext } from "./contexts/LocaleContext";
-import { rootReducer } from "./redux/reducers";
+import { rootReducer } from "./store/reducers";
 
 const store = createStore(
   rootReducer,

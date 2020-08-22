@@ -1,18 +1,12 @@
+import Cell from "components/atoms/Cell";
+import { H1 } from "components/atoms/styled";
+import NotWell from "components/molecules/NotWell";
+import Risk from "components/molecules/Risk";
+import WentWell from "components/molecules/WentWell";
+import WhatHappened from "components/molecules/WhatHappened";
 import React from "react";
-import styled from "styled-components";
-import CouldBeImproved from "./CouldBeImproved";
-import { FormattedDate } from "./FormattedDate";
-import NotWell from "./NotWell";
-import Risk from "./Risk";
-import { H1 } from "./styled";
-import WentWell from "./WentWell";
-import WhatHappened from "./WhatHappened";
-
-const Cell = styled.div`
-  border: 1px dotted silver;
-  padding: 1em;
-  margin: 1em;
-`;
+import { FormattedDate } from "../atoms/FormattedDate";
+import CouldBeImproved from "../molecules/CouldBeImproved";
 
 export const Diary: React.FC = () => {
   return (

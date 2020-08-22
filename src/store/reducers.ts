@@ -1,6 +1,6 @@
 import { produce } from "immer";
 import { Action, combineReducers } from "redux";
-import { convertDateToEntryKey } from "../util/convertDateToEntryKey";
+import { convertDateToEntryKey } from "util/convertDateToEntryKey";
 import { ActionType, EntriesAction } from "./actions";
 import { AppState, buildDiaryEntry, DiaryEntry } from "./state";
 
