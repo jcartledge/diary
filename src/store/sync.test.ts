@@ -1,3 +1,4 @@
+import { buildMockStorage } from "test/mockStorage";
 import { buildDiaryEntry, DiaryEntry } from "./state";
 import {
   getEntriesFromLocalStorage,
@@ -5,16 +6,6 @@ import {
   saveEntriesToLocalStorage,
 } from "./sync";
 import { InvalidDiaryEntryError } from "./validation";
-
-const buildMockStorage = (overrides: Partial<Storage> = {}): Storage => ({
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  removeItem: jest.fn(),
-  clear: jest.fn(),
-  length: 0,
-  key: jest.fn(),
-  ...overrides,
-});
 
 describe("saveEntriesToLocalStorage", () => {
   it("saves the entries to local storage", () => {
