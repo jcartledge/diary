@@ -1,29 +1,42 @@
-import Cell from "components/atoms/Cell";
-import CouldBeImproved from "components/molecules/CouldBeImproved";
-import NotWell from "components/molecules/NotWell";
-import Risk from "components/molecules/Risk";
-import WentWell from "components/molecules/WentWell";
-import WhatHappened from "components/molecules/WhatHappened";
+import DiaryEntryInput from "components/molecules/DiaryEntryInput";
 import React from "react";
+import {
+  selectCouldBeImproved,
+  selectNotWell,
+  selectRisk,
+  selectWentWell,
+  selectWhatHappened,
+} from "store/selectors";
 
 export const Diary: React.FC = () => {
   return (
     <div className="grid md:grid-cols-2 md:grid-rows-4 lg:grid-cols-3 lg:grid-rows-3">
-      <Cell className="md:col-span-2 lg:row-span-2 lg:col-span-1">
-        <WhatHappened />
-      </Cell>
-      <Cell>
-        <WentWell />
-      </Cell>
-      <Cell>
-        <CouldBeImproved />
-      </Cell>
-      <Cell>
-        <NotWell />
-      </Cell>
-      <Cell>
-        <Risk />
-      </Cell>
+      <DiaryEntryInput
+        className="md:col-span-2 lg:row-span-2 lg:col-span-1"
+        fieldName="whatHappened"
+        label="What happened?"
+        selector={selectWhatHappened}
+      />
+      <DiaryEntryInput
+        fieldName="wentWell"
+        label="Went well"
+        selector={selectWentWell}
+      />
+      <DiaryEntryInput
+        fieldName="couldBeImproved"
+        label="Could be improved"
+        selector={selectCouldBeImproved}
+      />
+      <DiaryEntryInput
+        fieldName="notWell"
+        label="Didn't go well"
+        selector={selectNotWell}
+      />
+      <DiaryEntryInput
+        fieldName="risk"
+        label="Might be a risk"
+        selector={selectRisk}
+      />
     </div>
   );
 };

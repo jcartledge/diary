@@ -9,7 +9,7 @@ export interface DiaryEntry {
   risk: string;
 }
 
-export type DiaryEntryFields = keyof Omit<DiaryEntry, "date">;
+export type DiaryEntryField = keyof Omit<DiaryEntry, "date">;
 
 export const buildDiaryEntry = (
   overrides: Partial<DiaryEntry> = {}

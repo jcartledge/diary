@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectDate } from "./selectors";
-import { DiaryEntryFields } from "./state";
+import { DiaryEntryField } from "./state";
 
 export enum ActionType {
   DECREMENT_DATE_ACTION = "DECREMENT_DATE_ACTION",
@@ -12,11 +12,11 @@ export enum ActionType {
 interface FieldChangedAction {
   type: ActionType.FIELD_CHANGED_ACTION;
   date: Date;
-  field: DiaryEntryFields;
+  field: DiaryEntryField;
   value: string;
 }
 
-export const useDispatchFieldChangedAction = (field: DiaryEntryFields) => {
+export const useDispatchFieldChangedAction = (field: DiaryEntryField) => {
   const dispatch = useDispatch();
   const date = useSelector(selectDate);
 
