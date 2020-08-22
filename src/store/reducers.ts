@@ -1,17 +1,28 @@
 import { produce } from "immer";
-import { Action, combineReducers } from "redux";
-import { convertDateToEntryKey } from "util/convertDateToEntryKey";
-import { ActionType, EntriesAction } from "./actions";
+import { combineReducers } from "redux";
+import { convertDateToEntryKey, decrementDate, incrementDate } from "util/date";
+import { ActionType, DateAction, EntriesAction } from "./actions";
 import { AppState, buildDiaryEntry, DiaryEntry } from "./state";
 
-export const dateReducer = (date: Date | undefined, action: Action) =>
-  date ?? new Date();
+type Maybe<T> = T | undefined;
+
+export const dateReducer = (maybeDate: Maybe<Date>, action: DateAction) => {
+  const definitelyDate = maybeDate ?? new Date();
+  switch (action.type) {
+    case ActionType.DECREMENT_DATE_ACTION:
+      return decrementDate(definitelyDate);
+    case ActionType.INCREMENT_DATE_ACTION:
+      return incrementDate(definitelyDate);
+    default:
+      return definitelyDate;
+  }
+};
 
 export const entriesReducer = (
-  entries: DiaryEntry[] | undefined,
+  maybeEntries: Maybe<DiaryEntry[]>,
   action: EntriesAction
 ) =>
-  produce(entries ?? [], (draftEntries) => {
+  produce(maybeEntries ?? [], (draftEntries) => {
     switch (action.type) {
       case ActionType.FIELD_CHANGED_ACTION:
         const { date, field, value } = action;

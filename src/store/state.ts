@@ -1,4 +1,4 @@
-import { convertDateToEntryKey } from "util/convertDateToEntryKey";
+import { convertDateToEntryKey } from "util/date";
 
 export interface DiaryEntry {
   date: string;
