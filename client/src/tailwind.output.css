@@ -19169,28 +19169,24 @@ video {
 
 .select-none {
   -webkit-user-select: none;
-     -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
 }
 
 .select-text {
   -webkit-user-select: text;
-     -moz-user-select: text;
       -ms-user-select: text;
           user-select: text;
 }
 
 .select-all {
   -webkit-user-select: all;
-     -moz-user-select: all;
       -ms-user-select: all;
           user-select: all;
 }
 
 .select-auto {
   -webkit-user-select: auto;
-     -moz-user-select: auto;
       -ms-user-select: auto;
           user-select: auto;
 }
@@ -40807,28 +40803,24 @@ video {
 
   .sm\:select-none {
     -webkit-user-select: none;
-       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
   }
 
   .sm\:select-text {
     -webkit-user-select: text;
-       -moz-user-select: text;
         -ms-user-select: text;
             user-select: text;
   }
 
   .sm\:select-all {
     -webkit-user-select: all;
-       -moz-user-select: all;
         -ms-user-select: all;
             user-select: all;
   }
 
   .sm\:select-auto {
     -webkit-user-select: auto;
-       -moz-user-select: auto;
         -ms-user-select: auto;
             user-select: auto;
   }
@@ -62380,28 +62372,24 @@ video {
 
   .md\:select-none {
     -webkit-user-select: none;
-       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
   }
 
   .md\:select-text {
     -webkit-user-select: text;
-       -moz-user-select: text;
         -ms-user-select: text;
             user-select: text;
   }
 
   .md\:select-all {
     -webkit-user-select: all;
-       -moz-user-select: all;
         -ms-user-select: all;
             user-select: all;
   }
 
   .md\:select-auto {
     -webkit-user-select: auto;
-       -moz-user-select: auto;
         -ms-user-select: auto;
             user-select: auto;
   }
@@ -83953,28 +83941,24 @@ video {
 
   .lg\:select-none {
     -webkit-user-select: none;
-       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
   }
 
   .lg\:select-text {
     -webkit-user-select: text;
-       -moz-user-select: text;
         -ms-user-select: text;
             user-select: text;
   }
 
   .lg\:select-all {
     -webkit-user-select: all;
-       -moz-user-select: all;
         -ms-user-select: all;
             user-select: all;
   }
 
   .lg\:select-auto {
     -webkit-user-select: auto;
-       -moz-user-select: auto;
         -ms-user-select: auto;
             user-select: auto;
   }
@@ -105526,28 +105510,24 @@ video {
 
   .xl\:select-none {
     -webkit-user-select: none;
-       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
   }
 
   .xl\:select-text {
     -webkit-user-select: text;
-       -moz-user-select: text;
         -ms-user-select: text;
             user-select: text;
   }
 
   .xl\:select-all {
     -webkit-user-select: all;
-       -moz-user-select: all;
         -ms-user-select: all;
             user-select: all;
   }
 
   .xl\:select-auto {
     -webkit-user-select: auto;
-       -moz-user-select: auto;
         -ms-user-select: auto;
             user-select: auto;
   }
