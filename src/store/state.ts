@@ -28,7 +28,7 @@ export interface AppState {
   entries: DiaryEntry[];
 }
 
-export const buildState = (overrides: Partial<AppState> = {}): AppState => ({
+export const buildState = (overrides: Partial<AppState>): AppState => ({
   date: new Date(),
   entries: [],
   ...overrides,
