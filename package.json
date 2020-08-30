@@ -2,8 +2,14 @@
   "name": "diary",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev": "concurrently -n \"server,client\" \"yarn workspace server dev\" \"yarn workspace client dev\""
+  },
   "workspaces": [
     "client",
     "server"
-  ]
+  ],
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
 }
