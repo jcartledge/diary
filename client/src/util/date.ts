@@ -1,4 +1,4 @@
-export const convertDateToEntryKey = (date: Date): string =>
+export const convertDateToEntryKey = (date: Date) =>
   date.toISOString().substring(0, 10);
 
 export const decrementDate = (date: Date) =>
@@ -21,7 +21,7 @@ export const incrementDate = (date: Date) =>
     date.getSeconds()
   );
 
-export const dateIsToday = (date: Date): boolean => {
+export const dateIsToday = (date: Date) => {
   const today = new Date();
   return (
     date.getFullYear() === today.getFullYear() &&
