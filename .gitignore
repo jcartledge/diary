@@ -1,6 +1,7 @@
 .env
 client/build
-server/.dev
 node_modules/
+resolvers-types.ts
+server/.dev
 yarn-debug.log*
 yarn-error.log*

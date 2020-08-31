@@ -1,6 +1,8 @@
-export const resolvers = {
+import { Resolvers } from "./resolvers-types";
+
+export const resolvers: Resolvers = {
   Query: {
-    // diaryEntry: (_, { date }, { dataSources }) =>
-    //   dataSources.diaryEntriesDataSource.getByDate(date),
+    diaryEntry: (_, { date }, { dataSources }) =>
+      dataSources.diaryEntriesDataSource.getByDate(date),
   },
 };
