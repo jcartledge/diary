@@ -1,4 +1,5 @@
 import { convertDateToEntryKey } from "util/date";
+import { Builder } from "util/types";
 
 export interface DiaryEntry {
   date: string;
@@ -11,9 +12,7 @@ export interface DiaryEntry {
 
 export type DiaryEntryField = keyof Omit<DiaryEntry, "date">;
 
-export const buildDiaryEntry = (
-  overrides: Partial<DiaryEntry> = {}
-): DiaryEntry => ({
+export const buildDiaryEntry: Builder<DiaryEntry> = (overrides = {}) => ({
   date: convertDateToEntryKey(new Date()),
   whatHappened: "",
   wentWell: "",
@@ -28,7 +27,7 @@ export interface AppState {
   entries: DiaryEntry[];
 }
 
-export const buildState = (overrides: Partial<AppState>): AppState => ({
+export const buildState: Builder<AppState> = (overrides) => ({
   date: new Date(),
   entries: [],
   ...overrides,
