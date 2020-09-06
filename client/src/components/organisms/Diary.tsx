@@ -2,7 +2,7 @@ import DiaryEntryInput from "components/molecules/DiaryEntryInput";
 import { DateContext } from "context/DateContext";
 import { useDiaryEntryQuery } from "graphql/queries";
 import React, { useContext } from "react";
-import { buildDiaryEntry } from "store/state";
+import { buildDiaryEntry } from "util/types";
 
 export const Diary: React.FC = () => {
   const { date } = useContext(DateContext);

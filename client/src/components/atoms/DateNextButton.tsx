@@ -1,18 +1,16 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { useIncrementDateAction } from "store/actions/date";
-import { selectDate, selectIsEntryForNextDate } from "store/selectors";
-import { dateIsToday } from "util/date";
+import { DateContext } from "context/DateContext";
+import { useIsEntryForNextDate } from "graphql/queries";
+import React, { useContext } from "react";
 
 const DateNextButton: React.FC = () => {
-  const onClickHandler = useIncrementDateAction();
-  const isEntryForNextDate = useSelector(selectIsEntryForNextDate);
-  return dateIsToday(useSelector(selectDate)) ? (
+  const { date, incrementDate } = useContext(DateContext);
+  const isEntryForNextDate = useIsEntryForNextDate(date);
+  return date.isToday() ? (
     <DateNextButtonDisabled />
   ) : (
     <button
       className={`p-2 border rounded ${isEntryForNextDate ? "font-bold" : ""}`}
-      onClick={onClickHandler}
+      onClick={() => incrementDate()}
     >
       next
     </button>

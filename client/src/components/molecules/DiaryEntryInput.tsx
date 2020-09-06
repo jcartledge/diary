@@ -19,7 +19,10 @@ const DiaryEntryInput: React.FC<DiaryEntryInputProps> = ({
 }) => (
   <Cell className={className ?? ""}>
     <H2 id={`${fieldName(label)}-label`}>{label}</H2>
-    <TextArea aria-labelledby={`${fieldName(label)}-label`} value={value} />
+    <TextArea
+      aria-labelledby={`${fieldName(label)}-label`}
+      defaultValue={value}
+    />
   </Cell>
 );
 

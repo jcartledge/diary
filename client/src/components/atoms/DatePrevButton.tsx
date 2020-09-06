@@ -1,17 +1,20 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { useDecrementDateAction } from "store/actions/date";
-import { selectIsEntryForPreviousDate } from "store/selectors";
+import { DateContext } from "context/DateContext";
+import React, { useContext } from "react";
+import { useIsEntryForPreviousDate } from "graphql/queries";
 
-const DatePrevButton: React.FC = () => (
-  <button
-    className={`p-2 border rounded ${
-      useSelector(selectIsEntryForPreviousDate) ? "font-bold" : ""
-    }`}
-    onClick={useDecrementDateAction()}
-  >
-    prev
-  </button>
-);
+const DatePrevButton: React.FC = () => {
+  const { date, decrementDate } = useContext(DateContext);
+  const isEntryForPreviousDate = useIsEntryForPreviousDate(date);
+  return (
+    <button
+      className={`p-2 border rounded ${
+        isEntryForPreviousDate ? "font-bold" : ""
+      }`}
+      onClick={() => decrementDate()}
+    >
+      prev
+    </button>
+  );
+};
 
 export default DatePrevButton;
