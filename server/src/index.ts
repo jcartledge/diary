@@ -5,7 +5,7 @@ import { resolvers } from "./resolvers";
 import { typeDefs } from "./schema";
 
 const dataSources = () => ({
-  diaryEntries: new DiaryEntriesDataSource(diaryEntriesTable),
+  diaryEntriesDataSource: new DiaryEntriesDataSource(diaryEntriesTable),
 });
 
 const server = new ApolloServer({ typeDefs, dataSources, resolvers });
