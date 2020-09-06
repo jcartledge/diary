@@ -1,14 +1,6 @@
+import { DiaryEntry } from "server/src/resolvers-types";
 import { convertDateToEntryKey } from "util/date";
 import { Builder } from "util/types";
-
-export interface DiaryEntry {
-  date: string;
-  whatHappened: string;
-  wentWell: string;
-  couldBeImproved: string;
-  notWell: string;
-  risk: string;
-}
 
 export type DiaryEntryField = keyof Omit<DiaryEntry, "date">;
 

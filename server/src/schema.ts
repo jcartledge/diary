@@ -2,21 +2,21 @@ import { gql } from "apollo-server";
 
 export const typeDefs = gql`
   type DiaryEntry {
-    risk: String
+    risk: String!
     date: String!
-    whatHappened: String
-    wentWell: String
-    couldBeImproved: String
-    notWell: String
+    whatHappened: String!
+    wentWell: String!
+    couldBeImproved: String!
+    notWell: String!
   }
 
   input DiaryEntryInput {
-    risk: String
+    risk: String!
     date: String!
-    whatHappened: String
-    wentWell: String
-    couldBeImproved: String
-    notWell: String
+    whatHappened: String!
+    wentWell: String!
+    couldBeImproved: String!
+    notWell: String!
   }
 
   type Query {

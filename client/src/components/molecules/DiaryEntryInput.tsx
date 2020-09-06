@@ -2,30 +2,24 @@ import Cell from "components/atoms/Cell";
 import { H2 } from "components/atoms/styled";
 import TextArea from "components/atoms/TextArea";
 import React from "react";
-import { useSelector } from "react-redux";
-import { OutputSelector } from "reselect";
-import { useDispatchFieldChangedAction } from "store/actions/entries";
-import { AppState, DiaryEntry, DiaryEntryField } from "store/state";
+import slugify from "slugify";
 
 interface DiaryEntryInputProps {
   label: string;
-  selector: OutputSelector<AppState, string, (_: DiaryEntry) => string>;
-  fieldName: DiaryEntryField;
+  value: string;
   className?: string;
 }
+
+const fieldName = (label: string) => slugify(label, { lower: true });
+
 const DiaryEntryInput: React.FC<DiaryEntryInputProps> = ({
   label,
-  selector,
-  fieldName,
+  value,
   className,
 }) => (
   <Cell className={className ?? ""}>
-    <H2 id={`${fieldName}-label`}>{label}</H2>
-    <TextArea
-      aria-labelledby={`${fieldName}-label`}
-      onChange={useDispatchFieldChangedAction(fieldName)}
-      value={useSelector(selector)}
-    />
+    <H2 id={`${fieldName(label)}-label`}>{label}</H2>
+    <TextArea aria-labelledby={`${fieldName(label)}-label`} value={value} />
   </Cell>
 );
 

@@ -16,6 +16,6 @@ export class DiaryEntriesDataSource extends DataSource {
   }
 
   async save(diaryEntry: DiaryEntry) {
-    return this.diaryEntriesTable.upsert(diaryEntry);
+    this.diaryEntriesTable.upsert(diaryEntry);
   }
 }

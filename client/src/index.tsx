@@ -6,9 +6,11 @@ import * as serviceWorker from "./serviceWorker";
 import "./tailwind.output.css";
 
 const client = new ApolloClient({
-  uri: process.env.graphqlUri,
+  uri: process.env.REACT_APP_GRAPHQL_URI,
   cache: new InMemoryCache(),
 });
+
+console.log(process.env.REACT_APP_GRAPHQL_URI);
 
 ReactDOM.render(
   <React.StrictMode>

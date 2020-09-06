@@ -28,11 +28,11 @@ export const diaryEntriesTable: DiaryEntriesTable = db.define("diaryEntry", {
     unique: true,
     validate: { isDate: true },
   },
-  risk: { type: TEXT },
-  whatHappened: { type: TEXT },
-  wentWell: { type: TEXT },
-  couldBeImproved: { type: TEXT },
-  notWell: { type: TEXT },
+  risk: { type: TEXT, allowNull: false, defaultValue: "" },
+  whatHappened: { type: TEXT, allowNull: false, defaultValue: "" },
+  wentWell: { type: TEXT, allowNull: false, defaultValue: "" },
+  couldBeImproved: { type: TEXT, allowNull: false, defaultValue: "" },
+  notWell: { type: TEXT, allowNull: false, defaultValue: "" },
 });
 
 db.sync();
