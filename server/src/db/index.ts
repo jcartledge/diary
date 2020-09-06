@@ -1,4 +1,4 @@
-import { ModelDefined, Sequelize, STRING } from "sequelize";
+import { ModelDefined, Sequelize, STRING, TEXT } from "sequelize";
 
 const db = new Sequelize({
   dialect: "sqlite",
@@ -22,12 +22,17 @@ export type DiaryEntriesTable = ModelDefined<
 >;
 
 export const diaryEntriesTable: DiaryEntriesTable = db.define("diaryEntry", {
-  date: { type: STRING, allowNull: false },
-  risk: { type: STRING },
-  whatHappened: { type: STRING },
-  wentWell: { type: STRING },
-  couldBeImproved: { type: STRING },
-  notWell: { type: STRING },
+  date: {
+    type: STRING,
+    allowNull: false,
+    unique: true,
+    validate: { isDate: true },
+  },
+  risk: { type: TEXT },
+  whatHappened: { type: TEXT },
+  wentWell: { type: TEXT },
+  couldBeImproved: { type: TEXT },
+  notWell: { type: TEXT },
 });
 
 db.sync();

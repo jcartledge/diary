@@ -3,7 +3,7 @@ import { gql } from "apollo-server";
 export const typeDefs = gql`
   type DiaryEntry {
     risk: String
-    date: String
+    date: String!
     whatHappened: String
     wentWell: String
     couldBeImproved: String
@@ -12,7 +12,7 @@ export const typeDefs = gql`
 
   input DiaryEntryInput {
     risk: String
-    date: String
+    date: String!
     whatHappened: String
     wentWell: String
     couldBeImproved: String
@@ -28,8 +28,6 @@ export const typeDefs = gql`
   }
 
   type UpdateDiaryEntryResponse {
-    success: Boolean!
-    message: String
     diaryEntry: DiaryEntry
   }
 `;
