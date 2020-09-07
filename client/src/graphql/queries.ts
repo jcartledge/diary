@@ -33,7 +33,7 @@ const isNotEmptyDiaryEntry = ({
 };
 
 const doesEntryExist = ({ data }: QueryResult<{ diaryEntry: DiaryEntry }>) =>
-  data && "diaryEntry" in data && isNotEmptyDiaryEntry(data.diaryEntry);
+  data && isNotEmptyDiaryEntry(data.diaryEntry);
 
 export const useIsEntryForPreviousDate = (date: DiaryDate) =>
   doesEntryExist(useDiaryEntryQuery(date.getPrevious()));

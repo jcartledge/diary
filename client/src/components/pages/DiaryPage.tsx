@@ -1,4 +1,4 @@
-import { Diary } from "components/organisms/Diary";
+import  DiaryPageForm  from "components/organisms/DiaryPageForm";
 import DateContextProvider from "context/DateContext";
 import React from "react";
 import DiaryHeader from "components/organisms/DiaryHeader";
@@ -6,7 +6,7 @@ import DiaryHeader from "components/organisms/DiaryHeader";
 const DiaryPage: React.FC = () => (
   <DateContextProvider>
     <DiaryHeader />
-    <Diary />
+    <DiaryPageForm />
   </DateContextProvider>
 );
 

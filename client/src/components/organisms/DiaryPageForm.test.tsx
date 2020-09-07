@@ -6,9 +6,9 @@ import { createMockClient } from "mock-apollo-client";
 import React from "react";
 import { DiaryDate } from "util/date";
 import { buildDiaryEntry } from "util/types";
-import { Diary } from "./Diary";
+import DiaryPageForm from "./DiaryPageForm";
 
-describe("Diary", () => {
+describe("DiaryPageForm", () => {
   it("renders the diary content from apollo", async () => {
     const diaryEntry = buildDiaryEntry({
       whatHappened: "Lots",
@@ -25,7 +25,7 @@ describe("Diary", () => {
     const diary = render(
       <ApolloProvider client={mockClient}>
         <DateContextProvider>
-          <Diary />
+          <DiaryPageForm />
         </DateContextProvider>
       </ApolloProvider>
     );
@@ -59,7 +59,7 @@ describe("Diary", () => {
     render(
       <ApolloProvider client={mockClient}>
         <DateContextProvider date={date}>
-          <Diary />
+          <DiaryPageForm />
         </DateContextProvider>
       </ApolloProvider>
     );

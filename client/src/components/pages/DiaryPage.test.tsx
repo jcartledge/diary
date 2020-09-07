@@ -1,50 +1,45 @@
+import { ApolloProvider } from "@apollo/client";
+import { render, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import DateContextProvider from "context/DateContext";
+import { LocaleContext } from "context/LocaleContext";
+import { DIARY_ENTRY_QUERY } from "graphql/queries";
+import { createMockClient } from "mock-apollo-client";
+import React from "react";
+import { DiaryDate } from "util/date";
+import DiaryPage from "./DiaryPage";
+
 describe("DiaryPage", () => {
-  // it("shows the dairy entry for the correct date when decrementing dates", () => {
-  //   const date = new Date(Date.UTC(2010, 0, 1, 12, 0, 0));
-  //   const initialState = buildState({
-  //     date,
-  //     entries: [
-  //       buildDiaryEntry({
-  //         date: convertDateToEntryKey(date),
-  //         whatHappened: "Today",
-  //       }),
-  //       buildDiaryEntry({
-  //         date: convertDateToEntryKey(decrementDate(date)),
-  //         whatHappened: "Yesterday",
-  //       }),
-  //     ],
-  //   });
-  //   const store = createStore(rootReducer, initialState);
-  //   render(
-  //     <Provider store={store}>
-  //       <DiaryPage />
-  //     </Provider>
-  //   );
-  //   expect(screen.getByLabelText("What happened?")).toHaveTextContent("Today");
-  //   userEvent.click(screen.getByRole("button", { name: "prev" }));
-  //   expect(screen.getByLabelText("What happened?")).toHaveTextContent(
-  //     "Yesterday"
-  //   );
-  // });
-  // it("does not persist the field values when there is no entry to populate", () => {
-  //   const date = new Date(Date.UTC(2010, 0, 1, 12, 0, 0));
-  //   const initialState = buildState({
-  //     date,
-  //     entries: [
-  //       buildDiaryEntry({
-  //         date: convertDateToEntryKey(date),
-  //         whatHappened: "Today",
-  //       }),
-  //     ],
-  //   });
-  //   const store = createStore(rootReducer, initialState);
-  //   render(
-  //     <Provider store={store}>
-  //       <DiaryPage />
-  //     </Provider>
-  //   );
-  //   expect(screen.getByLabelText("What happened?")).toHaveTextContent("Today");
-  //   userEvent.click(screen.getByRole("button", { name: "prev" }));
-  //   expect(screen.getByLabelText("What happened?")).toHaveTextContent("");
-  // });
+  it("retrieves the diary entry for the correct date when changing dates", async () => {
+    const today = new DiaryDate();
+    const yesterday = today.getPrevious();
+
+    const requestHandler = jest.fn();
+    const mockClient = createMockClient();
+    mockClient.setRequestHandler(DIARY_ENTRY_QUERY, requestHandler);
+
+    const diaryPage = render(
+      <ApolloProvider client={mockClient}>
+        <LocaleContext.Provider value="en-AU">
+          <DateContextProvider>
+            <DiaryPage />
+          </DateContextProvider>
+        </LocaleContext.Provider>
+      </ApolloProvider>
+    );
+    await waitFor(() => {});
+
+    expect(requestHandler).toHaveBeenCalledWith({ date: today.getKey() });
+    requestHandler.mockReset();
+
+    userEvent.click(diaryPage.getByRole("button", { name: "prev" }));
+    await waitFor(() => {});
+    expect(requestHandler).toHaveBeenCalledWith({ date: yesterday.getKey() });
+    requestHandler.mockReset();
+
+    // From cache:
+    userEvent.click(diaryPage.getByRole("button", { name: "next" }));
+    await waitFor(() => {});
+    expect(requestHandler).toHaveBeenCalledWith({ date: today.getKey() });
+  });
 });
