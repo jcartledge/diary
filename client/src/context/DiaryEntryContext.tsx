@@ -4,6 +4,7 @@ import {
 } from "graphql/queries";
 import React, {
   PropsWithChildren,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -15,6 +16,7 @@ import { DateContext } from "./DateContext";
 interface DiaryEntryContextValue {
   diaryEntry: DiaryEntry;
   updateDiaryEntry: (field: keyof DiaryEntry) => (value: string) => void;
+  isDirty: boolean;
 }
 
 export const buildDiaryEntryContextValue: Builder<DiaryEntryContextValue> = (
@@ -24,6 +26,7 @@ export const buildDiaryEntryContextValue: Builder<DiaryEntryContextValue> = (
   updateDiaryEntry: (_field: keyof DiaryEntry) => (_value: string) => {
     return;
   },
+  isDirty: false,
   ...overrides,
 });
 
@@ -31,22 +34,24 @@ export const DiaryEntryContext = React.createContext<DiaryEntryContextValue>(
   buildDiaryEntryContextValue()
 );
 
-interface DiaryEnmtryContextProps {
+interface DiaryEntryContextProps {
   saveTimeoutInterval?: number;
 }
 
 export const DiaryEntryContextProvider: React.FC<PropsWithChildren<
-  DiaryEnmtryContextProps
+  DiaryEntryContextProps
 >> = ({ children, saveTimeoutInterval = 1000 }) => {
   const { date } = useContext(DateContext);
   const { data } = useDiaryEntryQuery(date);
   const [diaryEntry, setDiaryEntry] = useState<DiaryEntry>(buildDiaryEntry());
+  const [isDirty, setIsDirty] = useState(false);
   const [doUpdateDiaryEntryMutation] = useUpdateDiaryEntryMutation();
 
   useEffect(() => {
     if (data) {
       const { __typename, ...diaryEntry } = data.diaryEntry;
       setDiaryEntry(diaryEntry);
+      setIsDirty(false);
     }
   }, [data]);
 
@@ -54,21 +59,34 @@ export const DiaryEntryContextProvider: React.FC<PropsWithChildren<
     ReturnType<typeof setTimeout>
   >();
 
-  const updateDiaryEntry = (field: keyof DiaryEntry) => (value: string) => {
-    const newDiaryEntry = { ...diaryEntry, [field]: value };
-    setDiaryEntry(newDiaryEntry);
-    clearTimeout(saveTimeout);
-    setSaveTimeout(
-      setTimeout(() => {
-        doUpdateDiaryEntryMutation({
-          variables: { diaryEntry: newDiaryEntry },
-        });
-      }, saveTimeoutInterval)
-    );
-  };
+  const updateDiaryEntry = useCallback(
+    (field: keyof DiaryEntry) => (value: string) => {
+      if (value !== diaryEntry[field]) {
+        const newDiaryEntry = { ...diaryEntry, [field]: value };
+        setDiaryEntry(newDiaryEntry);
+        setIsDirty(true);
+        clearTimeout(saveTimeout);
+        setSaveTimeout(
+          setTimeout(async () => {
+            await doUpdateDiaryEntryMutation({
+              variables: { diaryEntry: newDiaryEntry },
+            });
+            setIsDirty(false);
+          }, saveTimeoutInterval)
+        );
+      }
+    },
+    [diaryEntry, doUpdateDiaryEntryMutation, saveTimeoutInterval, saveTimeout]
+  );
 
   return (
-    <DiaryEntryContext.Provider value={{ diaryEntry, updateDiaryEntry }}>
+    <DiaryEntryContext.Provider
+      value={buildDiaryEntryContextValue({
+        diaryEntry,
+        updateDiaryEntry,
+        isDirty,
+      })}
+    >
       {children}
     </DiaryEntryContext.Provider>
   );

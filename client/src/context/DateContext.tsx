@@ -29,11 +29,11 @@ const DateContextProvider: React.FC<React.PropsWithChildren<
   DateContextProps
 >> = ({ date: dateFromProps, children }) => {
   const [date, setDate] = useState(dateFromProps ?? new DiaryDate());
-  const contextValue = {
+  const contextValue = buildDateContextValue({
     date,
     decrementDate: () => setDate(date.getPrevious()),
     incrementDate: () => setDate(date.getNext()),
-  };
+  });
   return (
     <DateContext.Provider value={contextValue}>{children}</DateContext.Provider>
   );
