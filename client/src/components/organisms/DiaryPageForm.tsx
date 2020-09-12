@@ -1,18 +1,29 @@
 import DiaryEntryInput from "components/molecules/DiaryEntryInput";
 import { DateContext } from "context/DateContext";
-import { useDiaryEntryQuery } from "graphql/queries";
+import {
+  useDiaryEntryQuery,
+  useUpdateDiaryEntryMutation,
+} from "graphql/queries";
 import React, { useContext, useEffect, useState } from "react";
 import { DiaryEntry } from "server/src/resolvers-types";
 import { buildDiaryEntry } from "util/types";
 
-const DiaryPageForm: React.FC = () => {
+interface DiaryPageFormProps {
+  saveTimeoutInterval?: number;
+}
+
+const DiaryPageForm: React.FC<DiaryPageFormProps> = ({
+  saveTimeoutInterval = 1000,
+}) => {
   const { date } = useContext(DateContext);
   const { data } = useDiaryEntryQuery(date);
   const [diaryEntry, setDiaryEntry] = useState<DiaryEntry>(buildDiaryEntry());
+  const [doUpdateDiaryEntryMutation] = useUpdateDiaryEntryMutation();
 
   useEffect(() => {
     if (data) {
-      setDiaryEntry(data.diaryEntry);
+      const { __typename, ...diaryEntry } = data.diaryEntry;
+      setDiaryEntry(diaryEntry);
     }
   }, [data]);
 
@@ -26,8 +37,10 @@ const DiaryPageForm: React.FC = () => {
     clearTimeout(saveTimeout);
     setSaveTimeout(
       setTimeout(() => {
-        console.log({ newDiaryEntry });
-      }, 1000)
+        doUpdateDiaryEntryMutation({
+          variables: { diaryEntry: newDiaryEntry },
+        });
+      }, saveTimeoutInterval)
     );
   };
 

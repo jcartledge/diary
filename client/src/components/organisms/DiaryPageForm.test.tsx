@@ -1,7 +1,11 @@
 import { ApolloProvider } from "@apollo/client";
 import { render, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import DateContextProvider from "context/DateContext";
-import { DIARY_ENTRY_QUERY } from "graphql/queries";
+import {
+  DIARY_ENTRY_QUERY,
+  UPDATE_DIARY_ENTRY_MUTATION,
+} from "graphql/queries";
 import { createMockClient } from "mock-apollo-client";
 import React from "react";
 import { DiaryDate } from "util/date";
@@ -69,5 +73,47 @@ describe("DiaryPageForm", () => {
     expect(diaryEntryQueryHandler).toHaveBeenCalledWith({
       date: date.getKey(),
     });
+  });
+
+  it("calls the apollo mutation with the updated content to update the entry", async () => {
+    const date = new DiaryDate(new Date(Date.UTC(2010, 0, 1, 12, 0, 0)));
+    const mockClient = createMockClient();
+
+    const diaryEntry = buildDiaryEntry();
+    mockClient.setRequestHandler(
+      DIARY_ENTRY_QUERY,
+      jest.fn().mockResolvedValue({ data: { diaryEntry } })
+    );
+    const updateDiaryEntryMutationHandler = jest
+      .fn()
+      .mockResolvedValueOnce({ data: { diaryEntry } });
+    mockClient.setRequestHandler(
+      UPDATE_DIARY_ENTRY_MUTATION,
+      updateDiaryEntryMutationHandler
+    );
+
+    const diaryPageForm = render(
+      <ApolloProvider client={mockClient}>
+        <DateContextProvider date={date}>
+          <DiaryPageForm saveTimeoutInterval={10} />
+        </DateContextProvider>
+      </ApolloProvider>
+    );
+    // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
+    await waitFor(() => {});
+
+    await userEvent.type(
+      diaryPageForm.getByLabelText(/What happened/),
+      "Nothing happened"
+    );
+
+    await waitFor(() =>
+      expect(updateDiaryEntryMutationHandler).toHaveBeenCalledWith({
+        diaryEntry: {
+          ...diaryEntry,
+          whatHappened: "Nothing happened",
+        },
+      })
+    );
   });
 });

@@ -1,4 +1,4 @@
-import { ModelDefined, Sequelize, STRING, TEXT } from "sequelize";
+import { DataTypes, ModelDefined, Sequelize, STRING, TEXT } from "sequelize";
 
 const db = new Sequelize({
   dialect: "sqlite",
@@ -22,6 +22,11 @@ export type DiaryEntriesTable = ModelDefined<
 >;
 
 export const diaryEntriesTable: DiaryEntriesTable = db.define("diaryEntry", {
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true,
+  },
   date: {
     type: STRING,
     allowNull: false,

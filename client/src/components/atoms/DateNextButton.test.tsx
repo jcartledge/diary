@@ -103,9 +103,8 @@ describe("DateNextButton", () => {
       </ApolloProvider>
     );
     const nextButton = screen.getByRole("button", { name: "next" });
-    await waitFor(() => {});
 
-    expect(nextButton).toHaveClass("font-bold");
+    await waitFor(() => expect(nextButton).toHaveClass("font-bold"));
   });
 
   it("does not bold the button text if there is not an entry on the next date", async () => {
@@ -122,8 +121,7 @@ describe("DateNextButton", () => {
       </ApolloProvider>
     );
     const nextButton = screen.getByRole("button", { name: "next" });
-    await waitFor(() => {});
 
-    expect(nextButton).not.toHaveClass("font-bold");
+    await waitFor(() => expect(nextButton).not.toHaveClass("font-bold"));
   });
 });
