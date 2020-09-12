@@ -1,49 +1,9 @@
 import DiaryEntryInput from "components/molecules/DiaryEntryInput";
-import { DateContext } from "context/DateContext";
-import {
-  useDiaryEntryQuery,
-  useUpdateDiaryEntryMutation,
-} from "graphql/queries";
-import React, { useContext, useEffect, useState } from "react";
-import { DiaryEntry } from "server/src/resolvers-types";
-import { buildDiaryEntry } from "util/types";
+import { DiaryEntryContext } from "context/DiaryEntryContext";
+import React, { useContext } from "react";
 
-interface DiaryPageFormProps {
-  saveTimeoutInterval?: number;
-}
-
-const DiaryPageForm: React.FC<DiaryPageFormProps> = ({
-  saveTimeoutInterval = 1000,
-}) => {
-  const { date } = useContext(DateContext);
-  const { data } = useDiaryEntryQuery(date);
-  const [diaryEntry, setDiaryEntry] = useState<DiaryEntry>(buildDiaryEntry());
-  const [doUpdateDiaryEntryMutation] = useUpdateDiaryEntryMutation();
-
-  useEffect(() => {
-    if (data) {
-      const { __typename, ...diaryEntry } = data.diaryEntry;
-      setDiaryEntry(diaryEntry);
-    }
-  }, [data]);
-
-  const [saveTimeout, setSaveTimeout] = useState<
-    ReturnType<typeof setTimeout>
-  >();
-
-  const updateDiaryEntry = (field: keyof DiaryEntry) => (value: string) => {
-    const newDiaryEntry = { ...diaryEntry, [field]: value };
-    setDiaryEntry(newDiaryEntry);
-    clearTimeout(saveTimeout);
-    setSaveTimeout(
-      setTimeout(() => {
-        doUpdateDiaryEntryMutation({
-          variables: { diaryEntry: newDiaryEntry },
-        });
-      }, saveTimeoutInterval)
-    );
-  };
-
+const DiaryPageForm: React.FC = () => {
+  const { diaryEntry, updateDiaryEntry } = useContext(DiaryEntryContext);
   return (
     <div className="grid md:grid-cols-2 md:grid-rows-4 lg:grid-cols-3 lg:grid-rows-3">
       <DiaryEntryInput

@@ -2,6 +2,7 @@ import { ApolloProvider } from "@apollo/client";
 import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import DateContextProvider from "context/DateContext";
+import { DiaryEntryContextProvider } from "context/DiaryEntryContext";
 import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,
@@ -29,7 +30,9 @@ describe("DiaryPageForm", () => {
     const diary = render(
       <ApolloProvider client={mockClient}>
         <DateContextProvider>
-          <DiaryPageForm />
+          <DiaryEntryContextProvider>
+            <DiaryPageForm />
+          </DiaryEntryContextProvider>
         </DateContextProvider>
       </ApolloProvider>
     );
@@ -63,7 +66,9 @@ describe("DiaryPageForm", () => {
     render(
       <ApolloProvider client={mockClient}>
         <DateContextProvider date={date}>
-          <DiaryPageForm />
+          <DiaryEntryContextProvider>
+            <DiaryPageForm />
+          </DiaryEntryContextProvider>
         </DateContextProvider>
       </ApolloProvider>
     );
@@ -95,7 +100,9 @@ describe("DiaryPageForm", () => {
     const diaryPageForm = render(
       <ApolloProvider client={mockClient}>
         <DateContextProvider date={date}>
-          <DiaryPageForm saveTimeoutInterval={10} />
+          <DiaryEntryContextProvider saveTimeoutInterval={10}>
+            <DiaryPageForm />
+          </DiaryEntryContextProvider>
         </DateContextProvider>
       </ApolloProvider>
     );

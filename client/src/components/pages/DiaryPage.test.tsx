@@ -1,7 +1,6 @@
 import { ApolloProvider } from "@apollo/client";
 import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import DateContextProvider from "context/DateContext";
 import { LocaleContext } from "context/LocaleContext";
 import { DIARY_ENTRY_QUERY } from "graphql/queries";
 import { createMockClient } from "mock-apollo-client";
@@ -21,9 +20,7 @@ describe("DiaryPage", () => {
     const diaryPage = render(
       <ApolloProvider client={mockClient}>
         <LocaleContext.Provider value="en-AU">
-          <DateContextProvider>
-            <DiaryPage />
-          </DateContextProvider>
+          <DiaryPage />
         </LocaleContext.Provider>
       </ApolloProvider>
     );
