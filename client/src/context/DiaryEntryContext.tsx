@@ -43,7 +43,7 @@ export const DiaryEntryContextProvider: React.FC<PropsWithChildren<
 >> = ({ children, saveTimeoutInterval = 1000 }) => {
   const { date } = useContext(DateContext);
   const { data } = useDiaryEntryQuery(date);
-  const [diaryEntry, setDiaryEntry] = useState<DiaryEntry>(buildDiaryEntry());
+  const [currentDiaryEntry, setDiaryEntry] = useState<DiaryEntry>(buildDiaryEntry());
   const [isDirty, setIsDirty] = useState(false);
   const [doUpdateDiaryEntryMutation] = useUpdateDiaryEntryMutation();
 
@@ -61,8 +61,8 @@ export const DiaryEntryContextProvider: React.FC<PropsWithChildren<
 
   const updateDiaryEntry = useCallback(
     (field: keyof DiaryEntry) => (value: string) => {
-      if (value !== diaryEntry[field]) {
-        const newDiaryEntry = { ...diaryEntry, [field]: value };
+      if (value !== currentDiaryEntry[field]) {
+        const newDiaryEntry = { ...currentDiaryEntry, [field]: value };
         setDiaryEntry(newDiaryEntry);
         setIsDirty(true);
         clearTimeout(saveTimeout);
@@ -76,13 +76,13 @@ export const DiaryEntryContextProvider: React.FC<PropsWithChildren<
         );
       }
     },
-    [diaryEntry, doUpdateDiaryEntryMutation, saveTimeoutInterval, saveTimeout]
+    [currentDiaryEntry, doUpdateDiaryEntryMutation, saveTimeoutInterval, saveTimeout]
   );
 
   return (
     <DiaryEntryContext.Provider
       value={buildDiaryEntryContextValue({
-        diaryEntry,
+        diaryEntry: currentDiaryEntry,
         updateDiaryEntry,
         isDirty,
       })}

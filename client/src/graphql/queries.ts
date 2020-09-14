@@ -40,10 +40,10 @@ const isNotEmptyDiaryEntry = ({
 const doesEntryExist = ({ data }: QueryResult<{ diaryEntry: DiaryEntry }>) =>
   data && isNotEmptyDiaryEntry(data.diaryEntry);
 
-export const useIsEntryForPreviousDate = (date: DiaryDate) =>
+export const useDoesEntryExistForPreviousDate = (date: DiaryDate) =>
   doesEntryExist(useDiaryEntryQuery(date.getPrevious()));
 
-export const useIsEntryForNextDate = (date: DiaryDate) =>
+export const useDoesEntryExistForNextDate = (date: DiaryDate) =>
   doesEntryExist(useDiaryEntryQuery(date.getNext()));
 
 export const UPDATE_DIARY_ENTRY_MUTATION = gql`

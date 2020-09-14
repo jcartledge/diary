@@ -1,15 +1,15 @@
 import { DateContext } from "context/DateContext";
-import { useIsEntryForNextDate } from "graphql/queries";
+import { useDoesEntryExistForNextDate } from "graphql/queries";
 import React, { useContext } from "react";
 
 const DateNextButton: React.FC = () => {
   const { date, incrementDate } = useContext(DateContext);
-  const isEntryForNextDate = useIsEntryForNextDate(date);
+  const doesEntryExistForNextDate = useDoesEntryExistForNextDate(date);
   return date.isToday() ? (
     <DateNextButtonDisabled />
   ) : (
     <button
-      className={`p-2 border rounded ${isEntryForNextDate ? "font-bold" : ""}`}
+      className={`p-2 border rounded ${doesEntryExistForNextDate ? "font-bold" : ""}`}
       onClick={() => incrementDate()}
     >
       next

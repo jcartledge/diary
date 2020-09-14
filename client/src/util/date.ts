@@ -1,35 +1,3 @@
-export const convertDateToEntryKey = (date: Date) =>
-  date.toISOString().substring(0, 10);
-
-export const decrementDate = (date: Date) =>
-  new Date(
-    date.getFullYear(),
-    date.getMonth(),
-    date.getDate() - 1,
-    date.getHours(),
-    date.getMinutes(),
-    date.getSeconds()
-  );
-
-export const incrementDate = (date: Date) =>
-  new Date(
-    date.getFullYear(),
-    date.getMonth(),
-    date.getDate() + 1,
-    date.getHours(),
-    date.getMinutes(),
-    date.getSeconds()
-  );
-
-export const dateIsToday = (date: Date) => {
-  const today = new Date();
-  return (
-    date.getFullYear() === today.getFullYear() &&
-    date.getMonth() === today.getMonth() &&
-    date.getDate() === today.getDate()
-  );
-};
-
 export class DiaryDate {
   private date: Date;
 
@@ -37,23 +5,19 @@ export class DiaryDate {
     this.date = date ?? new Date();
   }
 
-  getKey() {
-    return convertDateToEntryKey(this.date);
+  public getKey() {
+    return DiaryDate.convertDateToEntryKey(this.date);
   }
 
-  // getDate() {
-  //   return this.date;
-  // }
-
-  getPrevious() {
-    return new DiaryDate(decrementDate(this.date));
+  public getPrevious() {
+    return new DiaryDate(DiaryDate.decrementDate(this.date));
   }
 
-  getNext() {
-    return new DiaryDate(incrementDate(this.date));
+  public getNext() {
+    return new DiaryDate(DiaryDate.incrementDate(this.date));
   }
 
-  getFormatted(locale: string) {
+  public getFormatted(locale: string) {
     return new Intl.DateTimeFormat(locale, {
       weekday: "long",
       day: "numeric",
@@ -62,7 +26,42 @@ export class DiaryDate {
     }).format(this.date);
   }
 
-  isToday() {
-    return dateIsToday(this.date);
+  public isToday() {
+    return DiaryDate.dateIsToday(this.date);
+  }
+
+  private static convertDateToEntryKey(date: Date) {
+    return date.toISOString().substring(0, 10);
+  }
+
+  private static decrementDate(date: Date) {
+    return new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate() - 1,
+      date.getHours(),
+      date.getMinutes(),
+      date.getSeconds()
+    );
+  }
+
+  private static incrementDate(date: Date) {
+    return new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate() + 1,
+      date.getHours(),
+      date.getMinutes(),
+      date.getSeconds()
+    );
+  }
+
+  private static dateIsToday(date: Date) {
+    const today = new Date();
+    return (
+      date.getFullYear() === today.getFullYear() &&
+      date.getMonth() === today.getMonth() &&
+      date.getDate() === today.getDate()
+    );
   }
 }
