@@ -11,12 +11,9 @@ jobs:
     name: CI
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Install
-      uses: CultureHQ/actions-yarn@master
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
       with:
-        args: install
-    - name: Test
-      uses: CultureHQ/actions-yarn@master
-      with:
-        args: workspace client test
+        node-version: '14'
+    - run: yarn install
+    - run: yarn workspace client test
