@@ -13,7 +13,7 @@
     "@types/redux": "^3.6.0",
     "@types/reselect": "^2.2.0",
     "@types/styled-components": "^5.1.2",
-    "graphql": "^15.3.0",
+    "graphql": "^15.5.0",
     "immer": ">=8.0.1",
     "lodash": "^4.17.20",
     "react": "^16.13.1",
