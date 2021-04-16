@@ -1,12 +1,10 @@
-name: CLient CI
+name: Server CI
 
 on:
   push:
     branches: [master]
-    paths-ignore: ['server/**']
   pull_request:
     branches: [master]
-    paths-ignore: ['server/**']
 
 jobs:
   test:
@@ -20,5 +18,4 @@ jobs:
         with:
           node-version: "${{ steps.nvm.outputs.NVMRC }}"
       - run: yarn install
-      - run: yarn workspace client lint
-      - run: yarn workspace client coverage
+      - run: yarn workspace server lint
