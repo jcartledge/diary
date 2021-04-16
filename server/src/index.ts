@@ -11,5 +11,6 @@ const dataSources = () => ({
 const server = new ApolloServer({ typeDefs, dataSources, resolvers });
 
 server.listen().then(({ url }) => {
+  // eslint-disable-next-line no-console
   console.log(`🚀 Server ready at ${url}`);
 });

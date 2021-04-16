@@ -1,4 +1,11 @@
-import { DataTypes, ModelDefined, Sequelize, STRING, TEXT } from "sequelize";
+import {
+  DataTypes,
+  Model,
+  ModelDefined,
+  Sequelize,
+  STRING,
+  TEXT,
+} from "sequelize";
 
 const db = new Sequelize({
   dialect: "sqlite",
@@ -17,6 +24,11 @@ interface DiaryEntryAttributes {
 type DiaryEntryCreationAttributes = Pick<DiaryEntryAttributes, "date">;
 
 export type DiaryEntriesTable = ModelDefined<
+  DiaryEntryAttributes,
+  DiaryEntryCreationAttributes
+>;
+
+export type DiaryEntriesTableModel = Model<
   DiaryEntryAttributes,
   DiaryEntryCreationAttributes
 >;

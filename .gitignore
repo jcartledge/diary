@@ -5,3 +5,4 @@ resolvers-types.ts
 server/.dev
 yarn-debug.log*
 yarn-error.log*
+coverage

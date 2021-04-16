@@ -14,6 +14,11 @@
   },
   "devDependencies": {
     "@types/sequelize": "^4.28.9",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
     "jest": "^26.4.2",
     "nodemon": "^2.0.4",
     "sqlite3": "^5.0.0",
@@ -24,6 +29,7 @@
     "dev": "concurrently -n \"server,codegen\" \"yarn dev:server\" \"yarn dev:codegen\"",
     "dev:server": "nodemon 'src/index.ts' --exec 'ts-node' src/index.ts -e ts,graphql",
     "dev:codegen": "graphql-codegen --watch",
+    "lint": "eslint src/",
     "test": "jest"
   }
 }

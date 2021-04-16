@@ -1,5 +1,5 @@
 import { DataSource } from "apollo-datasource";
-import { DiaryEntriesTable } from "../db";
+import { DiaryEntriesTable, DiaryEntriesTableModel } from "../db";
 import { DiaryEntry } from "../resolvers-types";
 
 export class DiaryEntriesDataSource extends DataSource {
@@ -7,7 +7,7 @@ export class DiaryEntriesDataSource extends DataSource {
     super();
   }
 
-  async getByDate(date: string) {
+  async getByDate(date: string): Promise<DiaryEntriesTableModel> {
     const [model] = await this.diaryEntriesTable.findOrCreate({
       where: { date },
       defaults: { date },
@@ -15,7 +15,7 @@ export class DiaryEntriesDataSource extends DataSource {
     return model;
   }
 
-  async save(diaryEntry: DiaryEntry) {
+  async save(diaryEntry: DiaryEntry): Promise<void> {
     this.diaryEntriesTable.upsert(diaryEntry);
   }
 }
