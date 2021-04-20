@@ -68,12 +68,21 @@
   "jest": {
     "coveragePathIgnorePatterns": [
       "/node_modules/",
+      "/src/App.tsx",
       "/src/index.tsx",
       "/src/serviceWorker.ts"
     ],
     "coverageReporters": [
       "text",
       "html"
-    ]
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    }
   }
 }
