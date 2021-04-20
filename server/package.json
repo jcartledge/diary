@@ -32,6 +32,7 @@
     "dev:server": "nodemon 'src/index.ts' --exec 'ts-node' src/index.ts -e ts,graphql",
     "dev:codegen": "graphql-codegen --watch",
     "lint": "eslint src/",
+    "codegen": "graphql-codegen",
     "test": "jest"
   }
 }
