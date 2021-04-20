@@ -1,14 +1,12 @@
-import { ApolloServer } from "apollo-server";
 import { DiaryEntriesDataSource } from "./datasources/diaryEntries";
-import { diaryEntriesTable } from "./db";
-import { resolvers } from "./resolvers";
-import { typeDefs } from "./schema";
+import { getDiaryEntriesTable } from "./db";
+import { buildServer } from "./server";
 
 const dataSources = () => ({
-  diaryEntriesDataSource: new DiaryEntriesDataSource(diaryEntriesTable),
+  diaryEntriesDataSource: new DiaryEntriesDataSource(getDiaryEntriesTable()),
 });
 
-const server = new ApolloServer({ typeDefs, dataSources, resolvers });
+const server = buildServer(dataSources);
 
 server.listen().then(({ url }) => {
   // eslint-disable-next-line no-console

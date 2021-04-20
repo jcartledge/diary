@@ -33,23 +33,30 @@ export type DiaryEntriesTableModel = Model<
   DiaryEntryCreationAttributes
 >;
 
-export const diaryEntriesTable: DiaryEntriesTable = db.define("diaryEntry", {
-  id: {
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
-    primaryKey: true,
-  },
-  date: {
-    type: STRING,
-    allowNull: false,
-    unique: true,
-    validate: { isDate: true },
-  },
-  risk: { type: TEXT, allowNull: false, defaultValue: "" },
-  whatHappened: { type: TEXT, allowNull: false, defaultValue: "" },
-  wentWell: { type: TEXT, allowNull: false, defaultValue: "" },
-  couldBeImproved: { type: TEXT, allowNull: false, defaultValue: "" },
-  notWell: { type: TEXT, allowNull: false, defaultValue: "" },
-});
+export const getDiaryEntriesTableFromDb = (
+  db: Sequelize
+): DiaryEntriesTable => {
+  const diaryEntriesTable = db.define("diaryEntry", {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+    },
+    date: {
+      type: STRING,
+      allowNull: false,
+      unique: true,
+      validate: { isDate: true },
+    },
+    risk: { type: TEXT, allowNull: false, defaultValue: "" },
+    whatHappened: { type: TEXT, allowNull: false, defaultValue: "" },
+    wentWell: { type: TEXT, allowNull: false, defaultValue: "" },
+    couldBeImproved: { type: TEXT, allowNull: false, defaultValue: "" },
+    notWell: { type: TEXT, allowNull: false, defaultValue: "" },
+  });
+  db.sync();
+  return diaryEntriesTable;
+};
 
-db.sync();
+export const getDiaryEntriesTable = (): DiaryEntriesTable =>
+  getDiaryEntriesTableFromDb(db);
