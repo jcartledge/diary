@@ -1,5 +1,5 @@
 import { DiaryEntriesDataSource } from "./datasources/diaryEntries";
-import { getDiaryEntriesTable } from "./db";
+import { getDiaryEntriesTable } from "./getDiaryEntriesTable";
 import { buildServer } from "./server";
 
 const dataSources = () => ({

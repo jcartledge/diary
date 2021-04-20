@@ -33,6 +33,23 @@
     "dev:codegen": "graphql-codegen --watch",
     "lint": "eslint src/",
     "codegen": "graphql-codegen",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --coverage --coverageDirectory='output/coverage/report'"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "coverageReporters": [
+      "text",
+      "html"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    }
   }
 }

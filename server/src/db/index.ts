@@ -7,7 +7,7 @@ import {
   TEXT,
 } from "sequelize";
 
-const db = new Sequelize({
+export const db = new Sequelize({
   dialect: "sqlite",
   storage: "./.dev/db",
 });
@@ -57,6 +57,3 @@ export const getDiaryEntriesTableFromDb = (
   db.sync();
   return diaryEntriesTable;
 };
-
-export const getDiaryEntriesTable = (): DiaryEntriesTable =>
-  getDiaryEntriesTableFromDb(db);

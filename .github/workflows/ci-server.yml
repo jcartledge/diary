@@ -22,4 +22,4 @@ jobs:
           node-version: "${{ steps.nvm.outputs.NVMRC }}"
       - run: yarn install
       - run: yarn workspace server lint
-      - run: yarn workspace server codegen && yarn workspace server test
+      - run: yarn workspace server codegen && yarn workspace server coverage
