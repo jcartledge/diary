@@ -1,12 +1,12 @@
-name: CLient CI
+name: Client CI
 
 on:
   push:
     branches: [master]
-    paths-ignore: ['server/**']
+    paths-ignore: ["server/**"]
   pull_request:
     branches: [master]
-    paths-ignore: ['server/**']
+    paths-ignore: ["server/**"]
 
 jobs:
   test:
