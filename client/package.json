@@ -8,7 +8,7 @@
     "@types/lodash": "^4.14.159",
     "@types/node": "^14.14.41",
     "@types/react": "^17.0.3",
-    "@types/react-dom": "^16.9.0",
+    "@types/react-dom": "^17.0.3",
     "@types/react-redux": "^7.1.9",
     "@types/redux": "^3.6.0",
     "@types/reselect": "^2.2.0",
