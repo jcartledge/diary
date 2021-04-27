@@ -5,13 +5,23 @@ import {
   DiaryEntryContext,
 } from "context/DiaryEntryContext";
 import { LocaleContext } from "context/LocaleContext";
+import { DIARY_ENTRY_QUERY } from "graphql/queries";
 import { createMockClient } from "mock-apollo-client";
 import React from "react";
+import { buildDiaryEntry } from "util/types";
 import DiaryHeader from "./DiaryHeader";
+
+const buildMockClient = () => {
+  const mockClient = createMockClient();
+  mockClient.setRequestHandler(DIARY_ENTRY_QUERY, () =>
+    Promise.resolve({ data: { diaryEntry: buildDiaryEntry() } })
+  );
+  return mockClient;
+};
 
 describe("DiaryHeader", () => {
   it("shows the date italicised if the entry has unsaved changes", async () => {
-    const mockClient = createMockClient();
+    const mockClient = buildMockClient();
     const diaryHeader = render(
       <ApolloProvider client={mockClient}>
         <LocaleContext.Provider value="en-AU">
@@ -30,7 +40,7 @@ describe("DiaryHeader", () => {
   });
 
   it(`doesn't show the date italicised if the entry has no unsaved changes`, async () => {
-    const mockClient = createMockClient();
+    const mockClient = buildMockClient();
     const diaryHeader = render(
       <ApolloProvider client={mockClient}>
         <LocaleContext.Provider value="en-AU">
