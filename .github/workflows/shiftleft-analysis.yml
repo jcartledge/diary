@@ -16,6 +16,7 @@ jobs:
   Scan-Build:
     # Scan runs on ubuntu, mac and windows
     runs-on: ubuntu-latest
+    container: shiftleft/scan-java
     steps:
       - uses: actions/checkout@v2
       - uses: c-hive/gha-yarn-cache@v1
