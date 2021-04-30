@@ -9,7 +9,6 @@ import { DiaryDate } from "util/date";
 export const DIARY_ENTRY_QUERY = gql`
   query diaryEntry($date: String!) {
     diaryEntry(date: $date) {
-      id
       date
       wentWell
       whatHappened
@@ -50,7 +49,6 @@ export const UPDATE_DIARY_ENTRY_MUTATION = gql`
   mutation updateDiaryEntry($diaryEntry: DiaryEntryInput!) {
     updateDiaryEntry(diaryEntry: $diaryEntry) {
       diaryEntry {
-        id
         date
         wentWell
         whatHappened

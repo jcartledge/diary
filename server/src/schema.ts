@@ -2,7 +2,6 @@ import { gql } from "apollo-server";
 
 export const typeDefs = gql`
   type DiaryEntry {
-    id: Int!
     risk: String!
     date: String!
     whatHappened: String!
@@ -12,7 +11,6 @@ export const typeDefs = gql`
   }
 
   input DiaryEntryInput {
-    id: Int!
     risk: String!
     date: String!
     whatHappened: String!

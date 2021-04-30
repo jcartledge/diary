@@ -1,11 +1,4 @@
-import {
-  DataTypes,
-  Model,
-  ModelDefined,
-  Sequelize,
-  STRING,
-  TEXT,
-} from "sequelize";
+import { Model, ModelDefined, Sequelize, STRING, TEXT } from "sequelize";
 
 export const db = new Sequelize({
   dialect: "sqlite",
@@ -21,7 +14,7 @@ interface DiaryEntryAttributes {
   notWell: string;
 }
 
-type DiaryEntryCreationAttributes = Pick<DiaryEntryAttributes, "date">;
+export type DiaryEntryCreationAttributes = Pick<DiaryEntryAttributes, "date">;
 
 export type DiaryEntriesTable = ModelDefined<
   DiaryEntryAttributes,
@@ -33,15 +26,10 @@ export type DiaryEntriesTableModel = Model<
   DiaryEntryCreationAttributes
 >;
 
-export const getDiaryEntriesTableFromDb = (
+export const getDiaryEntriesTableFromDb = async (
   db: Sequelize
-): DiaryEntriesTable => {
+): Promise<DiaryEntriesTable> => {
   const diaryEntriesTable = db.define("diaryEntry", {
-    id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
-    },
     date: {
       type: STRING,
       allowNull: false,
@@ -54,6 +42,8 @@ export const getDiaryEntriesTableFromDb = (
     couldBeImproved: { type: TEXT, allowNull: false, defaultValue: "" },
     notWell: { type: TEXT, allowNull: false, defaultValue: "" },
   });
-  db.sync();
+  await db.sync();
   return diaryEntriesTable;
 };
+
+

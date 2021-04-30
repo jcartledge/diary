@@ -5,7 +5,7 @@ import { DiaryEntriesDataSource } from "./diaryEntries";
 
 describe("getByDate", () => {
   it("creates a diary entry if not found", async () => {
-    const mockDiaryEntriesTable = getDiaryEntriesTableFromDb(
+    const mockDiaryEntriesTable = await getDiaryEntriesTableFromDb(
       new Sequelize("sqlite::memory:", { logging: false })
     );
     const diaryEntriesDataSource = new DiaryEntriesDataSource(
@@ -19,7 +19,7 @@ describe("getByDate", () => {
   });
 
   it("retrieves a diary entry by date", async () => {
-    const mockDiaryEntriesTable = getDiaryEntriesTableFromDb(
+    const mockDiaryEntriesTable = await getDiaryEntriesTableFromDb(
       new Sequelize("sqlite::memory:", { logging: false })
     );
 
@@ -40,7 +40,6 @@ describe("save", () => {
   it("saves a diary entry", async () => {
     const date = "2019-03-03";
     const diaryEntry: DiaryEntry = {
-      id: 1,
       risk: "3",
       wentWell: "4",
       whatHappened: "5",
@@ -48,7 +47,7 @@ describe("save", () => {
       notWell: "7",
       date,
     };
-    const mockDiaryEntriesTable = getDiaryEntriesTableFromDb(
+    const mockDiaryEntriesTable = await getDiaryEntriesTableFromDb(
       new Sequelize("sqlite::memory:", { logging: false })
     );
     const diaryEntriesDataSource = new DiaryEntriesDataSource(
