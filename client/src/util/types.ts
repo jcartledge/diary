@@ -11,7 +11,6 @@ export type ResultOrError<T, E> = Either<SuccessResult<T>, ErrorResult<E>>;
 export type Builder<T extends object> = (overrides?: Partial<T>) => T;
 
 export const buildDiaryEntry: Builder<DiaryEntry> = (overrides = {}) => ({
-  id: "",
   date: "",
   whatHappened: "",
   wentWell: "",
