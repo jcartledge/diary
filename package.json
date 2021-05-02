@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently -n \"server,client\" \"yarn workspace server dev\" \"yarn workspace client dev\""
+    "dev": "concurrently -n \"server,client\" \"yarn workspace server dev\" \"yarn workspace client dev\"",
+    "server": "yarn workspace server",
+    "client": "yarn workspace client"
   },
   "workspaces": [
     "client",

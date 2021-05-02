@@ -35,7 +35,8 @@
     "lint": "eslint src/",
     "codegen": "graphql-codegen",
     "test": "jest",
-    "coverage": "jest --coverage --coverageDirectory='output/coverage/report'"
+    "coverage": "jest --coverage --coverageDirectory='output/coverage/report'",
+    "build": "tsc"
   },
   "jest": {
     "preset": "ts-jest",
