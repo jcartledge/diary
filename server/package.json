@@ -7,7 +7,7 @@
     "@graphql-codegen/cli": "^1.21.4",
     "@graphql-codegen/typescript": "^1.22.0",
     "@graphql-codegen/typescript-resolvers": "^1.19.1",
-    "apollo-server": "^2.23.0",
+    "apollo-server": "^2.24.0",
     "concurrently": "^6.0.2",
     "graphql": "^15.5.0",
     "sequelize": "^6.6.2"
