@@ -34,4 +34,4 @@ jobs:
         with:
           context: server
           push: true
-          tags: diary/server@latest,diary/server@${{steps.package-version.outputs.current-version}}.${{github.run_id}}
+          tags: diary/server@${{steps.package-version.outputs.current-version}}.${{github.run_id}}
