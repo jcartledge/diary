@@ -38,12 +38,14 @@ interface DiaryEntryContextProps {
   saveTimeoutInterval?: number;
 }
 
-export const DiaryEntryContextProvider: React.FC<PropsWithChildren<
-  DiaryEntryContextProps
->> = ({ children, saveTimeoutInterval = 1000 }) => {
+export const DiaryEntryContextProvider: React.FC<
+  PropsWithChildren<DiaryEntryContextProps>
+> = ({ children, saveTimeoutInterval = 1000 }) => {
   const { date } = useContext(DateContext);
   const { data } = useDiaryEntryQuery(date);
-  const [currentDiaryEntry, setDiaryEntry] = useState<DiaryEntry>(buildDiaryEntry());
+  const [currentDiaryEntry, setDiaryEntry] = useState<DiaryEntry>(
+    buildDiaryEntry()
+  );
   const [isDirty, setIsDirty] = useState(false);
   const [doUpdateDiaryEntryMutation] = useUpdateDiaryEntryMutation();
 
@@ -65,7 +67,7 @@ export const DiaryEntryContextProvider: React.FC<PropsWithChildren<
         const newDiaryEntry = { ...currentDiaryEntry, [field]: value };
         setDiaryEntry(newDiaryEntry);
         setIsDirty(true);
-        clearTimeout(saveTimeout);
+        saveTimeout && clearTimeout(saveTimeout);
         setSaveTimeout(
           setTimeout(async () => {
             await doUpdateDiaryEntryMutation({
@@ -76,7 +78,12 @@ export const DiaryEntryContextProvider: React.FC<PropsWithChildren<
         );
       }
     },
-    [currentDiaryEntry, doUpdateDiaryEntryMutation, saveTimeoutInterval, saveTimeout]
+    [
+      currentDiaryEntry,
+      doUpdateDiaryEntryMutation,
+      saveTimeoutInterval,
+      saveTimeout,
+    ]
   );
 
   return (
