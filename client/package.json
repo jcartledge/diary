@@ -34,9 +34,7 @@
     "dev": "npm-run-all build:tailwind --parallel watch:tailwind start:react",
     "start:react": "react-scripts start",
     "prebuild": "run-s build:tailwind",
-    "build:docker": "docker build -t diary-client .",
-    "build:react": "react-scripts build",
-    "build": "react-scripts build",
+    "build": "react-scripts build && docker build -t diary-client .",
     "test": "react-scripts test",
     "lint": "eslint src/**.{ts,tsx}",
     "coverage": "CI=true react-scripts test --coverage --coverageDirectory='output/coverage/report'"
