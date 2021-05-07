@@ -35,8 +35,7 @@
     "lint": "eslint src/",
     "codegen": "graphql-codegen",
     "test": "jest",
-    "coverage": "jest --coverage --coverageDirectory='output/coverage/report'",
-    "build": "docker build -t diary-server ."
+    "coverage": "jest --coverage --coverageDirectory='output/coverage/report'"
   },
   "jest": {
     "preset": "ts-jest",
