@@ -7,10 +7,10 @@ import "./tailwind.output.css";
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHQL_URI,
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: { DiaryEntry: { keyFields: ["date"] } },
+  }),
 });
-
-console.log(process.env.REACT_APP_GRAPHQL_URI);
 
 ReactDOM.render(
   <React.StrictMode>
