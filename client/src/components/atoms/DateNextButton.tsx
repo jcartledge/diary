@@ -2,6 +2,11 @@ import { DateContext } from "context/DateContext";
 import { useDoesEntryExistForNextDate } from "graphql/queries";
 import React, { useContext } from "react";
 
+const nextButtonClassNames = (
+  doesEntryExistForNextDate: boolean | undefined
+): string =>
+  `p-2 border rounded ${doesEntryExistForNextDate ? "font-bold" : ""}`;
+
 const DateNextButton: React.FC = () => {
   const { date, incrementDate } = useContext(DateContext);
   const doesEntryExistForNextDate = useDoesEntryExistForNextDate(date);
@@ -9,7 +14,7 @@ const DateNextButton: React.FC = () => {
     <DateNextButtonDisabled />
   ) : (
     <button
-      className={`p-2 border rounded ${doesEntryExistForNextDate ? "font-bold" : ""}`}
+      className={nextButtonClassNames(doesEntryExistForNextDate)}
       onClick={() => incrementDate()}
     >
       next

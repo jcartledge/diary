@@ -27,9 +27,9 @@ export type DiaryEntriesTableModel = Model<
 >;
 
 export const getDiaryEntriesTableFromDb = async (
-  db: Sequelize
+  diaryDb: Sequelize
 ): Promise<DiaryEntriesTable> => {
-  const diaryEntriesTable = db.define("diaryEntry", {
+  const diaryEntriesTable = diaryDb.define("diaryEntry", {
     date: {
       type: STRING,
       allowNull: false,
@@ -42,7 +42,7 @@ export const getDiaryEntriesTableFromDb = async (
     couldBeImproved: { type: TEXT, allowNull: false, defaultValue: "" },
     notWell: { type: TEXT, allowNull: false, defaultValue: "" },
   });
-  await db.sync();
+  await diaryDb.sync();
   return diaryEntriesTable;
 };
 
