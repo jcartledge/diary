@@ -8,7 +8,6 @@ import {
   UPDATE_DIARY_ENTRY_MUTATION,
 } from "graphql/queries";
 import { createMockClient } from "mock-apollo-client";
-import React from "react";
 import { DiaryDate } from "util/date";
 import { buildDiaryEntry } from "util/types";
 import DiaryPageForm from "./DiaryPageForm";

@@ -7,7 +7,6 @@ import DateContextProvider, {
 } from "context/DateContext";
 import { DIARY_ENTRY_QUERY } from "graphql/queries";
 import { createMockClient, MockApolloClient } from "mock-apollo-client";
-import React from "react";
 import { DiaryEntry } from "server/src/resolvers-types";
 import { buildDiaryEntry } from "util/types";
 import DatePrevButton from "./DatePrevButton";

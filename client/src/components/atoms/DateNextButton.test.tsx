@@ -4,7 +4,6 @@ import userEvent from "@testing-library/user-event";
 import { buildDateContextValue, DateContext } from "context/DateContext";
 import { DIARY_ENTRY_QUERY } from "graphql/queries";
 import { createMockClient, MockApolloClient } from "mock-apollo-client";
-import React from "react";
 import { DiaryEntry } from "server/src/resolvers-types";
 import { DiaryDate } from "util/date";
 import { buildDiaryEntry } from "util/types";
