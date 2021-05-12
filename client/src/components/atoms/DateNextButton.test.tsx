@@ -1,5 +1,5 @@
 import { ApolloProvider } from "@apollo/client";
-import { render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { buildDateContextValue, DateContext } from "context/DateContext";
 import { DIARY_ENTRY_QUERY } from "graphql/queries";
@@ -37,9 +37,10 @@ describe("DateNextButton", () => {
         </DateContext.Provider>
       </ApolloProvider>
     );
-    await waitFor(() => {});
 
-    userEvent.click(dateNextButton.getByRole("button", { name: "next" }));
+    await act(async () =>
+      userEvent.click(dateNextButton.getByRole("button", { name: "next" }))
+    );
 
     expect(mockDateContextValue.incrementDate).toHaveBeenCalledTimes(1);
   });
@@ -57,12 +58,12 @@ describe("DateNextButton", () => {
         </DateContext.Provider>
       </ApolloProvider>
     );
-    await waitFor(() => {});
-
-    const nextButton = dateNextButton.getByRole("button", { name: "next" });
-    userEvent.click(nextButton);
-    userEvent.click(nextButton);
-    userEvent.click(nextButton);
+    await act(async () => {
+      const nextButton = dateNextButton.getByRole("button", { name: "next" });
+      userEvent.click(nextButton);
+      userEvent.click(nextButton);
+      userEvent.click(nextButton);
+    });
 
     expect(mockDateContextValue.incrementDate).toHaveBeenCalledTimes(3);
   });
@@ -80,12 +81,14 @@ describe("DateNextButton", () => {
         </DateContext.Provider>
       </ApolloProvider>
     );
-    await waitFor(() => {});
 
     const nextButton = dateNextButton.getByRole("button", { name: "next" });
     expect(nextButton).toBeDisabled();
 
-    userEvent.click(nextButton);
+    await act(async () => {
+      userEvent.click(nextButton);
+    });
+
     expect(mockDateContextValue.incrementDate).not.toHaveBeenCalled();
   });
 

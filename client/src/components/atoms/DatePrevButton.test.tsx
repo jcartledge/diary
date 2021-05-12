@@ -1,5 +1,5 @@
 import { ApolloProvider } from "@apollo/client";
-import { render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import DateContextProvider, {
   buildDateContextValue,
@@ -38,9 +38,9 @@ describe("DatePrevButton", () => {
         </DateContext.Provider>
       </ApolloProvider>
     );
-    await waitFor(() => {});
-
-    userEvent.click(datePrevButton.getByRole("button", { name: "prev" }));
+    await act(async () => {
+      userEvent.click(datePrevButton.getByRole("button", { name: "prev" }));
+    });
 
     expect(mockDateContextValue.decrementDate).toHaveBeenCalledTimes(1);
   });
@@ -57,12 +57,12 @@ describe("DatePrevButton", () => {
         </DateContext.Provider>
       </ApolloProvider>
     );
-    await waitFor(() => {});
-
-    const prevButton = datePrevButton.getByRole("button", { name: "prev" });
-    userEvent.click(prevButton);
-    userEvent.click(prevButton);
-    userEvent.click(prevButton);
+    await act(async () => {
+      const prevButton = datePrevButton.getByRole("button", { name: "prev" });
+      userEvent.click(prevButton);
+      userEvent.click(prevButton);
+      userEvent.click(prevButton);
+    });
 
     expect(mockDateContextValue.decrementDate).toHaveBeenCalledTimes(3);
   });

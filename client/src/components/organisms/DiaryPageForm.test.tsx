@@ -72,8 +72,9 @@ describe("DiaryPageForm", () => {
         </DateContextProvider>
       </ApolloProvider>
     );
-    // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
-    await waitFor(() => {});
+    await waitFor(() => {
+      // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
+    });
 
     expect(diaryEntryQueryHandler).toHaveBeenCalledWith({
       date: date.getKey(),
@@ -106,8 +107,10 @@ describe("DiaryPageForm", () => {
         </DateContextProvider>
       </ApolloProvider>
     );
-    // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
-    await waitFor(() => {});
+
+    await waitFor(() => {
+      // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
+    });
 
     await userEvent.type(
       diaryPageForm.getByLabelText(/What happened/),

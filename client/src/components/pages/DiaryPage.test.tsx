@@ -1,5 +1,5 @@
 import { ApolloProvider } from "@apollo/client";
-import { render, waitFor } from "@testing-library/react";
+import { act, render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { LocaleContext } from "context/LocaleContext";
 import { DIARY_ENTRY_QUERY } from "graphql/queries";
@@ -24,19 +24,24 @@ describe("DiaryPage", () => {
         </LocaleContext.Provider>
       </ApolloProvider>
     );
-    await waitFor(() => {});
+    await waitFor(() => {
+      // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
+    });
 
     expect(requestHandler).toHaveBeenCalledWith({ date: today.getKey() });
     requestHandler.mockReset();
 
-    userEvent.click(diaryPage.getByRole("button", { name: "prev" }));
-    await waitFor(() => {});
+    await act(async () => {
+      userEvent.click(diaryPage.getByRole("button", { name: "prev" }));
+    });
+
     expect(requestHandler).toHaveBeenCalledWith({ date: yesterday.getKey() });
     requestHandler.mockReset();
 
     // From cache:
-    userEvent.click(diaryPage.getByRole("button", { name: "next" }));
-    await waitFor(() => {});
+    await act(async () => {
+      userEvent.click(diaryPage.getByRole("button", { name: "next" }));
+    });
     expect(requestHandler).toHaveBeenCalledWith({ date: today.getKey() });
   });
 });

@@ -75,7 +75,9 @@ describe("DiaryEntryContextProvider", () => {
     );
 
     await waitFor(() => expect(getByText("isDirty: true")).toBeInTheDocument());
-    await waitFor(() => {});
+    await waitFor(() => {
+      // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
+    });
   });
 
   it("does not set isDirty to true when an update does not change the entry", async () => {
@@ -113,7 +115,9 @@ describe("DiaryEntryContextProvider", () => {
     );
 
     expect(container.queryByText("isDirty: false")).not.toBeInTheDocument();
-    await waitFor(() => {});
+    await waitFor(() => {
+      // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
+    });
   });
 
   it("sets isDirty to false when the entry has been saved", async () => {
