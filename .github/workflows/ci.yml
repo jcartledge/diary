@@ -1,16 +1,29 @@
-name: Server CI
+name: CI
 
 on:
   push:
     branches: [master]
-    paths-ignore: ["client/**", ".github/.workflows/ci-client.yml"]
   pull_request:
     branches: [master]
-    paths-ignore: ["client/**", ".github/.workflows/ci-client.yml"]
 
 jobs:
-  build:
-    name: build
+  test-client:
+    name: test-client
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: c-hive/gha-yarn-cache@v1
+      - run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+        id: nvm
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+      - run: yarn install
+      - run: yarn workspace client lint
+      - run: yarn workspace client coverage
+
+  test-server:
+    name: test-server
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
