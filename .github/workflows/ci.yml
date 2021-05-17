@@ -10,17 +10,34 @@ jobs:
   test-client:
     name: test-client
     runs-on: ubuntu-latest
+    env:
+      TERM: xterm-256color
+      BATECT_CACHE_TYPE: directory
+      BATECT_ENABLE_TELEMETRY: true
+
     steps:
       - uses: actions/checkout@v2
-      - uses: c-hive/gha-yarn-cache@v1
-      - run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
-        id: nvm
-      - uses: actions/setup-node@v2
+
+      - name: Cache Batect
+        uses: actions/cache@v2
         with:
-          node-version: "${{ steps.nvm.outputs.NVMRC }}"
-      - run: yarn install
-      - run: yarn workspace client lint
-      - run: yarn workspace client coverage
+          path: ~/.batect/cache
+          key: batect-${{ hashFiles('batect') }}
+
+      - name: Cache NPM dependencies
+        uses: actions/cache@v2
+        with:
+          path: .batect/caches
+          key: batect-caches-${{ hashFiles('yarn.lock') }}
+
+      - name: Download dependencies
+        run: ./batect client-setup
+
+      - name: Lint code
+        run: ./batect client-lint
+
+      - name: Unit tests
+        run: ./batect client-coverage
 
   test-server:
     name: test-server

@@ -1,3 +1,4 @@
+.batect
 .env
 client/build
 node_modules/

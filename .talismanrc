@@ -2,5 +2,11 @@ fileignoreconfig:
 - filename: src/react-app-env.d.ts
   checksum: f0045b3f8905880e17671222a920193a34a64f59b0d5fe52d8829b8da70e50dd
   ignore_detectors: []
+- filename: batect
+  checksum: d582d75530daaa3df1290a7e5ab61571d912608f65cf644b6c2c7c368d84d2a4
+  ignore_detectors: []
+- filename: batect.cmd
+  checksum: 3bb8810b224facfa62a85beedec7373d4e29d60e0653acf2a032bca5ea9d2193
+  ignore_detectors: []
 scopeconfig:
 - scope: node
