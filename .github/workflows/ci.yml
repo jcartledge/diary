@@ -44,12 +44,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: c-hive/gha-yarn-cache@v1
-      - run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
-        id: nvm
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v2
+
+      - name: Cache Batect
+        uses: actions/cache@v2
         with:
-          node-version: "${{ steps.nvm.outputs.NVMRC }}"
-      - run: yarn install
-      - run: yarn workspace server lint
-      - run: yarn workspace server codegen && yarn workspace server coverage
+          path: ~/.batect/cache
+          key: batect-${{ hashFiles('batect') }}
+
+      - name: Cache NPM dependencies
+        uses: actions/cache@v2
+        with:
+          path: .batect/caches
+          key: batect-caches-${{ hashFiles('yarn.lock') }}
+
+      - name: Download dependencies
+        run: ./batect server-setup
+
+      - name: Lint code
+        run: ./batect server-lint
+
+      - name: Unit tests
+        run: ./batect server-coverage

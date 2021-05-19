@@ -1,0 +1,40 @@
+containers:
+  server:
+    image: node:14.6.0
+    working_directory: /app
+    command: yarn
+    volumes:
+      - local: .
+        container: /app
+      - type: cache
+        name: server-node-modules
+        container: /app/node_modules
+
+tasks:
+  server-setup:
+    run:
+      container: server
+  server-start:
+    prerequisites:
+      - server-setup
+    run:
+      container: server
+      command: yarn workspace server dev
+  server-lint:
+    prerequisites:
+      - server-setup
+    run:
+      container: server
+      command: yarn workspace server lint
+  server-test:
+    prerequisites:
+      - server-setup
+    run:
+      container: server
+      command: yarn workspace server test
+  server-coverage:
+    prerequisites:
+      - server-setup
+    run:
+      container: server
+      command: yarn workspace server coverage

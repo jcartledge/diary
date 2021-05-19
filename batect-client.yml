@@ -1,0 +1,40 @@
+containers:
+  client:
+    image: node:14.6.0
+    working_directory: /app
+    command: yarn
+    volumes:
+      - local: .
+        container: /app
+      - type: cache
+        name: client-node-modules
+        container: /app/node_modules
+
+tasks:
+  client-setup:
+    run:
+      container: client
+  client-start:
+    prerequisites:
+      - client-setup
+    run:
+      container: client
+      command: yarn workspace client dev
+  client-lint:
+    prerequisites:
+      - client-setup
+    run:
+      container: client
+      command: yarn workspace client lint
+  client-test:
+    prerequisites:
+      - client-setup
+    run:
+      container: client
+      command: yarn workspace client test
+  client-coverage:
+    prerequisites:
+      - client-setup
+    run:
+      container: client
+      command: yarn workspace client coverage
