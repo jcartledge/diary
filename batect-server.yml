@@ -14,6 +14,12 @@ tasks:
   server-setup:
     run:
       container: server
+  server-codegen:
+    prerequisites:
+      - server-setup
+    run:
+      container: server
+      command: yarn workspace server codegen
   server-start:
     prerequisites:
       - server-setup
@@ -29,12 +35,14 @@ tasks:
   server-test:
     prerequisites:
       - server-setup
+      - server-codegen
     run:
       container: server
       command: yarn workspace server test
   server-coverage:
     prerequisites:
       - server-setup
+      - server-codegen
     run:
       container: server
       command: yarn workspace server coverage
