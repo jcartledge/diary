@@ -11,22 +11,28 @@ interface DiaryEntryInputProps {
   className?: string;
 }
 
-const fieldName = (label: string) => slugify(label, { lower: true });
+const slugFieldName = (label: string) => slugify(label, { lower: true });
 
 const DiaryEntryInput: React.FC<DiaryEntryInputProps> = ({
   label,
   value,
   updateField,
   className,
-}) => (
-  <Cell className={className ?? ""}>
-    <H2 id={`${fieldName(label)}-label`}>{label}</H2>
-    <TextArea
-      aria-labelledby={`${fieldName(label)}-label`}
-      value={value}
-      onChange={({ target }) => updateField(target.value)}
-    />
-  </Cell>
-);
+}) => {
+  const fieldLabel = slugFieldName(label);
+  return (
+    <Cell className={className ?? ""}>
+      <H2 id={`${fieldLabel}-label`} aria-label={fieldLabel}>
+        <label htmlFor={fieldLabel}>{label}</label>
+      </H2>
+      <TextArea
+        id={fieldLabel}
+        aria-labelledby={`${fieldLabel}-label`}
+        value={value}
+        onChange={({ target }) => updateField(target.value)}
+      />
+    </Cell>
+  );
+};
 
 export default DiaryEntryInput;
