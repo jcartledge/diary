@@ -1,3 +1,4 @@
 include:
+  - batect-e2e.yml
   - batect-client.yml
   - batect-server.yml

@@ -1,8 +1,22 @@
 containers:
-  client:
+  diary-client-static:
     image: node:14.6.0
     working_directory: /app
     command: yarn
+    volumes:
+      - local: .
+        container: /app
+      - type: cache
+        name: node-modules
+        container: /app/node_modules
+  diary-client:
+    image: node:14.6.0
+    working_directory: /app
+    command: yarn workspace client dev
+    health_check:
+      command: curl localhost:3000
+      retries: 20
+      interval: 5s
     volumes:
       - local: .
         container: /app
@@ -13,28 +27,22 @@ containers:
 tasks:
   client-setup:
     run:
-      container: client
-  client-start:
-    prerequisites:
-      - client-setup
-    run:
-      container: client
-      command: yarn workspace client dev
+      container: diary-client-static
   client-lint:
     prerequisites:
       - client-setup
     run:
-      container: client
+      container: diary-client-static
       command: yarn workspace client lint
   client-test:
     prerequisites:
       - client-setup
     run:
-      container: client
+      container: diary-client-static
       command: yarn workspace client test
   client-coverage:
     prerequisites:
       - client-setup
     run:
-      container: client
+      container: diary-client-static
       command: yarn workspace client coverage
