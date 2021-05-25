@@ -2,7 +2,7 @@ containers:
   diary-static:
     image: node:14.6.0
     working_directory: /app
-    command: yarn install --frozen-lockfile
+    command: sh -c "ls -l node_modules && yarn install --frozen-lockfile"
     volumes:
       - local: .
         container: /app

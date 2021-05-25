@@ -23,11 +23,11 @@ jobs:
           path: ~/.batect/cache
           key: batect-${{ hashFiles('batect') }}
 
-      - name: Cache NPM dependencies
+      - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: node_modules
-          key: batect-${{ hashFiles('yarn.lock') }}
+          path: .batect/caches
+          key: batect-caches-${{ hashFiles('yarn.lock') }}
 
       - name: Download dependencies
         run: ./batect setup
@@ -50,11 +50,11 @@ jobs:
           path: ~/.batect/cache
           key: batect-${{ hashFiles('batect') }}
 
-      - name: Cache NPM dependencies
+      - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: node_modules
-          key: batect-${{ hashFiles('yarn.lock') }}
+          path: .batect/caches
+          key: batect-caches-${{ hashFiles('yarn.lock') }}
 
       - name: Lint code
         run: ./batect client-lint
@@ -76,11 +76,11 @@ jobs:
           path: ~/.batect/cache
           key: batect-${{ hashFiles('batect') }}
 
-      - name: Cache NPM dependencies
+      - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: node_modules
-          key: batect-${{ hashFiles('yarn.lock') }}
+          path: .batect/caches
+          key: batect-caches-${{ hashFiles('yarn.lock') }}
 
       - name: Lint code
         run: ./batect server-lint
