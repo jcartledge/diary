@@ -1,3 +1,20 @@
+containers:
+  diary-static:
+    image: node:14.6.0
+    working_directory: /app
+    command: yarn
+    volumes:
+      - local: .
+        container: /app
+      - type: cache
+        name: node-modules
+        container: /app/node_modules
+
+tasks:
+  setup:
+    run:
+      container: diary-static
+
 include:
   - batect-e2e.yml
   - batect-client.yml

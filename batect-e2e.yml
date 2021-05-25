@@ -1,24 +1,23 @@
 containers:
-  diary-e2e:
-    image: node:14.6.0
+  e2e:
+    image: mcr.microsoft.com/playwright:bionic
     working_directory: /app
     command: yarn
     volumes:
       - local: .
         container: /app
       - type: cache
-        name: client-node-modules
+        name: node-modules
         container: /app/node_modules
 
 tasks:
   e2e:
     prerequisites:
-      - server-setup
+      - setup
       - server-codegen
-      - client-setup
     dependencies:
       - diary-server
       - diary-client
     run:
-      container: diary-e2e
-      command: curl diary-client:3000
+      container: e2e
+      command: yarn workspace e2e start

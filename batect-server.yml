@@ -1,22 +1,12 @@
 containers:
-  diary-server-static:
-    image: node:14.6.0
-    working_directory: /app
-    command: yarn
-    volumes:
-      - local: .
-        container: /app
-      - type: cache
-        name: server-node-modules
-        container: /app/node_modules
   diary-server:
     image: node:14.6.0
     working_directory: /app
     command: yarn workspace server dev
     health_check:
       command: curl localhost:4000
-      retries: 5
-      interval: 2s
+      retries: 20
+      interval: 5s
     volumes:
       - local: .
         container: /app
@@ -25,32 +15,29 @@ containers:
         container: /app/node_modules
 
 tasks:
-  server-setup:
-    run:
-      container: diary-server-static
   server-codegen:
     prerequisites:
-      - server-setup
+      - setup
     run:
-      container: diary-server-static
+      container: diary-static
       command: yarn workspace server codegen
   server-lint:
     prerequisites:
-      - server-setup
+      - setup
     run:
-      container: diary-server-static
+      container: diary-static
       command: yarn workspace server lint
   server-test:
     prerequisites:
-      - server-setup
+      - setup
       - server-codegen
     run:
-      container: diary-server-static
+      container: diary-static
       command: yarn workspace server test
   server-coverage:
     prerequisites:
-      - server-setup
+      - setup
       - server-codegen
     run:
-      container: diary-server-static
+      container: diary-static
       command: yarn workspace server coverage
