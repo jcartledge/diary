@@ -106,11 +106,11 @@ jobs:
           path: ~/.batect/cache
           key: batect-${{ hashFiles('batect') }}
 
-      - name: Cache NPM dependencies
+      - name: Cache node modules
         uses: actions/cache@v2
         with:
-          path: .batect/caches
-          key: batect-caches-${{ hashFiles('yarn.lock') }}
+          path: node_modules
+          key: batect-${{ hashFiles('yarn.lock') }}
 
       - name: e2e
         run: ./batect e2e
