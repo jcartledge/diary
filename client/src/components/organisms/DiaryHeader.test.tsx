@@ -7,8 +7,7 @@ import {
 import { LocaleContext } from "context/LocaleContext";
 import { DIARY_ENTRY_QUERY } from "graphql/queries";
 import { createMockClient } from "mock-apollo-client";
-import React from "react";
-import { buildDiaryEntry } from "util/types";
+import { buildDiaryEntry } from "util/buildDiaryEntry";
 import DiaryHeader from "./DiaryHeader";
 
 const buildMockClient = () => {

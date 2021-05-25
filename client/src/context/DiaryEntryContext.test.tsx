@@ -6,7 +6,7 @@ import {
 } from "graphql/queries";
 import { createMockClient, MockApolloClient } from "mock-apollo-client";
 import React, { PropsWithChildren, useContext, useEffect } from "react";
-import { buildDiaryEntry } from "util/types";
+import { buildDiaryEntry } from "util/buildDiaryEntry";
 import DateContextProvider from "./DateContext";
 import {
   DiaryEntryContext,
