@@ -10,7 +10,8 @@ import React, {
   useState,
 } from "react";
 import { DiaryEntry } from "server/src/resolvers-types";
-import { buildDiaryEntry, Builder } from "util/types";
+import { buildDiaryEntry } from "util/buildDiaryEntry";
+import { Builder } from "util/builder";
 import { DateContext } from "./DateContext";
 
 interface DiaryEntryContextValue {
@@ -57,9 +58,8 @@ export const DiaryEntryContextProvider: React.FC<
     }
   }, [data]);
 
-  const [saveTimeout, setSaveTimeout] = useState<
-    ReturnType<typeof setTimeout>
-  >();
+  const [saveTimeout, setSaveTimeout] =
+    useState<ReturnType<typeof setTimeout>>();
 
   const updateDiaryEntry = useCallback(
     (field: keyof DiaryEntry) => (value: string) => {
