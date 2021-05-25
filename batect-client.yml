@@ -6,7 +6,7 @@ containers:
     health_check:
       command: curl localhost:3000
       retries: 20
-      interval: 5s
+      interval: 6s
     volumes:
       - local: .
         container: /app
