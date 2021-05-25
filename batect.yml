@@ -2,7 +2,7 @@ containers:
   diary-static:
     image: node:14.6.0
     working_directory: /app
-    command: yarn --prefer-offline
+    command: yarn install --frozen-lockfile
     volumes:
       - local: .
         container: /app
