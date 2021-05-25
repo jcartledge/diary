@@ -13,7 +13,6 @@
     "e2e"
   ],
   "devDependencies": {
-    "concurrently": "^6.1.0",
-    "is-array": "^1.0.1"
+    "concurrently": "^6.1.0"
   }
 }
