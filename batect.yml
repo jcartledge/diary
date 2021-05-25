@@ -2,13 +2,22 @@ containers:
   diary-static:
     image: node:14.6.0
     working_directory: /app
-    command: sh -c "ls -l node_modules && yarn install --frozen-lockfile"
+    command: yarn install --frozen-lockfile
     volumes:
       - local: .
         container: /app
       - type: cache
         name: node-modules
         container: /app/node_modules
+      - type: cache
+        name: client-node-modules
+        container: /app/client/node_modules
+      - type: cache
+        name: server-node-modules
+        container: /app/server/node_modules
+      - type: cache
+        name: e2e-node-modules
+        container: /app/e2e/node_modules
 
 tasks:
   setup:

@@ -27,7 +27,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: .batect/caches
-          key: batect-caches-${{ hashFiles('yarn.lock') }}
+          key: batect-caches-new-${{ hashFiles('yarn.lock') }}
 
       - name: Download dependencies
         run: ./batect setup
@@ -54,7 +54,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: .batect/caches
-          key: batect-caches-${{ hashFiles('yarn.lock') }}
+          key: batect-caches-new-${{ hashFiles('yarn.lock') }}
 
       - name: Lint code
         run: ./batect client-lint
@@ -80,7 +80,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: .batect/caches
-          key: batect-caches-${{ hashFiles('yarn.lock') }}
+          key: batect-caches-new-${{ hashFiles('yarn.lock') }}
 
       - name: Lint code
         run: ./batect server-lint
