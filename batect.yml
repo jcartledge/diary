@@ -2,7 +2,7 @@ containers:
   diary-static:
     image: node:14.6.0
     working_directory: /app
-    command: yarn
+    command: yarn --prefer-offline
     volumes:
       - local: .
         container: /app
