@@ -1,6 +1,6 @@
 containers:
   diary-client:
-    image: node:14.6.0
+    image: node:14.17
     working_directory: /app
     command: yarn workspace client dev
     health_check:
