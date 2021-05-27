@@ -40,7 +40,6 @@ jobs:
       TERM: xterm-256color
       BATECT_CACHE_TYPE: directory
       BATECT_ENABLE_TELEMETRY: true
-
     steps:
       - uses: actions/checkout@v2
 
@@ -66,8 +65,11 @@ jobs:
     name: test-server
     needs: [setup]
     runs-on: ubuntu-latest
+    env:
+      TERM: xterm-256color
+      BATECT_CACHE_TYPE: directory
+      BATECT_ENABLE_TELEMETRY: true
     steps:
-      - uses: actions/checkout@v2
       - uses: actions/checkout@v2
 
       - name: Cache Batect
