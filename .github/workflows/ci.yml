@@ -89,3 +89,30 @@ jobs:
 
       - name: Unit tests
         run: ./batect server-coverage
+
+  e2e:
+    name: e2e
+    needs: [test-client, test-server]
+    runs-on: ubuntu-latest
+    env:
+      TERM: xterm-256color
+      BATECT_CACHE_TYPE: directory
+      BATECT_ENABLE_TELEMETRY: true
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache Batect
+        uses: actions/cache@v2
+        with:
+          path: ~/.batect/cache
+          key: batect-${{ hashFiles('batect') }}
+
+      - name: Cache NPM dependencies
+        uses: actions/cache@v2
+        with:
+          path: .batect/caches
+          key: batect-caches-${{ hashFiles('yarn.lock') }}
+
+      - name: e2e
+        run: ./batect e2e

@@ -11,7 +11,7 @@ containers:
       - local: .
         container: /app
       - type: cache
-        name: client-node-modules
+        name: node-modules
         container: /app/node_modules
       - type: cache
         name: client-node-modules
