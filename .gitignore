@@ -1,9 +1,10 @@
 .batect
 .env
 client/build
+coverage
+e2e/screenshots
 node_modules/
 resolvers-types.ts
 server/.dev
 yarn-debug.log*
 yarn-error.log*
-coverage
