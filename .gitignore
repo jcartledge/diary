@@ -2,7 +2,7 @@
 .env
 client/build
 coverage
-e2e/screenshots
+e2e/test-results
 node_modules/
 resolvers-types.ts
 server/.dev

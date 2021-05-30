@@ -3327,7 +3327,7 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@testing-library/dom@^7.28.1", "@testing-library/dom@^7.31.0":
+"@testing-library/dom@^7.22.2", "@testing-library/dom@^7.28.1", "@testing-library/dom@^7.31.0":
   version "7.31.0"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-7.31.0.tgz#938451abd3ca27e1b69bb395d4a40759fd7f5b3b"
   integrity sha512-0X7ACg4YvTRDFMIuTOEj6B4NpN7i3F/4j5igOcTI5NC5J+N4TribNdErCHOZF1LBWhhcyfwxelVwvoYNMUXTOA==
@@ -12263,6 +12263,14 @@ pkg-up@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
+playwright-testing-library@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/playwright-testing-library/-/playwright-testing-library-3.0.0.tgz#e2e0690ff8dd7500b4ab57fd4f11db944d26d8bd"
+  integrity sha512-D4jR2ccwBcYwELQdO8Qh49haFxxgRRyRrgsGR8PnKE0vhSAf388GUrsGhIHhY4VNaKfuyeuIJnlqxqfHqpe9yA==
+  dependencies:
+    "@testing-library/dom" "^7.22.2"
+    wait-for-expect "^3.0.2"
+
 playwright@=1.11.1:
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.11.1.tgz#c5f2946db5195bd099a57ce4e188c01057876cff"
@@ -15984,6 +15992,11 @@ w3c-xmlserializer@^2.0.0:
   integrity sha512-4tzD0mF8iSiMiNs30BiLO3EpfGLZUT2MSX/G+o7ZywDzliWQ3OPtTZ0PTC3B3ca1UAf4cJMHB+2Bf56EriJuRA==
   dependencies:
     xml-name-validator "^3.0.0"
+
+wait-for-expect@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/wait-for-expect/-/wait-for-expect-3.0.2.tgz#d2f14b2f7b778c9b82144109c8fa89ceaadaa463"
+  integrity sha512-cfS1+DZxuav1aBYbaO/kE06EOS8yRw7qOFoD3XtjTkYvCvh3zUvNST8DXK/nPaeqIzIv3P3kL3lRJn8iwOiSag==
 
 walker@^1.0.7, walker@~1.0.5:
   version "1.0.7"

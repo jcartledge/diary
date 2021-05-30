@@ -5,11 +5,12 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "folio"
+    "start": "folio --param screenshotOnFailure"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.13.0",
-    "@playwright/test": "^0.1111.0"
+    "@playwright/test": "^0.1111.0",
+    "playwright-testing-library": "^3.0.0"
   },
   "dependencies": {}
 }
