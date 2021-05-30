@@ -1,4 +1,5 @@
 import { Model, ModelDefined, Sequelize, STRING, TEXT } from "sequelize";
+import { db_options, db_uri } from "../config";
 
 interface DiaryEntryAttributes {
   date: string;
@@ -22,10 +23,6 @@ export type DiaryEntriesTableModel = Model<
 >;
 
 export const getDiaryEntriesTable = async (): Promise<DiaryEntriesTable> => {
-  const db_uri = process.env.DB_URI ?? "sqlite::memory:";
-  const db_options = process.env.DB_OPTIONS
-    ? JSON.parse(process.env.DB_OPTIONS)
-    : {};
   const db = new Sequelize(db_uri, db_options);
   const diaryEntriesTable = db.define("diaryEntry", {
     date: {

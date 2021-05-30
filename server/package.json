@@ -45,7 +45,8 @@
       "html"
     ],
     "coveragePathIgnorePatterns": [
-      "src/index.ts"
+      "src/index.ts",
+      "src/config.ts"
     ],
     "collectCoverageFrom": [
       "src/**/*.ts"
