@@ -1,10 +1,5 @@
 import { Model, ModelDefined, Sequelize, STRING, TEXT } from "sequelize";
 
-export const db = new Sequelize({
-  dialect: "sqlite",
-  storage: "./.dev/db",
-});
-
 interface DiaryEntryAttributes {
   date: string;
   risk: string;
@@ -26,10 +21,13 @@ export type DiaryEntriesTableModel = Model<
   DiaryEntryCreationAttributes
 >;
 
-export const getDiaryEntriesTableFromDb = async (
-  diaryDb: Sequelize
-): Promise<DiaryEntriesTable> => {
-  const diaryEntriesTable = diaryDb.define("diaryEntry", {
+export const getDiaryEntriesTable = async (): Promise<DiaryEntriesTable> => {
+  const db_uri = process.env.DB_URI ?? "sqlite::memory:";
+  const db_options = process.env.DB_OPTIONS
+    ? JSON.parse(process.env.DB_OPTIONS)
+    : {};
+  const db = new Sequelize(db_uri, db_options);
+  const diaryEntriesTable = db.define("diaryEntry", {
     date: {
       type: STRING,
       allowNull: false,
@@ -42,8 +40,6 @@ export const getDiaryEntriesTableFromDb = async (
     couldBeImproved: { type: TEXT, allowNull: false, defaultValue: "" },
     notWell: { type: TEXT, allowNull: false, defaultValue: "" },
   });
-  await diaryDb.sync();
+  await db.sync();
   return diaryEntriesTable;
 };
-
-

@@ -1,8 +1,8 @@
 import { DiaryEntriesDataSource } from "./datasources/diaryEntries";
-import { db, getDiaryEntriesTableFromDb } from "./db";
+import { getDiaryEntriesTable } from "./db";
 import { buildServer } from "./server";
 
-getDiaryEntriesTableFromDb(db).then((diaryEntriesTable) => {
+getDiaryEntriesTable().then((diaryEntriesTable) => {
   const dataSources = () => ({
     diaryEntriesDataSource: new DiaryEntriesDataSource(diaryEntriesTable),
   });

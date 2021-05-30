@@ -1,15 +1,12 @@
-import { Sequelize } from "sequelize";
-import { getDiaryEntriesTableFromDb } from "../db";
+import { getDiaryEntriesTable } from "../db";
 import { DiaryEntry } from "../resolvers-types";
 import { DiaryEntriesDataSource } from "./diaryEntries";
 
 describe("getByDate", () => {
   it("creates a diary entry if not found", async () => {
-    const mockDiaryEntriesTable = await getDiaryEntriesTableFromDb(
-      new Sequelize("sqlite::memory:", { logging: false })
-    );
+    const diaryEntriesTable = await getDiaryEntriesTable();
     const diaryEntriesDataSource = new DiaryEntriesDataSource(
-      mockDiaryEntriesTable
+      diaryEntriesTable
     );
     const date = "2012-01-01";
 
@@ -19,15 +16,13 @@ describe("getByDate", () => {
   });
 
   it("retrieves a diary entry by date", async () => {
-    const mockDiaryEntriesTable = await getDiaryEntriesTableFromDb(
-      new Sequelize("sqlite::memory:", { logging: false })
-    );
+    const diaryEntriesTable = await getDiaryEntriesTable();
 
     const date = "2012-01-01";
     const diaryEntry = { date, couldBeImproved: "Everything" };
-    mockDiaryEntriesTable.create(diaryEntry);
+    diaryEntriesTable.create(diaryEntry);
     const diaryEntriesDataSource = new DiaryEntriesDataSource(
-      mockDiaryEntriesTable
+      diaryEntriesTable
     );
 
     expect(await diaryEntriesDataSource.getByDate(date)).toEqual(
@@ -47,11 +42,9 @@ describe("save", () => {
       notWell: "7",
       date,
     };
-    const mockDiaryEntriesTable = await getDiaryEntriesTableFromDb(
-      new Sequelize("sqlite::memory:", { logging: false })
-    );
+    const diaryEntriesTable = await getDiaryEntriesTable();
     const diaryEntriesDataSource = new DiaryEntriesDataSource(
-      mockDiaryEntriesTable
+      diaryEntriesTable
     );
 
     await diaryEntriesDataSource.save(diaryEntry);

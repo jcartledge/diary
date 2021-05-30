@@ -1,20 +1,15 @@
 import { ApolloServer, gql } from "apollo-server";
 import { createTestClient } from "apollo-server-testing";
-import { Sequelize } from "sequelize";
 import { DiaryEntriesDataSource } from "./datasources/diaryEntries";
-import { DiaryEntryCreationAttributes, getDiaryEntriesTableFromDb } from "./db";
+import { DiaryEntryCreationAttributes, getDiaryEntriesTable } from "./db";
 import { buildServer } from "./server";
 
 const buildServerWithDiaryEntry = async (
   diaryEntry: DiaryEntryCreationAttributes
 ): Promise<ApolloServer> => {
-  const mockDiaryEntriesTable = await getDiaryEntriesTableFromDb(
-    new Sequelize("sqlite::memory:", { logging: false })
-  );
-  mockDiaryEntriesTable.create(diaryEntry);
-  const diaryEntriesDataSource = new DiaryEntriesDataSource(
-    mockDiaryEntriesTable
-  );
+  const diaryEntriesTable = await getDiaryEntriesTable();
+  diaryEntriesTable.create(diaryEntry);
+  const diaryEntriesDataSource = new DiaryEntriesDataSource(diaryEntriesTable);
   const dataSources = () => ({ diaryEntriesDataSource });
   return buildServer(dataSources);
 };

@@ -34,8 +34,8 @@
     "dev:codegen": "graphql-codegen --watch",
     "lint": "eslint src/",
     "codegen": "graphql-codegen",
-    "test": "jest",
-    "coverage": "jest --coverage --coverageDirectory='output/coverage/report'"
+    "test": "DB_OPTIONS='{\"logging\":false}' jest --watch",
+    "coverage": "DB_OPTIONS='{\"logging\":false}' jest --coverage --coverageDirectory='output/coverage/report'"
   },
   "jest": {
     "preset": "ts-jest",
