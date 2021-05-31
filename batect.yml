@@ -23,6 +23,13 @@ tasks:
   setup:
     run:
       container: diary-static
+  start:
+    prerequisites:
+      - setup
+    dependencies:
+      - diary-server
+    run:
+      container: diary-client
 
 include:
   - batect-e2e.yml

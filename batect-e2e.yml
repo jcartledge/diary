@@ -30,3 +30,18 @@ tasks:
     run:
       container: e2e
       command: yarn workspace e2e start
+    customise:
+      diary-client:
+        environment:
+          REACT_APP_GRAPHQL_URI: http://diary-server:4000/graphql
+  e2e-quick:
+    dependencies:
+      - diary-server
+      - diary-client
+    run:
+      container: e2e
+      command: yarn workspace e2e start
+    customise:
+      diary-client:
+        environment:
+          REACT_APP_GRAPHQL_URI: http://diary-server:4000/graphql

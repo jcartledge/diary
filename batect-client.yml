@@ -3,6 +3,8 @@ containers:
     image: node:14.6.0
     working_directory: /app
     command: yarn workspace client dev
+    ports:
+      - 3000:3000
     health_check:
       command: curl localhost:3000
       retries: 20

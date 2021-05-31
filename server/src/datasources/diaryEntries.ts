@@ -8,7 +8,7 @@ export class DiaryEntriesDataSource extends DataSource {
   }
 
   async getByDate(date: string): Promise<DiaryEntriesTableModel> {
-    const [model] = await this.diaryEntriesTable.findOrCreate({
+    const [model] = await this.diaryEntriesTable.findCreateFind({
       where: { date },
       defaults: { date },
     });

@@ -116,3 +116,10 @@ jobs:
 
       - name: e2e
         run: ./batect e2e
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: screenshots
+          path: e2e/test-results

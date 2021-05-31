@@ -34,7 +34,7 @@ describe("DiaryHeader", () => {
     );
 
     await waitFor(() =>
-      expect(diaryHeader.container.querySelector("em")).toBeInTheDocument()
+      expect(diaryHeader.container.querySelector(".italic")).toBeInTheDocument()
     );
   });
 
@@ -53,7 +53,9 @@ describe("DiaryHeader", () => {
     );
 
     await waitFor(() =>
-      expect(diaryHeader.container.querySelector("em")).not.toBeInTheDocument()
+      expect(
+        diaryHeader.container.querySelector(".italic")
+      ).not.toBeInTheDocument()
     );
   });
 });

@@ -10,13 +10,9 @@ const DiaryHeader: React.FC = () => {
     <div className="grid md:grid-cols-2 lg:grid-cols-3">
       <Cell className="text-center md:col-span-2 lg:col-span-3">
         <H1>Diary</H1>
-        {isDirty ? (
-          <em>
-            <DateControl />
-          </em>
-        ) : (
+        <div className={isDirty ? "italic" : "not-italic"}>
           <DateControl />
-        )}
+        </div>
       </Cell>
     </div>
   );
