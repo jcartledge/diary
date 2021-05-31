@@ -1,4 +1,4 @@
-.batect
+.batect/caches
 .env
 client/build
 coverage

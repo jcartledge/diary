@@ -1,16 +1,10 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "graphql/client";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "./tailwind.output.css";
-
-const client = new ApolloClient({
-  uri: process.env.REACT_APP_GRAPHQL_URI,
-  cache: new InMemoryCache({
-    typePolicies: { DiaryEntry: { keyFields: ["date"] } },
-  }),
-});
 
 ReactDOM.render(
   <React.StrictMode>

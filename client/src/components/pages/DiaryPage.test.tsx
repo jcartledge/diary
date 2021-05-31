@@ -24,7 +24,7 @@ describe("DiaryPage", () => {
       </ApolloProvider>
     );
     await waitFor(() => {
-      // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
+      // Need this waitFor to prevent the apollo hook from causing an act warning.
     });
 
     expect(requestHandler).toHaveBeenCalledWith({ date: today.getKey() });

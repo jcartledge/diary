@@ -1,44 +1,86 @@
-import { describe, it } from "@playwright/test";
+import { describe, expect, it } from "@playwright/test";
+import { ElementHandle, Page } from "playwright";
 import "playwright-testing-library/extend";
 
 const CLIENT_URL = "http://diary-client:3000";
 
-describe("Diray app", () => {
+type PageElements = { [key: string]: ElementHandle };
+const getPageElements = async (page: Page): Promise<PageElements> => {
+  const document = await page.getDocument();
+  return {
+    whatHappened: await document.getByLabelText("What happened?"),
+    wentWell: await document.getByLabelText("Went well"),
+    couldBeImproved: await document.getByLabelText("Could be improved"),
+    didntGoWell: await document.getByLabelText("Didn't go well"),
+    risk: await document.getByLabelText("Might be a risk"),
+    prev: await document.getByText("prev"),
+    next: await document.getByText("next"),
+  };
+};
+
+const failOnConsole = (page: Page): void => {
+  page.on("console", (message) => {
+    const messageType = message.type();
+    if (messageType === "error" || messageType === "warning") {
+      throw new Error(message.text());
+    }
+  });
+};
+describe("Diary app", () => {
   it("retains input when navigating between days", async ({ page }) => {
+    failOnConsole(page);
+
     await page.goto(CLIENT_URL);
-    const document = await page.getDocument();
 
-    const whatHappened = await document.getByLabelText("What happened?");
-    await whatHappened.type("Nothing happened today");
+    {
+      const { whatHappened, wentWell, couldBeImproved, didntGoWell, risk } =
+        await getPageElements(page);
 
-    const wentWell = await document.getByLabelText("Went well");
-    await wentWell.type("Boss remembered my name");
+      await whatHappened.type("Nothing happened today");
+      await wentWell.type("Boss remembered my name");
+      await couldBeImproved.type("Drink more water");
+      await didntGoWell.type("Forgot name of boss");
+      await risk.type("Glass too close to edge of table");
+    }
 
-    const couldBeImproved = await document.getByLabelText("Could be improved");
-    await couldBeImproved.type("Drink more water");
+    {
+      const { prev } = await getPageElements(page);
+      await prev.click();
+    }
 
-    const didntGoWell = await document.getByLabelText("Didn't go well");
-    await didntGoWell.type("Forgot name of boss");
+    // await waitFor(async () => {
+    {
+      const { whatHappened, wentWell, couldBeImproved, didntGoWell, risk } =
+        await getPageElements(page);
 
-    const risk = await document.getByLabelText("Might be a risk");
-    await risk.type("Glass to close to edge of table");
+      expect(await whatHappened.textContent()).toEqual("");
+      expect(await wentWell.textContent()).toEqual("");
+      expect(await couldBeImproved.textContent()).toEqual("");
+      expect(await didntGoWell.textContent()).toEqual("");
+      expect(await risk.textContent()).toEqual("");
+    }
+    // });
 
-    const prev = await document.getByLabelText("prev");
-    await prev.click();
+    {
+      const { next } = await getPageElements(page);
+      await next.click();
+    }
 
-    expect(whatHappened).toHaveTextContent("");
-    expect(wentWell).toHaveTextContent("");
-    expect(couldBeImproved).toHaveTextContent("");
-    expect(didntGoWell).toHaveTextContent("");
-    expect(risk).toHaveTextContent("");
+    // await waitFor(async () => {
+    {
+      const { whatHappened, wentWell, couldBeImproved, didntGoWell, risk } =
+        await getPageElements(page);
 
-    const next = await document.getByLabelText("next");
-    await next.click();
-
-    expect(whatHappened).toHaveTextContent("Nothing happened today");
-    expect(wentWell).toHaveTextContent("Boss remembered my name");
-    expect(couldBeImproved).toHaveTextContent("Drink more water");
-    expect(didntGoWell).toHaveTextContent("Forgot name of boss");
-    expect(risk).toHaveTextContent("Glass close to edge of table");
+      expect(await whatHappened.textContent()).toEqual(
+        "Nothing happened today"
+      );
+      expect(await wentWell.textContent()).toEqual("Boss remembered my name");
+      expect(await couldBeImproved.textContent()).toEqual("Drink more water");
+      expect(await didntGoWell.textContent()).toEqual("Forgot name of boss");
+      expect(await risk.textContent()).toEqual(
+        "Glass too close to edge of table"
+      );
+    }
+    // });
   });
 });
