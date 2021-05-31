@@ -68,6 +68,7 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/src/App.tsx",
+      "/src/graphql/client.ts",
       "/src/index.tsx",
       "/src/serviceWorker.ts"
     ],
