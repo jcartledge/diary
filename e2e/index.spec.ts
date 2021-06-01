@@ -3,7 +3,7 @@ import { ElementHandle, Page } from "playwright";
 import { waitFor } from "playwright-testing-library";
 import "playwright-testing-library/extend";
 
-const CLIENT_URL = "http://diary-client-dev:3000";
+const CLIENT_URI = process.env.CLIENT_URI;
 
 type PageElements = { [key: string]: ElementHandle };
 const getPageElements = async (page: Page): Promise<PageElements> => {
@@ -31,7 +31,7 @@ describe("Diary app", () => {
   it("retains input when navigating between days", async ({ page }) => {
     failOnConsoleErrorOrWarning(page);
 
-    await page.goto(CLIENT_URL);
+    await page.goto(CLIENT_URI);
 
     const { whatHappened, wentWell, couldBeImproved, didntGoWell, risk, prev } =
       await getPageElements(page);

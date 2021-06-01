@@ -3,6 +3,8 @@ containers:
     image: mcr.microsoft.com/playwright:bionic
     working_directory: /app
     command: yarn
+    environment:
+      CLIENT_URI: "http://diary-client-dev:3000"
     volumes:
       - local: .
         container: /app
@@ -41,6 +43,8 @@ tasks:
     run:
       container: e2e
       command: yarn workspace e2e start
+      environment:
+        CLIENT_URI: "http://diary-client:3000"
     customise:
       diary-client-dev:
         environment:
