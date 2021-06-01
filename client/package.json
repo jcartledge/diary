@@ -33,8 +33,8 @@
     "watch:tailwind": "chokidar 'src/**/*.css' 'src/**/*.scss' --ignore src/tailwind.output.css -c 'npm run build:tailwind'",
     "dev": "npm-run-all build:tailwind --parallel watch:tailwind start:react",
     "start:react": "react-scripts start",
-    "prebuild": "run-s build:tailwind",
-    "build": "react-scripts build && docker build -t diary-client .",
+    "build": "run-s build:tailwind && react-scripts build",
+    "package": "docker build -t diary-client .",
     "test": "react-scripts test",
     "lint": "eslint src/**.{ts,tsx}",
     "coverage": "CI=true react-scripts test --coverage --coverageDirectory='output/coverage/report'"

@@ -30,25 +30,25 @@ tasks:
     prerequisites:
       - setup
     run:
-      container: diary-static
+      container: diary-build-env
       command: yarn workspace server codegen
   server-lint:
     prerequisites:
       - setup
     run:
-      container: diary-static
+      container: diary-build-env
       command: yarn workspace server lint
   server-test:
     prerequisites:
       - setup
       - server-codegen
     run:
-      container: diary-static
+      container: diary-build-env
       command: yarn workspace server test
   server-coverage:
     prerequisites:
       - setup
       - server-codegen
     run:
-      container: diary-static
+      container: diary-build-env
       command: yarn workspace server coverage

@@ -26,22 +26,22 @@ tasks:
       - server-codegen
     dependencies:
       - diary-server
-      - diary-client
+      - diary-client-dev
     run:
       container: e2e
       command: yarn workspace e2e start
     customise:
-      diary-client:
+      diary-client-dev:
         environment:
           REACT_APP_GRAPHQL_URI: http://diary-server:4000/graphql
   e2e-quick:
     dependencies:
       - diary-server
-      - diary-client
+      - diary-client-dev
     run:
       container: e2e
       command: yarn workspace e2e start
     customise:
-      diary-client:
+      diary-client-dev:
         environment:
           REACT_APP_GRAPHQL_URI: http://diary-server:4000/graphql

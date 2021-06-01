@@ -1,5 +1,5 @@
 containers:
-  diary-client:
+  diary-client-dev:
     image: node:14.6.0
     working_directory: /app
     command: yarn workspace client dev
@@ -25,22 +25,47 @@ containers:
         name: e2e-node-modules
         container: /app/e2e/node_modules
 
+  diary-client-package-env:
+    image: docker:20.10.6
+    working_directory: /app
+    volumes:
+      - local: client
+        container: /app
+      - local: /var/run/docker.sock
+        container: /var/run/docker.sock
+
 tasks:
   client-lint:
     prerequisites:
       - setup
     run:
-      container: diary-static
+      container: diary-build-env
       command: yarn workspace client lint
+
   client-test:
     prerequisites:
       - setup
     run:
-      container: diary-static
+      container: diary-build-env
       command: yarn workspace client test
+
   client-coverage:
     prerequisites:
       - setup
     run:
-      container: diary-static
+      container: diary-build-env
       command: yarn workspace client coverage
+
+  client-build:
+    prerequisites:
+      - setup
+    run:
+      container: diary-build-env
+      command: yarn workspace client build
+
+  client-package:
+    prerequisites:
+      - client-build
+    run:
+      container: diary-client-package-env
+      command: docker build -t diary-client-dev .

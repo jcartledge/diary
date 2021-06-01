@@ -1,5 +1,5 @@
 containers:
-  diary-static:
+  diary-build-env:
     image: node:14.6.0
     working_directory: /app
     command: yarn install --frozen-lockfile
@@ -22,14 +22,14 @@ containers:
 tasks:
   setup:
     run:
-      container: diary-static
+      container: diary-build-env
   start:
     prerequisites:
       - setup
     dependencies:
       - diary-server
     run:
-      container: diary-client
+      container: diary-client-dev
 
 include:
   - batect-e2e.yml
