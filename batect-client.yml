@@ -69,6 +69,7 @@ tasks:
   client-build:
     prerequisites:
       - setup
+      - server-codegen
     run:
       container: diary-build-env
       command: yarn workspace client build
