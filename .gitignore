@@ -1,6 +1,7 @@
 .batect/caches
 .env
 client/build
+client/src/tailwind.output.css
 coverage
 e2e/test-results
 node_modules/
