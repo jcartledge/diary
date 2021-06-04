@@ -4,7 +4,7 @@ containers:
     working_directory: /app
     command: yarn
     environment:
-      CLIENT_URI: "http://diary-client-dev:3000"
+      CLIENT_URI: "http://diary-client"
     volumes:
       - local: .
         container: /app
@@ -28,24 +28,7 @@ tasks:
       - server-codegen
     dependencies:
       - diary-server-dev
-      - diary-client-dev
+      - diary-client
     run:
       container: e2e
       command: yarn workspace e2e start
-    customise:
-      diary-client-dev:
-        environment:
-          REACT_APP_GRAPHQL_URI: http://diary-server-dev:4000/graphql
-  e2e-quick:
-    dependencies:
-      - diary-server-dev
-      - diary-client-dev
-    run:
-      container: e2e
-      command: yarn workspace e2e start
-      environment:
-        CLIENT_URI: "http://diary-client:3000"
-    customise:
-      diary-client-dev:
-        environment:
-          REACT_APP_GRAPHQL_URI: http://diary-server-dev:4000/graphql

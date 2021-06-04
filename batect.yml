@@ -27,7 +27,7 @@ tasks:
     prerequisites:
       - setup
     dependencies:
-      - diary-server
+      - diary-server-dev
     run:
       container: diary-client-dev
 

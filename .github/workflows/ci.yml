@@ -32,8 +32,8 @@ jobs:
       - name: Download dependencies
         run: ./batect setup
 
-  test-client:
-    name: test-client
+  build-client:
+    name: build-client
     needs: [setup]
     runs-on: ubuntu-latest
     env:
@@ -61,8 +61,11 @@ jobs:
       - name: Unit tests
         run: ./batect client-coverage
 
-  test-server:
-    name: test-server
+      - name: Build docker image
+        run: ./batect client-package
+
+  build-server:
+    name: build-server
     needs: [setup]
     runs-on: ubuntu-latest
     env:
@@ -92,7 +95,7 @@ jobs:
 
   e2e:
     name: e2e
-    needs: [test-client, test-server]
+    needs: [build-client, build-server]
     runs-on: ubuntu-latest
     env:
       TERM: xterm-256color

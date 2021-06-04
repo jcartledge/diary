@@ -1,8 +1,18 @@
 containers:
+  diary-client:
+    image: diary-client:latest
+    health_check:
+      command: service nginx status
+      retries: 5
+      interval: 6s
+
   diary-client-dev:
     image: node:14.15.0
     working_directory: /app
     command: yarn workspace client dev
+    environment:
+      NODE_PATH: src
+      REACT_APP_GRAPHQL_URI: http://localhost:4000/graphql
     ports:
       - 3000:3000
     health_check:
@@ -62,10 +72,12 @@ tasks:
     run:
       container: diary-build-env
       command: yarn workspace client build
+      environment:
+        REACT_APP_GRAPHQL_URI: http://localhost:4000/graphql
 
   client-package:
     prerequisites:
       - client-build
     run:
       container: diary-client-package-env
-      command: docker build -t diary-client-dev .
+      command: docker build -t diary-client .
