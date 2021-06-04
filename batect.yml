@@ -23,7 +23,7 @@ tasks:
   setup:
     run:
       container: diary-build-env
-  start:
+  dev:
     prerequisites:
       - setup
     dependencies:

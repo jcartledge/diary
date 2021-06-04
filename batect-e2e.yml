@@ -27,7 +27,7 @@ tasks:
       - setup
       - server-codegen
     dependencies:
-      - diary-server
+      - diary-server-dev
       - diary-client-dev
     run:
       container: e2e
@@ -35,10 +35,10 @@ tasks:
     customise:
       diary-client-dev:
         environment:
-          REACT_APP_GRAPHQL_URI: http://diary-server:4000/graphql
+          REACT_APP_GRAPHQL_URI: http://diary-server-dev:4000/graphql
   e2e-quick:
     dependencies:
-      - diary-server
+      - diary-server-dev
       - diary-client-dev
     run:
       container: e2e
@@ -48,4 +48,4 @@ tasks:
     customise:
       diary-client-dev:
         environment:
-          REACT_APP_GRAPHQL_URI: http://diary-server:4000/graphql
+          REACT_APP_GRAPHQL_URI: http://diary-server-dev:4000/graphql

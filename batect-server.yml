@@ -1,5 +1,5 @@
 containers:
-  diary-server:
+  diary-server-dev:
     image: node:14.15.0
     working_directory: /app
     command: yarn workspace server dev
