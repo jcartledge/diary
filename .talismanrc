@@ -8,5 +8,8 @@ fileignoreconfig:
 - filename: batect.cmd
   checksum: 3bb8810b224facfa62a85beedec7373d4e29d60e0653acf2a032bca5ea9d2193
   ignore_detectors: []
+- filename: client/nginx-templates/env.conf.template
+  checksum: 11ec59f13030455edcda906172e50ce984db31ead5a1e56749974a10e7081775
+  ignore_detectors: []
 scopeconfig:
 - scope: node

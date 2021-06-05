@@ -29,6 +29,10 @@ tasks:
     dependencies:
       - diary-server-dev
       - diary-client
+    customise:
+      diary-client:
+        environment:
+          GRAPHQL_URI: http://diary-server-dev:4000/graphql
     run:
       container: e2e
       command: yarn workspace e2e start

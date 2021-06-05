@@ -23,6 +23,7 @@ tasks:
   setup:
     run:
       container: diary-build-env
+
   dev:
     prerequisites:
       - setup
@@ -30,6 +31,18 @@ tasks:
       - diary-server-dev
     run:
       container: diary-client-dev
+
+  start:
+    prerequisites:
+      - setup
+    dependencies:
+      - diary-server-dev
+    run:
+      container: diary-client
+      ports:
+        - 3000:80
+      environment:
+        GRAPHQL_URI: http://localhost:4000/graphql
 
 include:
   - batect-e2e.yml

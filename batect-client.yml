@@ -74,7 +74,7 @@ tasks:
       container: diary-build-env
       command: yarn workspace client build
       environment:
-        REACT_APP_GRAPHQL_URI: http://diary-server-dev:4000/graphql
+        REACT_APP_GRAPHQL_URI: __GRAPHQL_URI
 
   client-package:
     prerequisites:
