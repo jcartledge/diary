@@ -64,6 +64,11 @@ jobs:
       - name: Build docker image
         run: ./batect client-package
 
+      - name: Upload image
+        uses: ishworkh/docker-image-artifact-upload@v1
+        with:
+          image: "diary_client"
+
   build-server:
     name: build-server
     needs: [setup]
@@ -104,6 +109,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Download image
+        uses: ishworkh/docker-image-artifact-download@v1
+        with:
+          image: "diary_client"
 
       - name: Cache Batect
         uses: actions/cache@v2
