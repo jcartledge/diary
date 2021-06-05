@@ -67,7 +67,7 @@ jobs:
       - name: Upload image
         uses: ishworkh/docker-image-artifact-upload@v1
         with:
-          image: "diary_client"
+          image: "diary-client"
 
   build-server:
     name: build-server
@@ -113,7 +113,7 @@ jobs:
       - name: Download image
         uses: ishworkh/docker-image-artifact-download@v1
         with:
-          image: "diary_client"
+          image: "diary-client"
 
       - name: Cache Batect
         uses: actions/cache@v2
