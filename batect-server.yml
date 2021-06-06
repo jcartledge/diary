@@ -5,6 +5,10 @@ containers:
     command: yarn workspace server dev
     ports:
       - 4000:4000
+    dependencies:
+      - diary-server-db
+    environment:
+      DATABASE_URL: postgresql://dev:dev@diary-server-db:5432/dev
     health_check:
       command: curl localhost:4000
       retries: 20
@@ -25,6 +29,13 @@ containers:
         name: e2e-node-modules
         container: /app/e2e/node_modules
 
+  diary-server-db:
+    image: postgres:13.3
+    environment:
+      POSTGRES_PASSWORD: dev
+      POSTGRES_USER: dev
+      POSTGRES_DB: dev
+
 tasks:
   server-codegen:
     prerequisites:
@@ -32,12 +43,14 @@ tasks:
     run:
       container: diary-build-env
       command: yarn workspace server codegen
+
   server-lint:
     prerequisites:
       - setup
     run:
       container: diary-build-env
       command: yarn workspace server lint
+
   server-test:
     prerequisites:
       - setup
@@ -45,6 +58,7 @@ tasks:
     run:
       container: diary-build-env
       command: yarn workspace server test
+
   server-coverage:
     prerequisites:
       - setup

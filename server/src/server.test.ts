@@ -1,15 +1,21 @@
 import { ApolloServer, gql } from "apollo-server";
 import { createTestClient } from "apollo-server-testing";
-import { DiaryEntriesDataSource } from "./datasources/diaryEntries";
-import { DiaryEntryCreationAttributes, getDiaryEntriesTable } from "./db";
+import { Client } from "pg";
+import PGMock2 from "pgmock2";
+import {
+  buildDiaryEntry,
+  DiaryEntriesDataSource,
+} from "./datasources/diaryEntries";
+import {
+  selectQueryParams,
+  upsertQueryParams,
+} from "./datasources/diaryEntries.test";
 import { buildServer } from "./server";
 
-const buildServerWithDiaryEntry = async (
-  diaryEntry: DiaryEntryCreationAttributes
+const buildServerWithMockedDb = async (
+  client: Client
 ): Promise<ApolloServer> => {
-  const diaryEntriesTable = await getDiaryEntriesTable();
-  diaryEntriesTable.create(diaryEntry);
-  const diaryEntriesDataSource = new DiaryEntriesDataSource(diaryEntriesTable);
+  const diaryEntriesDataSource = new DiaryEntriesDataSource(client);
   const dataSources = () => ({ diaryEntriesDataSource });
   return buildServer(dataSources);
 };
@@ -43,10 +49,45 @@ const UPDATE_DIARY_ENTRY_MUTATION = gql`
 `;
 
 describe("DiaryEntry query", () => {
-  it("returns a diary entry", async () => {
+  it("selects a diary entry", async () => {
     const date = "2012-01-01";
-    const diaryEntry = { date, couldBeImproved: "Everything" };
-    const server = await buildServerWithDiaryEntry(diaryEntry);
+    const diaryEntry = buildDiaryEntry({ date, couldBeImproved: "Everything" });
+    const pg = new PGMock2();
+    pg.add(DiaryEntriesDataSource.selectQuery, selectQueryParams, {
+      rowCount: 1,
+      rows: [diaryEntry],
+    });
+
+    const client = (await pg.connect()) as unknown as Client;
+    const server = await buildServerWithMockedDb(client);
+    const { query } = createTestClient(server);
+
+    const response = await query({
+      query: DIARY_ENTRY_QUERY,
+      variables: { date },
+    });
+
+    expect(response.data.diaryEntry).toEqual(
+      expect.objectContaining(diaryEntry)
+    );
+  });
+
+  it("creates a diary entry if none is found", async () => {
+    const date = "2012-01-01";
+    const diaryEntry = buildDiaryEntry({ date, couldBeImproved: "Everything" });
+    const pg = new PGMock2();
+    pg.add(DiaryEntriesDataSource.selectQuery, selectQueryParams, {
+      rowCount: 0,
+      rows: [],
+    });
+
+    pg.add(DiaryEntriesDataSource.upsertQuery, upsertQueryParams, {
+      rowCount: 1,
+      rows: [diaryEntry],
+    });
+
+    const client = (await pg.connect()) as unknown as Client;
+    const server = await buildServerWithMockedDb(client);
     const { query } = createTestClient(server);
 
     const response = await query({
@@ -61,30 +102,31 @@ describe("DiaryEntry query", () => {
 });
 
 describe("UpdateDiaryEntry mutation", () => {
-  it("returns the mutated diary entry", async () => {
+  it("upserts the entry for the date passed", async () => {
     const date = "2012-01-01";
-    const diaryEntry = { date, couldBeImproved: "Everything" };
-    const server = await buildServerWithDiaryEntry(diaryEntry);
-    const { query, mutate } = createTestClient(server);
+    const diaryEntry = buildDiaryEntry({ date, couldBeImproved: "Everything" });
+    const pg = new PGMock2();
+    pg.add(DiaryEntriesDataSource.selectQuery, selectQueryParams, {
+      rowCount: 1,
+      rows: [diaryEntry],
+    });
+    pg.add(DiaryEntriesDataSource.upsertQuery, upsertQueryParams, {
+      rowCount: 1,
+      rows: [diaryEntry],
+    });
 
-    const {
-      data: { diaryEntry: retrievedDiaryEntry },
-    } = await query({
+    const client = (await pg.connect()) as unknown as Client;
+    const server = await buildServerWithMockedDb(client);
+    const { query, mutate } = createTestClient(server);
+    await mutate({
+      mutation: UPDATE_DIARY_ENTRY_MUTATION,
+      variables: { diaryEntry },
+    });
+
+    const response = await query({
       query: DIARY_ENTRY_QUERY,
       variables: { date },
     });
-    const updatedDiaryEntry = {
-      ...retrievedDiaryEntry,
-      wentWell: "Everything",
-    };
-    await mutate({
-      mutation: UPDATE_DIARY_ENTRY_MUTATION,
-      variables: { diaryEntry: updatedDiaryEntry },
-    });
-
-    const {
-      data: { diaryEntry: retrievedMutatedDiaryEntry },
-    } = await query({ query: DIARY_ENTRY_QUERY, variables: { date } });
-    expect(retrievedMutatedDiaryEntry).toEqual(updatedDiaryEntry);
+    expect(response.data.diaryEntry).toEqual(diaryEntry);
   });
 });

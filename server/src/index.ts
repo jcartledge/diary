@@ -1,10 +1,18 @@
+import { Client } from "pg";
 import { DiaryEntriesDataSource } from "./datasources/diaryEntries";
-import { getDiaryEntriesTable } from "./db";
 import { buildServer } from "./server";
 
-getDiaryEntriesTable().then((diaryEntriesTable) => {
+const connectionString = process.env.DATABASE_URL;
+
+const getDbClient = async (): Promise<Client> => {
+  const client = new Client({ connectionString });
+  await client.connect();
+  return client;
+};
+
+getDbClient().then((client) => {
   const dataSources = () => ({
-    diaryEntriesDataSource: new DiaryEntriesDataSource(diaryEntriesTable),
+    diaryEntriesDataSource: new DiaryEntriesDataSource(client),
   });
 
   const server = buildServer(dataSources);
