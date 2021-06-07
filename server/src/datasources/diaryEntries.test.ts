@@ -1,30 +1,33 @@
-import { Client } from "pg";
 import { getDbClient } from "server/src/getDbClient";
 import { buildDiaryEntry, DiaryEntriesDataSource, diaryEntriesTableName } from "./diaryEntries";
 
-let client: Client;
-let diaryEntriesDataSource: DiaryEntriesDataSource;
 
-describe("getByDate", () => {
-  beforeEach(async () => {
-    client = await getDbClient();
-    diaryEntriesDataSource = new DiaryEntriesDataSource(client);
-  });
-
-  afterEach(async () => {
+const setup = (async () => {
+  const client = await getDbClient();
+  const diaryEntriesDataSource = new DiaryEntriesDataSource(client);
+  const cleanup = (async () => {
     await client.query(`DELETE FROM "${diaryEntriesTableName}"`);
     await client.end();
   });
+  return { diaryEntriesDataSource, cleanup };
+});
+
+describe("getByDate", () => {
+  
 
   it("creates a diary entry if not found", async () => {
+    const { diaryEntriesDataSource, cleanup } = await setup();
     const date = "dbClient";
 
     expect(await diaryEntriesDataSource.getByDate(date)).toEqual(
       expect.objectContaining({ date })
     );
+
+    cleanup();
   });
 
   it("retrieves a diary entry by date", async () => {
+    const { diaryEntriesDataSource, cleanup } = await setup();
     const date = "dbClient";
     const diaryEntry = buildDiaryEntry({ date, couldBeImproved: "Everything" });
     await diaryEntriesDataSource.save(diaryEntry);
@@ -32,5 +35,7 @@ describe("getByDate", () => {
     expect(await diaryEntriesDataSource.getByDate(date)).toEqual(
       expect.objectContaining(diaryEntry)
     );
+
+    cleanup();
   });
 });
