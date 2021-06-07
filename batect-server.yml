@@ -55,14 +55,34 @@ tasks:
     prerequisites:
       - setup
       - server-codegen
+    dependencies:
+      - diary-server-db
+    customise:
+      diary-server-db:
+        environment:
+          POSTGRES_PASSWORD: test
+          POSTGRES_USER: test
+          POSTGRES_DB: test
     run:
       container: diary-build-env
       command: yarn workspace server test
+      environment:
+        DATABASE_URL: postgresql://test:test@diary-server-db:5432/test
 
   server-coverage:
     prerequisites:
       - setup
       - server-codegen
+    dependencies:
+      - diary-server-db
+    customise:
+      diary-server-db:
+        environment:
+          POSTGRES_PASSWORD: test
+          POSTGRES_USER: test
+          POSTGRES_DB: test
     run:
       container: diary-build-env
       command: yarn workspace server coverage
+      environment:
+        DATABASE_URL: postgresql://test:test@diary-server-db:5432/test

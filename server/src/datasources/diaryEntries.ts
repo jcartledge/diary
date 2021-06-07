@@ -19,6 +19,7 @@ export class DiaryEntriesDataSource extends DataSource {
   public static selectQuery = `SELECT * FROM "${diaryEntriesTableName}" WHERE date = $1`;
   public static upsertQuery = `
     INSERT INTO "${diaryEntriesTableName}"
+    ("date", "whatHappened", "wentWell", "notWell", "couldBeImproved", "risk")
     VALUES ($1, $2, $3, $4, $5, $6)
     ON CONFLICT ("date") DO UPDATE
     SET "whatHappened" = EXCLUDED."whatHappened",
@@ -37,7 +38,12 @@ export class DiaryEntriesDataSource extends DataSource {
       DiaryEntriesDataSource.selectQuery,
       [date]
     );
-    return response.rows[0] ?? this.save(buildDiaryEntry({ date }));
+    return response.rows[0] ?? this.createAndReturnByDate(date);
+  }
+
+  private async createAndReturnByDate(date: string): Promise<DiaryEntry> {
+    await this.save(buildDiaryEntry({ date }));
+    return this.getByDate(date);
   }
 
   async save({
