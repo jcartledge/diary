@@ -1,6 +1,6 @@
 containers:
   e2e:
-    image: mcr.microsoft.com/playwright:bionic
+    image: mcr.microsoft.com/playwright:v1.10.0-bionic
     working_directory: /app
     command: yarn
     environment:
