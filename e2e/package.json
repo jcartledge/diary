@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "folio --param screenshotOnFailure --param browserName=chromium --param video=true"
+    "start": "playwright install chromium && folio --param screenshotOnFailure --param browserName=chromium --param video=true"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.13.0",
