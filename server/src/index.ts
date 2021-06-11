@@ -1,5 +1,5 @@
-import { getDbClient } from "server/src/getDbClient";
 import { DiaryEntriesDataSource } from "./datasources/diaryEntries";
+import { getDbClient } from "./getDbClient";
 import { buildServer } from "./server";
 
 getDbClient().then((client) => {
