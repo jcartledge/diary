@@ -1,4 +1,15 @@
 containers:
+  diary-server:
+    image: diary-server:latest
+    dependencies:
+      - diary-server-db
+    environment:
+      DATABASE_URL: postgresql://dev:dev@diary-server-db:5432/dev
+    health_check:
+      command: curl --fail http://localhost:4000/.well-known/apollo/server-health || exit 1
+      retries: 5
+      interval: 6s
+
   diary-server-dev:
     image: node:14.15.0
     working_directory: /app
@@ -86,3 +97,19 @@ tasks:
       command: yarn workspace server coverage
       environment:
         DATABASE_URL: postgresql://test:test@diary-server-db:5432/test
+
+  server-build:
+    prerequisites:
+      - setup
+      - server-codegen
+    run:
+      container: diary-build-env
+      command: yarn workspace server build
+
+  server-package:
+    prerequisites:
+      - server-build
+    run:
+      container: diary-package-env
+      command: docker build -t diary-server .
+      working_directory: /app/server

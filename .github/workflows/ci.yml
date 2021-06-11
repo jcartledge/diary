@@ -98,6 +98,14 @@ jobs:
       - name: Unit tests
         run: ./batect server-coverage
 
+      - name: Build docker image
+        run: ./batect server-package
+
+      - name: Upload image
+        uses: ishworkh/docker-image-artifact-upload@v1
+        with:
+          image: "diary-server"
+
   e2e:
     name: e2e
     needs: [build-client, build-server]
@@ -110,10 +118,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Download image
+      - name: Download client image
         uses: ishworkh/docker-image-artifact-download@v1
         with:
           image: "diary-client"
+
+      - name: Download server image
+        uses: ishworkh/docker-image-artifact-download@v1
+        with:
+          image: "diary-server"
 
       - name: Cache Batect
         uses: actions/cache@v2

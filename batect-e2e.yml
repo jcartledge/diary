@@ -25,14 +25,15 @@ tasks:
   e2e:
     prerequisites:
       - setup
-      - server-codegen
     dependencies:
-      - diary-server-dev
+      - diary-server
       - diary-client
     customise:
       diary-client:
         environment:
-          GRAPHQL_URI: http://diary-server-dev:4000/graphql
+          GRAPHQL_URI: http://diary-server:4000/graphql
     run:
       container: e2e
       command: yarn workspace e2e start
+      environment:
+        DATABASE_URL: postgresql://dev:dev@diary-server-db:5432/dev

@@ -19,6 +19,14 @@ containers:
         name: e2e-node-modules
         container: /app/e2e/node_modules
 
+  diary-package-env:
+    image: docker:20.10.6
+    volumes:
+      - local: .
+        container: /app
+      - local: /var/run/docker.sock
+        container: /var/run/docker.sock
+
 tasks:
   setup:
     run:

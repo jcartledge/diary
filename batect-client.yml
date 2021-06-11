@@ -35,15 +35,6 @@ containers:
         name: e2e-node-modules
         container: /app/e2e/node_modules
 
-  diary-client-package-env:
-    image: docker:20.10.6
-    working_directory: /app
-    volumes:
-      - local: client
-        container: /app
-      - local: /var/run/docker.sock
-        container: /var/run/docker.sock
-
 tasks:
   client-lint:
     prerequisites:
@@ -80,5 +71,6 @@ tasks:
     prerequisites:
       - client-build
     run:
-      container: diary-client-package-env
+      container: diary-package-env
       command: docker build -t diary-client .
+      working_directory: /app/client
