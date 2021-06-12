@@ -154,6 +154,7 @@ jobs:
     name: publish-client
     needs: [e2e]
     runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
 
     steps:
       - name: Login to GitHub Container Registry
@@ -178,6 +179,7 @@ jobs:
     name: publish-server
     needs: [e2e]
     runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
 
     steps:
       - name: Login to GitHub Container Registry
