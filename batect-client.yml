@@ -7,7 +7,7 @@ containers:
       interval: 6s
 
   diary-client-dev:
-    image: node:14.15.0
+    image: node:14.17.0
     working_directory: /app
     command: yarn workspace client dev
     environment:

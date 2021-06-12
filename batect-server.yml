@@ -6,12 +6,12 @@ containers:
     environment:
       DATABASE_URL: postgresql://dev:dev@diary-server-db:5432/dev
     health_check:
-      command: curl --fail http://localhost:4000/.well-known/apollo/server-health || exit 1
+      command: wget --no-verbose --tries=1 --spider http://localhost:4000/.well-known/apollo/server-health || exit 1
       retries: 5
       interval: 6s
 
   diary-server-dev:
-    image: node:14.15.0
+    image: node:14.17.0
     working_directory: /app
     command: yarn workspace server dev
     ports:
