@@ -11,5 +11,8 @@ fileignoreconfig:
 - filename: client/nginx-templates/env.conf.template
   checksum: 11ec59f13030455edcda906172e50ce984db31ead5a1e56749974a10e7081775
   ignore_detectors: []
+- filename: .github/workflows/ci.yml
+  checksum: 72df56dcf0e3fc76d580f260e9d215cc3a5588973a309c790b30c410f156e70e
+  ignore_detectors: []
 scopeconfig:
 - scope: node

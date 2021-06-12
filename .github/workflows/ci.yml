@@ -149,3 +149,51 @@ jobs:
         with:
           name: screenshots
           path: e2e/test-results
+
+  publish-client:
+    name: publish-client
+    needs: [e2e]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download client image
+        uses: ishworkh/docker-image-artifact-download@v1
+        with:
+          image: "diary-client"
+
+      - name: Tag client image
+        run: docker tag diary-client ghcr.io/jcartledge/diary-client:latest
+
+      - name: Push client image
+        run: docker push ghcr.io/jcartledge/diary-client:latest
+
+  publish-server:
+    name: publish-server
+    needs: [e2e]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download server image
+        uses: ishworkh/docker-image-artifact-download@v1
+        with:
+          image: "diary-server"
+
+      - name: Tag server image
+        run: docker tag diary-server ghcr.io/jcartledge/diary-server:latest
+
+      - name: Push server image
+        run: docker push ghcr.io/jcartledge/diary-server:latest
