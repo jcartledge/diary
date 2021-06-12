@@ -1,10 +1,6 @@
 containers:
   diary-client:
     image: diary-client:latest
-    health_check:
-      command: service nginx status
-      retries: 5
-      interval: 6s
 
   diary-client-dev:
     image: node:14.17.0
