@@ -141,7 +141,7 @@ jobs:
           key: batect-caches-${{ hashFiles('yarn.lock') }}
 
       - name: e2e
-        run: ./batect --output=all e2e
+        run: ./batect e2e
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2

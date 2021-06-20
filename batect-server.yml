@@ -38,6 +38,10 @@ containers:
 
   diary-server-db:
     image: postgres:13.3
+    health_check:
+      command: pg_isready -h localhost
+      interval: 5s
+      retries: 6
     environment:
       POSTGRES_PASSWORD: dev
       POSTGRES_USER: dev
