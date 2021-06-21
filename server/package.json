@@ -17,7 +17,7 @@
     "@types/jest": "^26.0.23",
     "@types/pg": "^8.6.0",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
-    "@typescript-eslint/parser": "^4.26.1",
+    "@typescript-eslint/parser": "^4.27.0",
     "apollo-server-testing": "^2.25.1",
     "eslint": "^7.29.0",
     "eslint-config-airbnb-base": "^14.2.1",
