@@ -9,7 +9,7 @@
     "@graphql-codegen/typescript-resolvers": "^1.19.2",
     "apollo-server": "^2.25.0",
     "concurrently": "^6.2.0",
-    "graphql": "^15.5.0",
+    "graphql": "^15.5.1",
     "node-pg-migrate": "^5.9.0",
     "pg": "^8.6.0"
   },
