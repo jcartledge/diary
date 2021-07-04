@@ -36,12 +36,6 @@ containers:
         container: /app
 
 tasks:
-  localhost-cert:
-    run:
-      container: cert-build-env
-      environment:
-        DOMAIN: localhost
-
   setup:
     run:
       container: diary-build-env
