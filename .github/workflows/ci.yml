@@ -140,6 +140,9 @@ jobs:
           path: .batect/caches
           key: batect-caches-${{ hashFiles('yarn.lock') }}
 
+      - name: certificate
+        run: ./batect client-cert
+
       - name: e2e
         run: ./batect e2e
 

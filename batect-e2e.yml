@@ -4,7 +4,7 @@ containers:
     working_directory: /app
     command: yarn
     environment:
-      CLIENT_URI: "http://diary-client"
+      CLIENT_URI: "https://diary-client"
     volumes:
       - local: .
         container: /app
@@ -23,15 +23,13 @@ containers:
 
 tasks:
   e2e:
-    prerequisites:
-      - setup
     dependencies:
-      - diary-server
+      - diary-server-proxy
       - diary-client
     customise:
       diary-client:
         environment:
-          GRAPHQL_URI: http://diary-server:4000/graphql
+          GRAPHQL_URI: https://diary-server-proxy/graphql
     run:
       container: e2e
       command: yarn workspace e2e start

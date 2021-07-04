@@ -3,10 +3,13 @@ fileignoreconfig:
   checksum: f0045b3f8905880e17671222a920193a34a64f59b0d5fe52d8829b8da70e50dd
   ignore_detectors: []
 - filename: batect
-  checksum: d582d75530daaa3df1290a7e5ab61571d912608f65cf644b6c2c7c368d84d2a4
+  checksum: 4f0f216c3b7d4d1effafc6d7ca862e7ec7e91311949651dd467d7e8eac9fc812
   ignore_detectors: []
 - filename: batect.cmd
-  checksum: 3bb8810b224facfa62a85beedec7373d4e29d60e0653acf2a032bca5ea9d2193
+  checksum: ed74f5dbf12fe24a32ebd1d728eef4d808caaad55f31fc2aa9f1dc62fef2b3e5
+  ignore_detectors: []
+- filename: yarn.lock
+  checksum: 14c978fe87bd8fe2d53a2f34a19e900e7bd20b23159da19a17585138beb2c700
   ignore_detectors: []
 - filename: client/nginx-templates/env.conf.template
   checksum: 11ec59f13030455edcda906172e50ce984db31ead5a1e56749974a10e7081775

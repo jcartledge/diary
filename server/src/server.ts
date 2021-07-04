@@ -9,4 +9,9 @@ type DataSources<TContext> = {
 
 export const buildServer = (
   dataSources: () => DataSources<Record<string, unknown>>
-): ApolloServer => new ApolloServer({ typeDefs, dataSources, resolvers });
+): ApolloServer =>
+  new ApolloServer({
+    typeDefs,
+    dataSources,
+    resolvers,
+  });

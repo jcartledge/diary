@@ -6,6 +6,16 @@ containers:
     environment:
       DATABASE_URL: postgresql://dev:dev@diary-server-db:5432/dev
 
+  diary-server-proxy:
+    image: flaccid/tls-proxy
+    dependencies:
+      - diary-server
+    environment:
+      UPSTREAM_HOST: diary-server
+      UPSTREAM_PORT: 4000
+      FORCE_HTTPS: true
+      SELF_SIGNED: true
+
   diary-server-dev:
     image: node:14.17.0
     working_directory: /app

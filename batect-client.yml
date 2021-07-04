@@ -1,6 +1,11 @@
 containers:
   diary-client:
     image: diary-client:latest
+    environment:
+      SERVER_NAME: diary-client
+    volumes:
+      - local: .certs/diary-client
+        container: /etc/ssl
 
   diary-client-dev:
     image: node:14.17.0
@@ -32,6 +37,12 @@ containers:
         container: /app/e2e/node_modules
 
 tasks:
+  client-cert:
+    run:
+      container: cert-build-env
+      environment:
+        DOMAIN: diary-client
+
   client-lint:
     prerequisites:
       - setup

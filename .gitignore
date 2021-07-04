@@ -1,4 +1,5 @@
 .batect/caches
+.certs
 .env
 client/build
 client/src/tailwind.output.css

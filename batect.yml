@@ -2,7 +2,7 @@ containers:
   diary-build-env:
     image: node:14.17.0
     working_directory: /app
-    command: yarn install --frozen-lockfile
+    command: yarn install
     volumes:
       - local: .
         container: /app
@@ -27,7 +27,21 @@ containers:
       - local: /var/run/docker.sock
         container: /var/run/docker.sock
 
+  cert-build-env:
+    image: kolide/openssl
+    entrypoint: /bin/sh -c
+    command: '''mkdir -p /app/${DOMAIN} && openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=AU/ST=VIC/L=Melbourne/O=Dis/CN=${DOMAIN}" -keyout /app/${DOMAIN}/ssl.key -out /app/${DOMAIN}/ssl.cert'''
+    volumes:
+      - local: .certs
+        container: /app
+
 tasks:
+  localhost-cert:
+    run:
+      container: cert-build-env
+      environment:
+        DOMAIN: localhost
+
   setup:
     run:
       container: diary-build-env
@@ -39,18 +53,6 @@ tasks:
       - diary-server-dev
     run:
       container: diary-client-dev
-
-  start:
-    prerequisites:
-      - setup
-    dependencies:
-      - diary-server-dev
-    run:
-      container: diary-client
-      ports:
-        - 3000:80
-      environment:
-        GRAPHQL_URI: http://localhost:4000/graphql
 
 include:
   - batect-e2e.yml
