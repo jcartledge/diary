@@ -2,11 +2,11 @@ containers:
   diary-server:
     image: diary-server:latest
     dependencies:
-      - diary-server-db
+      - diary-db
     environment:
-      DATABASE_URL: postgresql://dev:dev@diary-server-db:5432/dev
+      DATABASE_URL: postgresql://dev:dev@diary-db:5432/dev
 
-  diary-server-proxy:
+  diary-server-gateway:
     image: flaccid/tls-proxy
     dependencies:
       - diary-server
@@ -23,9 +23,9 @@ containers:
     ports:
       - 4000:4000
     dependencies:
-      - diary-server-db
+      - diary-db
     environment:
-      DATABASE_URL: postgresql://dev:dev@diary-server-db:5432/dev
+      DATABASE_URL: postgresql://dev:dev@diary-db:5432/dev
     health_check:
       command: curl localhost:4000
       retries: 20
@@ -46,7 +46,7 @@ containers:
         name: e2e-node-modules
         container: /app/e2e/node_modules
 
-  diary-server-db:
+  diary-db:
     image: postgres:13.3
     health_check:
       command: pg_isready -h localhost
@@ -77,9 +77,9 @@ tasks:
       - setup
       - server-codegen
     dependencies:
-      - diary-server-db
+      - diary-db
     customise:
-      diary-server-db:
+      diary-db:
         environment:
           POSTGRES_PASSWORD: test
           POSTGRES_USER: test
@@ -88,16 +88,16 @@ tasks:
       container: diary-build-env
       command: yarn workspace server test
       environment:
-        DATABASE_URL: postgresql://test:test@diary-server-db:5432/test
+        DATABASE_URL: postgresql://test:test@diary-db:5432/test
 
   server-coverage:
     prerequisites:
       - setup
       - server-codegen
     dependencies:
-      - diary-server-db
+      - diary-db
     customise:
-      diary-server-db:
+      diary-db:
         environment:
           POSTGRES_PASSWORD: test
           POSTGRES_USER: test
@@ -106,7 +106,7 @@ tasks:
       container: diary-build-env
       command: yarn workspace server coverage
       environment:
-        DATABASE_URL: postgresql://test:test@diary-server-db:5432/test
+        DATABASE_URL: postgresql://test:test@diary-db:5432/test
 
   server-build:
     prerequisites:

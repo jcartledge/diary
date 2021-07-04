@@ -24,14 +24,14 @@ containers:
 tasks:
   e2e:
     dependencies:
-      - diary-server-proxy
+      - diary-server-gateway
       - diary-client
     customise:
       diary-client:
         environment:
-          GRAPHQL_URI: https://diary-server-proxy/graphql
+          GRAPHQL_URI: https://diary-server-gateway/graphql
     run:
       container: e2e
       command: yarn workspace e2e start
       environment:
-        DATABASE_URL: postgresql://dev:dev@diary-server-db:5432/dev
+        DATABASE_URL: postgresql://dev:dev@diary-db:5432/dev
