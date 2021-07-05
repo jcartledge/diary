@@ -44,8 +44,6 @@ tasks:
         DOMAIN: diary-client
 
   client-lint:
-    prerequisites:
-      - setup
     run:
       container: diary-build-env
       command: yarn workspace client lint
@@ -58,16 +56,11 @@ tasks:
       command: yarn workspace client test
 
   client-coverage:
-    prerequisites:
-      - setup
     run:
       container: diary-build-env
       command: yarn workspace client coverage
 
   client-build:
-    prerequisites:
-      - setup
-      - server-codegen
     run:
       container: diary-build-env
       command: yarn workspace client build
@@ -75,9 +68,15 @@ tasks:
         REACT_APP_GRAPHQL_URI: __GRAPHQL_URI
 
   client-package:
-    prerequisites:
-      - client-build
     run:
       container: diary-package-env
       command: docker build -t diary-client .
       working_directory: /app/client
+
+  client-ci:
+    prerequisites:
+      - client-lint
+      - client-coverage
+      - server-codegen
+      - client-build
+      - client-package

@@ -55,14 +55,8 @@ jobs:
           path: .batect/caches
           key: batect-caches-${{ hashFiles('yarn.lock') }}
 
-      - name: Lint code
-        run: ./batect client-lint
-
-      - name: Unit tests
-        run: ./batect client-coverage
-
-      - name: Build docker image
-        run: ./batect client-package
+      - name: Build/test/package
+        run: ./batect client-ci
 
       - name: Upload image
         uses: ishworkh/docker-image-artifact-upload@v1
