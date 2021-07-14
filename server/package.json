@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@graphql-codegen/cli": "^1.21.6",
+    "@graphql-codegen/cli": "^1.21.7",
     "@graphql-codegen/typescript": "^1.22.4",
     "@graphql-codegen/typescript-resolvers": "^1.19.5",
     "apollo-server": "^2.25.2",
@@ -17,7 +17,7 @@
     "@types/jest": "^26.0.24",
     "@types/pg": "^8.6.1",
     "@typescript-eslint/eslint-plugin": "^4.28.2",
-    "@typescript-eslint/parser": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.3",
     "apollo-server-testing": "^2.25.2",
     "eslint": "^7.30.0",
     "eslint-config-airbnb-base": "^14.2.1",
