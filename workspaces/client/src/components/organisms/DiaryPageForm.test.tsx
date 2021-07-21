@@ -1,13 +1,13 @@
-import { ApolloProvider } from "@apollo/client";
 import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import DateContextProvider from "context/DateContext";
-import { DiaryEntryContextProvider } from "context/DiaryEntryContext";
+import { withDate, withDiaryEntry } from "components/testWrappers";
 import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,
 } from "graphql/queries";
 import { createMockClient } from "mock-apollo-client";
+import { wrap } from "souvlaki";
+import { withApollo } from "souvlaki-apollo";
 import { buildDiaryEntry } from "util/buildDiaryEntry";
 import { DiaryDate } from "util/date";
 import DiaryPageForm from "./DiaryPageForm";
@@ -26,15 +26,9 @@ describe("DiaryPageForm", () => {
       Promise.resolve({ data: { diaryEntry } })
     );
 
-    const diary = render(
-      <ApolloProvider client={mockClient}>
-        <DateContextProvider>
-          <DiaryEntryContextProvider>
-            <DiaryPageForm />
-          </DiaryEntryContextProvider>
-        </DateContextProvider>
-      </ApolloProvider>
-    );
+    const diary = render(<DiaryPageForm />, {
+      wrapper: wrap(withApollo(mockClient), withDate(), withDiaryEntry()),
+    });
 
     expect(await diary.findByLabelText("What happened?")).toHaveTextContent(
       "Lots"
@@ -62,15 +56,10 @@ describe("DiaryPageForm", () => {
       .mockResolvedValue({ data: { diaryEntry: buildDiaryEntry() } });
     mockClient.setRequestHandler(DIARY_ENTRY_QUERY, diaryEntryQueryHandler);
 
-    render(
-      <ApolloProvider client={mockClient}>
-        <DateContextProvider date={date}>
-          <DiaryEntryContextProvider>
-            <DiaryPageForm />
-          </DiaryEntryContextProvider>
-        </DateContextProvider>
-      </ApolloProvider>
-    );
+    render(<DiaryPageForm />, {
+      wrapper: wrap(withApollo(mockClient), withDate(date), withDiaryEntry()),
+    });
+
     await waitFor(() => {
       // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
     });
@@ -97,15 +86,13 @@ describe("DiaryPageForm", () => {
       updateDiaryEntryMutationHandler
     );
 
-    const diaryPageForm = render(
-      <ApolloProvider client={mockClient}>
-        <DateContextProvider date={date}>
-          <DiaryEntryContextProvider saveTimeoutInterval={10}>
-            <DiaryPageForm />
-          </DiaryEntryContextProvider>
-        </DateContextProvider>
-      </ApolloProvider>
-    );
+    const diaryPageForm = render(<DiaryPageForm />, {
+      wrapper: wrap(
+        withApollo(mockClient),
+        withDate(date),
+        withDiaryEntry({ saveTimeoutInterval: 10 })
+      ),
+    });
 
     await waitFor(() => {
       // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.

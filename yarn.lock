@@ -13551,6 +13551,16 @@ sourcemap-codec@^1.4.4:
   resolved "https://registry.yarnpkg.com/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz#ea804bd94857402e6992d05a38ef1ae35a9ab4c4"
   integrity sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==
 
+souvlaki-apollo@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/souvlaki-apollo/-/souvlaki-apollo-0.1.1.tgz#6038824371d04123df919e79bb069f60353c0261"
+  integrity sha512-FEVmK/zgxPUTv5mX/ZPrEuTTG72CnRfVGKC0qLvirEbPPHdyMP7xQZt0wV75OAlT7+0CM1Nb3X0rYllx/socBQ==
+
+souvlaki@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/souvlaki/-/souvlaki-0.1.1.tgz#7e4c36f35e632ac3bf1388f9b39a5725418acea3"
+  integrity sha512-rmJuALaR3d34xb3rp4xBUB9ZB+DVEto/rtBg5lepWgwR/u14xrAQjcaW2rnG9MJkfYNCMX2radgSBBgSzJATsQ==
+
 spawn-command@^0.0.2-1:
   version "0.0.2-1"
   resolved "https://registry.yarnpkg.com/spawn-command/-/spawn-command-0.0.2-1.tgz#62f5e9466981c1b796dc5929937e11c9c6921bd0"

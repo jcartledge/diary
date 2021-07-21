@@ -14,7 +14,7 @@ import { buildDiaryEntry } from "util/buildDiaryEntry";
 import { Builder } from "util/builder";
 import { DateContext } from "./DateContext";
 
-interface DiaryEntryContextValue {
+export interface DiaryEntryContextValue {
   diaryEntry: DiaryEntry;
   updateDiaryEntry: (field: keyof DiaryEntry) => (value: string) => void;
   isDirty: boolean;
@@ -35,7 +35,7 @@ export const DiaryEntryContext = React.createContext<DiaryEntryContextValue>(
   buildDiaryEntryContextValue()
 );
 
-interface DiaryEntryContextProps {
+export interface DiaryEntryContextProps {
   saveTimeoutInterval?: number;
 }
 

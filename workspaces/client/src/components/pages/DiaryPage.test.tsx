@@ -1,10 +1,11 @@
-import { ApolloProvider } from "@apollo/client";
 import { act, render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { LocaleContext } from "context/LocaleContext";
 import { DIARY_ENTRY_QUERY } from "graphql/queries";
 import { createMockClient } from "mock-apollo-client";
+import { wrap } from "souvlaki";
+import { withApollo } from "souvlaki-apollo";
 import { DiaryDate } from "util/date";
+import { withLocale } from "../testWrappers";
 import DiaryPage from "./DiaryPage";
 
 describe("DiaryPage", () => {
@@ -16,13 +17,9 @@ describe("DiaryPage", () => {
     const mockClient = createMockClient();
     mockClient.setRequestHandler(DIARY_ENTRY_QUERY, requestHandler);
 
-    const diaryPage = render(
-      <ApolloProvider client={mockClient}>
-        <LocaleContext.Provider value="en-AU">
-          <DiaryPage />
-        </LocaleContext.Provider>
-      </ApolloProvider>
-    );
+    const diaryPage = render(<DiaryPage />, {
+      wrapper: wrap(withLocale("en-AU"), withApollo(mockClient)),
+    });
     await waitFor(() => {
       // Need this waitFor to prevent the apollo hook from causing an act warning.
     });
