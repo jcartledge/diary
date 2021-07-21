@@ -1,5 +1,4 @@
 import { ApolloServer, gql } from "apollo-server";
-import { createTestClient } from "apollo-server-testing";
 import { Client } from "pg";
 import {
   buildDiaryEntry,
@@ -49,13 +48,12 @@ const UPDATE_DIARY_ENTRY_MUTATION = gql`
 const setup = async (diaryEntries: DiaryEntry[] = []) => {
   const dbClient = await getDbClient();
   await createDiaryEntries(dbClient, diaryEntries);
-  const server = await buildServerWithMockedDb(dbClient);
-  const apolloClient = createTestClient(server);
+  const apolloServer = await buildServerWithMockedDb(dbClient);
   const cleanup = async () => {
     await dbClient.query(`DELETE FROM "${diaryEntriesTableName}"`);
     await dbClient.end();
   };
-  return { apolloClient, dbClient, cleanup };
+  return { apolloServer, dbClient, cleanup };
 };
 
 const createDiaryEntries = async (
@@ -72,17 +70,14 @@ describe("DiaryEntry query", () => {
   it("selects a diary entry", async () => {
     const date = "2012-01-01";
     const diaryEntry = buildDiaryEntry({ date, couldBeImproved: "Everything" });
-    const {
-      apolloClient: { query },
-      cleanup,
-    } = await setup([diaryEntry]);
+    const { apolloServer, cleanup } = await setup([diaryEntry]);
 
-    const response = await query({
+    const response = await apolloServer.executeOperation({
       query: DIARY_ENTRY_QUERY,
       variables: { date },
     });
 
-    expect(response.data.diaryEntry).toEqual(
+    expect(response?.data?.diaryEntry).toEqual(
       expect.objectContaining(diaryEntry)
     );
 
@@ -91,17 +86,16 @@ describe("DiaryEntry query", () => {
 
   it("creates a diary entry if none is found", async () => {
     const date = "2012-01-01";
-    const {
-      apolloClient: { query },
-      cleanup,
-    } = await setup();
+    const { apolloServer, cleanup } = await setup();
 
-    const response = await query({
+    const response = await apolloServer.executeOperation({
       query: DIARY_ENTRY_QUERY,
       variables: { date },
     });
 
-    expect(response.data.diaryEntry).toEqual(expect.objectContaining({ date }));
+    expect(response?.data?.diaryEntry).toEqual(
+      expect.objectContaining({ date })
+    );
 
     cleanup();
   });
@@ -111,23 +105,20 @@ describe("UpdateDiaryEntry mutation", () => {
   it("upserts the entry for the date passed", async () => {
     const date = "2012-01-01";
     const diaryEntry = buildDiaryEntry({ date, couldBeImproved: "Everything" });
-    const {
-      apolloClient: { query, mutate },
-      cleanup,
-    } = await setup([diaryEntry]);
+    const { apolloServer, cleanup } = await setup([diaryEntry]);
 
     const updatedDiaryEntry = { ...diaryEntry, wentWell: "asdf" };
-    await mutate({
-      mutation: UPDATE_DIARY_ENTRY_MUTATION,
+    await apolloServer.executeOperation({
+      query: UPDATE_DIARY_ENTRY_MUTATION,
       variables: { diaryEntry: updatedDiaryEntry },
     });
 
-    const response = await query({
+    const response = await apolloServer.executeOperation({
       query: DIARY_ENTRY_QUERY,
       variables: { date },
     });
 
-    expect(response.data.diaryEntry).toEqual(updatedDiaryEntry);
+    expect(response?.data?.diaryEntry).toEqual(updatedDiaryEntry);
 
     cleanup();
   });
