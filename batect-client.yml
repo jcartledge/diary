@@ -71,7 +71,7 @@ tasks:
     run:
       container: diary-package-env
       command: docker build -t diary-client .
-      working_directory: /app/client
+      working_directory: /app/workspaces/client
 
   client-ci:
     prerequisites:

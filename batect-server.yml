@@ -122,4 +122,4 @@ tasks:
     run:
       container: diary-package-env
       command: docker build -t diary-server .
-      working_directory: /app/server
+      working_directory: /app/workspaces/server
