@@ -1,13 +1,12 @@
 .batect/caches
 .certs
 .env
-client/build
-client/src/tailwind.output.css
 coverage
 e2e/test-results
 node_modules/
 resolvers-types.ts
-server/.dev
-server/build
+workspaces/client/build
+workspaces/client/src/tailwind.output.css
+workspaces/server/build
 yarn-debug.log*
 yarn-error.log*

@@ -8,9 +8,7 @@
     "client": "yarn workspace client"
   },
   "workspaces": [
-    "client",
-    "server",
-    "e2e"
+    "workspaces/*"
   ],
   "devDependencies": {
     "concurrently": "^6.2.0"
