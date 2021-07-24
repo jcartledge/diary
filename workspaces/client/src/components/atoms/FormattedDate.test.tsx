@@ -1,7 +1,6 @@
 import { render } from "@testing-library/react";
 import DateContextProvider from "context/DateContext";
 import { LocaleContext } from "context/LocaleContext";
-import React from "react";
 import { DiaryDate } from "util/date";
 import { FormattedDate } from "./FormattedDate";
 
