@@ -1,10 +1,11 @@
-import { ApolloProvider } from "@apollo/client";
 import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { buildDateContextValue, DateContext } from "context/DateContext";
 import { DIARY_ENTRY_QUERY } from "graphql/queries";
 import { createMockClient, MockApolloClient } from "mock-apollo-client";
 import { DiaryEntry } from "server/src/resolvers-types";
+import { wrap } from "souvlaki";
+import { withApollo } from "souvlaki-apollo";
+import { withRoute } from "souvlaki-react-router";
 import { buildDiaryEntry } from "util/buildDiaryEntry";
 import { DiaryDate } from "util/date";
 import DateNextButton from "./DateNextButton";
@@ -23,62 +24,36 @@ const buildMockClient = (
 };
 
 describe("DateNextButton", () => {
-  it("increments the date in the context", async () => {
-    const mockDateContextValue = buildDateContextValue({
-      date: new DiaryDate().getPrevious(),
-      incrementDate: jest.fn(),
-    });
+  it("links to the next date", async () => {
+    const onPathChange = jest.fn();
 
     const dateNextButton = render(
-      <ApolloProvider client={buildMockClient()}>
-        <DateContext.Provider value={mockDateContextValue}>
-          <DateNextButton />
-        </DateContext.Provider>
-      </ApolloProvider>
+      <DateNextButton />, {
+        wrapper: wrap(
+          withApollo(buildMockClient()),
+          withRoute('/page/:isoDateString', { isoDateString: '2011-07-24' }, onPathChange)
+        )
+      }, 
     );
 
     await act(async () =>
       userEvent.click(dateNextButton.getByRole("button", { name: "next" }))
     );
 
-    expect(mockDateContextValue.incrementDate).toHaveBeenCalledTimes(1);
-  });
-
-  it("increments once for each click", async () => {
-    const mockDateContextValue = buildDateContextValue({
-      date: new DiaryDate().getPrevious().getPrevious().getPrevious(),
-      incrementDate: jest.fn(),
-    });
-
-    const dateNextButton = render(
-      <ApolloProvider client={buildMockClient()}>
-        <DateContext.Provider value={mockDateContextValue}>
-          <DateNextButton />
-        </DateContext.Provider>
-      </ApolloProvider>
-    );
-    await act(async () => {
-      const nextButton = dateNextButton.getByRole("button", { name: "next" });
-      userEvent.click(nextButton);
-      userEvent.click(nextButton);
-      userEvent.click(nextButton);
-    });
-
-    expect(mockDateContextValue.incrementDate).toHaveBeenCalledTimes(3);
+    expect(onPathChange).toHaveBeenCalledWith('/page/2011-07-25');
   });
 
   it("does not increment past the current date", async () => {
-    const mockDateContextValue = buildDateContextValue({
-      date: new DiaryDate(),
-      incrementDate: jest.fn(),
-    });
+    const onPathChange = jest.fn();
+    const today = new DiaryDate();
 
     const dateNextButton = render(
-      <ApolloProvider client={buildMockClient()}>
-        <DateContext.Provider value={mockDateContextValue}>
-          <DateNextButton />
-        </DateContext.Provider>
-      </ApolloProvider>
+      <DateNextButton />, {
+        wrapper: wrap(
+          withApollo(buildMockClient()),
+          withRoute('/page/:isoDateString', { isoDateString: today.getKey() }, onPathChange)
+        )
+      }, 
     );
 
     const nextButton = dateNextButton.getByRole("button", { name: "next" });
@@ -88,21 +63,20 @@ describe("DateNextButton", () => {
       userEvent.click(nextButton);
     });
 
-    expect(mockDateContextValue.incrementDate).not.toHaveBeenCalled();
+    expect(onPathChange).not.toHaveBeenCalledWith(today.getNext().getKey());
   });
 
   it("bolds the button text if there is an entry on the next date", async () => {
-    const mockDateContextValue = buildDateContextValue({
-      date: new DiaryDate().getPrevious(),
-    });
+    const date = new DiaryDate().getPrevious();
     const mockClient = buildMockClient({ whatHappened: "Lots" });
 
     render(
-      <ApolloProvider client={mockClient}>
-        <DateContext.Provider value={mockDateContextValue}>
-          <DateNextButton />
-        </DateContext.Provider>
-      </ApolloProvider>
+      <DateNextButton />, {
+        wrapper: wrap(
+          withApollo(mockClient),
+          withRoute('/page/:isoDateString', { isoDateString: date.getKey() })
+        )
+      }, 
     );
     const nextButton = screen.getByRole("button", { name: "next" });
 
@@ -110,17 +84,16 @@ describe("DateNextButton", () => {
   });
 
   it("does not bold the button text if there is not an entry on the next date", async () => {
-    const mockDateContextValue = buildDateContextValue({
-      date: new DiaryDate().getPrevious(),
-    });
+    const date = new DiaryDate().getPrevious();
     const mockClient = buildMockClient();
 
     render(
-      <ApolloProvider client={mockClient}>
-        <DateContext.Provider value={mockDateContextValue}>
-          <DateNextButton />
-        </DateContext.Provider>
-      </ApolloProvider>
+      <DateNextButton />, {
+        wrapper: wrap(
+          withApollo(mockClient),
+          withRoute('/page/:isoDateString', { isoDateString: date.getKey() })
+        )
+      }, 
     );
     const nextButton = screen.getByRole("button", { name: "next" });
 

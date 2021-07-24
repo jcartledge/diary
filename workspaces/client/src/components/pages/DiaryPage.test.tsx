@@ -4,6 +4,7 @@ import { DIARY_ENTRY_QUERY } from "graphql/queries";
 import { createMockClient } from "mock-apollo-client";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
+import { withRoute } from "souvlaki-react-router";
 import { DiaryDate } from "util/date";
 import { withLocale } from "../testWrappers";
 import DiaryPage from "./DiaryPage";
@@ -18,7 +19,10 @@ describe("DiaryPage", () => {
     mockClient.setRequestHandler(DIARY_ENTRY_QUERY, requestHandler);
 
     const diaryPage = render(<DiaryPage />, {
-      wrapper: wrap(withLocale("en-AU"), withApollo(mockClient)),
+      wrapper: wrap(
+        withLocale("en-AU"),
+        withRoute('/page/:isoDateString', { isoDateString:new DiaryDate().getKey()}),
+        withApollo(mockClient)),
     });
     await waitFor(() => {
       // Need this waitFor to prevent the apollo hook from causing an act warning.

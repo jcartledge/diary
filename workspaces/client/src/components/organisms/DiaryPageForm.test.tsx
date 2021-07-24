@@ -1,6 +1,6 @@
 import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { withDate, withDiaryEntry } from "components/testWrappers";
+import { withDiaryEntry } from "components/testWrappers";
 import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,
@@ -8,6 +8,7 @@ import {
 import { createMockClient } from "mock-apollo-client";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
+import { withRoute } from "souvlaki-react-router";
 import { buildDiaryEntry } from "util/buildDiaryEntry";
 import { DiaryDate } from "util/date";
 import DiaryPageForm from "./DiaryPageForm";
@@ -27,7 +28,13 @@ describe("DiaryPageForm", () => {
     );
 
     const diary = render(<DiaryPageForm />, {
-      wrapper: wrap(withApollo(mockClient), withDate(), withDiaryEntry()),
+      wrapper: wrap(
+        withApollo(mockClient),
+        withRoute("/page/:isoDateString", {
+          isoDateString: new DiaryDate().getKey(),
+        }),
+        withDiaryEntry()
+      ),
     });
 
     expect(await diary.findByLabelText("What happened?")).toHaveTextContent(
@@ -57,7 +64,11 @@ describe("DiaryPageForm", () => {
     mockClient.setRequestHandler(DIARY_ENTRY_QUERY, diaryEntryQueryHandler);
 
     render(<DiaryPageForm />, {
-      wrapper: wrap(withApollo(mockClient), withDate(date), withDiaryEntry()),
+      wrapper: wrap(
+        withApollo(mockClient),
+        withRoute("/page/:isoDateString", { isoDateString: date.getKey() }),
+        withDiaryEntry()
+      ),
     });
 
     await waitFor(() => {
@@ -89,7 +100,7 @@ describe("DiaryPageForm", () => {
     const diaryPageForm = render(<DiaryPageForm />, {
       wrapper: wrap(
         withApollo(mockClient),
-        withDate(date),
+        withRoute("/page/:isoDateString", { isoDateString: date.getKey() }),
         withDiaryEntry({ saveTimeoutInterval: 10 })
       ),
     });
@@ -98,7 +109,7 @@ describe("DiaryPageForm", () => {
       // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
     });
 
-    await userEvent.type(
+    userEvent.type(
       diaryPageForm.getByLabelText(/What happened/),
       "Nothing happened"
     );

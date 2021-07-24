@@ -1,19 +1,20 @@
-import { DateContext } from "context/DateContext";
 import { useDoesEntryExistForPreviousDate } from "graphql/queries";
-import React, { useContext } from "react";
+import { useDate } from "context/useDate";
+import { Link } from "react-router-dom";
 
-const DatePrevButton: React.FC = () => {
-  const { date, decrementDate } = useContext(DateContext);
+const DatePrevButton = () => {
+  const date = useDate();
   const doesEntryExistForPreviousDate = useDoesEntryExistForPreviousDate(date);
   return (
-    <button
-      className={`p-2 border rounded ${
-        doesEntryExistForPreviousDate ? "font-bold" : ""
-      }`}
-      onClick={() => decrementDate()}
-    >
-      prev
-    </button>
+    <Link to={`/page/${date.getPrevious().getKey()}`}>
+      <button
+        className={`p-2 border rounded ${
+          doesEntryExistForPreviousDate ? "font-bold" : ""
+        }`}
+      >
+        prev
+      </button>
+    </Link>
   );
 };
 

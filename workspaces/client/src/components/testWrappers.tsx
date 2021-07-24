@@ -1,4 +1,3 @@
-import DateContextProvider from "context/DateContext";
 import {
   buildDiaryEntryContextValue,
   DiaryEntryContext,
@@ -11,10 +10,6 @@ import { createHelper } from "souvlaki";
 
 export const withLocale = createHelper((locale) => ({ children }) => (
   <LocaleContext.Provider value={locale}>{children}</LocaleContext.Provider>
-));
-
-export const withDate = createHelper((date?) => ({ children }) => (
-  <DateContextProvider date={date}>{children}</DateContextProvider>
 ));
 
 export const withDiaryEntry = createHelper(

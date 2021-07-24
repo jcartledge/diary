@@ -1,5 +1,5 @@
 import { render, waitFor } from "@testing-library/react";
-import { withDate, withDiaryEntry } from "components/testWrappers";
+import { withDiaryEntry } from "components/testWrappers";
 import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,
@@ -8,7 +8,9 @@ import { createMockClient } from "mock-apollo-client";
 import React, { useContext, useEffect } from "react";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
+import { withRoute } from "souvlaki-react-router";
 import { buildDiaryEntry } from "util/buildDiaryEntry";
+import { DiaryDate } from "util/date";
 import { DiaryEntryContext } from "./DiaryEntryContext";
 
 const buildMockClient = () => {
@@ -32,7 +34,9 @@ type Wrappers = { wrapper: React.ComponentType };
 const wrappers = (): Wrappers => ({
   wrapper: wrap(
     withApollo(buildMockClient()),
-    withDate(),
+    withRoute("/page/:isoDateString", {
+      isoDateString: new DiaryDate().getKey(),
+    }),
     withDiaryEntry({ saveTimeoutInterval: 1 })
   ),
 });

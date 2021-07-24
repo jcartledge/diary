@@ -1,16 +1,17 @@
 import DiaryHeader from "components/organisms/DiaryHeader";
 import DiaryPageForm from "components/organisms/DiaryPageForm";
-import DateContextProvider from "context/DateContext";
 import { DiaryEntryContextProvider } from "context/DiaryEntryContext";
 import React from "react";
 
+export interface DiaryPageParams {
+  isoDateString: string;
+}
+
 const DiaryPage: React.FC = () => (
-  <DateContextProvider>
-    <DiaryEntryContextProvider>
-      <DiaryHeader />
-      <DiaryPageForm />
-    </DiaryEntryContextProvider>
-  </DateContextProvider>
+  <DiaryEntryContextProvider>
+    <DiaryHeader />
+    <DiaryPageForm />
+  </DiaryEntryContextProvider>
 );
 
 export default DiaryPage;

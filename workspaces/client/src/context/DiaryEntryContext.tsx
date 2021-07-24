@@ -1,3 +1,4 @@
+import { useDate } from "context/useDate";
 import {
   useDiaryEntryQuery,
   useUpdateDiaryEntryMutation,
@@ -5,14 +6,12 @@ import {
 import React, {
   PropsWithChildren,
   useCallback,
-  useContext,
   useEffect,
   useState,
 } from "react";
 import { DiaryEntry } from "server/src/resolvers-types";
 import { buildDiaryEntry } from "util/buildDiaryEntry";
 import { Builder } from "util/builder";
-import { DateContext } from "./DateContext";
 
 export interface DiaryEntryContextValue {
   diaryEntry: DiaryEntry;
@@ -42,7 +41,7 @@ export interface DiaryEntryContextProps {
 export const DiaryEntryContextProvider: React.FC<
   PropsWithChildren<DiaryEntryContextProps>
 > = ({ children, saveTimeoutInterval = 1000 }) => {
-  const { date } = useContext(DateContext);
+  const date = useDate();
   const { data } = useDiaryEntryQuery(date);
   const [currentDiaryEntry, setDiaryEntry] = useState<DiaryEntry>(
     buildDiaryEntry()
