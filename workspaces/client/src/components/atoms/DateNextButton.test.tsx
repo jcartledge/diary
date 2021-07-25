@@ -6,6 +6,7 @@ import { DiaryEntry } from "server/src/resolvers-types";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { withRoute } from "souvlaki-react-router";
+import { withDate } from 'testWrappers';
 import { buildDiaryEntry } from "util/buildDiaryEntry";
 import { DiaryDate } from "util/date";
 import DateNextButton from "./DateNextButton";
@@ -27,11 +28,14 @@ describe("DateNextButton", () => {
   it("links to the next date", async () => {
     const onPathChange = jest.fn();
 
+    const today = new DiaryDate();
+    const yesterday = today.getPrevious();
     const dateNextButton = render(
       <DateNextButton />, {
         wrapper: wrap(
-          withApollo(buildMockClient()),
-          withRoute('/page/:isoDateString', { isoDateString: '2011-07-24' }, onPathChange)
+          withApollo(),
+          withDate(yesterday),
+          withRoute('', {}, onPathChange)
         )
       }, 
     );
@@ -40,7 +44,7 @@ describe("DateNextButton", () => {
       userEvent.click(dateNextButton.getByRole("button", { name: "next" }))
     );
 
-    expect(onPathChange).toHaveBeenCalledWith('/page/2011-07-25');
+    expect(onPathChange).toHaveBeenCalledWith(`/page/${today.getKey()}`);
   });
 
   it("does not increment past the current date", async () => {
@@ -50,8 +54,9 @@ describe("DateNextButton", () => {
     const dateNextButton = render(
       <DateNextButton />, {
         wrapper: wrap(
-          withApollo(buildMockClient()),
-          withRoute('/page/:isoDateString', { isoDateString: today.getKey() }, onPathChange)
+          withApollo(),
+          withDate(today),
+          withRoute('', {}, onPathChange)
         )
       }, 
     );
@@ -74,7 +79,8 @@ describe("DateNextButton", () => {
       <DateNextButton />, {
         wrapper: wrap(
           withApollo(mockClient),
-          withRoute('/page/:isoDateString', { isoDateString: date.getKey() })
+          withDate(date),
+          withRoute()
         )
       }, 
     );
@@ -91,7 +97,8 @@ describe("DateNextButton", () => {
       <DateNextButton />, {
         wrapper: wrap(
           withApollo(mockClient),
-          withRoute('/page/:isoDateString', { isoDateString: date.getKey() })
+          withDate(date),
+          withRoute()
         )
       }, 
     );

@@ -11,6 +11,7 @@
     "@types/react-dom": "^17.0.9",
     "@types/styled-components": "^5.1.11",
     "graphql": "^15.5.1",
+    "iso-datestring-validator": "^2.1.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
@@ -66,6 +67,7 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/src/App.tsx",
+      "/src/routes/index.tsx",
       "/src/graphql/client.ts",
       "/src/index.tsx",
       "/src/serviceWorker.ts"

@@ -1,5 +1,5 @@
+import { useDate } from "context/DateContext";
 import { useDoesEntryExistForNextDate } from "graphql/queries";
-import { useDate } from "context/useDate";
 import React from "react";
 import { Link } from "react-router-dom";
 

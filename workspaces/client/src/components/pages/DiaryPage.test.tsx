@@ -1,47 +1,73 @@
-import { act, render, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { DIARY_ENTRY_QUERY } from "graphql/queries";
 import { createMockClient } from "mock-apollo-client";
+import { act } from "react-dom/test-utils";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { withRoute } from "souvlaki-react-router";
+import { withDate, withDiaryEntry, withLocale } from "testWrappers";
+import { buildDiaryEntry } from "util/buildDiaryEntry";
 import { DiaryDate } from "util/date";
-import { withLocale } from "../testWrappers";
 import DiaryPage from "./DiaryPage";
 
 describe("DiaryPage", () => {
-  it("retrieves the diary entry for the correct date when changing dates", async () => {
+  it("shows an error page if an invalid date is supplied", () => {
+    render(<DiaryPage />, {
+      wrapper: wrap(
+        withRoute("/page/:isoDateString", { isoDateString: "ASDF" })
+      ),
+    });
+
+    expect(screen.getByText("Error")).toBeInTheDocument();
+  });
+
+  it("shows the entry for the date from the route", async () => {
     const today = new DiaryDate();
     const yesterday = today.getPrevious();
-
-    const requestHandler = jest.fn();
+    const diaryEntries = {
+      [today.getKey()]: buildDiaryEntry({
+        whatHappened: "Today's entry",
+      }),
+      [yesterday.getKey()]: buildDiaryEntry({
+        whatHappened: "Yesterday's entry",
+      }),
+    };
     const mockClient = createMockClient();
-    mockClient.setRequestHandler(DIARY_ENTRY_QUERY, requestHandler);
+    mockClient.setRequestHandler(
+      DIARY_ENTRY_QUERY,
+      jest.fn(({ date }) =>
+        Promise.resolve({
+          data: { diaryEntry: diaryEntries[date] },
+        })
+      )
+    );
 
-    const diaryPage = render(<DiaryPage />, {
+    render(<DiaryPage />, {
       wrapper: wrap(
+        withRoute("/page/:isoDateString", { isoDateString: today.getKey() }),
         withLocale("en-AU"),
-        withRoute('/page/:isoDateString', { isoDateString:new DiaryDate().getKey()}),
-        withApollo(mockClient)),
+        withDate(today),
+        withApollo(mockClient),
+        withDiaryEntry()
+      ),
     });
+
     await waitFor(() => {
-      // Need this waitFor to prevent the apollo hook from causing an act warning.
+      // required to prevent act warnings
     });
 
-    expect(requestHandler).toHaveBeenCalledWith({ date: today.getKey() });
-    requestHandler.mockReset();
+    expect(screen.getByText("Today's entry")).toBeInTheDocument();
+    expect(screen.queryByText("Yesterday's entry")).not.toBeInTheDocument();
 
-    await act(async () => {
-      userEvent.click(diaryPage.getByRole("button", { name: "prev" }));
+    act(() => {
+      const prevButton = screen.getByRole("button", { name: "prev" });
+      userEvent.click(prevButton);
     });
 
-    expect(requestHandler).toHaveBeenCalledWith({ date: yesterday.getKey() });
-    requestHandler.mockReset();
-
-    // From cache:
-    await act(async () => {
-      userEvent.click(diaryPage.getByRole("button", { name: "next" }));
+    await waitFor(() => {
+      expect(screen.getByText("Yesterday's entry")).toBeInTheDocument();
+      expect(screen.queryByText("Today's entry")).not.toBeInTheDocument();
     });
-    expect(requestHandler).toHaveBeenCalledWith({ date: today.getKey() });
   });
 });

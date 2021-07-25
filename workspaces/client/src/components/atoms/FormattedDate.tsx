@@ -1,5 +1,5 @@
 import { LocaleContext } from "context/LocaleContext";
-import { useDate } from "context/useDate";
+import { useDate } from "context/DateContext";
 import React, { useContext } from "react";
 
 export const FormattedDate: React.FC = () => {

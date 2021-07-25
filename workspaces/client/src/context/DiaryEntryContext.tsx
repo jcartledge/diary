@@ -1,4 +1,3 @@
-import { useDate } from "context/useDate";
 import {
   useDiaryEntryQuery,
   useUpdateDiaryEntryMutation,
@@ -12,6 +11,7 @@ import React, {
 import { DiaryEntry } from "server/src/resolvers-types";
 import { buildDiaryEntry } from "util/buildDiaryEntry";
 import { Builder } from "util/builder";
+import { useDate } from "./DateContext";
 
 export interface DiaryEntryContextValue {
   diaryEntry: DiaryEntry;

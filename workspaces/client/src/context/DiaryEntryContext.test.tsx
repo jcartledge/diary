@@ -1,5 +1,5 @@
 import { render, waitFor } from "@testing-library/react";
-import { withDiaryEntry } from "components/testWrappers";
+import { withDiaryEntry } from "testWrappers";
 import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,

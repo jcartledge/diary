@@ -1,9 +1,8 @@
 import { Auth0Provider } from "@auth0/auth0-react";
-import DiaryPage from "components/pages/DiaryPage";
 import React from "react";
-import { BrowserRouter, Redirect, Route } from "react-router-dom";
-import { DiaryDate } from "util/date";
+import { BrowserRouter } from "react-router-dom";
 import { LocaleContext } from "./context/LocaleContext";
+import { Routes } from "./routes";
 
 const App: React.FC = () => {
   return (
@@ -14,12 +13,7 @@ const App: React.FC = () => {
         redirectUri={window.location.origin}
       >
         <LocaleContext.Provider value={navigator.language}>
-          <Route exact path="/">
-            <Redirect to={`/page/${new DiaryDate().getKey()}`} />
-          </Route>
-          <Route path="/page/:isoDateString">
-            <DiaryPage />
-          </Route>
+          <Routes />
         </LocaleContext.Provider>
       </Auth0Provider>
     </BrowserRouter>

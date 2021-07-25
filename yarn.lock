@@ -8619,6 +8619,11 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
+iso-datestring-validator@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/iso-datestring-validator/-/iso-datestring-validator-2.1.4.tgz#0e03a34c9414ab642c03b3d5e5dba032ee185440"
+  integrity sha512-96YL0rmgJbt61klVlHt0qzmyYxXflvN0fY7wCd4GweZXd2gXUdZ0uqGqq37IqVFP+NmYtUHJLvZIYGc2TNlhqQ==
+
 isobject@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-2.1.0.tgz#f065561096a3f1da2ef46272f815c840d87e0c89"

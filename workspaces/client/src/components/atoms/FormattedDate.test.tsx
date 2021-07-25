@@ -1,7 +1,6 @@
 import { render } from "@testing-library/react";
-import { withLocale } from "components/testWrappers";
 import { wrap } from "souvlaki";
-import { withRoute } from "souvlaki-react-router";
+import { withDate, withLocale } from "testWrappers";
 import { DiaryDate } from "util/date";
 import { FormattedDate } from "./FormattedDate";
 
@@ -10,10 +9,7 @@ describe("Diary", () => {
     const date = new DiaryDate(new Date(Date.UTC(2010, 0, 1, 12, 0, 0)));
 
     const formattedDate = render(<FormattedDate />, {
-      wrapper: wrap(
-        withLocale("en-AU"),
-        withRoute("/page/:isoDateString", { isoDateString: date.getKey() })
-      ),
+      wrapper: wrap(withLocale("en-AU"), withDate(date)),
     });
 
     expect(

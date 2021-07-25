@@ -1,6 +1,5 @@
 import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { withDiaryEntry } from "components/testWrappers";
 import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,
@@ -9,6 +8,7 @@ import { createMockClient } from "mock-apollo-client";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { withRoute } from "souvlaki-react-router";
+import { withDate, withDiaryEntry } from "testWrappers";
 import { buildDiaryEntry } from "util/buildDiaryEntry";
 import { DiaryDate } from "util/date";
 import DiaryPageForm from "./DiaryPageForm";
@@ -30,9 +30,8 @@ describe("DiaryPageForm", () => {
     const diary = render(<DiaryPageForm />, {
       wrapper: wrap(
         withApollo(mockClient),
-        withRoute("/page/:isoDateString", {
-          isoDateString: new DiaryDate().getKey(),
-        }),
+        withDate(),
+        withRoute(),
         withDiaryEntry()
       ),
     });
@@ -55,7 +54,7 @@ describe("DiaryPageForm", () => {
   });
 
   it("calls the apollo query with the date from the context", async () => {
-    const date = new DiaryDate(new Date(Date.UTC(2010, 0, 1, 12, 0, 0)));
+    const date = new DiaryDate().getPrevious();
     const mockClient = createMockClient();
 
     const diaryEntryQueryHandler = jest
@@ -66,7 +65,8 @@ describe("DiaryPageForm", () => {
     render(<DiaryPageForm />, {
       wrapper: wrap(
         withApollo(mockClient),
-        withRoute("/page/:isoDateString", { isoDateString: date.getKey() }),
+        withDate(date),
+        withRoute(),
         withDiaryEntry()
       ),
     });
@@ -81,7 +81,7 @@ describe("DiaryPageForm", () => {
   });
 
   it("calls the apollo mutation with the updated content to update the entry", async () => {
-    const date = new DiaryDate(new Date(Date.UTC(2010, 0, 1, 12, 0, 0)));
+    const date = new DiaryDate();
     const mockClient = createMockClient();
 
     const diaryEntry = buildDiaryEntry();
@@ -100,7 +100,8 @@ describe("DiaryPageForm", () => {
     const diaryPageForm = render(<DiaryPageForm />, {
       wrapper: wrap(
         withApollo(mockClient),
-        withRoute("/page/:isoDateString", { isoDateString: date.getKey() }),
+        withDate(date),
+        withRoute(),
         withDiaryEntry({ saveTimeoutInterval: 10 })
       ),
     });

@@ -1,5 +1,5 @@
 import { render, waitFor } from "@testing-library/react";
-import { withDiaryEntryContext, withLocale } from "components/testWrappers";
+import { withDiaryEntryContext, withLocale } from "testWrappers";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { withRoute } from "souvlaki-react-router";
