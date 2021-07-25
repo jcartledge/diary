@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { DIARY_ENTRY_QUERY } from "graphql/queries";
 import { createMockClient } from "mock-apollo-client";
 import { act } from "react-dom/test-utils";
+import { buildPageRoute } from "routes";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { withRoute } from "souvlaki-react-router";
@@ -14,9 +15,7 @@ import DiaryPage from "./DiaryPage";
 describe("DiaryPage", () => {
   it("shows an error page if an invalid date is supplied", () => {
     render(<DiaryPage />, {
-      wrapper: wrap(
-        withRoute("/page/:isoDateString", { isoDateString: "ASDF" })
-      ),
+      wrapper: wrap(withRoute(buildPageRoute(), { isoDateString: "ASDF" })),
     });
 
     expect(screen.getByText("Error")).toBeInTheDocument();
@@ -45,7 +44,7 @@ describe("DiaryPage", () => {
 
     render(<DiaryPage />, {
       wrapper: wrap(
-        withRoute("/page/:isoDateString", { isoDateString: today.getKey() }),
+        withRoute(buildPageRoute(), { isoDateString: today.getKey() }),
         withLocale("en-AU"),
         withDate(today),
         withApollo(mockClient),

@@ -2,11 +2,12 @@ import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { DIARY_ENTRY_QUERY } from "graphql/queries";
 import { createMockClient, MockApolloClient } from "mock-apollo-client";
+import { buildPageRoute } from "routes";
 import { DiaryEntry } from "server/src/resolvers-types";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { withRoute } from "souvlaki-react-router";
-import { withDate } from 'testWrappers';
+import { withDate } from "testWrappers";
 import { buildDiaryEntry } from "util/buildDiaryEntry";
 import { DiaryDate } from "util/date";
 import DateNextButton from "./DateNextButton";
@@ -30,36 +31,32 @@ describe("DateNextButton", () => {
 
     const today = new DiaryDate();
     const yesterday = today.getPrevious();
-    const dateNextButton = render(
-      <DateNextButton />, {
-        wrapper: wrap(
-          withApollo(),
-          withDate(yesterday),
-          withRoute('', {}, onPathChange)
-        )
-      }, 
-    );
+    const dateNextButton = render(<DateNextButton />, {
+      wrapper: wrap(
+        withApollo(),
+        withDate(yesterday),
+        withRoute("", {}, onPathChange)
+      ),
+    });
 
     await act(async () =>
       userEvent.click(dateNextButton.getByRole("button", { name: "next" }))
     );
 
-    expect(onPathChange).toHaveBeenCalledWith(`/page/${today.getKey()}`);
+    expect(onPathChange).toHaveBeenCalledWith(buildPageRoute(today.getKey()));
   });
 
   it("does not increment past the current date", async () => {
     const onPathChange = jest.fn();
     const today = new DiaryDate();
 
-    const dateNextButton = render(
-      <DateNextButton />, {
-        wrapper: wrap(
-          withApollo(),
-          withDate(today),
-          withRoute('', {}, onPathChange)
-        )
-      }, 
-    );
+    const dateNextButton = render(<DateNextButton />, {
+      wrapper: wrap(
+        withApollo(),
+        withDate(today),
+        withRoute("", {}, onPathChange)
+      ),
+    });
 
     const nextButton = dateNextButton.getByRole("button", { name: "next" });
     expect(nextButton).toBeDisabled();
@@ -75,15 +72,9 @@ describe("DateNextButton", () => {
     const date = new DiaryDate().getPrevious();
     const mockClient = buildMockClient({ whatHappened: "Lots" });
 
-    render(
-      <DateNextButton />, {
-        wrapper: wrap(
-          withApollo(mockClient),
-          withDate(date),
-          withRoute()
-        )
-      }, 
-    );
+    render(<DateNextButton />, {
+      wrapper: wrap(withApollo(mockClient), withDate(date), withRoute()),
+    });
     const nextButton = screen.getByRole("button", { name: "next" });
 
     await waitFor(() => expect(nextButton).toHaveClass("font-bold"));
@@ -93,15 +84,9 @@ describe("DateNextButton", () => {
     const date = new DiaryDate().getPrevious();
     const mockClient = buildMockClient();
 
-    render(
-      <DateNextButton />, {
-        wrapper: wrap(
-          withApollo(mockClient),
-          withDate(date),
-          withRoute()
-        )
-      }, 
-    );
+    render(<DateNextButton />, {
+      wrapper: wrap(withApollo(mockClient), withDate(date), withRoute()),
+    });
     const nextButton = screen.getByRole("button", { name: "next" });
 
     await waitFor(() => expect(nextButton).not.toHaveClass("font-bold"));

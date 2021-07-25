@@ -1,8 +1,9 @@
 import { render, waitFor } from "@testing-library/react";
-import { withDiaryEntryContext, withLocale } from "testWrappers";
+import { buildPageRoute } from "routes";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { withRoute } from "souvlaki-react-router";
+import { withDiaryEntryContext, withLocale } from "testWrappers";
 import { DiaryDate } from "util/date";
 import DiaryHeader from "./DiaryHeader";
 
@@ -12,7 +13,7 @@ describe("DiaryHeader", () => {
       wrapper: wrap(
         withApollo(),
         withLocale("en-AU"),
-        withRoute("/page/:isoDateString", {
+        withRoute(buildPageRoute(), {
           isoDateString: new DiaryDate().getKey(),
         }),
         withDiaryEntryContext({ isDirty: true })
@@ -29,7 +30,7 @@ describe("DiaryHeader", () => {
       wrapper: wrap(
         withApollo(),
         withLocale("en-AU"),
-        withRoute("/page/:isoDateString", {
+        withRoute(buildPageRoute(), {
           isoDateString: new DiaryDate().getKey(),
         }),
         withDiaryEntryContext({ isDirty: false })

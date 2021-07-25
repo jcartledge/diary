@@ -2,12 +2,15 @@ import DiaryPage from "components/pages/DiaryPage";
 import { Redirect, Route } from "react-router-dom";
 import { DiaryDate } from "util/date";
 
+export const buildPageRoute = (isoDateString = ":isoDateString") =>
+  `/page/${isoDateString}`;
+
 export const Routes = () => (
   <>
     <Route exact path="/">
-      <Redirect to={`/page/${new DiaryDate().getKey()}`} />
+      <Redirect to={buildPageRoute(new DiaryDate().getKey())} />
     </Route>
-    <Route path="/page/:isoDateString">
+    <Route path={buildPageRoute()}>
       <DiaryPage />
     </Route>
   </>

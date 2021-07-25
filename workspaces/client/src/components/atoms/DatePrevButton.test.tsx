@@ -2,6 +2,7 @@ import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { DIARY_ENTRY_QUERY } from "graphql/queries";
 import { createMockClient, MockApolloClient } from "mock-apollo-client";
+import { buildPageRoute } from "routes";
 import { DiaryEntry } from "server/src/resolvers-types";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
@@ -41,7 +42,7 @@ describe("DatePrevButton", () => {
     });
 
     expect(onPathChange).toHaveBeenCalledWith(
-      `/page/${date.getPrevious().getKey()}`
+      buildPageRoute(date.getPrevious().getKey())
     );
   });
 
