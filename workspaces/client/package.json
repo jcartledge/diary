@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@apollo/client": "^3.3.21",
+    "@apollo/client": "^3.4.6",
     "@auth0/auth0-react": "^1.6.0",
     "@types/jest": "^26.0.24",
     "@types/node": "^16.4.1",
