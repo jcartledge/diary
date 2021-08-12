@@ -9,7 +9,7 @@
     "@types/node": "^16.4.1",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
-    "@types/styled-components": "^5.1.11",
+    "@types/styled-components": "^5.1.12",
     "graphql": "^15.5.1",
     "iso-datestring-validator": "^2.1.4",
     "react": "^17.0.2",
