@@ -32,7 +32,11 @@
     "coverage": "CI=true react-scripts test --coverage --coverageDirectory='output/coverage/report'"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "shared-config",
+      "plugin:react-hooks/recommended"
+    ]
   },
   "browserslist": {
     "production": [
