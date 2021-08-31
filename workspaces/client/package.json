@@ -87,6 +87,13 @@
         "lines": 90,
         "statements": 90
       }
+    },
+    "eslintConfig": {
+      "extends": [
+        "react-app",
+        "shared-config",
+        "plugin:react-hooks/recommended"
+      ]
     }
   }
 }
