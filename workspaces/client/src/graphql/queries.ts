@@ -47,15 +47,13 @@ export const useDoesEntryExistForNextDate = (date: DiaryDate) =>
 
 export const UPDATE_DIARY_ENTRY_MUTATION = gql`
   mutation updateDiaryEntry($diaryEntry: DiaryEntryInput!) {
-    updateDiaryEntry(diaryEntry: $diaryEntry) {
-      diaryEntry {
-        date
-        wentWell
-        whatHappened
-        notWell
-        couldBeImproved
-        risk
-      }
+    diaryEntry {
+      date
+      wentWell
+      whatHappened
+      notWell
+      couldBeImproved
+      risk
     }
   }
 `;
