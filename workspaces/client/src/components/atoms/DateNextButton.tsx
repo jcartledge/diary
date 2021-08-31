@@ -2,6 +2,7 @@ import { useDate } from "context/DateContext";
 import { useDoesEntryExistForNextDate } from "graphql/queries";
 import React from "react";
 import { Link } from "react-router-dom";
+import { DiaryDate } from "util/date";
 
 const nextButtonClassNames = (
   doesEntryExistForNextDate: boolean | undefined
@@ -10,15 +11,10 @@ const nextButtonClassNames = (
 
 const DateNextButton: React.FC = () => {
   const date = useDate();
-  const doesEntryExistForNextDate = useDoesEntryExistForNextDate(date);
   return date.isToday() ? (
     <DateNextButtonDisabled />
   ) : (
-    <Link to={`/page/${date.getNext().getKey()}`}>
-      <button className={nextButtonClassNames(doesEntryExistForNextDate)}>
-        next
-      </button>
-    </Link>
+    <DateNextLink date={date} />
   );
 };
 
@@ -27,5 +23,17 @@ const DateNextButtonDisabled: React.FC = () => (
     next
   </button>
 );
+
+type DateNextLinkProps = { date: DiaryDate };
+const DateNextLink: React.FC<DateNextLinkProps> = ({ date }) => {
+  const doesEntryExistForNextDate = useDoesEntryExistForNextDate(date);
+  return (
+    <Link to={`/page/${date.getNext().getKey()}`}>
+      <button className={nextButtonClassNames(doesEntryExistForNextDate)}>
+        next
+      </button>
+    </Link>
+  );
+};
 
 export default DateNextButton;
