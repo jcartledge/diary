@@ -6,7 +6,7 @@
     "@apollo/client": "^3.3.21",
     "@auth0/auth0-react": "^1.6.0",
     "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.8",
+    "@types/node": "^16.7.10",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
     "@types/styled-components": "^5.1.13",
