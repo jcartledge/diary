@@ -6,7 +6,7 @@
   "dependencies": {
     "@graphql-codegen/cli": "^2.1.1",
     "@graphql-codegen/typescript": "^2.2.1",
-    "@graphql-codegen/typescript-resolvers": "^2.1.2",
+    "@graphql-codegen/typescript-resolvers": "^2.2.0",
     "apollo-server": "^3.3.0",
     "concurrently": "^6.2.1",
     "graphql": "^15.5.2",
