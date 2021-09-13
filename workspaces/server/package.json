@@ -5,7 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@graphql-codegen/cli": "^2.1.1",
-    "@graphql-codegen/typescript": "^2.2.1",
+    "@graphql-codegen/typescript": "^2.2.2",
     "@graphql-codegen/typescript-resolvers": "^2.2.0",
     "apollo-server": "^3.3.0",
     "concurrently": "^6.2.1",
@@ -17,7 +17,7 @@
     "@types/jest": "^27.0.1",
     "@types/pg": "^8.6.1",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
-    "@typescript-eslint/parser": "^4.30.0",
+    "@typescript-eslint/parser": "^4.31.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
