@@ -8866,10 +8866,10 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
-iso-datestring-validator@^2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/iso-datestring-validator/-/iso-datestring-validator-2.1.4.tgz#0e03a34c9414ab642c03b3d5e5dba032ee185440"
-  integrity sha512-96YL0rmgJbt61klVlHt0qzmyYxXflvN0fY7wCd4GweZXd2gXUdZ0uqGqq37IqVFP+NmYtUHJLvZIYGc2TNlhqQ==
+iso-datestring-validator@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/iso-datestring-validator/-/iso-datestring-validator-2.2.0.tgz#35a2e493671bd387be51067182e82dbea760ac54"
+  integrity sha512-F0ndAqS+GE8HoMCmVSnU0Ok/nOKcHxa2p+/59Ba8MvaRbQp6qkPOvgUSQqN43OTyCwx8FKK+2rX7eDgxkPqyFQ==
 
 isobject@^2.0.0:
   version "2.1.0"
