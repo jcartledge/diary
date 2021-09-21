@@ -10,7 +10,7 @@
     "apollo-server": "^3.3.0",
     "concurrently": "^6.2.1",
     "graphql": "^15.5.3",
-    "node-pg-migrate": "^5.10.0",
+    "node-pg-migrate": "^6.0.0",
     "pg": "^8.7.1"
   },
   "devDependencies": {
