@@ -7,14 +7,14 @@
     "@graphql-codegen/cli": "^2.2.0",
     "@graphql-codegen/typescript": "^2.2.2",
     "@graphql-codegen/typescript-resolvers": "^2.2.1",
-    "apollo-server": "^3.3.0",
+    "apollo-server": "^3.5.0",
     "concurrently": "^6.2.1",
     "graphql": "^15.6.0",
     "node-pg-migrate": "^6.0.0",
     "pg": "^8.7.1"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.2",
+    "@types/jest": "^27.0.3",
     "@types/pg": "^8.6.1",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.31.2",
