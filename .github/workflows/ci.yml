@@ -32,6 +32,9 @@ jobs:
       - name: Download dependencies
         run: ./batect setup
 
+      - name: Audit dependencies
+        run: ./batect check-deps
+
   build-client:
     name: build-client
     needs: [setup]

@@ -48,6 +48,13 @@ tasks:
     run:
       container: diary-client-dev
 
+  check-deps:
+    prerequisites:
+      - setup
+    run:
+      container: diary-build-env
+      command: yarn audit:ci
+
 include:
   - batect-e2e.yml
   - batect-client.yml
