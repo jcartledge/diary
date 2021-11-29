@@ -11,6 +11,6 @@
     "workspaces/*"
   ],
   "devDependencies": {
-    "concurrently": "^6.2.1"
+    "concurrently": "^6.4.0"
   }
 }
