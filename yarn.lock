@@ -11883,10 +11883,10 @@ playwright-core@=1.17.0:
     yauzl "^2.10.0"
     yazl "^2.5.1"
 
-playwright-testing-library@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/playwright-testing-library/-/playwright-testing-library-3.0.0.tgz#e2e0690ff8dd7500b4ab57fd4f11db944d26d8bd"
-  integrity sha512-D4jR2ccwBcYwELQdO8Qh49haFxxgRRyRrgsGR8PnKE0vhSAf388GUrsGhIHhY4VNaKfuyeuIJnlqxqfHqpe9yA==
+playwright-testing-library@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/playwright-testing-library/-/playwright-testing-library-4.0.1.tgz#4fa392e1f611f44f8532fd58d1981f4a6338943c"
+  integrity sha512-OGiOTsOUA7kdNe7T/MbbQ/2Ndpg+O7jnxWJfdc9dWXZbsnNDDO2Um9fMoiWqqh7frra8xvFtKkumAED1ejoa6w==
   dependencies:
     "@testing-library/dom" "^7.22.2"
     wait-for-expect "^3.0.2"
