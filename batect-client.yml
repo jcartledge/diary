@@ -10,7 +10,7 @@ containers:
   diary-client-dev:
     image: node:14.17.0
     working_directory: /app
-    command: yarn workspace client dev
+    command: yarn workspace client dev --host
     environment:
       NODE_PATH: src
       REACT_APP_GRAPHQL_URI: http://localhost:4000/graphql

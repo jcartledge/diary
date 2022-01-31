@@ -10,26 +10,26 @@
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.11",
     "@types/styled-components": "^5.1.16",
+    "@vitejs/plugin-react-refresh": "^1.3.6",
     "graphql": "^16.0.1",
     "iso-datestring-validator": "^2.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "^4.0.3",
     "slugify": "^1.6.0",
     "styled-components": "^5.3.3",
     "tailwindcss": "^2.2.19",
-    "typescript": "~4.4.3"
+    "ts-jest": "^27.1.3",
+    "ts-node": "^10.4.0",
+    "typescript": "~4.4.3",
+    "vite": "^2.7.13"
   },
   "scripts": {
-    "build:tailwind": "tailwind build -i src/tailwind.css -o src/tailwind.output.css",
-    "watch:tailwind": "chokidar 'src/**/*.css' 'src/**/*.scss' --ignore src/tailwind.output.css -c 'npm run build:tailwind'",
-    "dev": "npm-run-all build:tailwind --parallel watch:tailwind start:react",
-    "start:react": "react-scripts start",
-    "build": "run-s build:tailwind && react-scripts build",
-    "test": "react-scripts test",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "test": "NODE_PATH=src jest --config=jest.config.ts",
     "lint": "eslint src/**.{ts,tsx}",
-    "coverage": "CI=true react-scripts test --coverage --coverageDirectory='output/coverage/report'"
+    "coverage": "CI=true yarn test --coverage --coverageDirectory='output/coverage/report'"
   },
   "eslintConfig": {
     "extends": [
@@ -52,41 +52,18 @@
   "devDependencies": {
     "@testing-library/dom": "^8.11.1",
     "@testing-library/jest-dom": "^5.15.1",
-    "@testing-library/react": "^12.1.2",
+    "@testing-library/react": "12.1.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/react-router-dom": "^5.3.2",
-    "autoprefixer": "^10.4.0",
-    "chokidar-cli": "^3.0.0",
+    "eslint-config-react-app": "^7.0.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "jest-fail-on-console": "^2.1.1",
     "mock-apollo-client": "^1.2.0",
-    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.4",
     "souvlaki": "^0.1.1",
     "souvlaki-apollo": "^0.1.1",
     "souvlaki-react-router": "^0.2.0",
-    "tailwindcss": "^2.2.19"
-  },
-  "jest": {
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/src/App.tsx",
-      "/src/routes/index.tsx",
-      "/src/graphql/client.ts",
-      "/src/index.tsx",
-      "/src/serviceWorker.ts"
-    ],
-    "coverageReporters": [
-      "text",
-      "html"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 90,
-        "functions": 90,
-        "lines": 90,
-        "statements": 90
-      }
-    }
+    "tailwindcss": "^2.2.19",
+    "vite-plugin-env-compatible": "^1.1.1"
   }
 }

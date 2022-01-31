@@ -33,7 +33,7 @@ describe("DateNextButton", () => {
     const yesterday = today.getPrevious();
     const dateNextButton = render(<DateNextButton />, {
       wrapper: wrap(
-        withApollo(),
+        withApollo(buildMockClient()),
         withDate(yesterday),
         withRoute("", {}, onPathChange)
       ),
@@ -52,7 +52,7 @@ describe("DateNextButton", () => {
 
     const dateNextButton = render(<DateNextButton />, {
       wrapper: wrap(
-        withApollo(),
+        withApollo(buildMockClient()),
         withDate(today),
         withRoute("", {}, onPathChange)
       ),
