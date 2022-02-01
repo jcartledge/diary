@@ -1,21 +1,21 @@
 fileignoreconfig:
-- filename: src/react-app-env.d.ts
-  checksum: f0045b3f8905880e17671222a920193a34a64f59b0d5fe52d8829b8da70e50dd
-  ignore_detectors: []
-- filename: batect
-  checksum: 4f0f216c3b7d4d1effafc6d7ca862e7ec7e91311949651dd467d7e8eac9fc812
-  ignore_detectors: []
-- filename: batect.cmd
-  checksum: ed74f5dbf12fe24a32ebd1d728eef4d808caaad55f31fc2aa9f1dc62fef2b3e5
-  ignore_detectors: []
-- filename: yarn.lock
-  checksum: 14c978fe87bd8fe2d53a2f34a19e900e7bd20b23159da19a17585138beb2c700
-  ignore_detectors: []
-- filename: client/nginx-templates/env.conf.template
-  checksum: 11ec59f13030455edcda906172e50ce984db31ead5a1e56749974a10e7081775
-  ignore_detectors: []
-- filename: .github/workflows/ci.yml
-  checksum: 72df56dcf0e3fc76d580f260e9d215cc3a5588973a309c790b30c410f156e70e
-  ignore_detectors: []
+  - filename: src/react-app-env.d.ts
+    checksum: f0045b3f8905880e17671222a920193a34a64f59b0d5fe52d8829b8da70e50dd
+    ignore_detectors: []
+  - filename: batect.cmd
+    checksum: 9a90890016623385c0ccd595a314dc583bff305ec73aefa53784c5921d91b9ff
+    ignore_detectors: []
+  - filename: batect
+    checksum: 23e2b8123a064ee4b45575e2ce4f436ac7415b6780ac33c204bf3f6b9c9fd5db
+    ignore_detectors: []
+  - filename: yarn.lock
+    checksum: 14c978fe87bd8fe2d53a2f34a19e900e7bd20b23159da19a17585138beb2c700
+    ignore_detectors: []
+  - filename: client/nginx-templates/env.conf.template
+    checksum: 11ec59f13030455edcda906172e50ce984db31ead5a1e56749974a10e7081775
+    ignore_detectors: []
+  - filename: .github/workflows/ci.yml
+    checksum: 72df56dcf0e3fc76d580f260e9d215cc3a5588973a309c790b30c410f156e70e
+    ignore_detectors: []
 scopeconfig:
-- scope: node
+  - scope: node
