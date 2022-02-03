@@ -1,12 +1,12 @@
 import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { buildPageRoute } from "routes";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { withRoute } from "souvlaki-react-router";
-import { withDate } from "testWrappers";
-import { DiaryDate } from "util/date";
-import { buildMockClient } from "client/src/util/buildMockClient";
+import { buildPageRoute } from "../../routes";
+import { withDate } from "../../testWrappers";
+import { buildMockClient } from "../../util/buildMockClient";
+import { DiaryDate } from "../../util/date";
 import DatePrevButton from "./DatePrevButton";
 
 describe("DatePrevButton", () => {

@@ -1,16 +1,16 @@
 import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {
-  DIARY_ENTRY_QUERY,
-  UPDATE_DIARY_ENTRY_MUTATION,
-} from "graphql/queries";
 import { createMockClient } from "mock-apollo-client";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { withRoute } from "souvlaki-react-router";
-import { withDate, withDiaryEntry } from "testWrappers";
-import { buildDiaryEntry } from "util/buildDiaryEntry";
-import { DiaryDate } from "util/date";
+import {
+  DIARY_ENTRY_QUERY,
+  UPDATE_DIARY_ENTRY_MUTATION,
+} from "../../graphql/queries";
+import { withDate, withDiaryEntry } from "../../testWrappers";
+import { buildDiaryEntry } from "../../util/buildDiaryEntry";
+import { DiaryDate } from "../../util/date";
 import DiaryPageForm from "./DiaryPageForm";
 
 describe("DiaryPageForm", () => {

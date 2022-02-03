@@ -1,7 +1,7 @@
-import { DIARY_ENTRY_QUERY } from "graphql/queries";
 import { createMockClient, MockApolloClient } from "mock-apollo-client";
 import { DiaryEntry } from "server/src/resolvers-types";
-import { buildDiaryEntry } from "util/buildDiaryEntry";
+import { DIARY_ENTRY_QUERY } from "../graphql/queries";
+import { buildDiaryEntry } from "./buildDiaryEntry";
 
 export const buildMockClient = (
   diaryEntry: Partial<DiaryEntry> = {}

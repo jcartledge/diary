@@ -1,15 +1,15 @@
 import { render, waitFor } from "@testing-library/react";
-import {
-  DIARY_ENTRY_QUERY,
-  UPDATE_DIARY_ENTRY_MUTATION,
-} from "graphql/queries";
 import { createMockClient } from "mock-apollo-client";
 import React, { useContext, useEffect } from "react";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { withRoute } from "souvlaki-react-router";
-import { withDiaryEntry } from "testWrappers";
-import { buildDiaryEntry } from "util/buildDiaryEntry";
+import {
+  DIARY_ENTRY_QUERY,
+  UPDATE_DIARY_ENTRY_MUTATION,
+} from "../graphql/queries";
+import { withDiaryEntry } from "../testWrappers";
+import { buildDiaryEntry } from "../util/buildDiaryEntry";
 import { DiaryEntryContext } from "./DiaryEntryContext";
 
 const buildMockClient = () => {

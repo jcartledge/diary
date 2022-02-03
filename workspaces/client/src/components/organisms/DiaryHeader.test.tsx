@@ -1,11 +1,11 @@
 import { render, waitFor } from "@testing-library/react";
-import { buildPageRoute } from "routes";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { withRoute } from "souvlaki-react-router";
-import { withDiaryEntryContext, withLocale } from "testWrappers";
-import { buildMockClient } from "util/buildMockClient";
-import { DiaryDate } from "util/date";
+import { buildPageRoute } from "../../routes";
+import { withDiaryEntryContext, withLocale } from "../../testWrappers";
+import { buildMockClient } from "../../util/buildMockClient";
+import { DiaryDate } from "../../util/date";
 import DiaryHeader from "./DiaryHeader";
 
 describe("DiaryHeader", () => {
