@@ -93,7 +93,6 @@ tasks:
   server-coverage:
     prerequisites:
       - setup
-      - server-codegen
     dependencies:
       - diary-db
     customise:

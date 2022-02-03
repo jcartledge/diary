@@ -35,6 +35,9 @@ jobs:
       - name: Audit dependencies
         run: ./batect check-deps
 
+      - name: Generate shared types
+        run: ./batect server-codegen
+
   build-client:
     name: build-client
     needs: [setup]
