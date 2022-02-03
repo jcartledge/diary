@@ -1,7 +1,3 @@
-import {
-  useDiaryEntryQuery,
-  useUpdateDiaryEntryMutation,
-} from "graphql/queries";
 import React, {
   PropsWithChildren,
   useCallback,
@@ -9,8 +5,12 @@ import React, {
   useState,
 } from "react";
 import { DiaryEntry } from "server/src/resolvers-types";
-import { buildDiaryEntry } from "util/buildDiaryEntry";
-import { Builder } from "util/builder";
+import {
+  useDiaryEntryQuery,
+  useUpdateDiaryEntryMutation,
+} from "../graphql/queries";
+import { buildDiaryEntry } from "../util/buildDiaryEntry";
+import { Builder } from "../util/builder";
 import { useDate } from "./DateContext";
 
 export interface DiaryEntryContextValue {

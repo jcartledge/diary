@@ -1,6 +1,6 @@
-import { useDate } from "context/DateContext";
-import { useDoesEntryExistForPreviousDate } from "graphql/queries";
 import { Link } from "react-router-dom";
+import { useDate } from "../../context/DateContext";
+import { useDoesEntryExistForPreviousDate } from "../../graphql/queries";
 
 const DatePrevButton = () => {
   const date = useDate();

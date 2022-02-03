@@ -1,6 +1,6 @@
-import DiaryPage from "components/pages/DiaryPage";
 import { Redirect, Route } from "react-router-dom";
-import { DiaryDate } from "util/date";
+import DiaryPage from "../components/pages/DiaryPage";
+import { DiaryDate } from "../util/date";
 
 export const buildPageRoute = (isoDateString = ":isoDateString") =>
   `/page/${isoDateString}`;

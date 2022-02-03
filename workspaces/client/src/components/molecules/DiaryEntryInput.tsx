@@ -1,8 +1,8 @@
-import Cell from "components/atoms/Cell";
-import { H2 } from "components/atoms/styled";
-import TextArea from "components/atoms/TextArea";
 import React from "react";
 import slugify from "slugify";
+import Cell from "../atoms/Cell";
+import { H2 } from "../atoms/styled";
+import TextArea from "../atoms/TextArea";
 
 interface DiaryEntryInputProps {
   label: string;

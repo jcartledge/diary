@@ -1,8 +1,8 @@
-import { useDate } from "context/DateContext";
-import { useDoesEntryExistForNextDate } from "graphql/queries";
 import React from "react";
 import { Link } from "react-router-dom";
-import { DiaryDate } from "util/date";
+import { useDate } from "../../context/DateContext";
+import { useDoesEntryExistForNextDate } from "../../graphql/queries";
+import { DiaryDate } from "../../util/date";
 
 const nextButtonClassNames = (
   doesEntryExistForNextDate: boolean | undefined

@@ -1,8 +1,8 @@
 import { ApolloProvider } from "@apollo/client";
-import { client } from "graphql/client";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import { client } from "./graphql/client";
 import * as serviceWorker from "./serviceWorker";
 import "./tailwind.css";
 
