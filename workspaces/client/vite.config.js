@@ -6,5 +6,5 @@ export default defineConfig({
   build: {
     outDir: "build",
   },
-  plugins: [env(), react()],
+  plugins: [env({ prefix: "REACT_APP_" }), react()],
 });
