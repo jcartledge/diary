@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.3.21",
-    "@auth0/auth0-react": "^1.8.0",
+    "@auth0/auth0-react": "^1.9.0",
     "@types/jest": "^27.0.3",
     "@types/node": "^16.11.11",
     "@types/react": "^17.0.24",
