@@ -22,7 +22,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
     "jest": "^27.4.7",
-    "nodemon": "^2.0.12",
+    "nodemon": "^2.0.15",
     "ts-jest": "^27.0.7",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.4.0",
