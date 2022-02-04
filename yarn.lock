@@ -9534,10 +9534,10 @@ souvlaki-apollo@^0.1.1:
   resolved "https://registry.yarnpkg.com/souvlaki-apollo/-/souvlaki-apollo-0.1.1.tgz#6038824371d04123df919e79bb069f60353c0261"
   integrity sha512-FEVmK/zgxPUTv5mX/ZPrEuTTG72CnRfVGKC0qLvirEbPPHdyMP7xQZt0wV75OAlT7+0CM1Nb3X0rYllx/socBQ==
 
-souvlaki-react-router@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/souvlaki-react-router/-/souvlaki-react-router-0.2.0.tgz#13b172e9fabc8887fef547b7c3c89a7b49f58710"
-  integrity sha512-cFMaznKGfvwrsjYO0NhG1z1kHGfrjKu2FglGU7ay2H3BqbV04tYGWpsjqzJ8vlwBnD50w9amktaUQ6hBI6LHdQ==
+souvlaki-react-router@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/souvlaki-react-router/-/souvlaki-react-router-0.2.1.tgz#8b12019deb0cbe2d88566c5d8e9efa5b74662ce8"
+  integrity sha512-vR71e+ENXf3ExhXbunfosoO54DCUwwRftDejVq4auQLnVZfDgQS7ViRk0ojZzIgaHxxk+OJdZSc2F1GLhDTMOw==
 
 souvlaki@^0.1.1:
   version "0.1.1"
