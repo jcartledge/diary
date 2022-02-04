@@ -3081,10 +3081,10 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.0.tgz#7036640b4e21cc2f259ae826ce843d277dad8cff"
   integrity sha512-RJJrrySY7A8havqpGObOB4W92QXKJo63/jFLLgpvOtsGUqbQZ9Sbgl35KMm1DjC6j7AvmmU2bIno+3IyEaemaw==
 
-"@types/styled-components@^5.1.16":
-  version "5.1.16"
-  resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-5.1.16.tgz#e6cb31301ff8d6b99e25502d2bea754069c1efc9"
-  integrity sha512-pj5zI2VvK86VB9vS5exwXpIvQxiiwVfBTmMYcfMzwQAhB6s+x0a7o2JKzsGviWgjjosuwfYlOyf3JrEvmLPhtg==
+"@types/styled-components@^5.1.21":
+  version "5.1.21"
+  resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-5.1.21.tgz#39f6bdc4103254d899531ef099dae5619b039cdb"
+  integrity sha512-lQzA0T6CaLXoeiOkSe2US2JfFgJV2/yJ8W1BaJubQQh2wdq7H+qScQQfbjURyLkgI1Ig+S/jRHCrWikfMHC6zA==
   dependencies:
     "@types/hoist-non-react-statics" "*"
     "@types/react" "*"
@@ -9534,10 +9534,10 @@ souvlaki-apollo@^0.1.1:
   resolved "https://registry.yarnpkg.com/souvlaki-apollo/-/souvlaki-apollo-0.1.1.tgz#6038824371d04123df919e79bb069f60353c0261"
   integrity sha512-FEVmK/zgxPUTv5mX/ZPrEuTTG72CnRfVGKC0qLvirEbPPHdyMP7xQZt0wV75OAlT7+0CM1Nb3X0rYllx/socBQ==
 
-souvlaki-react-router@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/souvlaki-react-router/-/souvlaki-react-router-0.2.0.tgz#13b172e9fabc8887fef547b7c3c89a7b49f58710"
-  integrity sha512-cFMaznKGfvwrsjYO0NhG1z1kHGfrjKu2FglGU7ay2H3BqbV04tYGWpsjqzJ8vlwBnD50w9amktaUQ6hBI6LHdQ==
+souvlaki-react-router@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/souvlaki-react-router/-/souvlaki-react-router-0.2.1.tgz#8b12019deb0cbe2d88566c5d8e9efa5b74662ce8"
+  integrity sha512-vR71e+ENXf3ExhXbunfosoO54DCUwwRftDejVq4auQLnVZfDgQS7ViRk0ojZzIgaHxxk+OJdZSc2F1GLhDTMOw==
 
 souvlaki@^0.1.1:
   version "0.1.1"
@@ -10215,10 +10215,10 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@^4.4.3, typescript@~4.4.3:
-  version "4.4.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.3.tgz#bdc5407caa2b109efd4f82fe130656f977a29324"
-  integrity sha512-4xfscpisVgqqDfPaJo5vkd+Qd/ItkoagnHpufr+i2QCHBsNYp+G7UAoyFl8aPtx879u38wPV65rZ8qbGZijalA==
+typescript@^4.5.5, typescript@~4.5.5:
+  version "4.5.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.5.tgz#d8c953832d28924a9e3d37c73d729c846c5896f3"
+  integrity sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==
 
 ua-parser-js@^0.7.18:
   version "0.7.28"
