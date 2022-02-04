@@ -17,7 +17,9 @@ import DiaryPage from "./DiaryPage";
 describe("DiaryPage", () => {
   it("shows an error page if an invalid date is supplied", () => {
     render(<DiaryPage />, {
-      wrapper: wrap(withRoute(buildPageRoute(), { isoDateString: "ASDF" })),
+      wrapper: wrap(
+        withRoute(buildPageRoute(), { isoDateString: "not an ISO date string" })
+      ),
     });
 
     expect(screen.getByText("Error")).toBeInTheDocument();
@@ -39,7 +41,7 @@ describe("DiaryPage", () => {
       DIARY_ENTRY_QUERY,
       jest.fn(({ date }) =>
         Promise.resolve({
-          data: { diaryEntry: diaryEntries[date] },
+          data: { diaryEntry: diaryEntries[date] ?? buildDiaryEntry() },
         })
       )
     );
