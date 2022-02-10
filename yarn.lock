@@ -6687,10 +6687,10 @@ jest-environment-node@^27.5.1:
     jest-mock "^27.5.1"
     jest-util "^27.5.1"
 
-jest-fail-on-console@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/jest-fail-on-console/-/jest-fail-on-console-2.1.1.tgz#3e434a6f5f8183b6eac87ed0f2f1b804d7e06efc"
-  integrity sha512-oKUtNAJy2r2q4RaOrtGsqysOEPX7CPzS+ifmDjbQzl3/uysZ0+Ni+ZGQ/ERDHhNUemlo3w0KcbKOlLJwRPmnmA==
+jest-fail-on-console@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/jest-fail-on-console/-/jest-fail-on-console-2.2.1.tgz#348ce3451ece48f82cad110424591cee4acda520"
+  integrity sha512-nKPXJi33ISuRDDT4I5EOvRVWJiveGWDqpUB6WYyPzt6AxjHfoK518ILNfLg30Oxz1DfdE0aq9BW/xbaVC0TULg==
   dependencies:
     chalk "^4.1.0"
 
@@ -9513,10 +9513,10 @@ sync-fetch@^0.3.1:
     buffer "^5.7.0"
     node-fetch "^2.6.1"
 
-tailwindcss@^3.0.19:
-  version "3.0.19"
-  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.0.19.tgz#cd789953e6762af2e80c5a3e5d6da3a975ee8215"
-  integrity sha512-rjsdfz/qZya5xQ0OVynEMETgWq1CacmftgMYeXXh6bRM5vxsNwRSbMJsCCIjq/w67om9VP/AFMolOwiE+5VKig==
+tailwindcss@^3.0.21:
+  version "3.0.21"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.0.21.tgz#2b3f2aa579bc8bb91165af9d23f69c5e7bdfab03"
+  integrity sha512-PGTiaBu/K4QlzjKlLgtz6nVYlrmhy6INPMKYb6RHX18/VXwygFbRdAlJGl2NfXabTQOP62ttKwjQviWLKQuWrA==
   dependencies:
     arg "^5.0.1"
     chalk "^4.1.2"
