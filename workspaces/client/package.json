@@ -63,7 +63,7 @@
     "souvlaki": "^0.1.1",
     "souvlaki-apollo": "^0.1.1",
     "souvlaki-react-router": "^0.2.1",
-    "tailwindcss": "^3.0.21",
+    "tailwindcss": "^3.0.22",
     "vite-plugin-env-compatible": "^1.1.1"
   }
 }
