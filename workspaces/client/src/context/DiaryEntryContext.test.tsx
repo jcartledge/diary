@@ -3,12 +3,12 @@ import { createMockClient } from "mock-apollo-client";
 import React, { useContext, useEffect } from "react";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
-import { withRoute } from "souvlaki-react-router";
 import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,
 } from "../graphql/queries";
-import { withDiaryEntry } from "../testWrappers";
+import { withDiaryEntry } from "../testWrappers/withDiaryEntry";
+import { withRoute } from "../testWrappers/withRoute";
 import { buildDiaryEntry } from "../util/buildDiaryEntry";
 import { DiaryEntryContext } from "./DiaryEntryContext";
 

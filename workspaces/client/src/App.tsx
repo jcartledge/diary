@@ -2,7 +2,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { LocaleContext } from "./context/LocaleContext";
-import { Routes } from "./routes";
+import { AppRoutes } from "./routes";
 
 const App: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ const App: React.FC = () => {
         redirectUri={window.location.origin}
       >
         <LocaleContext.Provider value={navigator.language}>
-          <Routes />
+          <AppRoutes />
         </LocaleContext.Provider>
       </Auth0Provider>
     </BrowserRouter>

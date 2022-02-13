@@ -7,7 +7,7 @@ import DiaryHeader from "../organisms/DiaryHeader";
 import DiaryPageForm from "../organisms/DiaryPageForm";
 
 const DiaryPage = () => {
-  const { isoDateString } = useParams<{ isoDateString: string }>();
+  const { isoDateString = "" } = useParams<{ isoDateString: string }>();
   return isValidDate(isoDateString) ? (
     <DateContext.Provider value={new DiaryDate(new Date(isoDateString))}>
       <DiaryEntryContextProvider>

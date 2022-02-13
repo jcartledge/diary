@@ -2,18 +2,20 @@ import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
-import { withRoute } from "souvlaki-react-router";
 import { buildPageRoute } from "../../routes";
-import { withDate } from "../../testWrappers";
+import { withDate } from "../../testWrappers/withDate";
+import { withRoute } from "../../testWrappers/withRoute";
 import { buildMockClient } from "../../util/buildMockClient";
 import { DiaryDate } from "../../util/date";
 import DatePrevButton from "./DatePrevButton";
+
+const getPrevButton = () => screen.getByRole("button", { name: "prev" });
 
 describe("DatePrevButton", () => {
   it("links to the previous date", async () => {
     const onPathChange = jest.fn();
     const date = new DiaryDate();
-    const datePrevButton = render(<DatePrevButton />, {
+    render(<DatePrevButton />, {
       wrapper: wrap(
         withApollo(buildMockClient()),
         withDate(date),
@@ -21,9 +23,7 @@ describe("DatePrevButton", () => {
       ),
     });
 
-    await act(async () => {
-      userEvent.click(datePrevButton.getByRole("button", { name: "prev" }));
-    });
+    act(() => userEvent.click(getPrevButton()));
 
     expect(onPathChange).toHaveBeenCalledWith(
       buildPageRoute(date.getPrevious().getKey())
@@ -36,9 +36,8 @@ describe("DatePrevButton", () => {
     render(<DatePrevButton />, {
       wrapper: wrap(withApollo(mockClient), withRoute()),
     });
-    const prevButton = screen.getByRole("button", { name: "prev" });
 
-    await waitFor(() => expect(prevButton).toHaveClass("font-bold"));
+    await waitFor(() => expect(getPrevButton()).toHaveClass("font-bold"));
   });
 
   it("does not bold the button text if there is not an entry on the previous date", async () => {
@@ -47,8 +46,7 @@ describe("DatePrevButton", () => {
     render(<DatePrevButton />, {
       wrapper: wrap(withApollo(mockClient), withRoute()),
     });
-    const prevButton = screen.getByRole("button", { name: "prev" });
 
-    await waitFor(() => expect(prevButton).not.toHaveClass("font-bold"));
+    await waitFor(() => expect(getPrevButton()).not.toHaveClass("font-bold"));
   });
 });

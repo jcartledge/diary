@@ -4,10 +4,10 @@ import { createMockClient, MockApolloClient } from "mock-apollo-client";
 import { DiaryEntry } from "server/src/resolvers-types";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
-import { withRoute } from "souvlaki-react-router";
 import { DIARY_ENTRY_QUERY } from "../../graphql/queries";
 import { buildPageRoute } from "../../routes";
-import { withDate } from "../../testWrappers";
+import { withDate } from "../../testWrappers/withDate";
+import { withRoute } from "../../testWrappers/withRoute";
 import { buildDiaryEntry } from "../../util/buildDiaryEntry";
 import { DiaryDate } from "../../util/date";
 import DateNextButton from "./DateNextButton";
@@ -25,13 +25,14 @@ const buildMockClient = (
   return mockClient;
 };
 
+const getNextButton = () => screen.getByRole("button", { name: "next" });
+
 describe("DateNextButton", () => {
   it("links to the next date", async () => {
     const onPathChange = jest.fn();
-
     const today = new DiaryDate();
     const yesterday = today.getPrevious();
-    const dateNextButton = render(<DateNextButton />, {
+    render(<DateNextButton />, {
       wrapper: wrap(
         withApollo(buildMockClient()),
         withDate(yesterday),
@@ -39,9 +40,7 @@ describe("DateNextButton", () => {
       ),
     });
 
-    await act(async () =>
-      userEvent.click(dateNextButton.getByRole("button", { name: "next" }))
-    );
+    act(() => userEvent.click(getNextButton()));
 
     expect(onPathChange).toHaveBeenCalledWith(buildPageRoute(today.getKey()));
   });
@@ -50,7 +49,7 @@ describe("DateNextButton", () => {
     const onPathChange = jest.fn();
     const today = new DiaryDate();
 
-    const dateNextButton = render(<DateNextButton />, {
+    render(<DateNextButton />, {
       wrapper: wrap(
         withApollo(buildMockClient()),
         withDate(today),
@@ -58,11 +57,10 @@ describe("DateNextButton", () => {
       ),
     });
 
-    const nextButton = dateNextButton.getByRole("button", { name: "next" });
-    expect(nextButton).toBeDisabled();
+    expect(getNextButton()).toBeDisabled();
 
     await act(async () => {
-      userEvent.click(nextButton);
+      userEvent.click(getNextButton());
     });
 
     expect(onPathChange).not.toHaveBeenCalledWith(today.getNext().getKey());
@@ -75,9 +73,8 @@ describe("DateNextButton", () => {
     render(<DateNextButton />, {
       wrapper: wrap(withApollo(mockClient), withDate(date), withRoute()),
     });
-    const nextButton = screen.getByRole("button", { name: "next" });
 
-    await waitFor(() => expect(nextButton).toHaveClass("font-bold"));
+    await waitFor(() => expect(getNextButton()).toHaveClass("font-bold"));
   });
 
   it("does not bold the button text if there is not an entry on the next date", async () => {
@@ -87,8 +84,7 @@ describe("DateNextButton", () => {
     render(<DateNextButton />, {
       wrapper: wrap(withApollo(mockClient), withDate(date), withRoute()),
     });
-    const nextButton = screen.getByRole("button", { name: "next" });
 
-    await waitFor(() => expect(nextButton).not.toHaveClass("font-bold"));
+    await waitFor(() => expect(getNextButton()).not.toHaveClass("font-bold"));
   });
 });

@@ -1,19 +1,16 @@
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import DiaryPage from "../components/pages/DiaryPage";
 import { DiaryDate } from "../util/date";
 
 export const buildPageRoute = (isoDateString = ":isoDateString") =>
   `/page/${isoDateString}`;
 
-export const Routes = () => (
-  <Switch>
+export const AppRoutes = () => (
+  <Routes>
     <Route
-      exact
       path="/"
-      render={() => <Redirect to={buildPageRoute(new DiaryDate().getKey())} />}
-    ></Route>
-    <Route path={buildPageRoute()}>
-      <DiaryPage />
-    </Route>
-  </Switch>
+      element={<Navigate to={buildPageRoute(new DiaryDate().getKey())} />}
+    />
+    <Route path={buildPageRoute()} element={<DiaryPage />} />
+  </Routes>
 );

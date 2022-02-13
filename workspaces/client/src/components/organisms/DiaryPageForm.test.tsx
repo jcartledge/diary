@@ -3,12 +3,13 @@ import userEvent from "@testing-library/user-event";
 import { createMockClient } from "mock-apollo-client";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
-import { withRoute } from "souvlaki-react-router";
 import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,
 } from "../../graphql/queries";
-import { withDate, withDiaryEntry } from "../../testWrappers";
+import { withDate } from "../../testWrappers/withDate";
+import { withDiaryEntry } from "../../testWrappers/withDiaryEntry";
+import { withRoute } from "../../testWrappers/withRoute";
 import { buildDiaryEntry } from "../../util/buildDiaryEntry";
 import { DiaryDate } from "../../util/date";
 import DiaryPageForm from "./DiaryPageForm";
