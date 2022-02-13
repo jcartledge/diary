@@ -10,3 +10,11 @@ workspaces/client/src/tailwind.output.css
 workspaces/server/build
 yarn-debug.log*
 yarn-error.log*
+
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
