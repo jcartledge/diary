@@ -17,5 +17,8 @@ fileignoreconfig:
   - filename: .github/workflows/ci.yml
     checksum: 72df56dcf0e3fc76d580f260e9d215cc3a5588973a309c790b30c410f156e70e
     ignore_detectors: []
+  - filename: .yarn/releases/yarn-3.1.1.cjs
+    checksum: a93cad50a1e51bacec22b560442c85b71c798af996566bd4f1812b439638a92d
+    ignore_detectors: []
 scopeconfig:
   - scope: node
