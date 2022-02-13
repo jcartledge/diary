@@ -11,6 +11,5 @@
     "@babel/preset-typescript": "^7.16.7",
     "@playwright/test": "1.18.1",
     "playwright-testing-library": "^4.0.1"
-  },
-  "dependencies": {}
+  }
 }
