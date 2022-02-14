@@ -39,7 +39,7 @@ describe("DiaryPage", () => {
       DIARY_ENTRY_QUERY,
       jest.fn(({ date }) =>
         Promise.resolve({
-          data: { diaryEntry: diaryEntries[date] },
+          data: { diaryEntry: diaryEntries[date] ?? buildDiaryEntry() },
         })
       )
     );

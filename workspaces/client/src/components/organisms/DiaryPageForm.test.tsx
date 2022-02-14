@@ -92,7 +92,7 @@ describe("DiaryPageForm", () => {
     );
     const updateDiaryEntryMutationHandler = jest
       .fn()
-      .mockResolvedValueOnce({ data: { diaryEntry } });
+      .mockResolvedValueOnce({ data: { updateDiaryEntry: { diaryEntry } } });
     mockClient.setRequestHandler(
       UPDATE_DIARY_ENTRY_MUTATION,
       updateDiaryEntryMutationHandler

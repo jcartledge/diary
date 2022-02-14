@@ -23,7 +23,11 @@ const buildMockClient = () => {
   );
   mockClient.setRequestHandler(
     UPDATE_DIARY_ENTRY_MUTATION,
-    jest.fn().mockResolvedValue(payload)
+    jest.fn().mockResolvedValue({
+      data: {
+        updateDiaryEntry: payload.data,
+      },
+    })
   );
   return mockClient;
 };
