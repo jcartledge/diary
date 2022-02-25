@@ -81,6 +81,11 @@ jobs:
         with:
           image: "diary-client"
 
+      - name: Scan image
+        uses: anchore/scan-action@v3
+        with:
+          image: "diary-client"
+
   build-server:
     name: build-server
     needs: [setup]
@@ -123,6 +128,11 @@ jobs:
         uses: ishworkh/docker-image-artifact-upload@v1
         with:
           image: "diary-server"
+
+      - name: Scan image
+        uses: anchore/scan-action@v3
+        with:
+          image: "diary-client"
 
   e2e:
     name: e2e
