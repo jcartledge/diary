@@ -13,5 +13,8 @@
   "devDependencies": {
     "@types/node": "^17.0.17",
     "audit-ci": "^5.1.2"
+  },
+  "resolutions": {
+    "tslib": "^2.3.1"
   }
 }
