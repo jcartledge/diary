@@ -19,7 +19,7 @@ containers:
   diary-server-dev:
     image: node:14.17.0
     working_directory: /app
-    command: yarn workspace server dev
+    command: yarn workspace server dev:server
     ports:
       - 4000:4000
     dependencies:
