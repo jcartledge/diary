@@ -13,7 +13,7 @@
   ],
   "devDependencies": {
     "@types/node": "^17.0.17",
-    "audit-ci": "^5.1.2",
+    "audit-ci": "^6.1.0",
     "concurrently": "^7.0.0"
   },
   "packageManager": "yarn@3.1.1"
