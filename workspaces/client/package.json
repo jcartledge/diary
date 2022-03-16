@@ -41,7 +41,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.24",
     "@vitejs/plugin-react": "^1.2.0",
-    "autoprefixer": "^10.4.3",
+    "autoprefixer": "^10.4.4",
     "eslint": "^8.9.0",
     "eslint-config-react-app": "^7.0.0",
     "eslint-plugin-react-hooks": "^4.3.0",
