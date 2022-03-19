@@ -27,7 +27,7 @@ fileignoreconfig:
     checksum: c18644b0bf6e50e500b0249973bcd428b06b5d4503c5945423bf89252afe3e5d
     ignore_detectors: []
   - filename: .pnp.cjs
-    checksum: 94e97b1ec3d62ac0134ebc1a0981f9fa4aec7469bb3d273d9e2b5af3a6e8a46c
+    checksum: eb4a0eacf73705791bfa19252a6a1ca275c3e376ffe405d729de1650d6d1c086
     ignore_detectors: []
 scopeconfig:
   - scope: node

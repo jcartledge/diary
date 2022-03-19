@@ -1,6 +1,6 @@
 import type { Config } from "@jest/types";
 
-const jestConfig = async (): Promise<Config.InitialOptions> => ({
+const jestConfig = (): Config.InitialOptions => ({
   clearMocks: true,
   coveragePathIgnorePatterns: [
     "/src/App.tsx",
@@ -19,7 +19,7 @@ const jestConfig = async (): Promise<Config.InitialOptions> => ({
     },
   },
   preset: "ts-jest",
-  setupFilesAfterEnv: ["./src/setupTests.ts"],
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
   testEnvironment: "jsdom",
 });
 
