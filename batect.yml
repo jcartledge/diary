@@ -6,18 +6,6 @@ containers:
     volumes:
       - local: .
         container: /app
-      - type: cache
-        name: node-modules
-        container: /app/node_modules
-      - type: cache
-        name: client-node-modules
-        container: /app/workspaces/client/node_modules
-      - type: cache
-        name: server-node-modules
-        container: /app/workspaces/server/node_modules
-      - type: cache
-        name: e2e-node-modules
-        container: /app/workspaces/e2e/node_modules
 
   diary-package-env:
     image: docker:20.10.6
@@ -36,21 +24,14 @@ containers:
         container: /app
 
 tasks:
-  setup:
-    run:
-      container: diary-build-env
 
   dev:
-    prerequisites:
-      - setup
     dependencies:
       - diary-server-dev
     run:
       container: diary-client-dev
 
   check-deps:
-    prerequisites:
-      - setup
     run:
       container: diary-build-env
       command: yarn audit:ci

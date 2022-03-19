@@ -3,7 +3,7 @@
 .env
 coverage
 e2e/test-results
-node_modules/
+node_modules
 resolvers-types.ts
 workspaces/client/build
 workspaces/client/src/tailwind.output.css

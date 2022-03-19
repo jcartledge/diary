@@ -20,5 +20,14 @@ fileignoreconfig:
   - filename: .yarn/releases/yarn-3.2.0.cjs
     checksum: 1afb4e8b12577828eb901d92d6a96464416f9495efe112ad86439d8c8e041fa3
     ignore_detectors: []
+  - filename: .yarn/sdks/typescript/lib/tsserver.js
+    checksum: c812a1dc183cc166375f79e83671f1794c11a7db780fbebddf3cdc31aba85244
+    ignore_detectors: []
+  - filename: .yarn/sdks/typescript/lib/tsserverlibrary.js
+    checksum: c18644b0bf6e50e500b0249973bcd428b06b5d4503c5945423bf89252afe3e5d
+    ignore_detectors: []
+  - filename: .pnp.cjs
+    checksum: 94e97b1ec3d62ac0134ebc1a0981f9fa4aec7469bb3d273d9e2b5af3a6e8a46c
+    ignore_detectors: []
 scopeconfig:
   - scope: node

@@ -20,9 +20,6 @@ module.exports = {
   },
   resolve: {
     extensions: [".ts", ".js"],
-    alias: {
-      graphql$: path.resolve(__dirname, "../../node_modules/graphql/index.js"),
-    },
   },
   module: {
     rules: [

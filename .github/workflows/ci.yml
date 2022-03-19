@@ -23,15 +23,6 @@ jobs:
           path: ~/.batect/cache
           key: batect-${{ hashFiles('batect') }}
 
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: .batect/caches
-          key: batect-caches-${{ hashFiles('yarn.lock') }}
-
-      - name: Download dependencies
-        run: ./batect setup
-
       - name: Audit dependencies
         run: ./batect check-deps
 
@@ -60,12 +51,6 @@ jobs:
         with:
           path: .batect/caches
           key: batect-${{ hashFiles('batect') }}
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: .batect/caches
-          key: batect-caches-${{ hashFiles('yarn.lock') }}
 
       - name: Cache shared types
         uses: actions/cache@v2
@@ -97,12 +82,6 @@ jobs:
         with:
           path: ~/.batect/cache
           key: batect-${{ hashFiles('batect') }}
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: .batect/caches
-          key: batect-caches-${{ hashFiles('yarn.lock') }}
 
       - name: Cache shared types
         uses: actions/cache@v2
@@ -151,12 +130,6 @@ jobs:
         with:
           path: ~/.batect/cache
           key: batect-${{ hashFiles('batect') }}
-
-      - name: Cache NPM dependencies
-        uses: actions/cache@v2
-        with:
-          path: .batect/caches
-          key: batect-caches-${{ hashFiles('yarn.lock') }}
 
       - name: certificate
         run: ./batect client-cert

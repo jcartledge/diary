@@ -3,7 +3,6 @@ import type { Config } from "@jest/types";
 const jestConfig = async (): Promise<Config.InitialOptions> => ({
   clearMocks: true,
   coveragePathIgnorePatterns: [
-    "/node_modules/",
     "/src/App.tsx",
     "/src/routes/index.tsx",
     "/src/graphql/client.ts",

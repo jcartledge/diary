@@ -4,7 +4,7 @@ import {
   MutationUpdateDiaryEntryArgs,
   QueryDiaryEntryArgs,
 } from "server/src/resolvers-types";
-import { DiaryDate } from "util/date";
+import { DiaryDate } from "../util/date";
 
 export const DIARY_ENTRY_QUERY = gql`
   query diaryEntry($date: String!) {

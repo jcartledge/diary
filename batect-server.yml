@@ -33,18 +33,6 @@ containers:
     volumes:
       - local: .
         container: /app
-      - type: cache
-        name: node-modules
-        container: /app/node_modules
-      - type: cache
-        name: client-node-modules
-        container: /app/client/node_modules
-      - type: cache
-        name: server-node-modules
-        container: /app/server/node_modules
-      - type: cache
-        name: e2e-node-modules
-        container: /app/e2e/node_modules
 
   diary-db:
     image: postgres:13.3
@@ -59,22 +47,17 @@ containers:
 
 tasks:
   server-codegen:
-    prerequisites:
-      - setup
     run:
       container: diary-build-env
       command: yarn workspace server codegen
 
   server-lint:
-    prerequisites:
-      - setup
     run:
       container: diary-build-env
       command: yarn workspace server lint
 
   server-test:
     prerequisites:
-      - setup
       - server-codegen
     dependencies:
       - diary-db
@@ -91,8 +74,6 @@ tasks:
         DATABASE_URL: postgresql://test:test@diary-db:5432/test
 
   server-coverage:
-    prerequisites:
-      - setup
     dependencies:
       - diary-db
     customise:
@@ -109,7 +90,6 @@ tasks:
 
   server-build:
     prerequisites:
-      - setup
       - server-codegen
     run:
       container: diary-build-env
