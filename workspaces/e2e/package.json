@@ -8,9 +8,9 @@
     "start": "yarn workspace server migrate up && playwright install chromium && npx playwright test"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.17.8",
     "@babel/preset-typescript": "^7.16.7",
-    "@playwright/test": "1.20.0",
+    "@playwright/test": "^1.20.1",
     "playwright-testing-library": "^4.2.0"
   }
 }
