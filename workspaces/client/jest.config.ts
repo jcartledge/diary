@@ -1,6 +1,6 @@
 import type { Config } from "@jest/types";
 
-const jestConfig = (): Config.InitialOptions => ({
+const jestConfig: Config.InitialOptions = {
   clearMocks: true,
   coveragePathIgnorePatterns: [
     "/src/App.tsx",
@@ -21,6 +21,6 @@ const jestConfig = (): Config.InitialOptions => ({
   preset: "ts-jest",
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
   testEnvironment: "jsdom",
-});
+};
 
 export default jestConfig;

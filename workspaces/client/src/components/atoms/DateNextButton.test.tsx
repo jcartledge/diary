@@ -1,9 +1,7 @@
+import { MockedProvider } from "@apollo/client/testing";
 import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { createMockClient, MockApolloClient } from "mock-apollo-client";
-import { DiaryEntry } from "server/src/resolvers-types";
 import { wrap } from "souvlaki";
-import { withApollo } from "souvlaki-apollo";
 import { DIARY_ENTRY_QUERY } from "../../graphql/queries";
 import { buildPageRoute } from "../../routes";
 import { withDate } from "../../testWrappers/withDate";
@@ -12,19 +10,6 @@ import { buildDiaryEntry } from "../../util/buildDiaryEntry";
 import { DiaryDate } from "../../util/date";
 import DateNextButton from "./DateNextButton";
 
-const buildMockClient = (
-  diaryEntry: Partial<DiaryEntry> = {}
-): MockApolloClient => {
-  const mockClient = createMockClient();
-  mockClient.setRequestHandler(
-    DIARY_ENTRY_QUERY,
-    jest.fn().mockResolvedValue({
-      data: { diaryEntry: buildDiaryEntry(diaryEntry) },
-    })
-  );
-  return mockClient;
-};
-
 const getNextButton = () => screen.getByRole("button", { name: "next" });
 
 describe("DateNextButton", () => {
@@ -32,13 +17,14 @@ describe("DateNextButton", () => {
     const onPathChange = jest.fn();
     const today = new DiaryDate();
     const yesterday = today.getPrevious();
-    render(<DateNextButton />, {
-      wrapper: wrap(
-        withApollo(buildMockClient()),
-        withDate(yesterday),
-        withRoute("", {}, onPathChange)
-      ),
-    });
+    render(
+      <MockedProvider mocks={[]} addTypename={false}>
+        <DateNextButton />
+      </MockedProvider>,
+      {
+        wrapper: wrap(withDate(yesterday), withRoute("", {}, onPathChange)),
+      }
+    );
 
     act(() => userEvent.click(getNextButton()));
 
@@ -49,13 +35,14 @@ describe("DateNextButton", () => {
     const onPathChange = jest.fn();
     const today = new DiaryDate();
 
-    render(<DateNextButton />, {
-      wrapper: wrap(
-        withApollo(buildMockClient()),
-        withDate(today),
-        withRoute("", {}, onPathChange)
-      ),
-    });
+    render(
+      <MockedProvider mocks={[]} addTypename={false}>
+        <DateNextButton />
+      </MockedProvider>,
+      {
+        wrapper: wrap(withDate(today), withRoute("", {}, onPathChange)),
+      }
+    );
 
     expect(getNextButton()).toBeDisabled();
 
@@ -67,23 +54,42 @@ describe("DateNextButton", () => {
   });
 
   it("bolds the button text if there is an entry on the next date", async () => {
-    const date = new DiaryDate().getPrevious();
-    const mockClient = buildMockClient({ whatHappened: "Lots" });
+    const date = new DiaryDate();
+    const mocks = [
+      {
+        request: {
+          query: DIARY_ENTRY_QUERY,
+          variables: { date: date.getKey() },
+        },
+        result: {
+          data: { diaryEntry: buildDiaryEntry({ whatHappened: "Lots" }) },
+        },
+      },
+    ];
 
-    render(<DateNextButton />, {
-      wrapper: wrap(withApollo(mockClient), withDate(date), withRoute()),
-    });
+    render(
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <DateNextButton />
+      </MockedProvider>,
+      {
+        wrapper: wrap(withDate(date.getPrevious()), withRoute()),
+      }
+    );
 
     await waitFor(() => expect(getNextButton()).toHaveClass("font-bold"));
   });
 
   it("does not bold the button text if there is not an entry on the next date", async () => {
     const date = new DiaryDate().getPrevious();
-    const mockClient = buildMockClient();
 
-    render(<DateNextButton />, {
-      wrapper: wrap(withApollo(mockClient), withDate(date), withRoute()),
-    });
+    render(
+      <MockedProvider mocks={[]} addTypename={false}>
+        <DateNextButton />
+      </MockedProvider>,
+      {
+        wrapper: wrap(withDate(date), withRoute()),
+      }
+    );
 
     await waitFor(() => expect(getNextButton()).not.toHaveClass("font-bold"));
   });

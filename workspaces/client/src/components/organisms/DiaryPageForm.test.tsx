@@ -1,8 +1,7 @@
+import { MockedProvider } from "@apollo/client/testing";
 import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { createMockClient } from "mock-apollo-client";
 import { wrap } from "souvlaki";
-import { withApollo } from "souvlaki-apollo";
 import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,
@@ -23,19 +22,25 @@ describe("DiaryPageForm", () => {
       notWell: "Too many arguments",
       risk: "More arguments",
     });
-    const mockClient = createMockClient();
-    mockClient.setRequestHandler(DIARY_ENTRY_QUERY, () =>
-      Promise.resolve({ data: { diaryEntry } })
-    );
+    const date = new DiaryDate();
+    const mocks = [
+      {
+        request: {
+          query: DIARY_ENTRY_QUERY,
+          variables: { date: date.getKey() },
+        },
+        result: { data: { diaryEntry } },
+      },
+    ];
 
-    const diary = render(<DiaryPageForm />, {
-      wrapper: wrap(
-        withApollo(mockClient),
-        withDate(),
-        withRoute(),
-        withDiaryEntry()
-      ),
-    });
+    const diary = render(
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <DiaryPageForm />
+      </MockedProvider>,
+      {
+        wrapper: wrap(withDate(), withRoute(), withDiaryEntry()),
+      }
+    );
 
     expect(await diary.findByLabelText("What happened?")).toHaveTextContent(
       "Lots"
@@ -56,21 +61,27 @@ describe("DiaryPageForm", () => {
 
   it("calls the apollo query with the date from the context", async () => {
     const date = new DiaryDate().getPrevious();
-    const mockClient = createMockClient();
-
     const diaryEntryQueryHandler = jest
       .fn()
-      .mockResolvedValue({ data: { diaryEntry: buildDiaryEntry() } });
-    mockClient.setRequestHandler(DIARY_ENTRY_QUERY, diaryEntryQueryHandler);
+      .mockReturnValue({ data: { diaryEntry: buildDiaryEntry() } });
+    const mocks = [
+      {
+        request: {
+          query: DIARY_ENTRY_QUERY,
+          variables: { date: date.getKey() },
+        },
+        result: diaryEntryQueryHandler,
+      },
+    ];
 
-    render(<DiaryPageForm />, {
-      wrapper: wrap(
-        withApollo(mockClient),
-        withDate(date),
-        withRoute(),
-        withDiaryEntry()
-      ),
-    });
+    render(
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <DiaryPageForm />
+      </MockedProvider>,
+      {
+        wrapper: wrap(withDate(date), withRoute(), withDiaryEntry()),
+      }
+    );
 
     await waitFor(() => {
       // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
@@ -83,29 +94,42 @@ describe("DiaryPageForm", () => {
 
   it("calls the apollo mutation with the updated content to update the entry", async () => {
     const date = new DiaryDate();
-    const mockClient = createMockClient();
-
     const diaryEntry = buildDiaryEntry();
-    mockClient.setRequestHandler(
-      DIARY_ENTRY_QUERY,
-      jest.fn().mockResolvedValue({ data: { diaryEntry } })
-    );
+    const diaryEntryQueryHandler = jest
+      .fn()
+      .mockResolvedValue({ data: { diaryEntry } });
     const updateDiaryEntryMutationHandler = jest
       .fn()
       .mockResolvedValueOnce({ data: { updateDiaryEntry: { diaryEntry } } });
-    mockClient.setRequestHandler(
-      UPDATE_DIARY_ENTRY_MUTATION,
-      updateDiaryEntryMutationHandler
-    );
+    const mocks = [
+      {
+        request: {
+          query: DIARY_ENTRY_QUERY,
+          variables: { date },
+        },
+        result: diaryEntryQueryHandler,
+      },
+      {
+        request: {
+          query: UPDATE_DIARY_ENTRY_MUTATION,
+          variables: { date },
+        },
+        result: updateDiaryEntryMutationHandler,
+      },
+    ];
 
-    const diaryPageForm = render(<DiaryPageForm />, {
-      wrapper: wrap(
-        withApollo(mockClient),
-        withDate(date),
-        withRoute(),
-        withDiaryEntry({ saveTimeoutInterval: 10 })
-      ),
-    });
+    const diaryPageForm = render(
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <DiaryPageForm />
+      </MockedProvider>,
+      {
+        wrapper: wrap(
+          withDate(date),
+          withRoute(),
+          withDiaryEntry({ saveTimeoutInterval: 10 })
+        ),
+      }
+    );
 
     await waitFor(() => {
       // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.

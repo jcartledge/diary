@@ -1,9 +1,8 @@
+import { MockedProvider } from "@apollo/client/testing";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { createMockClient } from "mock-apollo-client";
 import { act } from "react-dom/test-utils";
 import { wrap } from "souvlaki";
-import { withApollo } from "souvlaki-apollo";
 import { DIARY_ENTRY_QUERY } from "../../graphql/queries";
 import { buildPageRoute } from "../../routes";
 import { withDate } from "../../testWrappers/withDate";
@@ -26,33 +25,48 @@ describe("DiaryPage", () => {
   it("shows the entry for the date from the route", async () => {
     const today = new DiaryDate();
     const yesterday = today.getPrevious();
-    const diaryEntries = {
-      [today.getKey()]: buildDiaryEntry({
-        whatHappened: "Today's entry",
-      }),
-      [yesterday.getKey()]: buildDiaryEntry({
-        whatHappened: "Yesterday's entry",
-      }),
-    };
-    const mockClient = createMockClient();
-    mockClient.setRequestHandler(
-      DIARY_ENTRY_QUERY,
-      jest.fn(({ date }) =>
-        Promise.resolve({
-          data: { diaryEntry: diaryEntries[date] ?? buildDiaryEntry() },
-        })
-      )
-    );
+    const mocks = [
+      {
+        request: {
+          query: DIARY_ENTRY_QUERY,
+          variables: { date: today.getKey() },
+        },
+        result: {
+          data: {
+            diaryEntry: buildDiaryEntry({
+              whatHappened: "Today's entry",
+            }),
+          },
+        },
+      },
+      {
+        request: {
+          query: DIARY_ENTRY_QUERY,
+          variables: { date: yesterday.getKey() },
+        },
+        result: {
+          data: {
+            diaryEntry: buildDiaryEntry({
+              whatHappened: "Yesterday's entry",
+            }),
+          },
+        },
+      },
+    ];
 
-    render(<DiaryPage />, {
-      wrapper: wrap(
-        withRoute(buildPageRoute(), { isoDateString: today.getKey() }),
-        withLocale("en-AU"),
-        withDate(today),
-        withApollo(mockClient),
-        withDiaryEntry()
-      ),
-    });
+    render(
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <DiaryPage />
+      </MockedProvider>,
+      {
+        wrapper: wrap(
+          withRoute(buildPageRoute(), { isoDateString: today.getKey() }),
+          withLocale("en-AU"),
+          withDate(today),
+          withDiaryEntry()
+        ),
+      }
+    );
 
     await waitFor(() => {
       // required to prevent act warnings

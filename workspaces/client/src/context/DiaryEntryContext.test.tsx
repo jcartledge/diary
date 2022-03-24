@@ -1,55 +1,76 @@
+import { MockedProvider } from "@apollo/client/testing";
 import { render, waitFor } from "@testing-library/react";
-import { createMockClient } from "mock-apollo-client";
 import React, { useContext, useEffect } from "react";
 import { wrap } from "souvlaki";
-import { withApollo } from "souvlaki-apollo";
 import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,
 } from "../graphql/queries";
+import { withDate } from "../testWrappers/withDate";
 import { withDiaryEntry } from "../testWrappers/withDiaryEntry";
 import { withRoute } from "../testWrappers/withRoute";
 import { buildDiaryEntry } from "../util/buildDiaryEntry";
+import { DiaryDate } from "../util/date";
 import { DiaryEntryContext } from "./DiaryEntryContext";
 
-const buildMockClient = () => {
-  const mockClient = createMockClient();
-  const payload = {
-    data: { diaryEntry: buildDiaryEntry() },
-  };
-  mockClient.setRequestHandler(
-    DIARY_ENTRY_QUERY,
-    jest.fn().mockResolvedValue(payload)
-  );
-  mockClient.setRequestHandler(
-    UPDATE_DIARY_ENTRY_MUTATION,
-    jest.fn().mockResolvedValue({
-      data: {
-        updateDiaryEntry: payload.data,
+const getMocks = () => {
+  const today = new DiaryDate();
+  const yesterday = today.getPrevious();
+  const diaryEntry = buildDiaryEntry();
+  const diaryEntryQueryHandler = jest
+    .fn()
+    .mockResolvedValue({ data: { diaryEntry } });
+  const updateDiaryEntryMutationHandler = jest
+    .fn()
+    .mockResolvedValueOnce({ data: { updateDiaryEntry: { diaryEntry } } });
+  return [
+    {
+      request: {
+        query: DIARY_ENTRY_QUERY,
+        variables: { date: today.getKey() },
       },
-    })
-  );
-  return mockClient;
+      result: diaryEntryQueryHandler,
+    },
+    {
+      request: {
+        query: DIARY_ENTRY_QUERY,
+        variables: { date: yesterday.getKey() },
+      },
+      result: diaryEntryQueryHandler,
+    },
+    {
+      request: {
+        query: UPDATE_DIARY_ENTRY_MUTATION,
+        variables: { date: today.getKey() },
+      },
+      result: updateDiaryEntryMutationHandler,
+    },
+  ];
 };
 
 type Wrappers = { wrapper: React.ComponentType };
 
 const wrappers = (): Wrappers => ({
   wrapper: wrap(
-    withApollo(buildMockClient()),
     withRoute(),
-    withDiaryEntry({ saveTimeoutInterval: 1 })
+    withDiaryEntry({ saveTimeoutInterval: 1 }),
+    withDate()
   ),
 });
 
 describe("DiaryEntryContextProvider", () => {
-  it("sets isDirty to false when an entry is loaded and no updates have taken place", async () => {
+  it.only("sets isDirty to false when an entry is loaded and no updates have taken place", async () => {
     const TestChild: React.FC = () => {
       const { isDirty } = useContext(DiaryEntryContext);
       return <>isDirty: {isDirty ? "true" : "false"}</>;
     };
 
-    const { getByText } = render(<TestChild />, wrappers());
+    const { getByText } = render(
+      <MockedProvider mocks={getMocks()} addTypename={false}>
+        <TestChild />
+      </MockedProvider>,
+      wrappers()
+    );
 
     await waitFor(() =>
       expect(getByText("isDirty: false")).toBeInTheDocument()
@@ -63,7 +84,12 @@ describe("DiaryEntryContextProvider", () => {
       return <>isDirty: {isDirty ? "true" : "false"}</>;
     };
 
-    const { getByText } = render(<TestChild />, wrappers());
+    const { getByText } = render(
+      <MockedProvider mocks={getMocks()} addTypename={false}>
+        <TestChild />
+      </MockedProvider>,
+      wrappers()
+    );
 
     await waitFor(() => expect(getByText("isDirty: true")).toBeInTheDocument());
     await waitFor(() => {
@@ -78,7 +104,12 @@ describe("DiaryEntryContextProvider", () => {
       return <>isDirty: {isDirty ? "true" : "false"}</>;
     };
 
-    const container = render(<TestChild />, wrappers());
+    const container = render(
+      <MockedProvider mocks={getMocks()} addTypename={false}>
+        <TestChild />
+      </MockedProvider>,
+      wrappers()
+    );
 
     await waitFor(() =>
       expect(container.queryByText("isDirty: true")).not.toBeInTheDocument()
@@ -95,7 +126,12 @@ describe("DiaryEntryContextProvider", () => {
       return <>isDirty: {isDirty ? "true" : "false"}</>;
     };
 
-    const container = render(<TestChild />, wrappers());
+    const container = render(
+      <MockedProvider mocks={getMocks()} addTypename={false}>
+        <TestChild />
+      </MockedProvider>,
+      wrappers()
+    );
 
     expect(container.queryByText("isDirty: false")).not.toBeInTheDocument();
     await waitFor(() => {
@@ -110,7 +146,12 @@ describe("DiaryEntryContextProvider", () => {
       return <>isDirty: {isDirty ? "true" : "false"}</>;
     };
 
-    const container = render(<TestChild />, wrappers());
+    const container = render(
+      <MockedProvider mocks={getMocks()} addTypename={false}>
+        <TestChild />
+      </MockedProvider>,
+      wrappers()
+    );
 
     expect(container.queryByText("isDirty: false")).not.toBeInTheDocument();
     await waitFor(() => {
