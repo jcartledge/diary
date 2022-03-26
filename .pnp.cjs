@@ -126,7 +126,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],\
       ["@apollo/protobufjs", [\
         ["npm:1.2.2", {\
-          "packageLocation": "./.yarn/unplugged/@apollo-protobufjs-npm-1.2.2-306a5b4ea3/node_modules/@apollo/protobufjs/",\
+          "packageLocation": "./.yarn/cache/@apollo-protobufjs-npm-1.2.2-306a5b4ea3-3f3ec1f428.zip/node_modules/@apollo/protobufjs/",\
           "packageDependencies": [\
             ["@apollo/protobufjs", "npm:1.2.2"],\
             ["@protobufjs/aspromise", "npm:1.1.2"],\
@@ -8864,7 +8864,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],\
       ["browser-tabs-lock", [\
         ["npm:1.2.15", {\
-          "packageLocation": "./.yarn/unplugged/browser-tabs-lock-npm-1.2.15-1833d8c9c7/node_modules/browser-tabs-lock/",\
+          "packageLocation": "./.yarn/cache/browser-tabs-lock-npm-1.2.15-1833d8c9c7-79194361d5.zip/node_modules/browser-tabs-lock/",\
           "packageDependencies": [\
             ["browser-tabs-lock", "npm:1.2.15"],\
             ["lodash", "npm:4.17.21"]\
@@ -9712,7 +9712,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],\
       ["core-js", [\
         ["npm:3.21.0", {\
-          "packageLocation": "./.yarn/unplugged/core-js-npm-3.21.0-9d2e98b782/node_modules/core-js/",\
+          "packageLocation": "./.yarn/cache/core-js-npm-3.21.0-9d2e98b782-87df49aa2c.zip/node_modules/core-js/",\
           "packageDependencies": [\
             ["core-js", "npm:3.21.0"]\
           ],\
@@ -9732,7 +9732,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],\
       ["core-js-pure", [\
         ["npm:3.14.0", {\
-          "packageLocation": "./.yarn/unplugged/core-js-pure-npm-3.14.0-9a85e5a133/node_modules/core-js-pure/",\
+          "packageLocation": "./.yarn/cache/core-js-pure-npm-3.14.0-9a85e5a133-800628e536.zip/node_modules/core-js-pure/",\
           "packageDependencies": [\
             ["core-js-pure", "npm:3.14.0"]\
           ],\
@@ -10666,7 +10666,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],\
       ["esbuild", [\
         ["npm:0.14.21", {\
-          "packageLocation": "./.yarn/unplugged/esbuild-npm-0.14.21-52750ae172/node_modules/esbuild/",\
+          "packageLocation": "./.yarn/cache/esbuild-npm-0.14.21-52750ae172-21a0b30274.zip/node_modules/esbuild/",\
           "packageDependencies": [\
             ["esbuild", "npm:0.14.21"],\
             ["esbuild-android-arm64", "npm:0.14.21"],\
