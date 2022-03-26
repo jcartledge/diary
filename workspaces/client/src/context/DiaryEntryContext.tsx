@@ -42,7 +42,6 @@ export const DiaryEntryContextProvider: React.FC<
   PropsWithChildren<DiaryEntryContextProps>
 > = ({ children, saveTimeoutInterval = 1000 }) => {
   const date = useDate();
-  console.log({ date: date.getKey() });
   const { data } = useDiaryEntryQuery(date);
   const [currentDiaryEntry, setDiaryEntry] = useState<DiaryEntry>(
     buildDiaryEntry()

@@ -1,14 +1,14 @@
-import { MockedProvider } from "@apollo/client/testing";
 import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { wrap } from "souvlaki";
-import {
-  DIARY_ENTRY_QUERY,
-  UPDATE_DIARY_ENTRY_MUTATION,
-} from "../../graphql/queries";
 import { withDate } from "../../testWrappers/withDate";
 import { withDiaryEntry } from "../../testWrappers/withDiaryEntry";
+import { withMockedApolloProvider } from "../../testWrappers/withMockedApolloProvider";
 import { withRoute } from "../../testWrappers/withRoute";
+import {
+  buildMockDiaryEntryMutation,
+  buildMockDiaryEntryQuery,
+} from "../../util/buildApolloClientMocks";
 import { buildDiaryEntry } from "../../util/buildDiaryEntry";
 import { DiaryDate } from "../../util/date";
 import DiaryPageForm from "./DiaryPageForm";
@@ -23,24 +23,21 @@ describe("DiaryPageForm", () => {
       risk: "More arguments",
     });
     const date = new DiaryDate();
-    const mocks = [
-      {
-        request: {
-          query: DIARY_ENTRY_QUERY,
-          variables: { date: date.getKey() },
-        },
-        result: { data: { diaryEntry } },
-      },
-    ];
 
-    const diary = render(
-      <MockedProvider mocks={mocks} addTypename={false}>
-        <DiaryPageForm />
-      </MockedProvider>,
-      {
-        wrapper: wrap(withDate(), withRoute(), withDiaryEntry()),
-      }
-    );
+    const diary = render(<DiaryPageForm />, {
+      wrapper: wrap(
+        withMockedApolloProvider({
+          mocks: [buildMockDiaryEntryQuery(date, diaryEntry)],
+        }),
+        withDate(),
+        withRoute(),
+        withDiaryEntry()
+      ),
+    });
+
+    await waitFor(() => {
+      // Allow apollo mock time to resolve
+    });
 
     expect(await diary.findByLabelText("What happened?")).toHaveTextContent(
       "Lots"
@@ -61,75 +58,43 @@ describe("DiaryPageForm", () => {
 
   it("calls the apollo query with the date from the context", async () => {
     const date = new DiaryDate().getPrevious();
-    const diaryEntryQueryHandler = jest
-      .fn()
-      .mockReturnValue({ data: { diaryEntry: buildDiaryEntry() } });
-    const mocks = [
-      {
-        request: {
-          query: DIARY_ENTRY_QUERY,
-          variables: { date: date.getKey() },
-        },
-        result: diaryEntryQueryHandler,
-      },
-    ];
+    const querySpy = jest.fn();
+    const mocks = [buildMockDiaryEntryQuery(date, {}, querySpy)];
 
-    render(
-      <MockedProvider mocks={mocks} addTypename={false}>
-        <DiaryPageForm />
-      </MockedProvider>,
-      {
-        wrapper: wrap(withDate(date), withRoute(), withDiaryEntry()),
-      }
-    );
+    render(<DiaryPageForm />, {
+      wrapper: wrap(
+        withMockedApolloProvider({ mocks }),
+        withDate(date),
+        withRoute(),
+        withDiaryEntry()
+      ),
+    });
 
     await waitFor(() => {
       // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
     });
 
-    expect(diaryEntryQueryHandler).toHaveBeenCalledWith({
-      date: date.getKey(),
-    });
+    expect(querySpy).toHaveBeenCalled();
   });
 
-  it("calls the apollo mutation with the updated content to update the entry", async () => {
+  it("calls the apollo mutation to update the entry", async () => {
     const date = new DiaryDate();
-    const diaryEntry = buildDiaryEntry();
-    const diaryEntryQueryHandler = jest
-      .fn()
-      .mockResolvedValue({ data: { diaryEntry } });
-    const updateDiaryEntryMutationHandler = jest
-      .fn()
-      .mockResolvedValueOnce({ data: { updateDiaryEntry: { diaryEntry } } });
+    const expectedDiaryEntry = buildDiaryEntry({
+      whatHappened: "Nothing happened",
+    });
+    const mutationSpy = jest.fn();
     const mocks = [
-      {
-        request: {
-          query: DIARY_ENTRY_QUERY,
-          variables: { date },
-        },
-        result: diaryEntryQueryHandler,
-      },
-      {
-        request: {
-          query: UPDATE_DIARY_ENTRY_MUTATION,
-          variables: { date },
-        },
-        result: updateDiaryEntryMutationHandler,
-      },
+      buildMockDiaryEntryMutation(expectedDiaryEntry, mutationSpy),
     ];
 
-    const diaryPageForm = render(
-      <MockedProvider mocks={mocks} addTypename={false}>
-        <DiaryPageForm />
-      </MockedProvider>,
-      {
-        wrapper: wrap(
-          withDate(date),
-          withRoute(),
-          withDiaryEntry({ saveTimeoutInterval: 10 })
-        ),
-      }
-    );
+    const diaryPageForm = render(<DiaryPageForm />, {
+      wrapper: wrap(
+        withMockedApolloProvider({ mocks }),
+        withDate(date),
+        withRoute(),
+        withDiaryEntry({ saveTimeoutInterval: 10 })
+      ),
+    });
 
     await waitFor(() => {
       // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
@@ -140,13 +105,6 @@ describe("DiaryPageForm", () => {
       "Nothing happened"
     );
 
-    await waitFor(() =>
-      expect(updateDiaryEntryMutationHandler).toHaveBeenCalledWith({
-        diaryEntry: {
-          ...diaryEntry,
-          whatHappened: "Nothing happened",
-        },
-      })
-    );
+    await waitFor(() => expect(mutationSpy).toHaveBeenCalled());
   });
 });
