@@ -9390,7 +9390,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["iso-datestring-validator", "npm:2.2.1"],\
             ["jest", "virtual:bc85734063c1e3828e5ca1361ba2c1a1883916291846bdd09a867e02713ae7dbf827d9ae325e1b074ed40ea57aa965f82acaece24314c129d872737a0da01329#npm:27.5.1"],\
             ["jest-fail-on-console", "npm:2.3.0"],\
-            ["mock-apollo-client", "virtual:f272f0585a9e56184509bcb239ce55c092894d2419b4e95987e88dd55af7bc53adfdb1a36f38cdf6b3a2415aa18a5322a08d960465c3006046b9fca213d9be08#npm:1.2.0"],\
             ["postcss", "npm:8.4.12"],\
             ["react", "npm:17.0.2"],\
             ["react-dom", "virtual:f272f0585a9e56184509bcb239ce55c092894d2419b4e95987e88dd55af7bc53adfdb1a36f38cdf6b3a2415aa18a5322a08d960465c3006046b9fca213d9be08#npm:17.0.2"],\
@@ -9399,7 +9398,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["server", "workspace:workspaces/server"],\
             ["slugify", "npm:1.6.5"],\
             ["souvlaki", "virtual:f272f0585a9e56184509bcb239ce55c092894d2419b4e95987e88dd55af7bc53adfdb1a36f38cdf6b3a2415aa18a5322a08d960465c3006046b9fca213d9be08#npm:0.1.1"],\
-            ["souvlaki-apollo", "virtual:f272f0585a9e56184509bcb239ce55c092894d2419b4e95987e88dd55af7bc53adfdb1a36f38cdf6b3a2415aa18a5322a08d960465c3006046b9fca213d9be08#npm:0.1.1"],\
             ["styled-components", "virtual:f272f0585a9e56184509bcb239ce55c092894d2419b4e95987e88dd55af7bc53adfdb1a36f38cdf6b3a2415aa18a5322a08d960465c3006046b9fca213d9be08#npm:5.3.3"],\
             ["tailwindcss", "virtual:f272f0585a9e56184509bcb239ce55c092894d2419b4e95987e88dd55af7bc53adfdb1a36f38cdf6b3a2415aa18a5322a08d960465c3006046b9fca213d9be08#npm:3.0.23"],\
             ["ts-jest", "virtual:bc85734063c1e3828e5ca1361ba2c1a1883916291846bdd09a867e02713ae7dbf827d9ae325e1b074ed40ea57aa965f82acaece24314c129d872737a0da01329#npm:27.1.3"],\
@@ -15151,28 +15149,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["mock-apollo-client", [\
-        ["npm:1.2.0", {\
-          "packageLocation": "./.yarn/cache/mock-apollo-client-npm-1.2.0-0aa55da7d5-073df138b8.zip/node_modules/mock-apollo-client/",\
-          "packageDependencies": [\
-            ["mock-apollo-client", "npm:1.2.0"]\
-          ],\
-          "linkType": "SOFT"\
-        }],\
-        ["virtual:f272f0585a9e56184509bcb239ce55c092894d2419b4e95987e88dd55af7bc53adfdb1a36f38cdf6b3a2415aa18a5322a08d960465c3006046b9fca213d9be08#npm:1.2.0", {\
-          "packageLocation": "./.yarn/__virtual__/mock-apollo-client-virtual-1c342f6672/0/cache/mock-apollo-client-npm-1.2.0-0aa55da7d5-073df138b8.zip/node_modules/mock-apollo-client/",\
-          "packageDependencies": [\
-            ["mock-apollo-client", "virtual:f272f0585a9e56184509bcb239ce55c092894d2419b4e95987e88dd55af7bc53adfdb1a36f38cdf6b3a2415aa18a5322a08d960465c3006046b9fca213d9be08#npm:1.2.0"],\
-            ["@apollo/client", "virtual:f272f0585a9e56184509bcb239ce55c092894d2419b4e95987e88dd55af7bc53adfdb1a36f38cdf6b3a2415aa18a5322a08d960465c3006046b9fca213d9be08#npm:3.5.10"],\
-            ["@types/apollo__client", null]\
-          ],\
-          "packagePeers": [\
-            "@apollo/client",\
-            "@types/apollo__client"\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["ms", [\
         ["npm:2.0.0", {\
           "packageLocation": "./.yarn/cache/ms-npm-2.0.0-9e1101a471-0e6a22b8b7.zip/node_modules/ms/",\
@@ -17737,44 +17713,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "@types/react",\
             "react-dom",\
             "react"\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["souvlaki-apollo", [\
-        ["npm:0.1.1", {\
-          "packageLocation": "./.yarn/cache/souvlaki-apollo-npm-0.1.1-d24104a634-3cb5e3f7b4.zip/node_modules/souvlaki-apollo/",\
-          "packageDependencies": [\
-            ["souvlaki-apollo", "npm:0.1.1"]\
-          ],\
-          "linkType": "SOFT"\
-        }],\
-        ["virtual:f272f0585a9e56184509bcb239ce55c092894d2419b4e95987e88dd55af7bc53adfdb1a36f38cdf6b3a2415aa18a5322a08d960465c3006046b9fca213d9be08#npm:0.1.1", {\
-          "packageLocation": "./.yarn/__virtual__/souvlaki-apollo-virtual-9c84760270/0/cache/souvlaki-apollo-npm-0.1.1-d24104a634-3cb5e3f7b4.zip/node_modules/souvlaki-apollo/",\
-          "packageDependencies": [\
-            ["souvlaki-apollo", "virtual:f272f0585a9e56184509bcb239ce55c092894d2419b4e95987e88dd55af7bc53adfdb1a36f38cdf6b3a2415aa18a5322a08d960465c3006046b9fca213d9be08#npm:0.1.1"],\
-            ["@apollo/client", "virtual:f272f0585a9e56184509bcb239ce55c092894d2419b4e95987e88dd55af7bc53adfdb1a36f38cdf6b3a2415aa18a5322a08d960465c3006046b9fca213d9be08#npm:3.5.10"],\
-            ["@types/apollo__client", null],\
-            ["@types/graphql", null],\
-            ["@types/react", "npm:17.0.42"],\
-            ["@types/react-dom", "npm:17.0.14"],\
-            ["@types/souvlaki", null],\
-            ["graphql", "npm:16.3.0"],\
-            ["react", "npm:17.0.2"],\
-            ["react-dom", "virtual:f272f0585a9e56184509bcb239ce55c092894d2419b4e95987e88dd55af7bc53adfdb1a36f38cdf6b3a2415aa18a5322a08d960465c3006046b9fca213d9be08#npm:17.0.2"],\
-            ["souvlaki", "virtual:f272f0585a9e56184509bcb239ce55c092894d2419b4e95987e88dd55af7bc53adfdb1a36f38cdf6b3a2415aa18a5322a08d960465c3006046b9fca213d9be08#npm:0.1.1"]\
-          ],\
-          "packagePeers": [\
-            "@apollo/client",\
-            "@types/apollo__client",\
-            "@types/graphql",\
-            "@types/react-dom",\
-            "@types/react",\
-            "@types/souvlaki",\
-            "graphql",\
-            "react-dom",\
-            "react",\
-            "souvlaki"\
           ],\
           "linkType": "HARD"\
         }]\
