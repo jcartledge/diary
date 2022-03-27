@@ -6,6 +6,9 @@ containers:
     volumes:
       - local: .
         container: /app
+      - type: cache
+        name: unplugged
+        container: /app/.yarn/unplugged
 
   diary-package-env:
     image: docker:20.10.6
@@ -24,6 +27,9 @@ containers:
         container: /app
 
 tasks:
+  setup:
+    run:
+      container: diary-build-env
 
   dev:
     dependencies:

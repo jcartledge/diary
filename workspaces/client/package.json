@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "tsc && yarn install && vite build",
+    "build": "tsc && vite build",
     "test": "jest --config=jest.config.ts",
     "lint": "eslint src/**.{ts,tsx}",
     "coverage": "CI=true yarn test --coverage --coverageDirectory='output/coverage/report'"
