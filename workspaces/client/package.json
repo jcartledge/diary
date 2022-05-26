@@ -48,7 +48,7 @@
     "graphql": "^16.3.0",
     "iso-datestring-validator": "^2.2.1",
     "jest": "^27.5.1",
-    "jest-fail-on-console": "^2.2.3",
+    "jest-fail-on-console": "^2.4.2",
     "mock-apollo-client": "^1.2.0",
     "postcss": "^8.4.12",
     "react": "^17.0.2",
