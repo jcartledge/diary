@@ -3,10 +3,10 @@ fileignoreconfig:
     checksum: f0045b3f8905880e17671222a920193a34a64f59b0d5fe52d8829b8da70e50dd
     ignore_detectors: []
   - filename: batect.cmd
-    checksum: 9a90890016623385c0ccd595a314dc583bff305ec73aefa53784c5921d91b9ff
+    checksum: 386677d1c0414c83355e3b2aa2a6bd196491a685a452d37b924f68aa9c63cca5
     ignore_detectors: []
   - filename: batect
-    checksum: 23e2b8123a064ee4b45575e2ce4f436ac7415b6780ac33c204bf3f6b9c9fd5db
+    checksum: d59ef47ed133198eb4d33ca07305c83acbc177a247e7c4c25ee12309b2f2b4a2
     ignore_detectors: []
   - filename: yarn.lock
     checksum: 14c978fe87bd8fe2d53a2f34a19e900e7bd20b23159da19a17585138beb2c700
