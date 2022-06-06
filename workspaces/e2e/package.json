@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.16.7",
-    "@playwright/test": "1.20.0",
+    "@playwright/test": "1.22.2",
     "playwright-testing-library": "^4.2.0"
   }
 }
