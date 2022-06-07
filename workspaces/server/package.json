@@ -5,7 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@graphql-codegen/cli": "^2.6.2",
-    "@graphql-codegen/typescript": "^2.4.11",
+    "@graphql-codegen/typescript": "^2.5.0",
     "@graphql-codegen/typescript-resolvers": "^2.6.4",
     "apollo-server": "^3.8.2",
     "concurrently": "^7.2.1",
