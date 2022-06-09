@@ -1,9 +1,0 @@
-pull_request_rules:
-  - name: Automatic merge successful dependabot PRs
-    conditions:
-      - author~=^dependabot(|-preview)\[bot\]$
-      - "check-success=SonarCloud Code Analysis"
-      - check-success=e2e
-    actions:
-      merge:
-        method: merge
