@@ -1,4 +1,4 @@
-FROM nginx:1.21-alpine
+FROM nginx:1.22-alpine
 RUN rm /etc/nginx/conf.d/default.conf
 COPY ./nginx/templates /etc/nginx/templates
 COPY ./build/ /usr/share/nginx/html
