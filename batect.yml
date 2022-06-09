@@ -20,7 +20,7 @@ containers:
         container: /app/workspaces/e2e/node_modules
 
   diary-package-env:
-    image: docker:20.10.6
+    image: docker:20.10.17
     volumes:
       - local: .
         container: /app
