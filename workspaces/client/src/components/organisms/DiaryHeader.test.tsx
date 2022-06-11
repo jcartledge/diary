@@ -1,16 +1,12 @@
-import { cleanup, render, waitFor } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
-import { afterEach, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { withDiaryEntryContext } from "../../testWrappers/withDiaryEntryContext";
 import { withLocale } from "../../testWrappers/withLocale";
 import { withRoute } from "../../testWrappers/withRoute";
 import { buildMockClient } from "../../util/buildMockClient";
 import DiaryHeader from "./DiaryHeader";
-
-afterEach(() => {
-  cleanup();
-});
 
 describe("DiaryHeader", () => {
   it("shows the date italicised if the entry has unsaved changes", async () => {

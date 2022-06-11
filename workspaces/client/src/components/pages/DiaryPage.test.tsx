@@ -1,10 +1,10 @@
-import { cleanup, render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createMockClient } from "mock-apollo-client";
 import { act } from "react-dom/test-utils";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { DIARY_ENTRY_QUERY } from "../../graphql/queries";
 import { buildPageRoute } from "../../routes";
 import { withDate } from "../../testWrappers/withDate";
@@ -14,10 +14,6 @@ import { withRoute } from "../../testWrappers/withRoute";
 import { buildDiaryEntry } from "../../util/buildDiaryEntry";
 import { DiaryDate } from "../../util/date";
 import DiaryPage from "./DiaryPage";
-
-afterEach(() => {
-  cleanup();
-});
 
 describe("DiaryPage", () => {
   it("shows an error page if an invalid date is supplied", () => {

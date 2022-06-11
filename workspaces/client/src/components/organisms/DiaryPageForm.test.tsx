@@ -1,9 +1,9 @@
-import { cleanup, render, waitFor } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createMockClient } from "mock-apollo-client";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,
@@ -14,10 +14,6 @@ import { withRoute } from "../../testWrappers/withRoute";
 import { buildDiaryEntry } from "../../util/buildDiaryEntry";
 import { DiaryDate } from "../../util/date";
 import DiaryPageForm from "./DiaryPageForm";
-
-afterEach(() => {
-  cleanup();
-});
 
 describe("DiaryPageForm", () => {
   it("renders the diary content from apollo", async () => {

@@ -1,10 +1,10 @@
-import { act, cleanup, render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createMockClient, MockApolloClient } from "mock-apollo-client";
 import { DiaryEntry } from "server/src/resolvers-types";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { DIARY_ENTRY_QUERY } from "../../graphql/queries";
 import { buildPageRoute } from "../../routes";
 import { withDate } from "../../testWrappers/withDate";
@@ -12,10 +12,6 @@ import { withRoute } from "../../testWrappers/withRoute";
 import { buildDiaryEntry } from "../../util/buildDiaryEntry";
 import { DiaryDate } from "../../util/date";
 import DateNextButton from "./DateNextButton";
-
-afterEach(() => {
-  cleanup();
-});
 
 const buildMockClient = (
   diaryEntry: Partial<DiaryEntry> = {}

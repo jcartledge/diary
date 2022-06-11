@@ -1,14 +1,10 @@
-import { cleanup, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { wrap } from "souvlaki";
-import { afterEach, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { withDate } from "../../testWrappers/withDate";
 import { withLocale } from "../../testWrappers/withLocale";
 import { DiaryDate } from "../../util/date";
 import { FormattedDate } from "./FormattedDate";
-
-afterEach(() => {
-  cleanup();
-});
 
 describe("Diary", () => {
   it("renders the date in the locale passed to it", () => {
