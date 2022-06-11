@@ -61,7 +61,7 @@ export const withRoute = createHelper(
       params?: Record<string, string>,
       onPathnameChange?: (pathname: string) => void,
       onLocationChange?: (location: Location) => void
-    ): React.ComponentType =>
+    ): React.FC<React.PropsWithChildren<{}>> =>
     ({ children }) => {
       const interpolatedPath = interpolatePathParams(path, params);
       const pathWithoutQueryParams = path.replace(/\?.*/, "");

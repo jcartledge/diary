@@ -5,7 +5,7 @@ import {
 } from "../context/DiaryEntryContext";
 
 export const withDiaryEntry = createHelper(
-  (props?: DiaryEntryContextProps) =>
+  (props?: DiaryEntryContextProps): React.FC<React.PropsWithChildren<{}>> =>
     ({ children }) =>
       (
         <DiaryEntryContextProvider {...props}>
