@@ -28,7 +28,7 @@ describe("DiaryHeader", () => {
     );
   });
 
-  it.only(`doesn't show the date italicised if the entry has no unsaved changes`, async () => {
+  it(`doesn't show the date italicised if the entry has no unsaved changes`, async () => {
     const diaryHeader = render(<DiaryHeader />, {
       wrapper: wrap(
         withApollo(buildMockClient()),
