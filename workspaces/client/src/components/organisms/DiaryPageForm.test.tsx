@@ -1,8 +1,9 @@
-import { render, waitFor } from "@testing-library/react";
+import { cleanup, render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createMockClient } from "mock-apollo-client";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,
@@ -13,6 +14,10 @@ import { withRoute } from "../../testWrappers/withRoute";
 import { buildDiaryEntry } from "../../util/buildDiaryEntry";
 import { DiaryDate } from "../../util/date";
 import DiaryPageForm from "./DiaryPageForm";
+
+afterEach(() => {
+  cleanup();
+});
 
 describe("DiaryPageForm", () => {
   it("renders the diary content from apollo", async () => {
@@ -37,28 +42,28 @@ describe("DiaryPageForm", () => {
       ),
     });
 
-    expect(await diary.findByLabelText("What happened?")).toHaveTextContent(
+    expect((await diary.findByLabelText("What happened?")).textContent).toEqual(
       "Lots"
     );
-    expect(await diary.findByLabelText("Went well")).toHaveTextContent(
+    expect((await diary.findByLabelText("Went well")).textContent).toEqual(
       "Nothing went well"
     );
-    expect(await diary.findByLabelText("Could be improved")).toHaveTextContent(
-      "Everything"
-    );
-    expect(await diary.findByLabelText("Didn't go well")).toHaveTextContent(
+    expect(
+      (await diary.findByLabelText("Could be improved")).textContent
+    ).toEqual("Everything");
+    expect((await diary.findByLabelText("Didn't go well")).textContent).toEqual(
       "Too many arguments"
     );
-    expect(await diary.findByLabelText("Might be a risk")).toHaveTextContent(
-      "More arguments"
-    );
+    expect(
+      (await diary.findByLabelText("Might be a risk")).textContent
+    ).toEqual("More arguments");
   });
 
   it("calls the apollo query with the date from the context", async () => {
     const date = new DiaryDate().getPrevious();
     const mockClient = createMockClient();
 
-    const diaryEntryQueryHandler = jest
+    const diaryEntryQueryHandler = vi
       .fn()
       .mockResolvedValue({ data: { diaryEntry: buildDiaryEntry() } });
     mockClient.setRequestHandler(DIARY_ENTRY_QUERY, diaryEntryQueryHandler);
@@ -70,10 +75,6 @@ describe("DiaryPageForm", () => {
         withRoute(),
         withDiaryEntry()
       ),
-    });
-
-    await waitFor(() => {
-      // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
     });
 
     expect(diaryEntryQueryHandler).toHaveBeenCalledWith({
@@ -88,9 +89,9 @@ describe("DiaryPageForm", () => {
     const diaryEntry = buildDiaryEntry();
     mockClient.setRequestHandler(
       DIARY_ENTRY_QUERY,
-      jest.fn().mockResolvedValue({ data: { diaryEntry } })
+      vi.fn().mockResolvedValue({ data: { diaryEntry } })
     );
-    const updateDiaryEntryMutationHandler = jest
+    const updateDiaryEntryMutationHandler = vi
       .fn()
       .mockResolvedValueOnce({ data: { updateDiaryEntry: { diaryEntry } } });
     mockClient.setRequestHandler(
@@ -105,10 +106,6 @@ describe("DiaryPageForm", () => {
         withRoute(),
         withDiaryEntry({ saveTimeoutInterval: 10 })
       ),
-    });
-
-    await waitFor(() => {
-      // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
     });
 
     userEvent.type(

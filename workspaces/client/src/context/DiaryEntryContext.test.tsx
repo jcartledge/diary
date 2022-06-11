@@ -1,8 +1,9 @@
-import { render, waitFor } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import { createMockClient } from "mock-apollo-client";
 import React, { useContext, useEffect } from "react";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,
@@ -12,6 +13,10 @@ import { withRoute } from "../testWrappers/withRoute";
 import { buildDiaryEntry } from "../util/buildDiaryEntry";
 import { DiaryEntryContext } from "./DiaryEntryContext";
 
+afterEach(() => {
+  cleanup();
+});
+
 const buildMockClient = () => {
   const mockClient = createMockClient();
   const payload = {
@@ -19,11 +24,11 @@ const buildMockClient = () => {
   };
   mockClient.setRequestHandler(
     DIARY_ENTRY_QUERY,
-    jest.fn().mockResolvedValue(payload)
+    vi.fn().mockResolvedValue(payload)
   );
   mockClient.setRequestHandler(
     UPDATE_DIARY_ENTRY_MUTATION,
-    jest.fn().mockResolvedValue({
+    vi.fn().mockResolvedValue({
       data: {
         updateDiaryEntry: payload.data,
       },
@@ -49,10 +54,10 @@ describe("DiaryEntryContextProvider", () => {
       return <>isDirty: {isDirty ? "true" : "false"}</>;
     };
 
-    const { getByText } = render(<TestChild />, wrappers());
+    render(<TestChild />, wrappers());
 
     await waitFor(() =>
-      expect(getByText("isDirty: false")).toBeInTheDocument()
+      expect(screen.queryByText("isDirty: false")).not.toBeNull()
     );
   });
 
@@ -63,12 +68,11 @@ describe("DiaryEntryContextProvider", () => {
       return <>isDirty: {isDirty ? "true" : "false"}</>;
     };
 
-    const { getByText } = render(<TestChild />, wrappers());
+    render(<TestChild />, wrappers());
 
-    await waitFor(() => expect(getByText("isDirty: true")).toBeInTheDocument());
-    await waitFor(() => {
-      // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
-    });
+    await waitFor(() =>
+      expect(screen.queryByText("isDirty: true")).not.toBeNull()
+    );
   });
 
   it("does not set isDirty to true when an update does not change the entry", async () => {
@@ -78,11 +82,9 @@ describe("DiaryEntryContextProvider", () => {
       return <>isDirty: {isDirty ? "true" : "false"}</>;
     };
 
-    const container = render(<TestChild />, wrappers());
+    render(<TestChild />, wrappers());
 
-    await waitFor(() =>
-      expect(container.queryByText("isDirty: true")).not.toBeInTheDocument()
-    );
+    await waitFor(() => expect(screen.queryByText("isDirty: true")).toBeNull());
   });
 
   it("does not set isDirty to false when an update does not change the entry", async () => {
@@ -95,12 +97,9 @@ describe("DiaryEntryContextProvider", () => {
       return <>isDirty: {isDirty ? "true" : "false"}</>;
     };
 
-    const container = render(<TestChild />, wrappers());
+    render(<TestChild />, wrappers());
 
-    expect(container.queryByText("isDirty: false")).not.toBeInTheDocument();
-    await waitFor(() => {
-      // Need this waitFor nonsense to prevent the apollo hook from causing an act warning.
-    });
+    expect(screen.queryByText("isDirty: false")).toBeNull();
   });
 
   it("sets isDirty to false when the entry has been saved", async () => {
@@ -110,11 +109,11 @@ describe("DiaryEntryContextProvider", () => {
       return <>isDirty: {isDirty ? "true" : "false"}</>;
     };
 
-    const container = render(<TestChild />, wrappers());
+    render(<TestChild />, wrappers());
 
-    expect(container.queryByText("isDirty: false")).not.toBeInTheDocument();
+    expect(screen.queryByText("isDirty: false")).toBeNull();
     await waitFor(() => {
-      expect(container.queryByText("isDirty: false")).toBeInTheDocument();
+      expect(screen.queryByText("isDirty: false")).not.toBeNull();
     });
   });
 });

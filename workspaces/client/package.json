@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "test": "jest --config=jest.config.ts",
+    "test": "vitest",
     "lint": "eslint src/**.{ts,tsx}",
     "coverage": "CI=true yarn test --coverage --coverageDirectory='output/coverage/report'"
   },
@@ -45,6 +45,7 @@
     "eslint-plugin-react-hooks": "4.5.0",
     "graphql": "16.5.0",
     "iso-datestring-validator": "2.2.2",
+    "jsdom": "^19.0.0",
     "mock-apollo-client": "1.2.0",
     "postcss": "8.4.14",
     "react": "17.0.2",

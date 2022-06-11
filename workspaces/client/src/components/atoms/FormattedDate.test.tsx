@@ -1,9 +1,14 @@
-import { render } from "@testing-library/react";
+import { cleanup, render } from "@testing-library/react";
 import { wrap } from "souvlaki";
+import { afterEach, describe, expect, it } from "vitest";
 import { withDate } from "../../testWrappers/withDate";
 import { withLocale } from "../../testWrappers/withLocale";
 import { DiaryDate } from "../../util/date";
 import { FormattedDate } from "./FormattedDate";
+
+afterEach(() => {
+  cleanup();
+});
 
 describe("Diary", () => {
   it("renders the date in the locale passed to it", () => {
@@ -13,8 +18,6 @@ describe("Diary", () => {
       wrapper: wrap(withLocale("en-AU"), withDate(date)),
     });
 
-    expect(
-      formattedDate.getByText(/Friday, 1 January 2010/)
-    ).toBeInTheDocument();
+    expect(formattedDate.queryByText(/Friday, 1 January 2010/)).not.toBe(null);
   });
 });
