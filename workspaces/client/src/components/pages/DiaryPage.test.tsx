@@ -1,9 +1,10 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createMockClient } from "mock-apollo-client";
 import { act } from "react-dom/test-utils";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { DIARY_ENTRY_QUERY } from "../../graphql/queries";
 import { buildPageRoute } from "../../routes";
 import { withDate } from "../../testWrappers/withDate";
@@ -14,13 +15,17 @@ import { buildDiaryEntry } from "../../util/buildDiaryEntry";
 import { DiaryDate } from "../../util/date";
 import DiaryPage from "./DiaryPage";
 
+afterEach(() => {
+  cleanup();
+});
+
 describe("DiaryPage", () => {
   it("shows an error page if an invalid date is supplied", () => {
     render(<DiaryPage />, {
       wrapper: wrap(withRoute(buildPageRoute(), { isoDateString: "ASDF" })),
     });
 
-    expect(screen.getByText("Error")).toBeInTheDocument();
+    expect(screen.queryByText("Error")).not.toBe(null);
   });
 
   it("shows the entry for the date from the route", async () => {
@@ -37,7 +42,7 @@ describe("DiaryPage", () => {
     const mockClient = createMockClient();
     mockClient.setRequestHandler(
       DIARY_ENTRY_QUERY,
-      jest.fn(({ date }) =>
+      vi.fn(({ date }) =>
         Promise.resolve({
           data: { diaryEntry: diaryEntries[date] ?? buildDiaryEntry() },
         })
@@ -58,8 +63,8 @@ describe("DiaryPage", () => {
       // required to prevent act warnings
     });
 
-    expect(screen.getByText("Today's entry")).toBeInTheDocument();
-    expect(screen.queryByText("Yesterday's entry")).not.toBeInTheDocument();
+    expect(screen.queryByText("Today's entry")).not.toBe(null);
+    expect(screen.queryByText("Yesterday's entry")).toBe(null);
 
     act(() => {
       const prevButton = screen.getByRole("button", { name: "prev" });
@@ -67,8 +72,8 @@ describe("DiaryPage", () => {
     });
 
     await waitFor(() => {
-      expect(screen.getByText("Yesterday's entry")).toBeInTheDocument();
-      expect(screen.queryByText("Today's entry")).not.toBeInTheDocument();
+      expect(screen.queryByText("Yesterday's entry")).not.toBeNull();
+      expect(screen.queryByText("Today's entry")).toBeNull();
     });
   });
 });

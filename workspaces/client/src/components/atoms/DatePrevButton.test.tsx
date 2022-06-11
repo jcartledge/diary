@@ -1,7 +1,8 @@
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { act, cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { buildPageRoute } from "../../routes";
 import { withDate } from "../../testWrappers/withDate";
 import { withRoute } from "../../testWrappers/withRoute";
@@ -9,11 +10,15 @@ import { buildMockClient } from "../../util/buildMockClient";
 import { DiaryDate } from "../../util/date";
 import DatePrevButton from "./DatePrevButton";
 
+afterEach(() => {
+  cleanup();
+});
+
 const getPrevButton = () => screen.getByRole("button", { name: "prev" });
 
 describe("DatePrevButton", () => {
   it("links to the previous date", async () => {
-    const onPathChange = jest.fn();
+    const onPathChange = vi.fn();
     const date = new DiaryDate();
     render(<DatePrevButton />, {
       wrapper: wrap(
@@ -37,7 +42,9 @@ describe("DatePrevButton", () => {
       wrapper: wrap(withApollo(mockClient), withRoute()),
     });
 
-    await waitFor(() => expect(getPrevButton()).toHaveClass("font-bold"));
+    await waitFor(() =>
+      expect(getPrevButton().classList.contains("font-bold")).toBe(true)
+    );
   });
 
   it("does not bold the button text if there is not an entry on the previous date", async () => {
@@ -47,6 +54,8 @@ describe("DatePrevButton", () => {
       wrapper: wrap(withApollo(mockClient), withRoute()),
     });
 
-    await waitFor(() => expect(getPrevButton()).not.toHaveClass("font-bold"));
+    await waitFor(() =>
+      expect(getPrevButton().classList.contains("font-bold")).toBe(false)
+    );
   });
 });

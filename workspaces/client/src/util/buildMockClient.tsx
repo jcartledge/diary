@@ -1,5 +1,6 @@
 import { createMockClient, MockApolloClient } from "mock-apollo-client";
 import { DiaryEntry } from "server/src/resolvers-types";
+import { vi } from "vitest";
 import { DIARY_ENTRY_QUERY } from "../graphql/queries";
 import { buildDiaryEntry } from "./buildDiaryEntry";
 
@@ -9,7 +10,7 @@ export const buildMockClient = (
   const mockClient = createMockClient();
   mockClient.setRequestHandler(
     DIARY_ENTRY_QUERY,
-    jest.fn().mockResolvedValue({
+    vi.fn().mockResolvedValue({
       data: { diaryEntry: buildDiaryEntry(diaryEntry) },
     })
   );
