@@ -38,21 +38,23 @@ describe("DiaryPageForm", () => {
       ),
     });
 
-    expect((await diary.findByLabelText("What happened?")).textContent).toEqual(
-      "Lots"
-    );
-    expect((await diary.findByLabelText("Went well")).textContent).toEqual(
-      "Nothing went well"
-    );
-    expect(
-      (await diary.findByLabelText("Could be improved")).textContent
-    ).toEqual("Everything");
-    expect((await diary.findByLabelText("Didn't go well")).textContent).toEqual(
-      "Too many arguments"
-    );
-    expect(
-      (await diary.findByLabelText("Might be a risk")).textContent
-    ).toEqual("More arguments");
+    await waitFor(() => {
+      expect(diary.getByLabelText("What happened?").textContent).toEqual(
+        "Lots"
+      );
+      expect(diary.getByLabelText("Went well").textContent).toEqual(
+        "Nothing went well"
+      );
+      expect(diary.getByLabelText("Could be improved").textContent).toEqual(
+        "Everything"
+      );
+      expect(diary.getByLabelText("Didn't go well").textContent).toEqual(
+        "Too many arguments"
+      );
+      expect(diary.getByLabelText("Might be a risk").textContent).toEqual(
+        "More arguments"
+      );
+    });
   });
 
   it("calls the apollo query with the date from the context", async () => {
@@ -95,6 +97,7 @@ describe("DiaryPageForm", () => {
       updateDiaryEntryMutationHandler
     );
 
+    const user = userEvent.setup();
     const diaryPageForm = render(<DiaryPageForm />, {
       wrapper: wrap(
         withApollo(mockClient),
@@ -104,7 +107,8 @@ describe("DiaryPageForm", () => {
       ),
     });
 
-    userEvent.type(
+    await waitFor(() => {});
+    await user.type(
       diaryPageForm.getByLabelText(/What happened/),
       "Nothing happened"
     );

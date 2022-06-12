@@ -25,6 +25,7 @@ const DateNextButtonDisabled: React.FC = () => (
 );
 
 type DateNextLinkProps = { date: DiaryDate };
+
 const DateNextLink: React.FC<DateNextLinkProps> = ({ date }) => {
   const doesEntryExistForNextDate = useDoesEntryExistForNextDate(date);
   return (

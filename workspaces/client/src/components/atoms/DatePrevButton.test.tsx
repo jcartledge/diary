@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
@@ -24,7 +24,7 @@ describe("DatePrevButton", () => {
       ),
     });
 
-    act(() => userEvent.click(getPrevButton()));
+    await userEvent.click(getPrevButton());
 
     expect(onPathChange).toHaveBeenCalledWith(
       buildPageRoute(date.getPrevious().getKey())

@@ -1,7 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createMockClient } from "mock-apollo-client";
-import { act } from "react-dom/test-utils";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { describe, expect, it, vi } from "vitest";
@@ -56,16 +55,11 @@ describe("DiaryPage", () => {
     });
 
     await waitFor(() => {
-      // required to prevent act warnings
+      expect(screen.queryByText("Today's entry")).not.toBe(null);
+      expect(screen.queryByText("Yesterday's entry")).toBe(null);
     });
 
-    expect(screen.queryByText("Today's entry")).not.toBe(null);
-    expect(screen.queryByText("Yesterday's entry")).toBe(null);
-
-    act(() => {
-      const prevButton = screen.getByRole("button", { name: "prev" });
-      userEvent.click(prevButton);
-    });
+    await userEvent.click(screen.getByRole("button", { name: "prev" }));
 
     await waitFor(() => {
       expect(screen.queryByText("Yesterday's entry")).not.toBeNull();
