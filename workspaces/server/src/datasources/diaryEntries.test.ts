@@ -1,22 +1,20 @@
 import { getDbClient } from "server/src/getDbClient";
-import { describe, expect, it } from "vitest";
-import {
-  buildDiaryEntry,
-  DiaryEntriesDataSource,
-  diaryEntriesTableName,
-} from "./diaryEntries";
+import { buildDiaryEntry, DiaryEntriesDataSource, diaryEntriesTableName } from "./diaryEntries";
 
-const setup = async () => {
+
+const setup = (async () => {
   const client = await getDbClient();
   const diaryEntriesDataSource = new DiaryEntriesDataSource(client);
-  const cleanup = async () => {
+  const cleanup = (async () => {
     await client.query(`DELETE FROM "${diaryEntriesTableName}"`);
     await client.end();
-  };
+  });
   return { diaryEntriesDataSource, cleanup };
-};
+});
 
 describe("getByDate", () => {
+  
+
   it("creates a diary entry if not found", async () => {
     const { diaryEntriesDataSource, cleanup } = await setup();
     const date = "dbClient";
