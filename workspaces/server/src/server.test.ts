@@ -1,5 +1,6 @@
 import { ApolloServer, gql } from "apollo-server";
 import { Client } from "pg";
+import { describe, expect, it } from "vitest";
 import {
   buildDiaryEntry,
   DiaryEntriesDataSource,
