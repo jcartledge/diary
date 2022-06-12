@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createMockClient, MockApolloClient } from "mock-apollo-client";
 import { DiaryEntry } from "server/src/resolvers-types";
@@ -41,7 +41,7 @@ describe("DateNextButton", () => {
       ),
     });
 
-    act(() => userEvent.click(getNextButton()));
+    await userEvent.click(getNextButton());
 
     expect(onPathChange).toHaveBeenCalledWith(buildPageRoute(today.getKey()));
   });
@@ -60,9 +60,7 @@ describe("DateNextButton", () => {
 
     expect(getNextButton().getAttribute("disabled")).not.toBe(null);
 
-    await act(async () => {
-      userEvent.click(getNextButton());
-    });
+    await userEvent.click(getNextButton());
 
     expect(onPathChange).not.toHaveBeenCalledWith(today.getNext().getKey());
   });
