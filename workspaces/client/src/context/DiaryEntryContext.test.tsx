@@ -8,8 +8,8 @@ import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,
 } from "../graphql/queries";
-import { withDiaryEntry } from "../testWrappers/withDiaryEntry";
-import { withRoute } from "../testWrappers/withRoute";
+import { withDiaryEntry } from "../test/wrappers/withDiaryEntry";
+import { withRoute } from "../test/wrappers/withRoute";
 import { buildDiaryEntry } from "../util/buildDiaryEntry";
 import { DiaryEntryContext } from "./DiaryEntryContext";
 

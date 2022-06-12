@@ -8,9 +8,9 @@ import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,
 } from "../../graphql/queries";
-import { withDate } from "../../testWrappers/withDate";
-import { withDiaryEntry } from "../../testWrappers/withDiaryEntry";
-import { withRoute } from "../../testWrappers/withRoute";
+import { withDate } from "../../test/wrappers/withDate";
+import { withDiaryEntry } from "../../test/wrappers/withDiaryEntry";
+import { withRoute } from "../../test/wrappers/withRoute";
 import { buildDiaryEntry } from "../../util/buildDiaryEntry";
 import { DiaryDate } from "../../util/date";
 import DiaryPageForm from "./DiaryPageForm";

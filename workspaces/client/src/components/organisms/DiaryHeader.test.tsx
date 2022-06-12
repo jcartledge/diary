@@ -2,9 +2,9 @@ import { render, waitFor } from "@testing-library/react";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { describe, expect, it } from "vitest";
-import { withDiaryEntryContext } from "../../testWrappers/withDiaryEntryContext";
-import { withLocale } from "../../testWrappers/withLocale";
-import { withRoute } from "../../testWrappers/withRoute";
+import { withDiaryEntryContext } from "../../test/wrappers/withDiaryEntryContext";
+import { withLocale } from "../../test/wrappers/withLocale";
+import { withRoute } from "../../test/wrappers/withRoute";
 import { buildMockClient } from "../../util/buildMockClient";
 import DiaryHeader from "./DiaryHeader";
 

@@ -3,7 +3,7 @@ import {
   buildDiaryEntryContextValue,
   DiaryEntryContext,
   DiaryEntryContextValue,
-} from "../context/DiaryEntryContext";
+} from "../../context/DiaryEntryContext";
 
 export const withDiaryEntryContext = createHelper(
   (value: Partial<DiaryEntryContextValue>): React.FC<React.PropsWithChildren<{}>> =>
