@@ -1,4 +1,4 @@
-import { render, waitFor } from "@testing-library/react";
+import { act, render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createMockClient } from "mock-apollo-client";
 import { wrap } from "souvlaki";
@@ -107,10 +107,12 @@ describe("DiaryPageForm", () => {
       ),
     });
 
-    await waitFor(() => {});
-    await user.type(
-      diaryPageForm.getByLabelText(/What happened/),
-      "Nothing happened"
+    await act(
+      async () =>
+        await user.type(
+          diaryPageForm.getByLabelText(/What happened/),
+          "Nothing happened"
+        )
     );
 
     await waitFor(() =>
