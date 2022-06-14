@@ -50,8 +50,6 @@ describe("DatePrevButton", () => {
       wrapper: wrap(withApollo(mockClient), withRoute()),
     });
 
-    await waitFor(() =>
-      expect(getPrevButton().classList.contains("font-bold")).toBe(false)
-    );
+    expect(getPrevButton().classList.contains("font-bold")).toBe(false);
   });
 });

@@ -86,8 +86,6 @@ describe("DateNextButton", () => {
       wrapper: wrap(withApollo(mockClient), withDate(date), withRoute()),
     });
 
-    await waitFor(() =>
-      expect(getNextButton().classList.contains("font-bold")).toBe(false)
-    );
+    expect(getNextButton().classList.contains("font-bold")).toBe(false);
   });
 });

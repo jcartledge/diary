@@ -1,4 +1,4 @@
-import { render, waitFor } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { describe, expect, it } from "vitest";
@@ -19,9 +19,7 @@ describe("DiaryHeader", () => {
       ),
     });
 
-    await waitFor(() =>
-      expect(diaryHeader.container.querySelector(".italic")).not.toBe(null)
-    );
+    expect(diaryHeader.container.querySelector(".italic")).not.toBe(null);
   });
 
   it(`doesn't show the date italicised if the entry has no unsaved changes`, async () => {
@@ -34,8 +32,6 @@ describe("DiaryHeader", () => {
       ),
     });
 
-    await waitFor(() =>
-      expect(diaryHeader.container.querySelector(".italic")).toBe(null)
-    );
+    expect(diaryHeader.container.querySelector(".italic")).toBe(null);
   });
 });
