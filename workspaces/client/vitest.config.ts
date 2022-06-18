@@ -22,10 +22,10 @@ export default defineConfig({
       excludeNodeModules: true,
       reporter: ["text", "json", "html"],
       src: ["./src"],
-      lines: 99,
-      functions: 98,
+      lines: 100,
+      functions: 100,
       branches: 100,
-      statements: 99,
+      statements: 100,
     },
   },
 });

@@ -15,7 +15,7 @@ import { useDate } from "./DateContext";
 
 export interface DiaryEntryContextValue {
   diaryEntry: DiaryEntry;
-  updateDiaryEntry: (field: keyof DiaryEntry) => (value: string) => void;
+  updateDiaryEntry?: (field: keyof DiaryEntry) => (value: string) => void;
   isDirty: boolean;
 }
 
@@ -23,9 +23,6 @@ export const buildDiaryEntryContextValue: Builder<DiaryEntryContextValue> = (
   overrides = {}
 ) => ({
   diaryEntry: buildDiaryEntry(),
-  updateDiaryEntry: (_field: keyof DiaryEntry) => (_value: string) => {
-    return;
-  },
   isDirty: false,
   ...overrides,
 });
@@ -87,11 +84,11 @@ export const DiaryEntryContextProvider: React.FC<
 
   return (
     <DiaryEntryContext.Provider
-      value={buildDiaryEntryContextValue({
+      value={{
         diaryEntry: currentDiaryEntry,
         updateDiaryEntry,
         isDirty,
-      })}
+      }}
     >
       {children}
     </DiaryEntryContext.Provider>
