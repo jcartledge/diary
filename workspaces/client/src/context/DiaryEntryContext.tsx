@@ -10,7 +10,7 @@ import {
   useUpdateDiaryEntryMutation,
 } from "../graphql/queries";
 import { buildDiaryEntry } from "../util/buildDiaryEntry";
-import { Builder } from "../util/builder";
+import { Builder } from "../util/builder.types";
 import { useDate } from "./DateContext";
 
 export interface DiaryEntryContextValue {

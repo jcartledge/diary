@@ -7,7 +7,18 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "./src/test/setup.ts",
     coverage: {
+      all: true,
+      exclude: [
+        ".types.ts",
+        "App.tsx",
+        "graphql/client.ts",
+        "index.tsx",
+        "serviceWorker.ts",
+        "src/test",
+      ],
+      excludeNodeModules: true,
       reporter: ["text", "json", "html"],
+      src: ["./src"],
     },
   },
 });
