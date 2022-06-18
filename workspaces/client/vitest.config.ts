@@ -9,6 +9,7 @@ export default defineConfig({
     coverage: {
       all: true,
       exclude: [
+        "**/*.builder.ts",
         "**/*.d.ts",
         "**/*.test.ts",
         "**/*.test.tsx",

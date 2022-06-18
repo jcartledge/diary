@@ -10,22 +10,14 @@ import {
   useUpdateDiaryEntryMutation,
 } from "../graphql/queries";
 import { buildDiaryEntry } from "../util/buildDiaryEntry";
-import { Builder } from "../util/builder.types";
+import { buildDiaryEntryContextValue } from "./DiaryEntryContextValue.builder";
 import { useDate } from "./DateContext";
 
 export interface DiaryEntryContextValue {
   diaryEntry: DiaryEntry;
-  updateDiaryEntry?: (field: keyof DiaryEntry) => (value: string) => void;
+  updateDiaryEntry: (field: keyof DiaryEntry) => (value: string) => void;
   isDirty: boolean;
 }
-
-export const buildDiaryEntryContextValue: Builder<DiaryEntryContextValue> = (
-  overrides = {}
-) => ({
-  diaryEntry: buildDiaryEntry(),
-  isDirty: false,
-  ...overrides,
-});
 
 export const DiaryEntryContext = React.createContext<DiaryEntryContextValue>(
   buildDiaryEntryContextValue()

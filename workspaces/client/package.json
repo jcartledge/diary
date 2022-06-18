@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "test": "vitest",
+    "test": "tsc && vitest",
     "lint": "eslint src/**.{ts,tsx}",
     "coverage": "CI=true yarn test --coverage"
   },
