@@ -11,8 +11,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "plugin:react-hooks/recommended"
+      "react-app"
     ]
   },
   "browserslist": {
@@ -43,7 +42,6 @@
     "c8": "7.11.3",
     "eslint": "8.18.0",
     "eslint-config-react-app": "7.0.1",
-    "eslint-plugin-react-hooks": "4.6.0",
     "graphql": "16.5.0",
     "iso-datestring-validator": "2.2.2",
     "jsdom": "19.0.0",
