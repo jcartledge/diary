@@ -10,22 +10,16 @@ import {
   useUpdateDiaryEntryMutation,
 } from "../graphql/queries";
 import { buildDiaryEntry } from "../util/buildDiaryEntry";
-import { buildDiaryEntryContextValue } from "./DiaryEntryContextValue.builder";
 import { useDate } from "./DateContext";
-
-export interface DiaryEntryContextValue {
-  diaryEntry: DiaryEntry;
-  updateDiaryEntry: (field: keyof DiaryEntry) => (value: string) => void;
-  isDirty: boolean;
-}
+import {
+  buildDiaryEntryContextValue,
+  DiaryEntryContextProps,
+  DiaryEntryContextValue,
+} from "./DiaryEntryContext.types";
 
 export const DiaryEntryContext = React.createContext<DiaryEntryContextValue>(
   buildDiaryEntryContextValue()
 );
-
-export interface DiaryEntryContextProps {
-  saveTimeoutInterval?: number;
-}
 
 export const DiaryEntryContextProvider: React.FC<
   PropsWithChildren<DiaryEntryContextProps>

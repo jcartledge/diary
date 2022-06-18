@@ -1,7 +1,16 @@
 import { DiaryEntry } from "server/src/resolvers-types";
 import { buildDiaryEntry } from "../util/buildDiaryEntry";
 import { Builder } from "../util/builder.types";
-import { DiaryEntryContextValue } from "./DiaryEntryContext";
+
+export interface DiaryEntryContextProps {
+  saveTimeoutInterval?: number;
+}
+
+export interface DiaryEntryContextValue {
+  diaryEntry: DiaryEntry;
+  updateDiaryEntry: (field: keyof DiaryEntry) => (value: string) => void;
+  isDirty: boolean;
+}
 
 export const buildDiaryEntryContextValue: Builder<DiaryEntryContextValue> = (
   overrides = {}
