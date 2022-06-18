@@ -9,7 +9,10 @@ export default defineConfig({
     coverage: {
       all: true,
       exclude: [
-        ".types.ts",
+        "**/*.d.ts",
+        "**/*.test.ts",
+        "**/*.test.tsx",
+        "**/*.types.ts",
         "App.tsx",
         "graphql/client.ts",
         "index.tsx",
@@ -19,6 +22,10 @@ export default defineConfig({
       excludeNodeModules: true,
       reporter: ["text", "json", "html"],
       src: ["./src"],
+      lines: 99,
+      functions: 98,
+      branches: 100,
+      statements: 99,
     },
   },
 });

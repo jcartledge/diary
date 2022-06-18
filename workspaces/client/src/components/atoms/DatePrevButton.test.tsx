@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { describe, expect, it, vi } from "vitest";
-import { buildPageRoute } from "../../routes";
+import { buildPageRoute } from "../../routes/buildPageRoute";
 import { withDate } from "../../test/wrappers/withDate";
 import { withRoute } from "../../test/wrappers/withRoute";
 import { buildMockClient } from "../../util/buildMockClient";

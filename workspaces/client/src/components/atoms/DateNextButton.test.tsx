@@ -6,7 +6,7 @@ import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { describe, expect, it, vi } from "vitest";
 import { DIARY_ENTRY_QUERY } from "../../graphql/queries";
-import { buildPageRoute } from "../../routes";
+import { buildPageRoute } from "../../routes/buildPageRoute";
 import { withDate } from "../../test/wrappers/withDate";
 import { withRoute } from "../../test/wrappers/withRoute";
 import { buildDiaryEntry } from "../../util/buildDiaryEntry";

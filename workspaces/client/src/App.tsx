@@ -2,7 +2,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import React, { StrictMode } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { LocaleContext } from "./context/LocaleContext";
-import { AppRoutes } from "./routes";
+import { AppRoutes } from "./routes/AppRoutes";
 
 const App: React.FC = () => {
   return (
