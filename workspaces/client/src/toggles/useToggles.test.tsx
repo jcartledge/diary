@@ -5,7 +5,7 @@ import { useToggles } from "./useToggles";
 
 describe("useToggles", () => {
   it("returns the toggles from the provider", () => {
-    const testToggles = { toggle1: true };
+    const testToggles = ["toggle1"];
     const TestComponent = () => {
       const toggles = useToggles();
       expect(toggles).toEqual(testToggles);

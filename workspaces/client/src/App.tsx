@@ -4,11 +4,13 @@ import { BrowserRouter } from "react-router-dom";
 import { LocaleContext } from "./context/LocaleContext";
 import { client } from "./graphql/client";
 import { AppRoutes } from "./routes/AppRoutes";
-import { EnvironmentTogglesProvider } from "./toggles/EnvironmentTogglesProvider";
+import { TogglesProvider } from "./toggles/TogglesProvider";
 
 const App: React.FC = () => {
   return (
-    <EnvironmentTogglesProvider>
+    <TogglesProvider
+      toggles={(process.env.REACT_APP_TOGGLES || "").split(/\s+/)}
+    >
       <ApolloProvider client={client}>
         <BrowserRouter>
           <LocaleContext.Provider value={navigator.language}>
@@ -16,7 +18,7 @@ const App: React.FC = () => {
           </LocaleContext.Provider>
         </BrowserRouter>
       </ApolloProvider>
-    </EnvironmentTogglesProvider>
+    </TogglesProvider>
   );
 };
 

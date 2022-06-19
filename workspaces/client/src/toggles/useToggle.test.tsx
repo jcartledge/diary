@@ -5,7 +5,7 @@ import { useToggle } from "./useToggle";
 
 describe("useToggle", () => {
   it("returns the requested toggle from the provider", () => {
-    const testToggles = { toggle1: true };
+    const testToggles = ["toggle1"];
     const TestComponent = () => {
       const toggle = useToggle("toggle1");
       expect(toggle).toBe(true);
@@ -27,7 +27,7 @@ describe("useToggle", () => {
     };
 
     render(
-      <TogglesProvider toggles={{}}>
+      <TogglesProvider toggles={[]}>
         <TestComponent />
       </TogglesProvider>
     );

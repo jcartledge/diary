@@ -1,3 +1,1 @@
-export interface FeatureToggles {
-  [name: string]: boolean;
-}
+export type FeatureToggles = string[];
