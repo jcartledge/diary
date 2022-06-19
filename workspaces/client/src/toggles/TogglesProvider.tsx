@@ -1,10 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { FeatureToggles } from "./toggles.types";
-
-const TogglesContext = React.createContext<FeatureToggles>({});
-export const useToggles = () => useContext(TogglesContext);
-export const useToggle = (toggleName: string) =>
-  useToggles()[toggleName] ?? false;
+import { TogglesContext } from "./TogglesContext";
 
 interface TogglesProviderProps {
   toggles: FeatureToggles;
