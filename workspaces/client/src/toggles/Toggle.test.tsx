@@ -20,4 +20,22 @@ describe("Toggle", () => {
 
     expect(screen.queryByText("Hello")).toBeNull();
   });
+
+  it("does not render the children when the toggle is enabled and is=false", () => {
+    const toggles = { FEATURE_1: true };
+    const TestComponent = () => <Toggle name="FEATURE_1" is={false}>Hello</Toggle>;
+    render(<TestComponent />, { wrapper: wrap(withToggles(toggles)) });
+
+    expect(screen.queryByText("Hello")).toBeNull();
+
+  });
+
+  it("renders the children when the toggle is not enabled and is=false", () => {
+    const toggles = { FEATURE_1: false };
+    const TestComponent = () => <Toggle name="FEATURE_1" is={false}>Hello</Toggle>;
+    render(<TestComponent />, { wrapper: wrap(withToggles(toggles)) });
+
+    expect(screen.queryByText("Hello")).not.toBeNull();
+
+  })
 });
