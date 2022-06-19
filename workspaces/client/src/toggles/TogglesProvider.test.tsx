@@ -23,13 +23,27 @@ describe("useToggle", () => {
   it("returns the requested toggle from the provider", () => {
     const testToggles = { toggle1: true };
     const TestComponent = () => {
-      const toggle1 = useToggle("toggle1");
-      expect(toggle1).toBe(true);
+      const toggle = useToggle("toggle1");
+      expect(toggle).toBe(true);
       return null;
     };
 
     render(
       <TogglesProvider toggles={testToggles}>
+        <TestComponent />
+      </TogglesProvider>
+    );
+  });
+
+  it("returns false if the toggle is not defined", () => {
+    const TestComponent = () => {
+      const toggle = useToggle("toggle1");
+      expect(toggle).toBe(false);
+      return null;
+    };
+
+    render(
+      <TogglesProvider toggles={{}}>
         <TestComponent />
       </TogglesProvider>
     );
