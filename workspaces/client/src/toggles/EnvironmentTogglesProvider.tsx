@@ -1,12 +1,12 @@
 import { TogglesProvider } from "./TogglesProvider";
 
 type EnvironmentTogglesProviderProps = React.PropsWithChildren<{
-  environment: Record<string, string | undefined>;
+  environment?: Record<string, string | undefined>;
 }>;
 
 export const EnvironmentTogglesProvider: React.FC<
   EnvironmentTogglesProviderProps
-> = ({ children, environment }) => {
+> = ({ children, environment = process.env }) => {
   const toggleKeys = Object.keys(environment).filter(isToggleKey);
   const toggles: Record<string, boolean> = {};
   toggleKeys.forEach(
@@ -15,6 +15,11 @@ export const EnvironmentTogglesProvider: React.FC<
         environment[toggleKey] ?? ""
       ))
   );
+
+  if (process.env.NODE_ENV === "development") {
+    console.log({ toggles });
+  }
+
   return <TogglesProvider toggles={toggles}>{children}</TogglesProvider>;
 };
 

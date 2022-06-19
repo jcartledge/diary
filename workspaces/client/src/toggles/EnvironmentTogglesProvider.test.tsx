@@ -33,4 +33,20 @@ describe("EnvironmentTogglesProvider", () => {
       </EnvironmentTogglesProvider>
     );
   });
+
+  it("defaults to process.env if no environment is passed", () => {
+    process.env.REACT_APP_TOGGLE_FEATURE_1 = "true";
+    const TestComponent = () => {
+      const toggle = useToggle("FEATURE_1");
+      expect(toggle).toBe(true);
+      return null;
+    };
+
+    render(
+      <EnvironmentTogglesProvider>
+        <TestComponent />
+      </EnvironmentTogglesProvider>
+    );
+
+  })
 });

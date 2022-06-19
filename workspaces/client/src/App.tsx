@@ -8,7 +8,7 @@ import { EnvironmentTogglesProvider } from "./toggles/EnvironmentTogglesProvider
 
 const App: React.FC = () => {
   return (
-    <EnvironmentTogglesProvider environment={process.env}>
+    <EnvironmentTogglesProvider>
       <ApolloProvider client={client}>
         <BrowserRouter>
           <LocaleContext.Provider value={navigator.language}>
