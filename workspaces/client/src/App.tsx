@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { LocaleContext } from "./context/LocaleContext";
 import { client } from "./graphql/client";
 import { AppRoutes } from "./routes/AppRoutes";
-import { TogglesProvider } from "./toggles/TogglesProvider";
+import { TogglesProvider } from "./toggles";
 
 const toggles = (process.env.REACT_APP_TOGGLES || "").split(/\s+/);
 

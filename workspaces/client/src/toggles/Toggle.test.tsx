@@ -3,46 +3,37 @@ import { wrap } from "souvlaki";
 import { describe, expect, it } from "vitest";
 import { withToggles } from "../test/wrappers/withToggles";
 import { Toggle } from "./Toggle";
-import { FeatureToggles } from "./toggles.types";
 
 describe("Toggle", () => {
   it("renders the children if the toggle is enabled", () => {
-    const toggles = ["FEATURE_1"];
-    const TestComponent = () => <Toggle name="FEATURE_1">Hello</Toggle>;
-    render(<TestComponent />, { wrapper: wrap(withToggles(toggles)) });
-
-    expect(screen.getByText("Hello")).not.toBeNull();
+    const TestComponent = () => <Toggle name="test_feature">Hello</Toggle>;
+    render(<TestComponent />, { wrapper: wrap(withToggles(["test_feature"])) });
+    expect(screen.queryByText("Hello")).not.toBeNull();
   });
 
   it("does not render the children if the toggle is not enabled", () => {
-    const toggles: FeatureToggles = [];
-    const TestComponent = () => <Toggle name="FEATURE_1">Hello</Toggle>;
-    render(<TestComponent />, { wrapper: wrap(withToggles(toggles)) });
-
+    const TestComponent = () => <Toggle name="test_feature">Hello</Toggle>;
+    render(<TestComponent />, { wrapper: wrap(withToggles([])) });
     expect(screen.queryByText("Hello")).toBeNull();
   });
 
-  it("does not render the children when the toggle is enabled and is=false", () => {
-    const toggles = ["FEATURE_1"];
+  it("does not render the children when the toggle is enabled and toggle is off", () => {
     const TestComponent = () => (
-      <Toggle name="FEATURE_1" is={false}>
+      <Toggle isOff name="test_feature">
         Hello
       </Toggle>
     );
-    render(<TestComponent />, { wrapper: wrap(withToggles(toggles)) });
-
+    render(<TestComponent />, { wrapper: wrap(withToggles(["test_feature"])) });
     expect(screen.queryByText("Hello")).toBeNull();
   });
 
-  it("renders the children when the toggle is not enabled and is=false", () => {
-    const toggles: FeatureToggles = [];
+  it("renders the children when the toggle is not enabled and toggle is off", () => {
     const TestComponent = () => (
-      <Toggle name="FEATURE_1" is={false}>
+      <Toggle isOff name="test_feature">
         Hello
       </Toggle>
     );
-    render(<TestComponent />, { wrapper: wrap(withToggles(toggles)) });
-
+    render(<TestComponent />, { wrapper: wrap(withToggles([])) });
     expect(screen.queryByText("Hello")).not.toBeNull();
   });
 });
