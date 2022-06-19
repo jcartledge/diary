@@ -6,7 +6,7 @@ type EnvironmentTogglesProviderProps = React.PropsWithChildren<{
 
 export const EnvironmentTogglesProvider: React.FC<
   EnvironmentTogglesProviderProps
-> = ({ children, environment = process.env }) => {
+> = ({ children, environment = process?.env || {} }) => {
   const toggleKeys = Object.keys(environment).filter(isToggleKey);
   const toggles: Record<string, boolean> = {};
   toggleKeys.forEach(
