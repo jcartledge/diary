@@ -16,10 +16,6 @@ export const EnvironmentTogglesProvider: React.FC<
       ))
   );
 
-  if (process.env.NODE_ENV === "development") {
-    console.log({ toggles });
-  }
-
   return <TogglesProvider toggles={toggles}>{children}</TogglesProvider>;
 };
 

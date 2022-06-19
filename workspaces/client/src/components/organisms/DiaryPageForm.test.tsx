@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createMockClient } from "mock-apollo-client";
 import { wrap } from "souvlaki";
@@ -107,8 +107,12 @@ describe("DiaryPageForm", () => {
       ),
     });
 
-    await waitFor(async () => {});
-    await user.type(screen.getByLabelText(/What happened/), "Nothing happened");
+    await act(async () => {
+      await user.type(
+        screen.getByLabelText(/What happened/),
+        "Nothing happened"
+      );
+    });
 
     await waitFor(() =>
       expect(updateDiaryEntryMutationHandler).toHaveBeenCalledWith({
