@@ -1,7 +1,7 @@
 import { TogglesProvider } from "./TogglesProvider";
 
 type EnvironmentTogglesProviderProps = React.PropsWithChildren<{
-  environment: Record<string, string>;
+  environment: Record<string, string | undefined>;
 }>;
 
 export const EnvironmentTogglesProvider: React.FC<
@@ -12,7 +12,7 @@ export const EnvironmentTogglesProvider: React.FC<
   toggleKeys.forEach(
     (toggleKey) =>
       (toggles[removeToggleKeyPrefix(toggleKey)] = parseBoolean(
-        environment[toggleKey]
+        environment[toggleKey] ?? ""
       ))
   );
   return <TogglesProvider toggles={toggles}>{children}</TogglesProvider>;
