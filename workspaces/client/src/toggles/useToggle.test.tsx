@@ -6,8 +6,7 @@ import { useToggle } from "./useToggle";
 describe("useToggle", () => {
   it("returns the requested toggle from the provider", () => {
     const TestComponent = () => {
-      const toggle = useToggle("test_feature");
-      expect(toggle).toBe(true);
+      expect(useToggle("test_feature")).toBe(true);
       return null;
     };
 
@@ -20,8 +19,7 @@ describe("useToggle", () => {
 
   it("returns false if the toggle is not defined", () => {
     const TestComponent = () => {
-      const toggle = useToggle("test_feature");
-      expect(toggle).toBe(false);
+      expect(useToggle("test_feature")).toBe(false);
       return null;
     };
 
