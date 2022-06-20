@@ -2784,9 +2784,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:8.13.0, @testing-library/dom@npm:^8.5.0":
-  version: 8.13.0
-  resolution: "@testing-library/dom@npm:8.13.0"
+"@testing-library/dom@npm:8.14.0":
+  version: 8.14.0
+  resolution: "@testing-library/dom@npm:8.14.0"
   dependencies:
     "@babel/code-frame": ^7.10.4
     "@babel/runtime": ^7.12.5
@@ -2796,7 +2796,7 @@ __metadata:
     dom-accessibility-api: ^0.5.9
     lz-string: ^1.4.4
     pretty-format: ^27.0.2
-  checksum: 880f1872b9949800d4444e3bdbd03df86d6f41ec7c27136dff1da29e87d2df2d7ee904afcdf895ffce351c25bd12119117eae023354d50e707ad56d43b2ed3ed
+  checksum: a916ea5167bc02b4666a519814c2b9563be91e912038816e3bd2a4e295122a3aab68b102fc8f0205219e5c4201e6994894bc7d24a8b4aae0e2e8f88cbeb65971
   languageName: node
   linkType: hard
 
@@ -2813,6 +2813,22 @@ __metadata:
     lz-string: ^1.4.4
     pretty-format: ^26.6.2
   checksum: 54fbedd1ecdfe1d47be2e592b98d18b2ab9d7e731f57231caf9b152593fe7329fe5ebe219e0e5d1e0df5b1ab803121cb8acd8b73bd1fb292bfdc2c55663eb01d
+  languageName: node
+  linkType: hard
+
+"@testing-library/dom@npm:^8.5.0":
+  version: 8.13.0
+  resolution: "@testing-library/dom@npm:8.13.0"
+  dependencies:
+    "@babel/code-frame": ^7.10.4
+    "@babel/runtime": ^7.12.5
+    "@types/aria-query": ^4.2.0
+    aria-query: ^5.0.0
+    chalk: ^4.1.0
+    dom-accessibility-api: ^0.5.9
+    lz-string: ^1.4.4
+    pretty-format: ^27.0.2
+  checksum: 880f1872b9949800d4444e3bdbd03df86d6f41ec7c27136dff1da29e87d2df2d7ee904afcdf895ffce351c25bd12119117eae023354d50e707ad56d43b2ed3ed
   languageName: node
   linkType: hard
 
@@ -5208,7 +5224,7 @@ __metadata:
   resolution: "client@workspace:workspaces/client"
   dependencies:
     "@apollo/client": 3.6.8
-    "@testing-library/dom": 8.13.0
+    "@testing-library/dom": 8.14.0
     "@testing-library/react": 13.3.0
     "@testing-library/user-event": 14.2.1
     "@types/node": 17.0.39
