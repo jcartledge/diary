@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { withLocale } from "app/context/LocaleContext.testWrapper";
+import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
 import { buildMockClient } from "lib/util/buildMockClient";
 import { DiaryDate } from "lib/util/date";
 import { MemoryRouter } from "react-router";

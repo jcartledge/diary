@@ -1,4 +1,4 @@
-import { DateContext } from "app/context/DateContext";
+import { DateContext } from "app/context/date/DateContext";
 import { DiaryDate } from "lib/util/date";
 import React from "react";
 import { createHelper } from "souvlaki";

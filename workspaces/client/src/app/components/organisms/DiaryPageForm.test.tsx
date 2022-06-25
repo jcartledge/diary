@@ -1,7 +1,7 @@
 import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { withDate } from "app/context/DateContext.testWrapper";
-import { withDiaryEntry } from "app/context/DiaryEntryContext.testWrapper";
+import { withDate } from "app/context/date/DateContext.testWrapper";
+import { withDiaryEntry } from "app/context/diaryEntry/DiaryEntryContext.testWrapper";
 import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,

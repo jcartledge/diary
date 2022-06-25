@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
-import { withDiaryEntryContext } from "app/context/DiaryEntryContext.testWrapper";
-import { withLocale } from "app/context/LocaleContext.testWrapper";
+import { withDiaryEntryContext } from "app/context/diaryEntry/DiaryEntryContext.testWrapper";
+import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
 import { buildMockClient } from "lib/util/buildMockClient";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";

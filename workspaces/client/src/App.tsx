@@ -2,7 +2,7 @@ import { ApolloProvider } from "@apollo/client";
 import { Auth0Provider } from "@auth0/auth0-react";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import { LocaleContext } from "./app/context/LocaleContext";
+import { LocaleContext } from "./app/context/locale/LocaleContext";
 import { client } from "./app/graphql/client";
 import { AppRoutes } from "./app/routes/AppRoutes";
 import { TogglesProvider } from "./lib/toggles/TogglesProvider";

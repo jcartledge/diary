@@ -10,7 +10,7 @@ import React, {
   useState,
 } from "react";
 import { DiaryEntry } from "server/src/resolvers-types";
-import { useDate } from "./DateContext";
+import { useDate } from "../date/DateContext";
 import {
   buildDiaryEntryContextValue,
   DiaryEntryContextProps,

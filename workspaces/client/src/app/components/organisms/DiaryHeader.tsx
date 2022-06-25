@@ -1,7 +1,7 @@
 import Cell from "app/components/atoms/Cell";
 import { H1 } from "app/components/atoms/styled";
 import DateControl from "app/components/molecules/DateControl";
-import { DiaryEntryContext } from "app/context/DiaryEntryContext";
+import { DiaryEntryContext } from "app/context/diaryEntry/DiaryEntryContext";
 import React, { useContext } from "react";
 
 const DiaryHeader: React.FC = () => {

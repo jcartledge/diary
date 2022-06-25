@@ -1,4 +1,4 @@
-import { LocaleContext } from "app/context/LocaleContext";
+import { LocaleContext } from "app/context/locale/LocaleContext";
 import { createHelper } from "souvlaki";
 
 export const withLocale = createHelper(

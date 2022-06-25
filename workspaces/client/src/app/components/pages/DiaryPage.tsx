@@ -1,7 +1,7 @@
 import DiaryHeader from "app/components/organisms/DiaryHeader";
 import DiaryPageForm from "app/components/organisms/DiaryPageForm";
-import { DateContext } from "app/context/DateContext";
-import { DiaryEntryContextProvider } from "app/context/DiaryEntryContext";
+import { DateContext } from "app/context/date/DateContext";
+import { DiaryEntryContextProvider } from "app/context/diaryEntry/DiaryEntryContext";
 import { isValidDate } from "iso-datestring-validator";
 import { useParams } from "react-router-dom";
 import { DiaryDate } from "lib/util/date";

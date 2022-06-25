@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { withDate } from "app/context/DateContext.testWrapper";
-import { withDiaryEntry } from "app/context/DiaryEntryContext.testWrapper";
-import { withLocale } from "app/context/LocaleContext.testWrapper";
+import { withDate } from "app/context/date/DateContext.testWrapper";
+import { withDiaryEntry } from "app/context/diaryEntry/DiaryEntryContext.testWrapper";
+import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
 import { DIARY_ENTRY_QUERY } from "app/graphql/queries";
 import { buildPageRoute } from "app/routes/buildPageRoute";
 import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
