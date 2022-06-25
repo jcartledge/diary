@@ -6,7 +6,7 @@ import { MemoryRouter } from "react-router";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
-import { withToggles } from "test/wrappers/withToggles";
+import { withToggles } from "lib/toggles/TogglesProvider.testWrapper";
 import { describe, expect, it, vi } from "vitest";
 import { AppRoutes } from "./AppRoutes";
 import { buildPageRoute } from "./buildPageRoute";

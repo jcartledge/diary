@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { wrap } from "souvlaki";
 import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
-import { withToggle, withToggles } from "test/wrappers/withToggles";
+import { withToggle, withToggles } from "lib/toggles/TogglesProvider.testWrapper";
 import { describe, expect, it, vi } from "vitest";
 import { Authenticated } from "./Authenticated";
 

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { wrap } from "souvlaki";
-import { withToggle, withToggles } from "test/wrappers/withToggles";
+import { withToggle, withToggles } from "lib/toggles/TogglesProvider.testWrapper";
 import { describe, expect, it } from "vitest";
 import { Toggle } from "./Toggle";
 
