@@ -1,4 +1,4 @@
-import { Authenticated } from "app/components/atoms/auth/Authenticated";
+import { Authenticated } from "lib/auth/Authenticated";
 import DiaryPage from "app/components/pages/DiaryPage";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { DiaryDate } from "lib/util/date";
