@@ -1,14 +1,15 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { withDate } from "app/context/DateContext.testWrapper";
 import { DIARY_ENTRY_QUERY } from "app/graphql/queries";
-import { createMockClient, MockApolloClient } from "mock-apollo-client";
 import { buildPageRoute } from "app/routes/buildPageRoute";
+import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
+import { DiaryDate } from "lib/util/date";
+import { createMockClient, MockApolloClient } from "mock-apollo-client";
 import { DiaryEntry } from "server/src/resolvers-types";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
-import { withDate, withRoute } from "test/wrappers";
-import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
-import { DiaryDate } from "lib/util/date";
+import { withRoute } from "test/wrappers";
 import { describe, expect, it, vi } from "vitest";
 import DateNextButton from "./DateNextButton";
 
