@@ -1,10 +1,10 @@
+import DiaryHeader from "components/organisms/DiaryHeader";
+import DiaryPageForm from "components/organisms/DiaryPageForm";
+import { DateContext } from "context/DateContext";
+import { DiaryEntryContextProvider } from "context/DiaryEntryContext";
 import { isValidDate } from "iso-datestring-validator";
 import { useParams } from "react-router-dom";
-import { DateContext } from "../../context/DateContext";
-import { DiaryEntryContextProvider } from "../../context/DiaryEntryContext";
-import { DiaryDate } from "../../util/date";
-import DiaryHeader from "../organisms/DiaryHeader";
-import DiaryPageForm from "../organisms/DiaryPageForm";
+import { DiaryDate } from "util/date";
 
 const DiaryPage = () => {
   const { isoDateString = "" } = useParams<{ isoDateString: string }>();

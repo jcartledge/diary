@@ -1,6 +1,6 @@
+import DiaryEntryInput from "components/molecules/DiaryEntryInput";
+import { DiaryEntryContext } from "context/DiaryEntryContext";
 import React, { useContext } from "react";
-import { DiaryEntryContext } from "../../context/DiaryEntryContext";
-import DiaryEntryInput from "../molecules/DiaryEntryInput";
 
 const DiaryPageForm: React.FC = () => {
   const { diaryEntry, updateDiaryEntry } = useContext(DiaryEntryContext);

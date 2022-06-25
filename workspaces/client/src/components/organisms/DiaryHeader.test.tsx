@@ -1,13 +1,9 @@
 import { render } from "@testing-library/react";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
+import { withDiaryEntryContext, withLocale, withRoute } from "test/wrappers";
+import { buildMockClient } from "util/buildMockClient";
 import { describe, expect, it } from "vitest";
-import {
-  withDiaryEntryContext,
-  withLocale,
-  withRoute,
-} from "../../test/wrappers";
-import { buildMockClient } from "../../util/buildMockClient";
 import DiaryHeader from "./DiaryHeader";
 
 describe("DiaryHeader", () => {

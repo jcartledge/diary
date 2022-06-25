@@ -1,7 +1,7 @@
+import DateNextButton from "components/atoms/DateNextButton";
+import DatePrevButton from "components/atoms/DatePrevButton";
+import { FormattedDate } from "components/atoms/FormattedDate";
 import React from "react";
-import DateNextButton from "../atoms/DateNextButton";
-import DatePrevButton from "../atoms/DatePrevButton";
-import { FormattedDate } from "../atoms/FormattedDate";
 
 const DateControl: React.FC = () => (
   <div className="flex">

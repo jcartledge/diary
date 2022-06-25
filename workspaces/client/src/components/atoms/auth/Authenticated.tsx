@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useToggle } from "../../../toggles/useToggle";
+import { useToggle } from "toggles/useToggle";
 
 export const Authenticated: React.FC<React.PropsWithChildren<{}>> = ({
   children,

@@ -2,10 +2,10 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
+import { withAuth0Wrapper, withLocale, withToggles } from "test/wrappers";
+import { buildMockClient } from "util/buildMockClient";
+import { DiaryDate } from "util/date";
 import { describe, expect, it, vi } from "vitest";
-import { withAuth0Wrapper, withLocale, withToggles } from "../test/wrappers";
-import { buildMockClient } from "../util/buildMockClient";
-import { DiaryDate } from "../util/date";
 import { AppRoutes } from "./AppRoutes";
 import { buildPageRoute } from "./buildPageRoute";
 

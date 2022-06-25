@@ -1,12 +1,12 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { buildPageRoute } from "routes/buildPageRoute";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
+import { withDate, withRoute } from "test/wrappers";
+import { buildMockClient } from "util/buildMockClient";
+import { DiaryDate } from "util/date";
 import { describe, expect, it, vi } from "vitest";
-import { buildPageRoute } from "../../routes/buildPageRoute";
-import { withDate, withRoute } from "../../test/wrappers";
-import { buildMockClient } from "../../util/buildMockClient";
-import { DiaryDate } from "../../util/date";
 import DatePrevButton from "./DatePrevButton";
 
 const getPrevButton = () => screen.getByRole("button", { name: "prev" });

@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { wrap } from "souvlaki";
+import { withToggle, withToggles } from "test/wrappers";
 import { describe, expect, it } from "vitest";
-import { withToggle, withToggles } from "../test/wrappers";
 import { Toggle } from "./Toggle";
 
 describe("Toggle", () => {

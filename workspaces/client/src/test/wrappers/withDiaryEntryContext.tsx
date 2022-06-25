@@ -1,9 +1,9 @@
-import { createHelper } from "souvlaki";
-import { DiaryEntryContext } from "../../context/DiaryEntryContext";
+import { DiaryEntryContext } from "context/DiaryEntryContext";
 import {
   buildDiaryEntryContextValue,
   type DiaryEntryContextValue,
-} from "../../context/DiaryEntryContext.types";
+} from "context/DiaryEntryContext.types";
+import { createHelper } from "souvlaki";
 
 export const withDiaryEntryContext = createHelper(
   (
