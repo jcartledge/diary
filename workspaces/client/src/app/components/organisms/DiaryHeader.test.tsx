@@ -1,8 +1,10 @@
 import { render } from "@testing-library/react";
+import { withDiaryEntryContext } from "app/context/DiaryEntryContext.testWrapper";
+import { withLocale } from "app/context/LocaleContext.testWrapper";
+import { buildMockClient } from "lib/util/buildMockClient";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
-import { withDiaryEntryContext, withLocale, withRoute } from "test/wrappers";
-import { buildMockClient } from "lib/util/buildMockClient";
+import { withRoute } from "test/wrappers";
 import { describe, expect, it } from "vitest";
 import DiaryHeader from "./DiaryHeader";
 

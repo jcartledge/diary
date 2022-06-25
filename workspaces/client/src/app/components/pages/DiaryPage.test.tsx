@@ -2,6 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { withDate } from "app/context/DateContext.testWrapper";
 import { withDiaryEntry } from "app/context/DiaryEntryContext.testWrapper";
+import { withLocale } from "app/context/LocaleContext.testWrapper";
 import { DIARY_ENTRY_QUERY } from "app/graphql/queries";
 import { buildPageRoute } from "app/routes/buildPageRoute";
 import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
@@ -9,7 +10,7 @@ import { DiaryDate } from "lib/util/date";
 import { createMockClient } from "mock-apollo-client";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
-import { withLocale, withRoute } from "test/wrappers";
+import { withRoute } from "test/wrappers";
 import { describe, expect, it, vi } from "vitest";
 import DiaryPage from "./DiaryPage";
 
