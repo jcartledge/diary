@@ -15,7 +15,7 @@ describe("Toggle", () => {
 
   it("does not render the children if the toggle is not enabled", () => {
     render(<Toggle name="test_feature">Hello</Toggle>, {
-      wrapper: wrap(withToggles([])),
+      wrapper: wrap(withToggles()),
     });
 
     expect(screen.queryByText("Hello")).toBeNull();
@@ -37,7 +37,7 @@ describe("Toggle", () => {
       <Toggle isOff name="test_feature">
         Hello
       </Toggle>,
-      { wrapper: wrap(withToggles([])) }
+      { wrapper: wrap(withToggles()) }
     );
 
     expect(screen.queryByText("Hello")).not.toBeNull();
