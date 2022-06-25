@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import { wrap } from "souvlaki";
 import { describe, expect, it } from "vitest";
-import { withToggles } from "../test/wrappers/withToggles";
+import { withToggle, withToggles } from "../test/wrappers/withToggles";
 import { Toggle } from "./Toggle";
 
 describe("Toggle", () => {
   it("renders the children if the toggle is enabled", () => {
     render(<Toggle name="test_feature">Hello</Toggle>, {
-      wrapper: wrap(withToggles(["test_feature"])),
+      wrapper: wrap(withToggle("test_feature")),
     });
 
     expect(screen.queryByText("Hello")).not.toBeNull();
@@ -26,7 +26,7 @@ describe("Toggle", () => {
       <Toggle isOff name="test_feature">
         Hello
       </Toggle>,
-      { wrapper: wrap(withToggles(["test_feature"])) }
+      { wrapper: wrap(withToggle("test_feature")) }
     );
 
     expect(screen.queryByText("Hello")).toBeNull();

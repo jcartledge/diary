@@ -8,3 +8,5 @@ export const withToggles = createHelper(
     ({ children }) =>
       <TogglesProvider toggles={toggles}>{children}</TogglesProvider>
 );
+
+export const withToggle = (toggle: string) => withToggles([toggle]);

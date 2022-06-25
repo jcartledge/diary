@@ -2,16 +2,18 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { wrap } from "souvlaki";
 import { describe, expect, it, vi } from "vitest";
 import { withAuth0Wrapper } from "../../../test/wrappers/withAuth0Wrapper";
-import { withToggles } from "../../../test/wrappers/withToggles";
+import { withToggle, withToggles } from "../../../test/wrappers/withToggles";
 import { Authenticated } from "./Authenticated";
 
 describe("Authenticated - auth toggled on", () => {
+  const withAuthToggleEnabled = withToggle("auth");
+
   it("redirects to login if not authenticated", async () => {
     const loginWithRedirect = vi.fn();
 
     render(<Authenticated>Hello</Authenticated>, {
       wrapper: wrap(
-        withToggles(["auth"]),
+        withAuthToggleEnabled,
         withAuth0Wrapper({
           loginWithRedirect,
           isAuthenticated: false,
@@ -27,7 +29,7 @@ describe("Authenticated - auth toggled on", () => {
   it("does not render the children if not authenticated", () => {
     render(<Authenticated>Hello</Authenticated>, {
       wrapper: wrap(
-        withToggles(["auth"]),
+        withAuthToggleEnabled,
         withAuth0Wrapper({ isAuthenticated: false })
       ),
     });
@@ -38,7 +40,7 @@ describe("Authenticated - auth toggled on", () => {
   it("does render the children if authenticated", () => {
     render(<Authenticated>Hello</Authenticated>, {
       wrapper: wrap(
-        withToggles(["auth"]),
+        withAuthToggleEnabled,
         withAuth0Wrapper({ isAuthenticated: true })
       ),
     });
@@ -51,7 +53,7 @@ describe("Authenticated - auth toggled on", () => {
 
     render(<Authenticated>Hello</Authenticated>, {
       wrapper: wrap(
-        withToggles(["auth"]),
+        withAuthToggleEnabled,
         withAuth0Wrapper({
           loginWithRedirect,
           isAuthenticated: true,
@@ -64,12 +66,14 @@ describe("Authenticated - auth toggled on", () => {
 });
 
 describe("Authenticated - auth toggled off", () => {
+  const withAuthToggleDisabled = withToggles();
+
   it("does not redirect to login if not authenticated", () => {
     const loginWithRedirect = vi.fn();
 
     render(<Authenticated>Hello</Authenticated>, {
       wrapper: wrap(
-        withToggles(),
+        withAuthToggleDisabled,
         withAuth0Wrapper({
           loginWithRedirect,
           isAuthenticated: false,
@@ -83,7 +87,7 @@ describe("Authenticated - auth toggled off", () => {
   it("renders the children if not authenticated", () => {
     render(<Authenticated>Hello</Authenticated>, {
       wrapper: wrap(
-        withToggles(),
+        withAuthToggleDisabled,
         withAuth0Wrapper({ isAuthenticated: false })
       ),
     });
@@ -93,7 +97,10 @@ describe("Authenticated - auth toggled off", () => {
 
   it("renders the children if authenticated", () => {
     render(<Authenticated>Hello</Authenticated>, {
-      wrapper: wrap(withToggles(), withAuth0Wrapper({ isAuthenticated: true })),
+      wrapper: wrap(
+        withAuthToggleDisabled,
+        withAuth0Wrapper({ isAuthenticated: true })
+      ),
     });
 
     expect(screen.queryByText("Hello")).not.toBeNull();
@@ -104,7 +111,7 @@ describe("Authenticated - auth toggled off", () => {
 
     render(<Authenticated>Hello</Authenticated>, {
       wrapper: wrap(
-        withToggles(),
+        withAuthToggleDisabled,
         withAuth0Wrapper({
           loginWithRedirect,
           isAuthenticated: true,
