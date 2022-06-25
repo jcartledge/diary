@@ -6,10 +6,12 @@ import { withApollo } from "souvlaki-apollo";
 import { describe, expect, it, vi } from "vitest";
 import { DIARY_ENTRY_QUERY } from "../../graphql/queries";
 import { buildPageRoute } from "../../routes/buildPageRoute";
-import { withDate } from "../../test/wrappers/withDate";
-import { withDiaryEntry } from "../../test/wrappers/withDiaryEntry";
-import { withLocale } from "../../test/wrappers/withLocale";
-import { withRoute } from "../../test/wrappers/withRoute";
+import {
+  withDate,
+  withDiaryEntry,
+  withLocale,
+  withRoute,
+} from "../../test/wrappers";
 import { buildDiaryEntry } from "../../util/buildDiaryEntry";
 import { DiaryDate } from "../../util/date";
 import DiaryPage from "./DiaryPage";

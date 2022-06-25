@@ -1,8 +1,11 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { wrap } from "souvlaki";
 import { describe, expect, it, vi } from "vitest";
-import { withAuth0Wrapper } from "../../../test/wrappers/withAuth0Wrapper";
-import { withToggle, withToggles } from "../../../test/wrappers/withToggles";
+import {
+  withAuth0Wrapper,
+  withToggle,
+  withToggles,
+} from "../../../test/wrappers";
 import { Authenticated } from "./Authenticated";
 
 describe("Authenticated - auth toggled on", () => {

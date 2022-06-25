@@ -1,8 +1,7 @@
 import { render } from "@testing-library/react";
 import { wrap } from "souvlaki";
 import { describe, expect, it } from "vitest";
-import { withDate } from "../../test/wrappers/withDate";
-import { withLocale } from "../../test/wrappers/withLocale";
+import { withDate, withLocale } from "../../test/wrappers";
 import { DiaryDate } from "../../util/date";
 import { FormattedDate } from "./FormattedDate";
 
