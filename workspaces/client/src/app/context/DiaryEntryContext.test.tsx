@@ -9,7 +9,7 @@ import React, { useContext } from "react";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { useMount } from "test/useMount";
-import { withRoute } from "test/wrappers";
+import { withRoute } from "test/wrappers/withRoute";
 import { describe, expect, it, vi } from "vitest";
 import { DiaryEntryContext } from "./DiaryEntryContext";
 import { withDiaryEntry } from "./DiaryEntryContext.testWrapper";

@@ -1,6 +1,6 @@
-import { DiaryEntry } from "server/src/resolvers-types";
 import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
 import { Builder } from "lib/util/builder.types";
+import { DiaryEntry } from "server/src/resolvers-types";
 
 export interface DiaryEntryContextProps {
   saveTimeoutInterval?: number;

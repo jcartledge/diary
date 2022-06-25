@@ -1,7 +1,7 @@
-import { Authenticated } from "lib/auth/Authenticated";
 import DiaryPage from "app/components/pages/DiaryPage";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Authenticated } from "lib/auth/Authenticated";
 import { DiaryDate } from "lib/util/date";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { buildPageRoute } from "./buildPageRoute";
 
 export const AppRoutes = () => (

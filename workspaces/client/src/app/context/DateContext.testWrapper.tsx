@@ -1,7 +1,7 @@
 import { DateContext } from "app/context/DateContext";
+import { DiaryDate } from "lib/util/date";
 import React from "react";
 import { createHelper } from "souvlaki";
-import { DiaryDate } from "lib/util/date";
 
 export const withDate = createHelper(
   (value?: DiaryDate): React.FC<React.PropsWithChildren<{}>> =>

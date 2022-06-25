@@ -6,7 +6,7 @@ import { buildMockClient } from "lib/util/buildMockClient";
 import { DiaryDate } from "lib/util/date";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
-import { withRoute } from "test/wrappers";
+import { withRoute } from "test/wrappers/withRoute";
 import { describe, expect, it, vi } from "vitest";
 import DatePrevButton from "./DatePrevButton";
 

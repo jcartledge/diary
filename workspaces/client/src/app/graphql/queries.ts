@@ -1,10 +1,10 @@
 import { gql, QueryResult, useMutation, useQuery } from "@apollo/client";
+import { DiaryDate } from "lib/util/date";
 import {
   DiaryEntry,
   MutationUpdateDiaryEntryArgs,
   QueryDiaryEntryArgs,
 } from "server/src/resolvers-types";
-import { DiaryDate } from "lib/util/date";
 
 export const DIARY_ENTRY_QUERY = gql`
   query diaryEntry($date: String!) {

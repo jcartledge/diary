@@ -11,7 +11,7 @@ import { DiaryDate } from "lib/util/date";
 import { createMockClient } from "mock-apollo-client";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
-import { withRoute } from "test/wrappers";
+import { withRoute } from "test/wrappers/withRoute";
 import { describe, expect, it, vi } from "vitest";
 import DiaryPageForm from "./DiaryPageForm";
 

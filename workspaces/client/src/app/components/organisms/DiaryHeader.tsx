@@ -1,8 +1,8 @@
 import Cell from "app/components/atoms/Cell";
 import { H1 } from "app/components/atoms/styled";
 import DateControl from "app/components/molecules/DateControl";
+import { DiaryEntryContext } from "app/context/DiaryEntryContext";
 import React, { useContext } from "react";
-import { DiaryEntryContext } from "../../context/DiaryEntryContext";
 
 const DiaryHeader: React.FC = () => {
   const { isDirty } = useContext(DiaryEntryContext);

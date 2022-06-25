@@ -4,7 +4,7 @@ import { withLocale } from "app/context/LocaleContext.testWrapper";
 import { buildMockClient } from "lib/util/buildMockClient";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
-import { withRoute } from "test/wrappers";
+import { withRoute } from "test/wrappers/withRoute";
 import { describe, expect, it } from "vitest";
 import DiaryHeader from "./DiaryHeader";
 
