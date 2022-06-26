@@ -11,8 +11,8 @@ fileignoreconfig:
   - filename: yarn.lock
     checksum: 14c978fe87bd8fe2d53a2f34a19e900e7bd20b23159da19a17585138beb2c700
     ignore_detectors: []
-  - filename: client/nginx-templates/env.conf.template
-    checksum: 11ec59f13030455edcda906172e50ce984db31ead5a1e56749974a10e7081775
+  - filename: workspaces/client/nginx/templates/env.conf.template
+    checksum: 683d4995a788f0769f4d494abac4ccddb7e746eaba1e453314c29c7e4a540663
     ignore_detectors: []
   - filename: .github/workflows/ci.yml
     checksum: 72df56dcf0e3fc76d580f260e9d215cc3a5588973a309c790b30c410f156e70e

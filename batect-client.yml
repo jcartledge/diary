@@ -66,6 +66,7 @@ tasks:
       command: yarn workspace client build
       environment:
         REACT_APP_GRAPHQL_URI: __GRAPHQL_URI
+        REACT_APP_TOGGLES: __TOGGLES
 
   client-package:
     run:
