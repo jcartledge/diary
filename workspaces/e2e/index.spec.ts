@@ -1,13 +1,13 @@
-import { expect, test } from "@playwright/test";
+import { expect, Page, test } from "@playwright/test";
 import { getDocument, queries, waitFor } from "playwright-testing-library";
 import { ElementHandle } from "playwright-testing-library/dist/typedefs";
 
 const { getByLabelText, getByText } = queries;
 
-const CLIENT_URI = process.env.CLIENT_URI;
+const CLIENT_URI = process.env.CLIENT_URI ?? "";
 
 type PageElements = { [key: string]: ElementHandle };
-const getPageElements = async (page): Promise<PageElements> => {
+const getPageElements = async (page: Page): Promise<PageElements> => {
   const document = await getDocument(page);
   return {
     whatHappened: await getByLabelText(document, "What happened?"),
@@ -20,7 +20,7 @@ const getPageElements = async (page): Promise<PageElements> => {
   };
 };
 
-const failOnConsoleErrorOrWarning = (page): void => {
+const failOnConsoleErrorOrWarning = (page: Page): void => {
   page.on("console", (message) => {
     const messageType = message.type();
     if (messageType === "error" || messageType === "warning") {
