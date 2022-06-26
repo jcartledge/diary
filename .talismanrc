@@ -1,7 +1,4 @@
 fileignoreconfig:
-  - filename: src/react-app-env.d.ts
-    checksum: f0045b3f8905880e17671222a920193a34a64f59b0d5fe52d8829b8da70e50dd
-    ignore_detectors: []
   - filename: batect.cmd
     checksum: 386677d1c0414c83355e3b2aa2a6bd196491a685a452d37b924f68aa9c63cca5
     ignore_detectors: []
@@ -16,9 +13,6 @@ fileignoreconfig:
     ignore_detectors: []
   - filename: .github/workflows/ci.yml
     checksum: 72df56dcf0e3fc76d580f260e9d215cc3a5588973a309c790b30c410f156e70e
-    ignore_detectors: []
-  - filename: .yarn/releases/yarn-3.1.1.cjs
-    checksum: a93cad50a1e51bacec22b560442c85b71c798af996566bd4f1812b439638a92d
     ignore_detectors: []
 scopeconfig:
   - scope: node
