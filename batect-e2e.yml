@@ -30,7 +30,6 @@ tasks:
       diary-client:
         environment:
           GRAPHQL_URI: https://diary-server-gateway/graphql
-          TOGGLES: ""
     run:
       container: e2e
       command: yarn workspace e2e start
