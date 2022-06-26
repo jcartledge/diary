@@ -2,7 +2,10 @@ containers:
   e2e:
     image: mcr.microsoft.com/playwright:v1.22.2-bionic
     working_directory: /app
-    command: yarn
+    command: yarn workspace e2e start
+    dependencies:
+      - diary-server-gateway
+      - diary-client
     environment:
       CLIENT_URI: "https://diary-client"
       DATABASE_URL: postgresql://dev:dev@diary-db:5432/dev
@@ -24,13 +27,18 @@ containers:
 
 tasks:
   e2e:
-    dependencies:
-      - diary-server-gateway
-      - diary-client
     customise:
       diary-client:
         environment:
           GRAPHQL_URI: https://diary-server-gateway/graphql
     run:
       container: e2e
-      command: yarn workspace e2e start
+
+  e2e-toggle-auth:
+    customise:
+      diary-client:
+        environment:
+          GRAPHQL_URI: https://diary-server-gateway/graphql
+          TOGGLES: auth
+    run:
+      container: e2e
