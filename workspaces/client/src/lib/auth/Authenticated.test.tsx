@@ -1,7 +1,10 @@
 import { render, screen, waitFor } from "@testing-library/react";
+import {
+  withToggle,
+  withToggles,
+} from "lib/toggles/TogglesProvider.testWrapper";
 import { wrap } from "souvlaki";
 import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
-import { withToggle, withToggles } from "lib/toggles/TogglesProvider.testWrapper";
 import { describe, expect, it, vi } from "vitest";
 import { Authenticated } from "./Authenticated";
 
@@ -48,7 +51,7 @@ describe("Authenticated - auth toggled on", () => {
     expect(screen.queryByText("Hello")).not.toBeNull();
   });
 
-  it("does not call loginWithRedirect the children if authenticated", () => {
+  it("does not call loginWithRedirect if authenticated", () => {
     const loginWithRedirect = vi.fn();
 
     render(<Authenticated>Hello</Authenticated>, {

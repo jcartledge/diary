@@ -1,6 +1,6 @@
 import { Auth0Context, Auth0ContextInterface } from "@auth0/auth0-react";
-import { createHelper } from "souvlaki";
 import { Builder } from "lib/util/builder.types";
+import { createHelper } from "souvlaki";
 import { vi } from "vitest";
 
 const buildMockAuth0ContextValue: Builder<Auth0ContextInterface> = (
