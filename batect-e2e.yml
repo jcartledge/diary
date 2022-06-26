@@ -5,6 +5,7 @@ containers:
     command: yarn
     environment:
       CLIENT_URI: "https://diary-client"
+      DATABASE_URL: postgresql://dev:dev@diary-db:5432/dev
     volumes:
       - local: .
         container: /app
@@ -33,5 +34,3 @@ tasks:
     run:
       container: e2e
       command: yarn workspace e2e start
-      environment:
-        DATABASE_URL: postgresql://dev:dev@diary-db:5432/dev

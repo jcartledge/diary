@@ -10,7 +10,6 @@
     "apollo-server": "^3.8.2",
     "concurrently": "^7.2.1",
     "graphql": "^16.5.0",
-    "node-pg-migrate": "^6.2.1",
     "pg": "^8.7.3"
   },
   "devDependencies": {
@@ -31,12 +30,11 @@
   "scripts": {
     "build": "webpack",
     "codegen": "graphql-codegen",
-    "coverage": "yarn migrate up && vitest run --coverage",
+    "coverage": "vitest run --coverage",
     "dev:codegen": "graphql-codegen --watch",
-    "dev:server": "yarn migrate up && nodemon 'src/index.ts' --exec 'ts-node' src/index.ts -e ts,graphql",
+    "dev:server": "nodemon 'src/index.ts' --exec 'ts-node' src/index.ts -e ts,graphql",
     "dev": "concurrently -n \"server,codegen\" \"yarn dev:server\" \"yarn dev:codegen\"",
     "lint": "eslint src/",
-    "migrate": "node-pg-migrate",
-    "test": "yarn migrate up && vitest"
+    "test": "vitest"
   }
 }

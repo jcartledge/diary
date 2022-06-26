@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "yarn workspace server migrate up && playwright install chromium && npx playwright test"
+    "start": "playwright install chromium && playwright test"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.17.12",

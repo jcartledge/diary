@@ -14,5 +14,8 @@ fileignoreconfig:
   - filename: .github/workflows/ci.yml
     checksum: 72df56dcf0e3fc76d580f260e9d215cc3a5588973a309c790b30c410f156e70e
     ignore_detectors: []
+  - filename: workspaces/server/initdb.d/diary_entries.table.sql
+    checksum: 8ec06f9343c598b1a92b2ffbdb92e7b1f62f62a6b6a9f53268ffe9e50276cf9f
+    ignore_detectors: []
 scopeconfig:
   - scope: node

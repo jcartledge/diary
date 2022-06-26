@@ -52,6 +52,8 @@ containers:
       command: pg_isready -d postgresql://dev:dev@diary-db:5432/dev
       interval: 5s
       retries: 6
+    volumes:
+      - ./workspaces/server/initdb.d:/docker-entrypoint-initdb.d
     environment:
       POSTGRES_PASSWORD: dev
       POSTGRES_USER: dev
