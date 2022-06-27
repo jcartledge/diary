@@ -1,38 +1,13 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import {
-  DIARY_ENTRY_QUERY,
-  UPDATE_DIARY_ENTRY_MUTATION,
-} from "app/graphql/queries";
-import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
-import { createMockClient } from "mock-apollo-client";
 import React, { useContext } from "react";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
+import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { useMount } from "test/useMount";
 import { withRoute } from "test/wrappers/withRoute";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { DiaryEntryContext } from "./DiaryEntryContext";
 import { withDiaryEntry } from "./DiaryEntryContext.testWrapper";
-
-const buildMockApolloClient = () => {
-  const mockClient = createMockClient();
-  const payload = {
-    data: { diaryEntry: buildDiaryEntry() },
-  };
-  mockClient.setRequestHandler(
-    DIARY_ENTRY_QUERY,
-    vi.fn().mockResolvedValue(payload)
-  );
-  mockClient.setRequestHandler(
-    UPDATE_DIARY_ENTRY_MUTATION,
-    vi.fn().mockResolvedValue({
-      data: {
-        updateDiaryEntry: payload.data,
-      },
-    })
-  );
-  return mockClient;
-};
 
 type Wrappers = { wrapper: React.ComponentType };
 

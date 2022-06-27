@@ -1,18 +1,35 @@
-import { DIARY_ENTRY_QUERY } from "app/graphql/queries";
+import {
+  DIARY_ENTRY_QUERY,
+  UPDATE_DIARY_ENTRY_MUTATION,
+} from "app/graphql/queries";
 import { createMockClient, MockApolloClient } from "mock-apollo-client";
 import { DiaryEntry } from "server/src/resolvers-types";
 import { vi } from "vitest";
 import { buildDiaryEntry } from "../lib/util/buildDiaryEntry";
 
-export const buildMockApolloClient = (
+export const buildDiaryEntryQueryMock = (
   diaryEntry: Partial<DiaryEntry> = {}
+) =>
+  vi.fn(async () => ({
+    data: { diaryEntry: buildDiaryEntry(diaryEntry) },
+  }));
+
+export const buildDiaryEntryMutationMock = (
+  diaryEntry: Partial<DiaryEntry> = {}
+) =>
+  vi.fn(async () => ({
+    data: { updateDiaryEntry: { diaryEntry: buildDiaryEntry(diaryEntry) } },
+  }));
+
+export const buildMockApolloClient = (
+  diaryEntry: Partial<DiaryEntry> = {},
+  {
+    queryMock = buildDiaryEntryQueryMock(diaryEntry),
+    mutationMock = buildDiaryEntryMutationMock(diaryEntry),
+  } = {}
 ): MockApolloClient => {
   const mockClient = createMockClient();
-  mockClient.setRequestHandler(
-    DIARY_ENTRY_QUERY,
-    vi.fn().mockResolvedValue({
-      data: { diaryEntry: buildDiaryEntry(diaryEntry) },
-    })
-  );
+  mockClient.setRequestHandler(DIARY_ENTRY_QUERY, queryMock);
+  mockClient.setRequestHandler(UPDATE_DIARY_ENTRY_MUTATION, mutationMock);
   return mockClient;
 };
