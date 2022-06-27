@@ -14,6 +14,8 @@ describe("Diary", () => {
       wrapper: wrap(withLocale("en-AU"), withDate(date)),
     });
 
-    expect(formattedDate.queryByText(/Friday, 1 January 2010/)).not.toBe(null);
+    expect(
+      formattedDate.queryByText(/Friday, 1 January 2010/)
+    ).toBeInTheDocument();
   });
 });

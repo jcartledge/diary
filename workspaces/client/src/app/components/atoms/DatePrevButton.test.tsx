@@ -2,10 +2,10 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { withDate } from "app/context/date/DateContext.testWrapper";
 import { buildPageRoute } from "app/routes/buildPageRoute";
-import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { DiaryDate } from "lib/util/date";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
+import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { withRoute } from "test/wrappers/withRoute";
 import { describe, expect, it, vi } from "vitest";
 import DatePrevButton from "./DatePrevButton";
@@ -38,9 +38,9 @@ describe("DatePrevButton", () => {
       wrapper: wrap(withApollo(mockClient), withRoute()),
     });
 
-    await waitFor(() =>
-      expect(getPrevButton().classList.contains("font-bold")).toBe(true)
-    );
+    await waitFor(() => {
+      expect(getPrevButton()).toHaveClass("font-bold");
+    });
   });
 
   it("does not bold the button text if there is not an entry on the previous date", async () => {
@@ -50,6 +50,6 @@ describe("DatePrevButton", () => {
       wrapper: wrap(withApollo(mockClient), withRoute()),
     });
 
-    expect(getPrevButton().classList.contains("font-bold")).toBe(false);
+    expect(getPrevButton()).not.toHaveClass("font-bold");
   });
 });

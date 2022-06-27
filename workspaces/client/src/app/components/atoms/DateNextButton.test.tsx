@@ -42,7 +42,7 @@ describe("DateNextButton", () => {
       ),
     });
 
-    expect(getNextButton().getAttribute("disabled")).not.toBe(null);
+    expect(getNextButton()).toHaveAttribute("disabled");
 
     await userEvent.click(getNextButton());
 
@@ -57,9 +57,9 @@ describe("DateNextButton", () => {
       wrapper: wrap(withApollo(mockClient), withDate(date), withRoute()),
     });
 
-    await waitFor(() =>
-      expect(getNextButton().classList.contains("font-bold")).toBe(true)
-    );
+    await waitFor(() => {
+      expect(getNextButton()).toHaveClass("font-bold");
+    });
   });
 
   it("does not bold the button text if there is not an entry on the next date", async () => {
@@ -70,6 +70,6 @@ describe("DateNextButton", () => {
       wrapper: wrap(withApollo(mockClient), withDate(date), withRoute()),
     });
 
-    expect(getNextButton().classList.contains("font-bold")).toBe(false);
+    expect(getNextButton()).not.toHaveClass("font-bold");
   });
 });

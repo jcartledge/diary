@@ -1,6 +1,9 @@
 import { render, screen } from "@testing-library/react";
+import {
+  withToggle,
+  withToggles,
+} from "lib/toggles/TogglesProvider.testWrapper";
 import { wrap } from "souvlaki";
-import { withToggle, withToggles } from "lib/toggles/TogglesProvider.testWrapper";
 import { describe, expect, it } from "vitest";
 import { Toggle } from "./Toggle";
 
@@ -10,7 +13,7 @@ describe("Toggle", () => {
       wrapper: wrap(withToggle("test_feature")),
     });
 
-    expect(screen.queryByText("Hello")).not.toBeNull();
+    expect(screen.queryByText("Hello")).toBeInTheDocument();
   });
 
   it("does not render the children if the toggle is not enabled", () => {
@@ -18,7 +21,7 @@ describe("Toggle", () => {
       wrapper: wrap(withToggles()),
     });
 
-    expect(screen.queryByText("Hello")).toBeNull();
+    expect(screen.queryByText("Hello")).not.toBeInTheDocument();
   });
 
   it("does not render the children when the toggle is enabled and toggle is off", () => {
@@ -29,7 +32,7 @@ describe("Toggle", () => {
       { wrapper: wrap(withToggle("test_feature")) }
     );
 
-    expect(screen.queryByText("Hello")).toBeNull();
+    expect(screen.queryByText("Hello")).not.toBeInTheDocument();
   });
 
   it("renders the children when the toggle is not enabled and toggle is off", () => {
@@ -40,6 +43,6 @@ describe("Toggle", () => {
       { wrapper: wrap(withToggles()) }
     );
 
-    expect(screen.queryByText("Hello")).not.toBeNull();
+    expect(screen.queryByText("Hello")).toBeInTheDocument();
   });
 });

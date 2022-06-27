@@ -1,11 +1,11 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
 import { withToggles } from "lib/toggles/TogglesProvider.testWrapper";
-import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { DiaryDate } from "lib/util/date";
 import { MemoryRouter } from "react-router";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
+import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
 import { describe, expect, it, vi } from "vitest";
 import { AppRoutes } from "./AppRoutes";
@@ -27,7 +27,7 @@ describe("AppRoutes - authenticated", () => {
       }
     );
 
-    expect(screen.getByText(/1 January 2020/)).not.toBe(null);
+    expect(screen.getByText(/1 January 2020/)).toBeInTheDocument();
   });
 
   it("redirects to the current date if no path is provided", () => {
@@ -45,9 +45,9 @@ describe("AppRoutes - authenticated", () => {
       }
     );
 
-    expect(screen.getByText(new DiaryDate().getFormatted("en-AU"))).not.toBe(
-      null
-    );
+    expect(
+      screen.getByText(new DiaryDate().getFormatted("en-AU"))
+    ).toBeInTheDocument();
   });
 });
 

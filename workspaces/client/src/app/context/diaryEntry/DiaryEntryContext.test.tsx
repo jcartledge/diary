@@ -14,7 +14,7 @@ import { describe, expect, it, vi } from "vitest";
 import { DiaryEntryContext } from "./DiaryEntryContext";
 import { withDiaryEntry } from "./DiaryEntryContext.testWrapper";
 
-const buildMockClient = () => {
+const buildMockApolloClient = () => {
   const mockClient = createMockClient();
   const payload = {
     data: { diaryEntry: buildDiaryEntry() },
@@ -38,7 +38,7 @@ type Wrappers = { wrapper: React.ComponentType };
 
 const wrappers = (): Wrappers => ({
   wrapper: wrap(
-    withApollo(buildMockClient()),
+    withApollo(buildMockApolloClient()),
     withRoute(),
     withDiaryEntry({ saveTimeoutInterval: 1 })
   ),
@@ -48,12 +48,11 @@ describe("DiaryEntryContextProvider", () => {
   it("sets isDirty to false when an entry is loaded and no updates have taken place", async () => {
     const TestChild: React.FC = () => {
       const { isDirty } = useContext(DiaryEntryContext);
-      return <>isDirty: {isDirty ? "true" : "false"}</>;
+      expect(isDirty).toBe(false);
+      return null;
     };
 
     render(<TestChild />, wrappers());
-
-    expect(screen.queryByText("isDirty: false")).not.toBeNull();
   });
 
   it("sets isDirty to true when an update changes a field value", async () => {
@@ -65,9 +64,9 @@ describe("DiaryEntryContextProvider", () => {
 
     render(<TestChild />, wrappers());
 
-    await waitFor(() =>
-      expect(screen.queryByText("isDirty: true")).not.toBeNull()
-    );
+    await waitFor(() => {
+      return expect(screen.queryByText("isDirty: true")).toBeInTheDocument();
+    });
   });
 
   it("does not set isDirty to true when an update does not change the entry", async () => {
@@ -79,7 +78,7 @@ describe("DiaryEntryContextProvider", () => {
 
     render(<TestChild />, wrappers());
 
-    expect(screen.queryByText("isDirty: true")).toBeNull();
+    expect(screen.queryByText("isDirty: true")).not.toBeInTheDocument();
   });
 
   it("does not set isDirty to false when an update does not change the entry", async () => {
@@ -95,7 +94,7 @@ describe("DiaryEntryContextProvider", () => {
     render(<TestChild />, wrappers());
 
     await waitFor(() =>
-      expect(screen.queryByText("isDirty: false")).toBeNull()
+      expect(screen.queryByText("isDirty: false")).not.toBeInTheDocument()
     );
   });
 
@@ -108,6 +107,6 @@ describe("DiaryEntryContextProvider", () => {
 
     render(<TestChild />, wrappers());
 
-    expect(screen.queryByText("isDirty: false")).not.toBeNull();
+    expect(screen.queryByText("isDirty: false")).toBeInTheDocument();
   });
 });

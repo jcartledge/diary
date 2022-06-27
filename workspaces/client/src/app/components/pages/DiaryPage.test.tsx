@@ -55,15 +55,15 @@ describe("DiaryPage", () => {
     });
 
     await waitFor(() => {
-      expect(screen.queryByText("Today's entry")).not.toBe(null);
-      expect(screen.queryByText("Yesterday's entry")).toBe(null);
+      expect(screen.queryByText("Today's entry")).toBeInTheDocument();
+      expect(screen.queryByText("Yesterday's entry")).not.toBeInTheDocument();
     });
 
     await userEvent.click(screen.getByRole("button", { name: "prev" }));
 
     await waitFor(() => {
-      expect(screen.queryByText("Yesterday's entry")).not.toBeNull();
-      expect(screen.queryByText("Today's entry")).toBeNull();
+      expect(screen.queryByText("Yesterday's entry")).toBeInTheDocument();
+      expect(screen.queryByText("Today's entry")).not.toBeInTheDocument();
     });
   });
 });

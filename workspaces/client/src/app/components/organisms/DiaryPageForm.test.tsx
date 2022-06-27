@@ -29,7 +29,7 @@ describe("DiaryPageForm", () => {
       Promise.resolve({ data: { diaryEntry } })
     );
 
-    const diary = render(<DiaryPageForm />, {
+    render(<DiaryPageForm />, {
       wrapper: wrap(
         withApollo(mockClient),
         withDate(),
@@ -39,19 +39,17 @@ describe("DiaryPageForm", () => {
     });
 
     await waitFor(() => {
-      expect(diary.getByLabelText("What happened?").textContent).toEqual(
-        "Lots"
-      );
-      expect(diary.getByLabelText("Went well").textContent).toEqual(
+      expect(screen.getByLabelText("What happened?")).toHaveTextContent("Lots");
+      expect(screen.getByLabelText("Went well")).toHaveTextContent(
         "Nothing went well"
       );
-      expect(diary.getByLabelText("Could be improved").textContent).toEqual(
+      expect(screen.getByLabelText("Could be improved")).toHaveTextContent(
         "Everything"
       );
-      expect(diary.getByLabelText("Didn't go well").textContent).toEqual(
+      expect(screen.getByLabelText("Didn't go well")).toHaveTextContent(
         "Too many arguments"
       );
-      expect(diary.getByLabelText("Might be a risk").textContent).toEqual(
+      expect(screen.getByLabelText("Might be a risk")).toHaveTextContent(
         "More arguments"
       );
     });

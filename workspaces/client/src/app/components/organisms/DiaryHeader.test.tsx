@@ -1,9 +1,9 @@
 import { render } from "@testing-library/react";
 import { withDiaryEntryContext } from "app/context/diaryEntry/DiaryEntryContext.testWrapper";
 import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
-import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
+import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { withRoute } from "test/wrappers/withRoute";
 import { describe, expect, it } from "vitest";
 import DiaryHeader from "./DiaryHeader";
@@ -19,7 +19,7 @@ describe("DiaryHeader", () => {
       ),
     });
 
-    expect(diaryHeader.container.querySelector(".italic")).not.toBe(null);
+    expect(diaryHeader.container.querySelector(".italic")).toBeInTheDocument();
   });
 
   it(`doesn't show the date italicised if the entry has no unsaved changes`, async () => {
@@ -32,6 +32,6 @@ describe("DiaryHeader", () => {
       ),
     });
 
-    expect(diaryHeader.container.querySelector(".italic")).toBe(null);
+    expect(diaryHeader.container.querySelector(".italic")).not.toBeInTheDocument();
   });
 });

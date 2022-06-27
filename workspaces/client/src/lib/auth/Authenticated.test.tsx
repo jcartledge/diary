@@ -37,7 +37,7 @@ describe("Authenticated - auth toggled on", () => {
       ),
     });
 
-    expect(screen.queryByText("Hello")).toBeNull();
+    expect(screen.queryByText("Hello")).not.toBeInTheDocument();
   });
 
   it("does render the children if authenticated", () => {
@@ -48,7 +48,7 @@ describe("Authenticated - auth toggled on", () => {
       ),
     });
 
-    expect(screen.queryByText("Hello")).not.toBeNull();
+    expect(screen.queryByText("Hello")).toBeInTheDocument();
   });
 
   it("does not call loginWithRedirect if authenticated", () => {
@@ -95,7 +95,7 @@ describe("Authenticated - auth toggled off", () => {
       ),
     });
 
-    expect(screen.queryByText("Hello")).not.toBeNull();
+    expect(screen.queryByText("Hello")).toBeInTheDocument();
   });
 
   it("renders the children if authenticated", () => {
@@ -106,7 +106,7 @@ describe("Authenticated - auth toggled off", () => {
       ),
     });
 
-    expect(screen.queryByText("Hello")).not.toBeNull();
+    expect(screen.queryByText("Hello")).toBeInTheDocument();
   });
 
   it("does not call loginWithRedirect the children if authenticated", () => {
