@@ -1,12 +1,12 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
-import { buildMockClient } from "lib/util/buildMockClient";
+import { withToggles } from "lib/toggles/TogglesProvider.testWrapper";
+import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { DiaryDate } from "lib/util/date";
 import { MemoryRouter } from "react-router";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
-import { withToggles } from "lib/toggles/TogglesProvider.testWrapper";
 import { describe, expect, it, vi } from "vitest";
 import { AppRoutes } from "./AppRoutes";
 import { buildPageRoute } from "./buildPageRoute";
@@ -21,7 +21,7 @@ describe("AppRoutes - authenticated", () => {
         wrapper: wrap(
           withToggles(["auth"]),
           withAuth0Wrapper({ isAuthenticated: true }),
-          withApollo(buildMockClient()),
+          withApollo(buildMockApolloClient()),
           withLocale("en-AU")
         ),
       }
@@ -39,7 +39,7 @@ describe("AppRoutes - authenticated", () => {
         wrapper: wrap(
           withToggles(["auth"]),
           withAuth0Wrapper({ isAuthenticated: true }),
-          withApollo(buildMockClient()),
+          withApollo(buildMockApolloClient()),
           withLocale("en-AU")
         ),
       }
@@ -63,7 +63,7 @@ describe("AppRoutes - unauthenticated", () => {
         wrapper: wrap(
           withToggles(["auth"]),
           withAuth0Wrapper({ isAuthenticated: false, loginWithRedirect }),
-          withApollo(buildMockClient()),
+          withApollo(buildMockApolloClient()),
           withLocale("en-AU")
         ),
       }
@@ -85,7 +85,7 @@ describe("AppRoutes - unauthenticated", () => {
         wrapper: wrap(
           withToggles(["auth"]),
           withAuth0Wrapper({ isAuthenticated: false, loginWithRedirect }),
-          withApollo(buildMockClient()),
+          withApollo(buildMockApolloClient()),
           withLocale("en-AU")
         ),
       }

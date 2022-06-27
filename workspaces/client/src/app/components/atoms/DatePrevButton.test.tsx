@@ -2,7 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { withDate } from "app/context/date/DateContext.testWrapper";
 import { buildPageRoute } from "app/routes/buildPageRoute";
-import { buildMockClient } from "lib/util/buildMockClient";
+import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { DiaryDate } from "lib/util/date";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
@@ -18,7 +18,7 @@ describe("DatePrevButton", () => {
     const date = new DiaryDate();
     render(<DatePrevButton />, {
       wrapper: wrap(
-        withApollo(buildMockClient()),
+        withApollo(buildMockApolloClient()),
         withDate(date),
         withRoute("", {}, onPathChange)
       ),
@@ -32,7 +32,7 @@ describe("DatePrevButton", () => {
   });
 
   it("bolds the button text if there is an entry on the previous date", async () => {
-    const mockClient = buildMockClient({ whatHappened: "Lots" });
+    const mockClient = buildMockApolloClient({ whatHappened: "Lots" });
 
     render(<DatePrevButton />, {
       wrapper: wrap(withApollo(mockClient), withRoute()),
@@ -44,7 +44,7 @@ describe("DatePrevButton", () => {
   });
 
   it("does not bold the button text if there is not an entry on the previous date", async () => {
-    const mockClient = buildMockClient();
+    const mockClient = buildMockApolloClient();
 
     render(<DatePrevButton />, {
       wrapper: wrap(withApollo(mockClient), withRoute()),

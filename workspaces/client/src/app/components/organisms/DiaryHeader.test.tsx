@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { withDiaryEntryContext } from "app/context/diaryEntry/DiaryEntryContext.testWrapper";
 import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
-import { buildMockClient } from "lib/util/buildMockClient";
+import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { withRoute } from "test/wrappers/withRoute";
@@ -12,7 +12,7 @@ describe("DiaryHeader", () => {
   it("shows the date italicised if the entry has unsaved changes", async () => {
     const diaryHeader = render(<DiaryHeader />, {
       wrapper: wrap(
-        withApollo(buildMockClient()),
+        withApollo(buildMockApolloClient()),
         withLocale("en-AU"),
         withRoute(),
         withDiaryEntryContext({ isDirty: true })
@@ -25,7 +25,7 @@ describe("DiaryHeader", () => {
   it(`doesn't show the date italicised if the entry has no unsaved changes`, async () => {
     const diaryHeader = render(<DiaryHeader />, {
       wrapper: wrap(
-        withApollo(buildMockClient()),
+        withApollo(buildMockApolloClient()),
         withLocale("en-AU"),
         withRoute(),
         withDiaryEntryContext({ isDirty: false })
