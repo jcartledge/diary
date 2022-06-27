@@ -10,14 +10,14 @@ import { buildDiaryEntry } from "../lib/util/buildDiaryEntry";
 export const buildDiaryEntryQueryMock = (
   diaryEntry: Partial<DiaryEntry> = {}
 ) =>
-  vi.fn(async () => ({
+  vi.fn(async (_: string) => ({
     data: { diaryEntry: buildDiaryEntry(diaryEntry) },
   }));
 
 export const buildDiaryEntryMutationMock = (
   diaryEntry: Partial<DiaryEntry> = {}
 ) =>
-  vi.fn(async () => ({
+  vi.fn(async (_) => ({
     data: { updateDiaryEntry: { diaryEntry: buildDiaryEntry(diaryEntry) } },
   }));
 

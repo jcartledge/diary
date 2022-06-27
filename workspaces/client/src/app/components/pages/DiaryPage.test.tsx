@@ -3,13 +3,12 @@ import userEvent from "@testing-library/user-event";
 import { withDate } from "app/context/date/DateContext.testWrapper";
 import { withDiaryEntry } from "app/context/diaryEntry/DiaryEntryContext.testWrapper";
 import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
-import { DIARY_ENTRY_QUERY } from "app/graphql/queries";
 import { buildPageRoute } from "app/routes/buildPageRoute";
 import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
 import { DiaryDate } from "lib/util/date";
-import { createMockClient } from "mock-apollo-client";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
+import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { withRoute } from "test/wrappers/withRoute";
 import { describe, expect, it, vi } from "vitest";
 import DiaryPage from "./DiaryPage";
@@ -34,14 +33,10 @@ describe("DiaryPage", () => {
         whatHappened: "Yesterday's entry",
       }),
     };
-    const mockClient = createMockClient();
-    mockClient.setRequestHandler(
-      DIARY_ENTRY_QUERY,
-      vi.fn(({ date }) =>
-        Promise.resolve({
-          data: { diaryEntry: diaryEntries[date] ?? buildDiaryEntry() },
-        })
-      )
+    const queryMock = vi.fn(({ date }) =>
+      Promise.resolve({
+        data: { diaryEntry: diaryEntries[date] ?? buildDiaryEntry() },
+      })
     );
 
     render(<DiaryPage />, {
@@ -49,7 +44,7 @@ describe("DiaryPage", () => {
         withRoute(buildPageRoute(), { isoDateString: today.getKey() }),
         withLocale("en-AU"),
         withDate(today),
-        withApollo(mockClient),
+        withApollo(buildMockApolloClient({}, { queryMock })),
         withDiaryEntry()
       ),
     });
