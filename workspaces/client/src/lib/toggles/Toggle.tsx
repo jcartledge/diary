@@ -1,9 +1,15 @@
+import React from "react";
 import { useToggle } from "./useToggle";
 
-type ToggleProps = React.PropsWithChildren<{ name: string; isOff?: boolean }>;
+type ToggleProps = React.PropsWithChildren<{
+  name: string;
+  isOff?: boolean;
+  fallback?: React.ComponentType;
+}>;
 
 export const Toggle: React.FC<ToggleProps> = ({
   children,
   name,
   isOff = false,
-}) => (useToggle(name) !== isOff ? <>{children}</> : null);
+  fallback: Fallback = () => null,
+}) => (useToggle(name) !== isOff ? <>{children}</> : <Fallback />);
