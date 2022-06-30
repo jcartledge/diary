@@ -11,10 +11,14 @@ export const Authenticated: React.FC<React.PropsWithChildren<{}>> = ({
   children,
 }) => {
   const { isAuthenticated } = useAuth0();
-  const Children = () => <>{children}</>;
   return (
-    <Toggle name="auth" fallback={Children}>
-      {isAuthenticated ? <Children /> : <LoginRedirect />}
-    </Toggle>
+    <>
+      <Toggle name="auth">
+        {isAuthenticated ? children : <LoginRedirect />}
+      </Toggle>
+      <Toggle isOff name="auth">
+        {children}
+      </Toggle>
+    </>
   );
 };

@@ -45,28 +45,4 @@ describe("Toggle", () => {
 
     expect(screen.queryByText("Hello")).toBeInTheDocument();
   });
-
-  it("renders the fallback when the toggle is not enabled", () => {
-    const Fallback = () => <>Off!</>;
-    render(
-      <Toggle name="test_feature" fallback={Fallback}>
-        Hello
-      </Toggle>,
-      { wrapper: wrap(withToggles()) }
-    );
-
-    expect(screen.queryByText("Off!")).toBeInTheDocument();
-  });
-
-  it("renders the fallback when the toggle is enabled and isOff is passed", () => {
-    const Fallback = () => <>On!</>;
-    render(
-      <Toggle isOff name="test_feature" fallback={Fallback}>
-        Hello
-      </Toggle>,
-      { wrapper: wrap(withToggle("test_feature")) }
-    );
-
-    expect(screen.queryByText("On!")).toBeInTheDocument();
-  });
 });
