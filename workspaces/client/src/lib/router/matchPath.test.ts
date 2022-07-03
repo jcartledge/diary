@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { matchExactPath, matchPath } from "./matchPath";
+import { matchPath } from "./matchPath";
 
 describe("matchPath", () => {
   it("doesn't match if the strings are different", () => {
@@ -10,12 +10,20 @@ describe("matchPath", () => {
     expect(matchPath("/user/foo", "/user/foo").isMatch).toBe(true);
   });
 
-  it("matches if the template matches the start of the path", () => {
-    expect(matchPath("/user/foo", "/user/foo/more").isMatch).toBe(true);
+  it("doesn't match if there is additional content at the end of the path", () => {
+    expect(matchPath("/user/foo", "/user/foo/bar").isMatch).toBe(false);
   });
 
-  it("doesn't match if the template doesn't match the start of the path", () => {
-    expect(matchPath("/user/foo", "/all/user/foo/more").isMatch).toBe(false);
+  it("doesn't match if there is additional content at the start of the path", () => {
+    expect(matchPath("/user/foo", "/bar/user/foo").isMatch).toBe(false);
+  });
+
+  it("doesn't match if there is additional content at the end of the template", () => {
+    expect(matchPath("/user/foo/bar", "/user/foo").isMatch).toBe(false);
+  });
+
+  it("doesn't match if there is additional content at the start of the template", () => {
+    expect(matchPath("/bar/user/foo", "/user/foo").isMatch).toBe(false);
   });
 
   it("matches a path with a template placeholder", () => {
@@ -32,15 +40,5 @@ describe("matchPath", () => {
     expect(
       matchPath("/user/:username/:action", "/user/foo/bury").params
     ).toEqual({ username: "foo", action: "bury" });
-  });
-});
-
-describe("matchExactPath", () => {
-  it("matches a path", () => {
-    expect(matchExactPath("/user/foo", "/user/foo").isMatch).toBe(true);
-  });
-
-  it("doesn't match iif paths are not exact", () => {
-    expect(matchExactPath("/user/foo", "/user/foo/bar").isMatch).toBe(false);
   });
 });
