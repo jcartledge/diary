@@ -2,7 +2,6 @@ react-tiny-router
 
 navigation API-based router for modern browsers
 
-
 add a router and some routes
 
 ```
@@ -11,3 +10,5 @@ add a router and some routes
 </Route>
 ```
 
+router keeps path in state
+route keeps params
