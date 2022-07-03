@@ -5,7 +5,7 @@ interface MatchPathMatchedResult {
 
 interface MatchPathUnmatchedResult {
   isMatch: false;
-  params: {};
+  params: Record<never, never>;
 }
 
 export type MatchPathResult = MatchPathMatchedResult | MatchPathUnmatchedResult;

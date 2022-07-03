@@ -29,7 +29,8 @@ type RouteProps = React.PropsWithChildren<{
 type RouteParams = Record<string, string>;
 
 const RouteParamsContext = React.createContext<RouteParams>({});
-export const useParams = () => useContext(RouteParamsContext);
+export const useParam = (paramName: string) =>
+  useContext(RouteParamsContext)[paramName] ?? "";
 
 export const Route: React.FC<RouteProps> = ({ children, path }) => {
   const { isMatch, params } = useMatchPath(path);

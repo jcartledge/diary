@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Route, Router, useParams } from "./Router";
+import { Route, Router, useParam } from "./Router";
 
 describe("Router", () => {
   it("renders the children of a matched route", () => {
@@ -25,7 +25,8 @@ describe("Router", () => {
 
   it("provides the matched params", () => {
     const TestComponent = () => {
-      expect(useParams()).toEqual({ username: "foo", action: "bar" });
+      expect(useParam("username")).toEqual("foo");
+      expect(useParam("action")).toEqual("bar");
       return null;
     };
 
