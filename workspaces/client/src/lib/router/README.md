@@ -10,5 +10,6 @@ add a router and some routes
 </Route>
 ```
 
-router keeps path in state
-route keeps params
+exact routes only!
+nest for composition!
+

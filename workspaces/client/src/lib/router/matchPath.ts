@@ -10,6 +10,9 @@ interface MatchPathUnmatchedResult {
 
 export type MatchPathResult = MatchPathMatchedResult | MatchPathUnmatchedResult;
 
+const PLACEHOLDER_SEARCH = /:([a-z]+)/gi;
+const PLACEHOLDER_REPLACE = "(?<$1>[^/]+)";
+
 export const matchPath = (
   pathTemplate: string,
   testPath: string
@@ -17,7 +20,7 @@ export const matchPath = (
   const matches = [
     ...testPath.matchAll(
       new RegExp(
-        `^${replacePlaceholdersWithNamedCaptureSyntax(pathTemplate)}$`,
+        `^${pathTemplate.replace(PLACEHOLDER_SEARCH, PLACEHOLDER_REPLACE)}$`,
         "g"
       )
     ),
@@ -27,7 +30,3 @@ export const matchPath = (
     params: matches?.groups ?? {},
   };
 };
-
-const replacePlaceholdersWithNamedCaptureSyntax = (
-  pathTemplate: string
-): string => pathTemplate.replace(/:([a-z]+)/gi, "(?<$1>[^/]+)");
