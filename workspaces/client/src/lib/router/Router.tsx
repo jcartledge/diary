@@ -1,11 +1,5 @@
-import React, { useContext } from "react";
-import { matchPath, type MatchPathResult } from "./matchPath";
-
-type RouterContextvalue = string;
-const RouterContext = React.createContext<RouterContextvalue>("");
-
-const useMatchPath = (pathTemplate: string): MatchPathResult =>
-  matchPath(pathTemplate, useContext(RouterContext));
+import React from "react";
+import { RouterContext } from "./RouterContext";
 
 type RouterProps = React.PropsWithChildren<{
   initialPath: string;
@@ -20,23 +14,4 @@ export const Router: React.FC<RouterProps> = ({
       {children}
     </RouterContext.Provider>
   );
-};
-
-type RouteProps = React.PropsWithChildren<{
-  path: string;
-}>;
-
-type RouteParams = Record<string, string>;
-
-const RouteParamsContext = React.createContext<RouteParams>({});
-export const useParam = (paramName: string) =>
-  useContext(RouteParamsContext)[paramName] ?? "";
-
-export const Route: React.FC<RouteProps> = ({ children, path }) => {
-  const { isMatch, params } = useMatchPath(path);
-  return isMatch ? (
-    <RouteParamsContext.Provider value={params}>
-      {children}
-    </RouteParamsContext.Provider>
-  ) : null;
 };

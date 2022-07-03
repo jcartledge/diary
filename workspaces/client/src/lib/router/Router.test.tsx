@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Route, Router, useParam } from "./Router";
+import { Route } from "./Route";
+import { Router } from "./Router";
+import { useParam } from "./useParam";
 
 describe("Router", () => {
   it("renders the children of a matched route", () => {
@@ -33,6 +35,21 @@ describe("Router", () => {
     render(
       <Router initialPath="/user/foo/bar">
         <Route path="/user/:username/:action">
+          <TestComponent />
+        </Route>
+      </Router>
+    );
+  });
+
+  it("provides an empty string if useParam is called with a parameter that's not in the match", () => {
+    const TestComponent = () => {
+      expect(useParam("foo")).toEqual("");
+      return null;
+    };
+
+    render(
+      <Router initialPath="/user/foo/bar">
+        <Route path="/user/foo/bar">
           <TestComponent />
         </Route>
       </Router>
