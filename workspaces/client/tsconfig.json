@@ -21,7 +21,7 @@
     "strict": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,
-    "target": "es5",
+    "target": "es6",
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,
     "noEmit": true

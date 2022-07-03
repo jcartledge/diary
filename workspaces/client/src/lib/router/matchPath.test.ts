@@ -19,4 +19,10 @@ describe("matchPath", () => {
       true
     );
   });
+
+  it("extracts placeholder values from the supplied path", () => {
+    expect(
+      matchPath("/user/:username/:action", "/user/foo/bury").params
+    ).toEqual({ username: "foo", action: "bury" });
+  });
 });
