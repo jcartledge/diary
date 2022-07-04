@@ -3522,6 +3522,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@virtualstate/navigation@npm:^1.0.1-alpha.109":
+  version: 1.0.1-alpha.109
+  resolution: "@virtualstate/navigation@npm:1.0.1-alpha.109"
+  dependencies:
+    abort-controller: ^3.0.0
+    uuid: ^8.3.2
+    whatwg-url: ^9.1.0
+  checksum: e95b87343926c0b469aeeae10e61313ac7faf6f31fd382ce9668234fe2d82faa295d8fc56a1319a856ee6338783dfb2d18ad5d821bd88a1e78d39c91403ac1d4
+  languageName: node
+  linkType: hard
+
 "@vitejs/plugin-react@npm:1.3.2":
   version: 1.3.2
   resolution: "@vitejs/plugin-react@npm:1.3.2"
@@ -5081,6 +5092,7 @@ __metadata:
     "@types/react-dom": 18.0.5
     "@types/react-router-dom": 5.3.3
     "@types/styled-components": 5.1.25
+    "@virtualstate/navigation": ^1.0.1-alpha.109
     "@vitejs/plugin-react": 1.3.2
     autoprefixer: 10.4.7
     c8: 7.11.3
@@ -11915,6 +11927,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tr46@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "tr46@npm:2.1.0"
+  dependencies:
+    punycode: ^2.1.1
+  checksum: ffe6049b9dca3ae329b059aada7f515b0f0064c611b39b51ff6b53897e954650f6f63d9319c6c008d36ead477c7b55e5f64c9dc60588ddc91ff720d64eb710b3
+  languageName: node
+  linkType: hard
+
 "tr46@npm:^3.0.0":
   version: 3.0.0
   resolution: "tr46@npm:3.0.0"
@@ -12363,7 +12384,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^8.0.0":
+"uuid@npm:^8.0.0, uuid@npm:^8.3.2":
   version: 8.3.2
   resolution: "uuid@npm:8.3.2"
   bin:
@@ -12601,6 +12622,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"webidl-conversions@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "webidl-conversions@npm:6.1.0"
+  checksum: 1f526507aa491f972a0c1409d07f8444e1d28778dfa269a9971f2e157182f3d496dc33296e4ed45b157fdb3bf535bb90c90bf10c50dcf1dd6caacb2a34cc84fb
+  languageName: node
+  linkType: hard
+
 "webidl-conversions@npm:^7.0.0":
   version: 7.0.0
   resolution: "webidl-conversions@npm:7.0.0"
@@ -12735,6 +12763,16 @@ __metadata:
     tr46: ~0.0.3
     webidl-conversions: ^3.0.0
   checksum: b8daed4ad3356cc4899048a15b2c143a9aed0dfae1f611ebd55073310c7b910f522ad75d727346ad64203d7e6c79ef25eafd465f4d12775ca44b90fa82ed9e2c
+  languageName: node
+  linkType: hard
+
+"whatwg-url@npm:^9.1.0":
+  version: 9.1.0
+  resolution: "whatwg-url@npm:9.1.0"
+  dependencies:
+    tr46: ^2.1.0
+    webidl-conversions: ^6.1.0
+  checksum: cfee81bb7f87036e1151da15cefd3076fa97a4a4a658c4b58f6e74891acf25f180aa955e761cda77995f6e260b8dc3c4326ebc83d539ed978a50062c6b3bd0d1
   languageName: node
   linkType: hard
 
