@@ -8,7 +8,10 @@ type RouteProps = React.PropsWithChildren<{
 }>;
 
 export const Route: React.FC<RouteProps> = ({ children, path }) => {
-  const { isMatch, params } = matchPath(path, useContext(RouterContext));
+  const { isMatch, params } = matchPath(
+    path,
+    useContext(RouterContext)?.path ?? ""
+  );
   return isMatch ? (
     <RouteParamsContext.Provider value={params}>
       {children}

@@ -1,5 +1,7 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { describe, expect, it, vi } from "vitest";
+import { Link } from "./Link";
 import { Route } from "./Route";
 import { Router } from "./Router";
 import { useParam } from "./useParam";
@@ -54,5 +56,23 @@ describe("Router", () => {
         </Route>
       </Router>
     );
+  });
+
+  it("uses the pathSetter provided", async () => {
+    const updatePath = vi.fn();
+    const user = userEvent.setup();
+    render(
+      <Router initialPath="/" updatePath={updatePath}>
+        <Route path="/">
+          <Link to="/foo">go</Link>
+        </Route>
+      </Router>
+    );
+
+    user.click(screen.getByRole("link", { name: "go" }));
+
+    await waitFor(() => {
+      expect(updatePath).toHaveBeenCalledWith("/foo");
+    });
   });
 });

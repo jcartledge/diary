@@ -1,4 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 
-type RouterContextValue = string;
-export const RouterContext = React.createContext<RouterContextValue>("");
+export type PathSetter = (newPath: string) => void;
+
+type RouterContextValue = {
+  path: string;
+  setPath: PathSetter;
+};
+
+export const RouterContext = React.createContext<
+  RouterContextValue | undefined
+>(undefined);
+
+export const useSetPath = () => useContext(RouterContext)?.setPath;
