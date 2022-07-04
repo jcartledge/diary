@@ -1,6 +1,6 @@
 import React from "react";
 import { RouteParamsContext } from "./RouteParamsContext";
-import { useMatch } from "./useMatch";
+import { useMatch } from "./RouterContext";
 
 type RouteProps = React.PropsWithChildren<{
   path: string;

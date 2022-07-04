@@ -1,13 +1,15 @@
-import { Maybe } from "lib/util/either.types";
 import { createContext, useContext } from "react";
+import { matchPath } from "./matchPath";
 
 export type PathSetter = (newPath: string) => void;
 
-type RouterContextValue = Maybe<{
+type RouterContextValue = {
   path: string;
-  setPath: PathSetter;
-}>;
+  setPath?: PathSetter;
+};
 
-export const RouterContext = createContext<RouterContextValue>(undefined);
+export const RouterContext = createContext<RouterContextValue>({ path: "" });
 
-export const useSetPath = () => useContext(RouterContext)?.setPath;
+export const useSetPath = () => useContext(RouterContext).setPath;
+export const useMatch = (path: string) =>
+  matchPath(path, useContext(RouterContext).path);
