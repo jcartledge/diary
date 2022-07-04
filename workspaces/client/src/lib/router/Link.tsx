@@ -7,8 +7,8 @@ export const Link: React.FC<LinkProps> = ({ children, to }) => {
   return (
     <a
       href={to}
-      onClick={(e) => {
-        e.preventDefault();
+      onClick={(event) => {
+        event.preventDefault();
         setPath && setPath(to);
       }}
     >

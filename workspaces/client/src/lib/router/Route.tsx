@@ -1,17 +1,13 @@
-import React, { useContext } from "react";
-import { matchPath } from "./matchPath";
+import React from "react";
 import { RouteParamsContext } from "./RouteParamsContext";
-import { RouterContext } from "./RouterContext";
+import { useMatch } from "./useMatch";
 
 type RouteProps = React.PropsWithChildren<{
   path: string;
 }>;
 
 export const Route: React.FC<RouteProps> = ({ children, path }) => {
-  const { isMatch, params } = matchPath(
-    path,
-    useContext(RouterContext)?.path ?? ""
-  );
+  const { isMatch, params } = useMatch(path);
   return isMatch ? (
     <RouteParamsContext.Provider value={params}>
       {children}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PathSetter, RouterContext } from "./RouterContext";
+import { RouterContext, type PathSetter } from "./RouterContext";
 
 type RouterProps = React.PropsWithChildren<{
   initialPath?: string;
