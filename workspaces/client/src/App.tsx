@@ -15,7 +15,7 @@ const App: React.FC = () => {
       <Auth0Provider
         domain={process.env.REACT_APP_AUTH0_DOMAIN ?? ""}
         clientId={process.env.REACT_APP_AUTH0_CLIENT_ID ?? ""}
-        redirectUri={window.location.origin}
+        redirectUri={process.env.REACT_APP_AUTH0_CALLBACK_URI ?? ""}
       >
         <ApolloProvider client={client}>
           <HistoryRouter>
