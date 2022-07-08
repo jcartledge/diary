@@ -7,21 +7,27 @@ import { Toggle } from "lib/toggles/Toggle";
 import { DiaryDate } from "lib/util/date";
 import { buildDiaryPageRoute } from "./buildDiaryPageRoute";
 
-export const AppRoutes = () => (
+const todayDiaryPageRoute = buildDiaryPageRoute(new DiaryDate().getKey());
+const diaryPageRouteTemplate = buildDiaryPageRoute();
+
+const AuthenticatedRoutes = () => (
+  <>
+    <Redirect path="/" to={todayDiaryPageRoute} />
+    <Route path={diaryPageRouteTemplate}>
+      <DiaryPage />
+    </Route>
+  </>
+);
+
+export const Routes = () => (
   <>
     <Toggle isOff name="auth">
-      <Redirect path="/" to={buildDiaryPageRoute(new DiaryDate().getKey())} />
-      <Route path={buildDiaryPageRoute()}>
-        <DiaryPage />
-      </Route>
+      <AuthenticatedRoutes />
     </Toggle>
 
     <Toggle name="auth">
       <Authenticated>
-        <Redirect path="/" to={buildDiaryPageRoute(new DiaryDate().getKey())} />
-        <Route path={buildDiaryPageRoute()}>
-          <DiaryPage />
-        </Route>
+        <AuthenticatedRoutes />
       </Authenticated>
 
       <AnonymousRoute path="/">

@@ -4,7 +4,7 @@ import { HistoryRouter } from "lib/router";
 import React from "react";
 import { LocaleContext } from "./app/context/locale/LocaleContext";
 import { client } from "./app/graphql/client";
-import { AppRoutes } from "./app/routes/AppRoutes";
+import { Routes } from "./app/routes/Routes";
 import { TogglesProvider } from "./lib/toggles/TogglesProvider";
 
 const toggles = (process.env.REACT_APP_TOGGLES || "").split(/\s+/);
@@ -20,7 +20,7 @@ const App: React.FC = () => {
         <ApolloProvider client={client}>
           <HistoryRouter>
             <LocaleContext.Provider value={navigator.language}>
-              <AppRoutes />
+              <Routes />
             </LocaleContext.Provider>
           </HistoryRouter>
         </ApolloProvider>

@@ -11,15 +11,15 @@ import { withApollo } from "souvlaki-apollo";
 import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
 import { describe, expect, it } from "vitest";
-import { AppRoutes } from "./AppRoutes";
 import { buildDiaryPageRoute } from "./buildDiaryPageRoute";
+import { Routes } from "./Routes";
 
-describe("AppRoutes", () => {
+describe("Routes", () => {
   describe("auth toggle off", () => {
     const withAuthToggleOff = withToggles();
 
     it("renders the diary entry for the date in the route", () => {
-      render(<AppRoutes />, {
+      render(<Routes />, {
         wrapper: wrap(
           withAuthToggleOff,
           withRouter(buildDiaryPageRoute("2020-01-01")),
@@ -32,7 +32,7 @@ describe("AppRoutes", () => {
     });
 
     it("redirects to the current date if no path is provided", () => {
-      render(<AppRoutes />, {
+      render(<Routes />, {
         wrapper: wrap(
           withAuthToggleOff,
           withRouter("/"),
@@ -54,7 +54,7 @@ describe("AppRoutes", () => {
       const withAuthenticatedUser = withAuth0Wrapper({ isAuthenticated: true });
 
       it("renders the diary entry for the date in the route", () => {
-        render(<AppRoutes />, {
+        render(<Routes />, {
           wrapper: wrap(
             withAuthToggleOn,
             withAuthenticatedUser,
@@ -68,7 +68,7 @@ describe("AppRoutes", () => {
       });
 
       it("redirects to the current date if no path is provided", () => {
-        render(<AppRoutes />, {
+        render(<Routes />, {
           wrapper: wrap(
             withAuthToggleOn,
             withAuthenticatedUser,
@@ -88,7 +88,7 @@ describe("AppRoutes", () => {
       const withAnonymousUser = withAuth0Wrapper({ isAuthenticated: false });
 
       it("displays the landing page", () => {
-        render(<AppRoutes />, {
+        render(<Routes />, {
           wrapper: wrap(withAuthToggleOn, withAnonymousUser, withRouter("/")),
         });
 
