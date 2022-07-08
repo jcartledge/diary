@@ -1,16 +1,16 @@
 import DiaryPage from "app/components/pages/DiaryPage";
-import { Authenticated } from "lib/auth/Authenticated";
 import { Redirect, Route } from "lib/router";
+import { Toggle } from "lib/toggles/Toggle";
 import { DiaryDate } from "lib/util/date";
 import { buildPageRoute } from "./buildPageRoute";
 
 export const AppRoutes = () => (
   <>
-    <Redirect path="/" to={buildPageRoute(new DiaryDate().getKey())} />
-    <Route path={buildPageRoute()}>
-      <Authenticated>
+    <Toggle isOff name="auth">
+      <Redirect path="/" to={buildPageRoute(new DiaryDate().getKey())} />
+      <Route path={buildPageRoute()}>
         <DiaryPage />
-      </Authenticated>
-    </Route>
+      </Route>
+    </Toggle>
   </>
 );
