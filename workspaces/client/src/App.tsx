@@ -1,7 +1,7 @@
 import { ApolloProvider } from "@apollo/client";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { HistoryRouter } from "lib/router/HistoryRouter";
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
 import { LocaleContext } from "./app/context/locale/LocaleContext";
 import { client } from "./app/graphql/client";
 import { AppRoutes } from "./app/routes/AppRoutes";
@@ -18,11 +18,11 @@ const App: React.FC = () => {
         redirectUri={window.location.origin}
       >
         <ApolloProvider client={client}>
-          <BrowserRouter>
+          <HistoryRouter>
             <LocaleContext.Provider value={navigator.language}>
               <AppRoutes />
             </LocaleContext.Provider>
-          </BrowserRouter>
+          </HistoryRouter>
         </ApolloProvider>
       </Auth0Provider>
     </TogglesProvider>

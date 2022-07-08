@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
+import { HistoryRouter } from "lib/router/HistoryRouter";
 import { withToggles } from "lib/toggles/TogglesProvider.testWrapper";
 import { DiaryDate } from "lib/util/date";
-import { MemoryRouter } from "react-router";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { buildMockApolloClient } from "test/buildMockApolloClient";
@@ -14,9 +14,9 @@ import { buildPageRoute } from "./buildPageRoute";
 describe("AppRoutes - authenticated", () => {
   it("renders the diary entry for the date in the route", () => {
     render(
-      <MemoryRouter initialEntries={[buildPageRoute("2020-01-01")]}>
+      <HistoryRouter initialPath={buildPageRoute("2020-01-01")}>
         <AppRoutes />
-      </MemoryRouter>,
+      </HistoryRouter>,
       {
         wrapper: wrap(
           withToggles(["auth"]),
@@ -32,9 +32,9 @@ describe("AppRoutes - authenticated", () => {
 
   it("redirects to the current date if no path is provided", () => {
     render(
-      <MemoryRouter initialEntries={["/"]}>
+      <HistoryRouter>
         <AppRoutes />
-      </MemoryRouter>,
+      </HistoryRouter>,
       {
         wrapper: wrap(
           withToggles(["auth"]),
@@ -56,9 +56,9 @@ describe("AppRoutes - unauthenticated", () => {
     const loginWithRedirect = vi.fn();
 
     render(
-      <MemoryRouter initialEntries={[buildPageRoute("2020-01-01")]}>
+      <HistoryRouter initialPath={buildPageRoute("2020-01-01")}>
         <AppRoutes />
-      </MemoryRouter>,
+      </HistoryRouter>,
       {
         wrapper: wrap(
           withToggles(["auth"]),
@@ -78,9 +78,9 @@ describe("AppRoutes - unauthenticated", () => {
     const loginWithRedirect = vi.fn();
 
     render(
-      <MemoryRouter initialEntries={["/"]}>
+      <HistoryRouter initialPath={""}>
         <AppRoutes />
-      </MemoryRouter>,
+      </HistoryRouter>,
       {
         wrapper: wrap(
           withToggles(["auth"]),

@@ -3,11 +3,11 @@ import DiaryPageForm from "app/components/organisms/DiaryPageForm";
 import { DateContext } from "app/context/date/DateContext";
 import { DiaryEntryContextProvider } from "app/context/diaryEntry/DiaryEntryContext";
 import { isValidDate } from "iso-datestring-validator";
-import { useParams } from "react-router-dom";
+import { useParam } from "lib/router/useParam";
 import { DiaryDate } from "lib/util/date";
 
 const DiaryPage = () => {
-  const { isoDateString = "" } = useParams<{ isoDateString: string }>();
+  const isoDateString = useParam("isoDateString");
   return isValidDate(isoDateString) ? (
     <DateContext.Provider value={new DiaryDate(new Date(isoDateString))}>
       <DiaryEntryContextProvider>

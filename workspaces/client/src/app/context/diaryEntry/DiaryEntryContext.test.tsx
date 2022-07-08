@@ -4,7 +4,6 @@ import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { useMount } from "test/useMount";
-import { withRoute } from "test/wrappers/withRoute";
 import { describe, expect, it } from "vitest";
 import { DiaryEntryContext } from "./DiaryEntryContext";
 import { withDiaryEntry } from "./DiaryEntryContext.testWrapper";
@@ -14,7 +13,6 @@ type Wrappers = { wrapper: React.ComponentType };
 const wrappers = (): Wrappers => ({
   wrapper: wrap(
     withApollo(buildMockApolloClient()),
-    withRoute(),
     withDiaryEntry({ saveTimeoutInterval: 1 })
   ),
 });

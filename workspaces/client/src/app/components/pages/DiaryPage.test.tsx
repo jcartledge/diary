@@ -3,20 +3,19 @@ import userEvent from "@testing-library/user-event";
 import { withDate } from "app/context/date/DateContext.testWrapper";
 import { withDiaryEntry } from "app/context/diaryEntry/DiaryEntryContext.testWrapper";
 import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
-import { buildPageRoute } from "app/routes/buildPageRoute";
+import { withPageRoute } from "lib/router/testWrappers/withPageRoute";
 import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
 import { DiaryDate } from "lib/util/date";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { buildMockApolloClient } from "test/buildMockApolloClient";
-import { withRoute } from "test/wrappers/withRoute";
 import { describe, expect, it, vi } from "vitest";
 import DiaryPage from "./DiaryPage";
 
 describe("DiaryPage", () => {
   it("shows an error page if an invalid date is supplied", () => {
     render(<DiaryPage />, {
-      wrapper: wrap(withRoute(buildPageRoute(), { isoDateString: "ASDF" })),
+      wrapper: wrap(withPageRoute("ASDF")),
     });
 
     expect(screen.queryByText("Error")).not.toBe(null);
@@ -39,15 +38,20 @@ describe("DiaryPage", () => {
       })
     );
 
-    render(<DiaryPage />, {
-      wrapper: wrap(
-        withRoute(buildPageRoute(), { isoDateString: today.getKey() }),
-        withLocale("en-AU"),
-        withDate(today),
-        withApollo(buildMockApolloClient({}, { queryMock })),
-        withDiaryEntry()
-      ),
-    });
+    render(
+      <>
+        <DiaryPage />
+      </>,
+      {
+        wrapper: wrap(
+          withPageRoute(today.getKey()),
+          withLocale("en-AU"),
+          withDate(today),
+          withApollo(buildMockApolloClient({}, { queryMock })),
+          withDiaryEntry()
+        ),
+      }
+    );
 
     await waitFor(() => {
       expect(screen.queryByText("Today's entry")).toBeInTheDocument();

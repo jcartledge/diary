@@ -4,7 +4,6 @@ import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { buildMockApolloClient } from "test/buildMockApolloClient";
-import { withRoute } from "test/wrappers/withRoute";
 import { describe, expect, it } from "vitest";
 import DiaryHeader from "./DiaryHeader";
 
@@ -14,7 +13,6 @@ describe("DiaryHeader", () => {
       wrapper: wrap(
         withApollo(buildMockApolloClient()),
         withLocale("en-AU"),
-        withRoute(),
         withDiaryEntryContext({ isDirty: true })
       ),
     });
@@ -27,7 +25,6 @@ describe("DiaryHeader", () => {
       wrapper: wrap(
         withApollo(buildMockApolloClient()),
         withLocale("en-AU"),
-        withRoute(),
         withDiaryEntryContext({ isDirty: false })
       ),
     });

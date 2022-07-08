@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Router } from "./Router";
 
-type HistoryRouterProps = React.PropsWithChildren<{ initialPath?: string }>;
+type HistoryRouterProps = React.PropsWithChildren<{
+  initialPath?: string;
+}>;
 
 export const HistoryRouter: React.FC<HistoryRouterProps> = ({
   children,
@@ -15,7 +17,7 @@ export const HistoryRouter: React.FC<HistoryRouterProps> = ({
 
   useEffect(() => {
     initialPath && updatePath(initialPath);
-  }, []);
+  }, [initialPath]);
 
   return (
     <Router initialPath={path} updatePath={updatePath}>

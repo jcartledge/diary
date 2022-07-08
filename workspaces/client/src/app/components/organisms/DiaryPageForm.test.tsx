@@ -11,7 +11,6 @@ import {
   buildDiaryEntryQueryMock,
   buildMockApolloClient,
 } from "test/buildMockApolloClient";
-import { withRoute } from "test/wrappers/withRoute";
 import { describe, expect, it } from "vitest";
 import DiaryPageForm from "./DiaryPageForm";
 
@@ -29,7 +28,6 @@ describe("DiaryPageForm", () => {
           })
         ),
         withDate(),
-        withRoute(),
         withDiaryEntry()
       ),
     });
@@ -59,7 +57,6 @@ describe("DiaryPageForm", () => {
       wrapper: wrap(
         withApollo(buildMockApolloClient({}, { queryMock })),
         withDate(date),
-        withRoute(),
         withDiaryEntry()
       ),
     });
@@ -79,7 +76,6 @@ describe("DiaryPageForm", () => {
       wrapper: wrap(
         withApollo(buildMockApolloClient(diaryEntry, { mutationMock })),
         withDate(date),
-        withRoute(),
         withDiaryEntry({ saveTimeoutInterval: 20 })
       ),
     });
