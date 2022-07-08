@@ -12,5 +12,12 @@ export const AppRoutes = () => (
         <DiaryPage />
       </Route>
     </Toggle>
+
+    <Toggle name="auth">
+      <Redirect path="/" to={buildPageRoute(new DiaryDate().getKey())} />
+      <Route path={buildPageRoute()}>
+        <DiaryPage />
+      </Route>
+    </Toggle>
   </>
 );
