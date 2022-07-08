@@ -1,15 +1,14 @@
 import { Route } from "lib/router";
+import { type RouteProps } from "lib/router/components/Route";
 import { Authenticated } from "./Authenticated";
 
-type AuthenticatedRouteProps = React.PropsWithChildren<{
-  path: string;
-}>;
+type AuthenticatedRouteProps = React.PropsWithChildren<RouteProps>;
 
 export const AuthenticatedRoute: React.FC<AuthenticatedRouteProps> = ({
   children,
-  path,
+  ...routeProps
 }) => (
   <Authenticated>
-    <Route path={path}>{children}</Route>
+    <Route {...routeProps}>{children}</Route>
   </Authenticated>
 );

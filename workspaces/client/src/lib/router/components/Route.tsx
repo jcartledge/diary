@@ -3,7 +3,7 @@ import React from "react";
 import { RouteParamsContext } from "../contexts/RouteParamsContext";
 import { useMatch } from "../contexts/RouterContext";
 
-type RouteProps = React.PropsWithChildren<{
+export type RouteProps = React.PropsWithChildren<{
   path: string;
 }>;
 
