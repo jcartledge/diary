@@ -1,10 +1,10 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
+import { useParam } from "../contexts/useParam";
 import { Link } from "./Link";
 import { Route } from "./Route";
 import { Router } from "./Router";
-import { useParam } from "./useParam";
 
 describe("Router", () => {
   it("renders the children of a matched route", () => {

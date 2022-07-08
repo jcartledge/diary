@@ -1,6 +1,5 @@
 import { buildPageRoute } from "app/routes/buildPageRoute";
-import { HistoryRouter } from "lib/router/HistoryRouter";
-import { Route } from "lib/router/Route";
+import { HistoryRouter, Route } from "lib/router";
 import { createHelper } from "souvlaki";
 
 export const withPageRoute = createHelper(

@@ -1,4 +1,4 @@
-import { useSetPath } from "./RouterContext";
+import { useSetPath } from "../contexts/RouterContext";
 
 type LinkProps = React.PropsWithChildren<{ to: string }>;
 

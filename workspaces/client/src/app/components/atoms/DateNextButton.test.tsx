@@ -2,13 +2,12 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { withDate } from "app/context/date/DateContext.testWrapper";
 import { buildPageRoute } from "app/routes/buildPageRoute";
-import { HistoryRouter } from "lib/router/HistoryRouter";
-import { Route } from "lib/router/Route";
-import { withPageRoute } from "lib/router/testWrappers/withPageRoute";
+import { HistoryRouter, Route } from "lib/router";
 import { DiaryDate } from "lib/util/date";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { buildMockApolloClient } from "test/buildMockApolloClient";
+import { withPageRoute } from "test/wrappers/withPageRoute";
 import { describe, expect, it, vi } from "vitest";
 import DateNextButton from "./DateNextButton";
 

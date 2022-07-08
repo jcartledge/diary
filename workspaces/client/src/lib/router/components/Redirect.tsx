@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useMatch, useSetPath } from "./RouterContext";
+import { useMatch, useSetPath } from "../contexts/RouterContext";
 
 type RouteProps = {
   path: string;

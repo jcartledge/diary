@@ -3,7 +3,7 @@ import DiaryPageForm from "app/components/organisms/DiaryPageForm";
 import { DateContext } from "app/context/date/DateContext";
 import { DiaryEntryContextProvider } from "app/context/diaryEntry/DiaryEntryContext";
 import { isValidDate } from "iso-datestring-validator";
-import { useParam } from "lib/router/useParam";
+import { useParam } from "lib/router";
 import { DiaryDate } from "lib/util/date";
 
 const DiaryPage = () => {

@@ -1,7 +1,6 @@
 import DiaryPage from "app/components/pages/DiaryPage";
 import { Authenticated } from "lib/auth/Authenticated";
-import { Redirect } from "lib/router/Redirect";
-import { Route } from "lib/router/Route";
+import { Redirect, Route } from "lib/router";
 import { DiaryDate } from "lib/util/date";
 import { buildPageRoute } from "./buildPageRoute";
 

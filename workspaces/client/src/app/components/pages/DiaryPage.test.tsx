@@ -3,12 +3,12 @@ import userEvent from "@testing-library/user-event";
 import { withDate } from "app/context/date/DateContext.testWrapper";
 import { withDiaryEntry } from "app/context/diaryEntry/DiaryEntryContext.testWrapper";
 import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
-import { withPageRoute } from "lib/router/testWrappers/withPageRoute";
 import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
 import { DiaryDate } from "lib/util/date";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { buildMockApolloClient } from "test/buildMockApolloClient";
+import { withPageRoute } from "test/wrappers/withPageRoute";
 import { describe, expect, it, vi } from "vitest";
 import DiaryPage from "./DiaryPage";
 

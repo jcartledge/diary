@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
-import { HistoryRouter } from "lib/router/HistoryRouter";
+import { HistoryRouter } from "lib/router";
 import { withToggles } from "lib/toggles/TogglesProvider.testWrapper";
 import { DiaryDate } from "lib/util/date";
 import { wrap } from "souvlaki";

@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { matchPath } from "./matchPath";
+import { matchPath } from "../util/matchPath";
 
 export type PathSetter = (newPath: string) => void;
 
