@@ -1,8 +1,9 @@
+import { LocationMock } from "@jedmao/location";
 import matchers, {
   TestingLibraryMatchers,
 } from "@testing-library/jest-dom/matchers";
 import { cleanup } from "@testing-library/react";
-import { afterEach, expect } from "vitest";
+import { afterEach, beforeEach, expect } from "vitest";
 
 declare global {
   namespace Vi {
@@ -13,6 +14,10 @@ declare global {
 }
 
 expect.extend(matchers);
+
+beforeEach(() => {
+  window.location = new LocationMock("http://localhost/");
+});
 
 afterEach(() => {
   cleanup();
