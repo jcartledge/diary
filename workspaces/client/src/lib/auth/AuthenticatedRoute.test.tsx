@@ -8,7 +8,10 @@ import { AuthenticatedRoute } from "./AuthenticatedRoute";
 describe("AuthenticatedRoute", () => {
   it("does not render if unauthenticated", () => {
     render(<AuthenticatedRoute path="/">Hello</AuthenticatedRoute>, {
-      wrapper: wrap(withAuth0Wrapper({ isAuthenticated: false }), withRouter()),
+      wrapper: wrap(
+        withAuth0Wrapper({ isAuthenticated: false }),
+        withRouter("/")
+      ),
     });
 
     expect(screen.queryByText("Hello")).not.toBeInTheDocument();
@@ -27,7 +30,10 @@ describe("AuthenticatedRoute", () => {
 
   it("renders if authenticated", () => {
     render(<AuthenticatedRoute path="/">Hello</AuthenticatedRoute>, {
-      wrapper: wrap(withAuth0Wrapper({ isAuthenticated: true }), withRouter()),
+      wrapper: wrap(
+        withAuth0Wrapper({ isAuthenticated: true }),
+        withRouter("/")
+      ),
     });
 
     expect(screen.queryByText("Hello")).toBeInTheDocument();
