@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
-import { HistoryRouter } from "lib/router";
+import { withRouter } from "lib/router";
 import {
   withToggle,
   withToggles,
@@ -19,35 +19,27 @@ describe("AppRoutes", () => {
     const withAuthToggleOff = withToggles();
 
     it("renders the diary entry for the date in the route", () => {
-      render(
-        <HistoryRouter initialPath={buildPageRoute("2020-01-01")}>
-          <AppRoutes />
-        </HistoryRouter>,
-        {
-          wrapper: wrap(
-            withAuthToggleOff,
-            withApollo(buildMockApolloClient()),
-            withLocale("en-AU")
-          ),
-        }
-      );
+      render(<AppRoutes />, {
+        wrapper: wrap(
+          withAuthToggleOff,
+          withRouter(buildPageRoute("2020-01-01")),
+          withApollo(buildMockApolloClient()),
+          withLocale("en-AU")
+        ),
+      });
 
       expect(screen.getByText(/1 January 2020/)).toBeInTheDocument();
     });
 
     it("redirects to the current date if no path is provided", () => {
-      render(
-        <HistoryRouter>
-          <AppRoutes />
-        </HistoryRouter>,
-        {
-          wrapper: wrap(
-            withAuthToggleOff,
-            withApollo(buildMockApolloClient()),
-            withLocale("en-AU")
-          ),
-        }
-      );
+      render(<AppRoutes />, {
+        wrapper: wrap(
+          withAuthToggleOff,
+          withRouter("/"),
+          withApollo(buildMockApolloClient()),
+          withLocale("en-AU")
+        ),
+      });
 
       expect(
         screen.getByText(new DiaryDate().getFormatted("en-AU"))
@@ -57,43 +49,51 @@ describe("AppRoutes", () => {
 
   describe("auth toggle on", () => {
     const withAuthToggleOn = withToggle("auth");
+
     describe("authenticated", () => {
       const withAuthenticatedUser = withAuth0Wrapper({ isAuthenticated: true });
+
       it("renders the diary entry for the date in the route", () => {
-        render(
-          <HistoryRouter initialPath={buildPageRoute("2020-01-01")}>
-            <AppRoutes />
-          </HistoryRouter>,
-          {
-            wrapper: wrap(
-              withAuthToggleOn,
-              withAuthenticatedUser,
-              withApollo(buildMockApolloClient()),
-              withLocale("en-AU")
-            ),
-          }
-        );
+        render(<AppRoutes />, {
+          wrapper: wrap(
+            withAuthToggleOn,
+            withAuthenticatedUser,
+            withRouter(buildPageRoute("2020-01-01")),
+            withApollo(buildMockApolloClient()),
+            withLocale("en-AU")
+          ),
+        });
 
         expect(screen.getByText(/1 January 2020/)).toBeInTheDocument();
       });
 
       it("redirects to the current date if no path is provided", () => {
-        render(
-          <HistoryRouter>
-            <AppRoutes />
-          </HistoryRouter>,
-          {
-            wrapper: wrap(
-              withAuthToggleOn,
-              withAuthenticatedUser,
-              withApollo(buildMockApolloClient()),
-              withLocale("en-AU")
-            ),
-          }
-        );
+        render(<AppRoutes />, {
+          wrapper: wrap(
+            withAuthToggleOn,
+            withAuthenticatedUser,
+            withRouter("/"),
+            withApollo(buildMockApolloClient()),
+            withLocale("en-AU")
+          ),
+        });
 
         expect(
           screen.getByText(new DiaryDate().getFormatted("en-AU"))
+        ).toBeInTheDocument();
+      });
+    });
+
+    describe("anonymous", () => {
+      const withAnonymousUser = withAuth0Wrapper({ isAuthenticated: false });
+
+      it("displays the landing page", () => {
+        render(<AppRoutes />, {
+          wrapper: wrap(withAuthToggleOn, withAnonymousUser, withRouter("/")),
+        });
+
+        expect(
+          screen.getByRole("button", { name: /Log in/ })
         ).toBeInTheDocument();
       });
     });

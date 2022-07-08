@@ -4,7 +4,6 @@ import { Conditional } from "lib/util/Conditional";
 export const Authenticated: React.FC<React.PropsWithChildren<{}>> = ({
   children,
 }) => {
-  const auth0 = useAuth0();
-  const { isAuthenticated } = auth0;
+  const { isAuthenticated } = useAuth0();
   return <Conditional predicate={isAuthenticated}>{children}</Conditional>;
 };

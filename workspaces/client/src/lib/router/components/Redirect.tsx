@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useMatch, useSetPath } from "../contexts/RouterContext";
 
-type RouteProps = {
+type RedirectProps = {
   path: string;
   to: string;
 };
 
-export const Redirect: React.FC<RouteProps> = ({ path, to }) => {
+export const Redirect: React.FC<RedirectProps> = ({ path, to }) => {
   const { isMatch } = useMatch(path);
   const setPath = useSetPath();
   useEffect(() => {

@@ -7,7 +7,7 @@ const buildMockAuth0ContextValue: Builder<Auth0ContextInterface> = (
   overrides = {}
 ) => ({
   buildAuthorizeUrl: vi.fn(),
-  isAuthenticated: true,
+  isAuthenticated: false,
   user: {},
   isLoading: false,
   buildLogoutUrl: vi.fn(),
