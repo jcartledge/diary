@@ -14,7 +14,7 @@ describe("AnonymousRoute", () => {
     expect(screen.queryByText("Hello")).toBeInTheDocument();
   });
 
-  it("does not render if the path doesn't match", () => {
+  it("does not render if unauthenticated and the path doesn't match", () => {
     render(<AnonymousRoute path="/one">Hello</AnonymousRoute>, {
       wrapper: wrap(
         withAuth0Wrapper({ isAuthenticated: false }),
@@ -25,7 +25,7 @@ describe("AnonymousRoute", () => {
     expect(screen.queryByText("Hello")).not.toBeInTheDocument();
   });
 
-  it("does not render if unauthenticated", () => {
+  it("does not render if authenticated", () => {
     render(<AnonymousRoute path="/">Hello</AnonymousRoute>, {
       wrapper: wrap(withAuth0Wrapper({ isAuthenticated: true }), withRouter()),
     });
