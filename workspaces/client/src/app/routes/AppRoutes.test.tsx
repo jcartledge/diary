@@ -12,7 +12,7 @@ import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
 import { describe, expect, it } from "vitest";
 import { AppRoutes } from "./AppRoutes";
-import { buildPageRoute } from "./buildPageRoute";
+import { buildDiaryPageRoute } from "./buildDiaryPageRoute";
 
 describe("AppRoutes", () => {
   describe("auth toggle off", () => {
@@ -22,7 +22,7 @@ describe("AppRoutes", () => {
       render(<AppRoutes />, {
         wrapper: wrap(
           withAuthToggleOff,
-          withRouter(buildPageRoute("2020-01-01")),
+          withRouter(buildDiaryPageRoute("2020-01-01")),
           withApollo(buildMockApolloClient()),
           withLocale("en-AU")
         ),
@@ -58,7 +58,7 @@ describe("AppRoutes", () => {
           wrapper: wrap(
             withAuthToggleOn,
             withAuthenticatedUser,
-            withRouter(buildPageRoute("2020-01-01")),
+            withRouter(buildDiaryPageRoute("2020-01-01")),
             withApollo(buildMockApolloClient()),
             withLocale("en-AU")
           ),

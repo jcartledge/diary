@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { withDate } from "app/context/date/DateContext.testWrapper";
-import { buildPageRoute } from "app/routes/buildPageRoute";
+import { buildDiaryPageRoute } from "app/routes/buildDiaryPageRoute";
 import { HistoryRouter, Route } from "lib/router";
 import { DiaryDate } from "lib/util/date";
 import { wrap } from "souvlaki";
@@ -16,9 +16,9 @@ const getNextButton = () => screen.getByRole("button", { name: "next" });
 describe("DateNextButton", () => {
   it("links to the next date", async () => {
     const today = new DiaryDate();
-    const todayPath = buildPageRoute(today.getKey());
+    const todayPath = buildDiaryPageRoute(today.getKey());
     const yesterday = today.getPrevious();
-    const yesterdayPath = buildPageRoute(yesterday.getKey());
+    const yesterdayPath = buildDiaryPageRoute(yesterday.getKey());
 
     const user = userEvent.setup();
 

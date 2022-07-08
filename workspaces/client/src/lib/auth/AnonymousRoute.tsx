@@ -1,5 +1,5 @@
 import { Route } from "lib/router";
-import { RouteProps } from "lib/router/components/Route";
+import { type RouteProps } from "lib/router/components/Route";
 import { Anonymous } from "./Anonymous";
 
 type AnonymousRouteProps = React.PropsWithChildren<RouteProps>;
