@@ -2462,7 +2462,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jedmao/location@npm:^3.0.0":
+"@jedmao/location@npm:3.0.0":
   version: 3.0.0
   resolution: "@jedmao/location@npm:3.0.0"
   checksum: 7fa57df6896979ff39685eeae2d917d6e4990b0fa409686330acfd5f239415148a3cbf3c8e06216d592bd3c2e072e224793c61527eca8b5b4aed1e908028a56a
@@ -5053,7 +5053,7 @@ __metadata:
   dependencies:
     "@apollo/client": 3.6.9
     "@auth0/auth0-react": 1.10.2
-    "@jedmao/location": ^3.0.0
+    "@jedmao/location": 3.0.0
     "@testing-library/dom": 8.14.0
     "@testing-library/jest-dom": 5.16.4
     "@testing-library/react": 13.3.0
