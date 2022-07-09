@@ -84,12 +84,18 @@ describe("Routes", () => {
       });
     });
 
-    describe("anonymous", () => {
-      const withAnonymousUser = withAuth0Wrapper({ isAuthenticated: false });
+    describe("Unauthenticated", () => {
+      const withUnauthenticatedUser = withAuth0Wrapper({
+        isAuthenticated: false,
+      });
 
       it("displays the landing page", () => {
         render(<Routes />, {
-          wrapper: wrap(withAuthToggleOn, withAnonymousUser, withRouter("/")),
+          wrapper: wrap(
+            withAuthToggleOn,
+            withUnauthenticatedUser,
+            withRouter("/")
+          ),
         });
 
         expect(

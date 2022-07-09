@@ -3,11 +3,11 @@ import { withRouter } from "lib/router";
 import { wrap } from "souvlaki";
 import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
 import { describe, expect, it } from "vitest";
-import { AnonymousRoute } from "./AnonymousRoute";
+import { UnauthenticatedRoute } from "./UnauthenticatedRoute";
 
-describe("AnonymousRoute", () => {
+describe("UnauthenticatedRoute", () => {
   it("renders if unauthenticated", () => {
-    render(<AnonymousRoute path="/">Hello</AnonymousRoute>, {
+    render(<UnauthenticatedRoute path="/">Hello</UnauthenticatedRoute>, {
       wrapper: wrap(
         withAuth0Wrapper({ isAuthenticated: false }),
         withRouter("/")
@@ -18,7 +18,7 @@ describe("AnonymousRoute", () => {
   });
 
   it("does not render if unauthenticated and the path doesn't match", () => {
-    render(<AnonymousRoute path="/one">Hello</AnonymousRoute>, {
+    render(<UnauthenticatedRoute path="/one">Hello</UnauthenticatedRoute>, {
       wrapper: wrap(
         withAuth0Wrapper({ isAuthenticated: false }),
         withRouter("/two")
@@ -29,7 +29,7 @@ describe("AnonymousRoute", () => {
   });
 
   it("does not render if authenticated", () => {
-    render(<AnonymousRoute path="/">Hello</AnonymousRoute>, {
+    render(<UnauthenticatedRoute path="/">Hello</UnauthenticatedRoute>, {
       wrapper: wrap(
         withAuth0Wrapper({ isAuthenticated: true }),
         withRouter("/")
