@@ -1,12 +1,5 @@
-import {
-  DiaryEntryContext,
-  DiaryEntryContextProvider,
-} from "app/context/diaryEntry/DiaryEntryContext";
-import {
-  buildDiaryEntryContextValue,
-  type DiaryEntryContextProps,
-  type DiaryEntryContextValue,
-} from "app/context/diaryEntry/DiaryEntryContext.types";
+import { DiaryEntryContextProvider } from "app/context/diaryEntry/DiaryEntryContext";
+import { type DiaryEntryContextProps } from "app/context/diaryEntry/DiaryEntryContext.types";
 import { createHelper } from "souvlaki";
 
 export const withDiaryEntry = createHelper(
@@ -16,17 +9,5 @@ export const withDiaryEntry = createHelper(
         <DiaryEntryContextProvider {...props}>
           {children}
         </DiaryEntryContextProvider>
-      )
-);
-
-export const withDiaryEntryContext = createHelper(
-  (
-      value: Partial<DiaryEntryContextValue>
-    ): React.FC<React.PropsWithChildren<{}>> =>
-    ({ children }) =>
-      (
-        <DiaryEntryContext.Provider value={buildDiaryEntryContextValue(value)}>
-          {children}
-        </DiaryEntryContext.Provider>
       )
 );
