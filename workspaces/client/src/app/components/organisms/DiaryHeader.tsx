@@ -1,15 +1,28 @@
-import DateControl from "app/components/molecules/DateControl";
-import { DiaryEntryContext } from "app/context/diaryEntry/DiaryEntryContext";
-import React, { useContext } from "react";
+import React from "react";
+import DateNextButton from "../atoms/DateNextButton";
+import DatePrevButton from "../atoms/DatePrevButton";
+import { FormattedDate } from "../atoms/FormattedDate";
 
 const DiaryHeader: React.FC = () => {
-  const { isDirty } = useContext(DiaryEntryContext);
   return (
     <header>
-      <h1>Diary</h1>
-      <div className={isDirty ? "italic" : "not-italic"}>
-        <DateControl />
-      </div>
+      <nav>
+        <ul>
+          <li>
+            <strong>Diary</strong>
+            <br />
+            <FormattedDate />
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <DatePrevButton />
+          </li>
+          <li>
+            <DateNextButton />
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 };

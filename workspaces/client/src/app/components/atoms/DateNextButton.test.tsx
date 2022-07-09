@@ -11,7 +11,7 @@ import { withPageRoute } from "test/wrappers/withPageRoute";
 import { describe, expect, it, vi } from "vitest";
 import DateNextButton from "./DateNextButton";
 
-const getNextButton = () => screen.getByRole("button", { name: "next" });
+const getNextButton = () => screen.getByText("next");
 
 describe("DateNextButton", () => {
   it("links to the next date", async () => {
@@ -51,7 +51,7 @@ describe("DateNextButton", () => {
       ),
     });
 
-    expect(getNextButton()).toHaveAttribute("disabled");
+    expect(getNextButton()).toHaveAttribute("aria-disabled");
 
     await userEvent.click(getNextButton());
 

@@ -10,7 +10,7 @@ import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { describe, expect, it } from "vitest";
 import DatePrevButton from "./DatePrevButton";
 
-const getPrevButton = () => screen.getByRole("button", { name: "prev" });
+const getPrevButton = () => screen.getByText("prev");
 
 describe("DatePrevButton", () => {
   it("links to the previous date", async () => {

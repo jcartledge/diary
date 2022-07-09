@@ -6,8 +6,7 @@ import React from "react";
 
 const nextButtonClassNames = (
   doesEntryExistForNextDate: boolean | undefined
-): string =>
-  `p-2 border rounded ${doesEntryExistForNextDate ? "font-bold" : ""}`;
+): string => (doesEntryExistForNextDate ? "font-bold" : "");
 
 const DateNextButton: React.FC = () => {
   const date = useDate();
@@ -19,20 +18,22 @@ const DateNextButton: React.FC = () => {
 };
 
 const DateNextButtonDisabled: React.FC = () => (
-  <button className="p-2 border rounded cursor-not-allowed opacity-50" disabled>
+  <span className="secondary outline" aria-disabled>
     next
-  </button>
+  </span>
 );
 
 type DateNextLinkProps = { date: DiaryDate };
 
 const DateNextLink: React.FC<DateNextLinkProps> = ({ date }) => {
   const doesEntryExistForNextDate = useDoesEntryExistForNextDate(date);
+  const dateNextPath = `/page/${date.getNext().getKey()}`;
   return (
-    <Link to={`/page/${date.getNext().getKey()}`}>
-      <button className={nextButtonClassNames(doesEntryExistForNextDate)}>
-        next
-      </button>
+    <Link
+      to={dateNextPath}
+      className={nextButtonClassNames(doesEntryExistForNextDate)}
+    >
+      next
     </Link>
   );
 };

@@ -6,14 +6,13 @@ const DatePrevButton = () => {
   const date = useDate();
   const doesEntryExistForPreviousDate = useDoesEntryExistForPreviousDate(date);
   return (
-    <Link to={`/page/${date.getPrevious().getKey()}`}>
-      <button
-        className={`p-2 border rounded ${
-          doesEntryExistForPreviousDate ? "font-bold" : ""
-        }`}
-      >
-        prev
-      </button>
+    <Link
+      to={`/page/${date.getPrevious().getKey()}`}
+      className={`p-2 border rounded ${
+        doesEntryExistForPreviousDate ? "font-bold" : ""
+      }`}
+    >
+      prev
     </Link>
   );
 };

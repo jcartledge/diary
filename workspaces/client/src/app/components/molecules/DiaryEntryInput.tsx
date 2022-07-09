@@ -6,7 +6,6 @@ interface DiaryEntryInputProps {
   label: string;
   value: string;
   updateField: (value: string) => void;
-  className?: string;
 }
 
 const slugFieldName = (label: string) => slugify(label, { lower: true });
@@ -15,21 +14,22 @@ const DiaryEntryInput: React.FC<DiaryEntryInputProps> = ({
   label,
   value,
   updateField,
-  className,
 }) => {
   const fieldLabel = slugFieldName(label);
   return (
-    <div className={className ?? ""}>
-      <label id={`${fieldLabel}-label`} aria-label={fieldLabel}>
-        <label htmlFor={fieldLabel}>{label}</label>
-      </label>
+    <article>
+      <header>
+        <label id={`${fieldLabel}-label`} aria-label={fieldLabel}>
+          {label}
+        </label>
+      </header>
       <TextArea
         id={fieldLabel}
         aria-labelledby={`${fieldLabel}-label`}
         value={value}
         onChange={({ target }) => updateField(target.value)}
       />
-    </div>
+    </article>
   );
 };
 

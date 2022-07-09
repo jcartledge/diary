@@ -58,7 +58,7 @@ describe("DiaryPage", () => {
       expect(screen.queryByText("Yesterday's entry")).not.toBeInTheDocument();
     });
 
-    await userEvent.click(screen.getByRole("button", { name: "prev" }));
+    await userEvent.click(screen.getByRole("link", { name: "prev" }));
 
     await waitFor(() => {
       expect(screen.queryByText("Yesterday's entry")).toBeInTheDocument();
