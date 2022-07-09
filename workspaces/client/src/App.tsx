@@ -20,7 +20,9 @@ const App: React.FC = () => {
         <ApolloProvider client={client}>
           <HistoryRouter>
             <LocaleContext.Provider value={navigator.language}>
-              <Routes />
+              <main className="container">
+                <Routes />
+              </main>
             </LocaleContext.Provider>
           </HistoryRouter>
         </ApolloProvider>
