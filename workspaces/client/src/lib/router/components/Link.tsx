@@ -1,8 +1,13 @@
 import { useSetPath } from "../contexts/RouterContext";
 
-type LinkProps = React.PropsWithChildren<{ to: string }>;
+type LinkProps = React.PropsWithChildren<
+  { to: string } & Omit<
+    React.AnchorHTMLAttributes<HTMLAnchorElement>,
+    "href" | "onClick"
+  >
+>;
 
-export const Link: React.FC<LinkProps> = ({ children, to }) => {
+export const Link: React.FC<LinkProps> = ({ children, to, ...anchorAttrs }) => {
   const setPath = useSetPath();
   return (
     <a
@@ -11,6 +16,7 @@ export const Link: React.FC<LinkProps> = ({ children, to }) => {
         event.preventDefault();
         setPath && setPath(to);
       }}
+      {...anchorAttrs}
     >
       {children}
     </a>
