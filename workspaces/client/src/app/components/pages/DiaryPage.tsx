@@ -5,6 +5,7 @@ import { DiaryEntryContextProvider } from "app/context/diaryEntry/DiaryEntryCont
 import { isValidDate } from "iso-datestring-validator";
 import { useParam } from "lib/router";
 import { DiaryDate } from "lib/util/date";
+import { DiaryFooter } from "../organisms/DiaryFooter";
 
 const DiaryPage = () => {
   const isoDateString = useParam("isoDateString");
@@ -13,6 +14,7 @@ const DiaryPage = () => {
       <DiaryEntryContextProvider>
         <DiaryHeader />
         <DiaryPageForm />
+        <DiaryFooter />
       </DiaryEntryContextProvider>
     </DateContext.Provider>
   ) : (

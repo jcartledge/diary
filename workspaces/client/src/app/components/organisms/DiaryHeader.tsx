@@ -1,30 +1,27 @@
+import { Toggle } from "lib/toggles/Toggle";
 import React from "react";
-import DateNextButton from "../atoms/DateNextButton";
-import DatePrevButton from "../atoms/DatePrevButton";
 import { FormattedDate } from "../atoms/FormattedDate";
+import { UserNav } from "../molecules/UserNav";
 
-const DiaryHeader: React.FC = () => {
-  return (
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <strong>Diary</strong>
-            <br />
-            <FormattedDate />
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <DatePrevButton />
-          </li>
-          <li>
-            <DateNextButton />
-          </li>
-        </ul>
-      </nav>
-    </header>
-  );
-};
+const Brand = () => (
+  <ul>
+    <li>
+      <strong>Diary</strong>
+      <br />
+      <FormattedDate />
+    </li>
+  </ul>
+);
+
+const DiaryHeader: React.FC = () => (
+  <header>
+    <nav>
+      <Brand />
+      <Toggle name="auth">
+        <UserNav />
+      </Toggle>
+    </nav>
+  </header>
+);
 
 export default DiaryHeader;
