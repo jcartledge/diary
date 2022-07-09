@@ -1,5 +1,3 @@
-import Cell from "app/components/atoms/Cell";
-import { H2 } from "app/components/atoms/styled";
 import TextArea from "app/components/atoms/TextArea";
 import React from "react";
 import slugify from "slugify";
@@ -21,17 +19,17 @@ const DiaryEntryInput: React.FC<DiaryEntryInputProps> = ({
 }) => {
   const fieldLabel = slugFieldName(label);
   return (
-    <Cell className={className ?? ""}>
-      <H2 id={`${fieldLabel}-label`} aria-label={fieldLabel}>
+    <div className={className ?? ""}>
+      <label id={`${fieldLabel}-label`} aria-label={fieldLabel}>
         <label htmlFor={fieldLabel}>{label}</label>
-      </H2>
+      </label>
       <TextArea
         id={fieldLabel}
         aria-labelledby={`${fieldLabel}-label`}
         value={value}
         onChange={({ target }) => updateField(target.value)}
       />
-    </Cell>
+    </div>
   );
 };
 
