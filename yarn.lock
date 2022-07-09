@@ -2626,7 +2626,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@picocss/pico@npm:^1.5.3":
+"@picocss/pico@npm:1.5.3":
   version: 1.5.3
   resolution: "@picocss/pico@npm:1.5.3"
   checksum: 36c2487076f9cf54615bd98481ceae10ffced0e4629bc75e62cdf80e7ea4f1a8f2c03e015e33344bb33697c321fd3a65ddea95140e01783b59e89ae1c23edf20
@@ -5008,7 +5008,7 @@ __metadata:
     "@apollo/client": 3.6.9
     "@auth0/auth0-react": 1.10.2
     "@jedmao/location": 3.0.0
-    "@picocss/pico": ^1.5.3
+    "@picocss/pico": 1.5.3
     "@testing-library/dom": 8.14.0
     "@testing-library/jest-dom": 5.16.4
     "@testing-library/react": 13.3.0
