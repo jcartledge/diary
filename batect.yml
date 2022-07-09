@@ -43,10 +43,8 @@ tasks:
   dev:
     prerequisites:
       - setup
-    dependencies:
-      - diary-server-dev
     run:
-      container: diary-client-dev
+      container: diary-server-dev
 
   check-deps:
     prerequisites:
