@@ -6,7 +6,6 @@ e2e/test-results
 node_modules/
 resolvers-types.ts
 workspaces/client/build
-workspaces/client/src/tailwind.output.css
 workspaces/server/build
 yarn-debug.log*
 yarn-error.log*
