@@ -1,32 +1,23 @@
-import { render } from "@testing-library/react";
+import { renderHook } from "@testing-library/react";
+import { wrap } from "souvlaki";
 import { describe, expect, it } from "vitest";
-import { TogglesProvider } from "./TogglesProvider";
+import { withToggle, withToggles } from "./TogglesProvider.testWrapper";
 import { useToggle } from "./useToggle";
 
 describe("useToggle", () => {
   it("returns the requested toggle from the provider", () => {
-    const TestComponent = () => {
-      expect(useToggle("test_feature")).toBe(true);
-      return null;
-    };
+    const { result } = renderHook(() => useToggle("test_feature"), {
+      wrapper: wrap(withToggle("test_feature")),
+    });
 
-    render(
-      <TogglesProvider toggles={["test_feature"]}>
-        <TestComponent />
-      </TogglesProvider>
-    );
+    expect(result.current).toBe(true);
   });
 
   it("returns false if the toggle is not defined", () => {
-    const TestComponent = () => {
-      expect(useToggle("test_feature")).toBe(false);
-      return null;
-    };
+    const { result } = renderHook(() => useToggle("test_feature"), {
+      wrapper: wrap(withToggles()),
+    });
 
-    render(
-      <TogglesProvider toggles={[]}>
-        <TestComponent />
-      </TogglesProvider>
-    );
+    expect(result.current).toBe(false);
   });
 });
