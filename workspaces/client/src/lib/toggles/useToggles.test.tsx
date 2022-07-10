@@ -8,7 +8,7 @@ describe("useToggles", () => {
   it("returns the toggles from the provider", () => {
     const testToggles = ["toggle1"];
 
-    const { result } = renderHook(() => useToggles(), {
+    const { result } = renderHook(useToggles, {
       wrapper: wrap(withToggles(testToggles)),
     });
 
