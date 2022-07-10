@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Router } from "./Router";
+import { usePopState } from "./usePopState";
 
 type HistoryRouterProps = React.PropsWithChildren<{
   initialPath?: string;
@@ -15,16 +16,9 @@ export const HistoryRouter: React.FC<HistoryRouterProps> = ({
     setPath(newPath);
   };
 
-  const popStateListener = () => {
+  usePopState(() => {
     setPath(window.location.pathname);
-  };
-
-  useEffect(() => {
-    window.addEventListener("popstate", popStateListener);
-    return () => {
-      window.removeEventListener("popstate", popStateListener);
-    };
-  }, []);
+  });
 
   useEffect(() => {
     initialPath && updatePath(initialPath);
