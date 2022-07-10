@@ -3,19 +3,13 @@ import {
   useUpdateDiaryEntryMutation,
 } from "app/graphql/queries";
 import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
-import {
-  createContext,
-  PropsWithChildren,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
-import { DiaryEntry } from "server/src/resolvers-types";
+import { createContext, useCallback, useEffect, useState } from "react";
+import { type DiaryEntry } from "server/src/resolvers-types";
 import { useDate } from "../date/DateContext";
 import {
   buildDiaryEntryContextValue,
-  DiaryEntryContextProps,
-  DiaryEntryContextValue,
+  type DiaryEntryContextProps,
+  type DiaryEntryContextValue,
 } from "./DiaryEntryContext.types";
 
 export const DiaryEntryContext = createContext<DiaryEntryContextValue>(
@@ -23,7 +17,7 @@ export const DiaryEntryContext = createContext<DiaryEntryContextValue>(
 );
 
 export const DiaryEntryContextProvider: React.FC<
-  PropsWithChildren<DiaryEntryContextProps>
+  React.PropsWithChildren<DiaryEntryContextProps>
 > = ({ children, saveTimeoutInterval = 1000 }) => {
   const date = useDate();
   const { data } = useDiaryEntryQuery(date);

@@ -1,5 +1,5 @@
-import { ApolloServer, gql } from "apollo-server";
-import { Client } from "pg";
+import { gql, type ApolloServer } from "apollo-server";
+import { type Client } from "pg";
 import { describe, expect, it } from "vitest";
 import {
   buildDiaryEntry,
@@ -7,7 +7,7 @@ import {
   diaryEntriesTableName,
 } from "./datasources/diaryEntries";
 import { getDbClient } from "./getDbClient";
-import { DiaryEntry } from "./resolvers-types";
+import { type DiaryEntry } from "./resolvers-types";
 import { buildServer } from "./server";
 
 const buildServerWithMockedDb = async (

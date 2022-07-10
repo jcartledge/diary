@@ -1,6 +1,6 @@
 import { DataSource } from "apollo-datasource";
-import { Client } from "pg";
-import { DiaryEntry } from "../resolvers-types";
+import { type Client } from "pg";
+import { type DiaryEntry } from "../resolvers-types";
 
 export const diaryEntriesTableName = "diary_entries";
 
@@ -15,6 +15,7 @@ export const buildDiaryEntry = (
   risk: "",
   ...overrides,
 });
+
 export class DiaryEntriesDataSource extends DataSource {
   public static selectQuery = `SELECT * FROM "${diaryEntriesTableName}" WHERE date = $1`;
   public static upsertQuery = `

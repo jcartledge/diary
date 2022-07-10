@@ -1,6 +1,6 @@
-import { createHelper } from "souvlaki";
-import { FeatureToggles } from "lib/toggles/toggles.types";
+import { type FeatureToggles } from "lib/toggles/toggles.types";
 import { TogglesProvider } from "lib/toggles/TogglesProvider";
+import { createHelper } from "souvlaki";
 
 export const withToggles = createHelper(
   (toggles: FeatureToggles = []): React.FC<React.PropsWithChildren> =>

@@ -1,4 +1,4 @@
-import { FeatureToggles } from "./toggles.types";
+import { type FeatureToggles } from "./toggles.types";
 import { TogglesContext } from "./TogglesContext";
 
 interface TogglesProviderProps {
