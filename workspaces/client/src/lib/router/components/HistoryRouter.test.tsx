@@ -5,6 +5,8 @@ import { HistoryRouter } from "./HistoryRouter";
 import { Link } from "./Link";
 import { Route } from "./Route";
 
+const getGoLink = () => screen.queryByRole("link", { name: "go" });
+
 describe("HistoryRouter", () => {
   it("updates the route", async () => {
     const user = userEvent.setup();
@@ -17,7 +19,7 @@ describe("HistoryRouter", () => {
       </HistoryRouter>
     );
 
-    user.click(screen.getByRole("link", { name: "go" }));
+    user.click(getGoLink()!);
 
     await waitFor(() => {
       expect(screen.queryByText("Hello!")).toBeInTheDocument();
@@ -36,6 +38,25 @@ describe("HistoryRouter", () => {
 
     await waitFor(() => {
       expect(screen.queryByText("Hello!")).toBeInTheDocument();
+    });
+  });
+
+  it("updates when the back button is pressed", async () => {
+    const user = userEvent.setup();
+    render(
+      <HistoryRouter initialPath="/foo">
+        <Route path="/">
+          <Link to="/foo">go</Link>
+        </Route>
+        <Route path="/foo">Hello!</Route>
+      </HistoryRouter>
+    );
+
+    await user.click(getGoLink()!);
+    window.history.back();
+
+    await waitFor(() => {
+      expect(getGoLink()).toBeInTheDocument();
     });
   });
 });

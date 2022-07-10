@@ -15,6 +15,17 @@ export const HistoryRouter: React.FC<HistoryRouterProps> = ({
     setPath(newPath);
   };
 
+  const popStateListener = () => {
+    setPath(window.location.pathname);
+  };
+
+  useEffect(() => {
+    window.addEventListener("popstate", popStateListener);
+    return () => {
+      window.removeEventListener("popstate", popStateListener);
+    };
+  }, []);
+
   useEffect(() => {
     initialPath && updatePath(initialPath);
   }, [initialPath]);
