@@ -1,5 +1,4 @@
 import { Conditional } from "lib/util/Conditional";
-import React from "react";
 import { useToggle } from "./useToggle";
 
 type ToggleProps = React.PropsWithChildren<{

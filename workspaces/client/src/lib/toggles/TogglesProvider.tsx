@@ -1,4 +1,3 @@
-import React from "react";
 import { FeatureToggles } from "./toggles.types";
 import { TogglesContext } from "./TogglesContext";
 

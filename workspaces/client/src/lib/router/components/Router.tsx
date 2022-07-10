@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { RouterContext, type PathSetter } from "../contexts/RouterContext";
 
 type RouterProps = React.PropsWithChildren<{

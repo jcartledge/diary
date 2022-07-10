@@ -1,7 +1,6 @@
 import { ApolloProvider } from "@apollo/client";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { HistoryRouter } from "lib/router";
-import React from "react";
 import { LocaleContext } from "./app/context/locale/LocaleContext";
 import { client } from "./app/graphql/client";
 import { Routes } from "./app/routes/Routes";

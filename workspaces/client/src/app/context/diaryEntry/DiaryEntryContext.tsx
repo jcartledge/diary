@@ -3,7 +3,8 @@ import {
   useUpdateDiaryEntryMutation,
 } from "app/graphql/queries";
 import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
-import React, {
+import {
+  createContext,
   PropsWithChildren,
   useCallback,
   useEffect,
@@ -17,7 +18,7 @@ import {
   DiaryEntryContextValue,
 } from "./DiaryEntryContext.types";
 
-export const DiaryEntryContext = React.createContext<DiaryEntryContextValue>(
+export const DiaryEntryContext = createContext<DiaryEntryContextValue>(
   buildDiaryEntryContextValue()
 );
 

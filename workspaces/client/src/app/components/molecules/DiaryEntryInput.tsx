@@ -1,5 +1,4 @@
 import TextArea from "app/components/atoms/TextArea";
-import React from "react";
 import slugify from "slugify";
 
 interface DiaryEntryInputProps {

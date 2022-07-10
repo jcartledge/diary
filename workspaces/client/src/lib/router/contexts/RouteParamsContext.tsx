@@ -1,4 +1,4 @@
-import React from "react";
+import { createContext } from "react";
 
 type RouteParams = Record<string, string>;
-export const RouteParamsContext = React.createContext<RouteParams>({});
+export const RouteParamsContext = createContext<RouteParams>({});

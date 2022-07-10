@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { buildMockApolloClient } from "test/buildMockApolloClient";

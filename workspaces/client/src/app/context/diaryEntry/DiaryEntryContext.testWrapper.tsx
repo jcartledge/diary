@@ -3,7 +3,7 @@ import { type DiaryEntryContextProps } from "app/context/diaryEntry/DiaryEntryCo
 import { createHelper } from "souvlaki";
 
 export const withDiaryEntry = createHelper(
-  (props?: DiaryEntryContextProps): React.FC<React.PropsWithChildren<{}>> =>
+  (props?: DiaryEntryContextProps): React.FC<React.PropsWithChildren> =>
     ({ children }) =>
       (
         <DiaryEntryContextProvider {...props}>

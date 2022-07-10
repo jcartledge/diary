@@ -1,5 +1,4 @@
 import { Toggle } from "lib/toggles/Toggle";
-import React from "react";
 import { FormattedDate } from "../atoms/FormattedDate";
 import { UserNav } from "../molecules/UserNav";
 

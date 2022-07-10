@@ -25,7 +25,7 @@ const buildMockAuth0ContextValue: Builder<Auth0ContextInterface> = (
 export const withAuth0Wrapper = createHelper(
   (
       value: Partial<Auth0ContextInterface> = {}
-    ): React.FC<React.PropsWithChildren<{}>> =>
+    ): React.FC<React.PropsWithChildren> =>
     ({ children }) =>
       (
         <Auth0Context.Provider value={buildMockAuth0ContextValue(value)}>
