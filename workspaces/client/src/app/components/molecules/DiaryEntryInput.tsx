@@ -20,7 +20,7 @@ const DiaryEntryInput: React.FC<DiaryEntryInputProps> = ({
     <article>
       <header>
         <label id={`${fieldLabel}-label`} aria-label={fieldLabel}>
-          {label}
+          <strong>{label}</strong>
         </label>
       </header>
       <TextArea
