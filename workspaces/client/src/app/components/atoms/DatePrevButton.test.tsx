@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { withDate } from "app/context/date/DateContext.testWrapper";
 import { buildDiaryPageRoute } from "app/routes/buildDiaryPageRoute";
@@ -34,27 +34,5 @@ describe("DatePrevButton", () => {
     await userEvent.click(getPrevButton());
 
     expect(screen.queryByText("OK")).toBeInTheDocument();
-  });
-
-  it("bolds the button text if there is an entry on the previous date", async () => {
-    const mockClient = buildMockApolloClient({ whatHappened: "Lots" });
-
-    render(<DatePrevButton />, {
-      wrapper: wrap(withApollo(mockClient)),
-    });
-
-    await waitFor(() => {
-      expect(getPrevButton()).toHaveClass("font-bold");
-    });
-  });
-
-  it("does not bold the button text if there is not an entry on the previous date", async () => {
-    const mockClient = buildMockApolloClient();
-
-    render(<DatePrevButton />, {
-      wrapper: wrap(withApollo(mockClient)),
-    });
-
-    expect(getPrevButton()).not.toHaveClass("font-bold");
   });
 });

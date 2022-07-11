@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { withDate } from "app/context/date/DateContext.testWrapper";
 import { buildDiaryPageRoute } from "app/routes/buildDiaryPageRoute";
@@ -56,29 +56,5 @@ describe("DateNextButton", () => {
     await userEvent.click(getNextButton());
 
     expect(onPathChange).not.toHaveBeenCalledWith(today.getNext().getKey());
-  });
-
-  it("bolds the button text if there is an entry on the next date", async () => {
-    const date = new DiaryDate().getPrevious();
-    const mockClient = buildMockApolloClient({ whatHappened: "Lots" });
-
-    render(<DateNextButton />, {
-      wrapper: wrap(withApollo(mockClient), withDate(date)),
-    });
-
-    await waitFor(() => {
-      expect(getNextButton()).toHaveClass("font-bold");
-    });
-  });
-
-  it("does not bold the button text if there is not an entry on the next date", async () => {
-    const date = new DiaryDate().getPrevious();
-    const mockClient = buildMockApolloClient();
-
-    render(<DateNextButton />, {
-      wrapper: wrap(withApollo(mockClient), withDate(date)),
-    });
-
-    expect(getNextButton()).not.toHaveClass("font-bold");
   });
 });

@@ -1,4 +1,4 @@
-import { gql, QueryResult, useMutation, useQuery } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import { DiaryDate } from "lib/util/date";
 import {
   DiaryEntry,
@@ -23,29 +23,6 @@ export const useDiaryEntryQuery = (date: DiaryDate) =>
   useQuery<{ diaryEntry: DiaryEntry }, QueryDiaryEntryArgs>(DIARY_ENTRY_QUERY, {
     variables: { date: date.getKey() },
   });
-
-const isNotEmptyDiaryEntry = ({
-  wentWell,
-  whatHappened,
-  notWell,
-  couldBeImproved,
-  risk,
-}: DiaryEntry) => {
-  return (
-    `${whatHappened}${wentWell}${notWell}${couldBeImproved}${risk}`.length > 0
-  );
-};
-
-const doesEntryExist = ({
-  data,
-}: QueryResult<{ diaryEntry: DiaryEntry }, QueryDiaryEntryArgs>) =>
-  data && isNotEmptyDiaryEntry(data.diaryEntry);
-
-export const useDoesEntryExistForPreviousDate = (date: DiaryDate) =>
-  doesEntryExist(useDiaryEntryQuery(date.getPrevious()));
-
-export const useDoesEntryExistForNextDate = (date: DiaryDate) =>
-  doesEntryExist(useDiaryEntryQuery(date.getNext()));
 
 export const UPDATE_DIARY_ENTRY_MUTATION = gql`
   mutation updateDiaryEntry($diaryEntry: DiaryEntryInput!) {
