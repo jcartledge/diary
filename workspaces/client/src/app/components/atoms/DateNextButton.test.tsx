@@ -7,8 +7,7 @@ import { DiaryDate } from "lib/util/date";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { buildMockApolloClient } from "test/buildMockApolloClient";
-import { withPageRoute } from "test/wrappers/withPageRoute";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import DateNextButton from "./DateNextButton";
 
 const getNextButton = () => screen.getByText("next");
@@ -19,7 +18,6 @@ describe("DateNextButton", () => {
     const todayPath = buildDiaryPageRoute(today.getKey());
     const yesterday = today.getPrevious();
     const yesterdayPath = buildDiaryPageRoute(yesterday.getKey());
-
     const user = userEvent.setup();
 
     render(
@@ -40,21 +38,25 @@ describe("DateNextButton", () => {
   });
 
   it("does not increment past the current date", async () => {
-    const onPathChange = vi.fn();
     const today = new DiaryDate();
+    const todayPath = buildDiaryPageRoute(today.getKey());
+    const tomorrowPath = buildDiaryPageRoute(today.getNext().getKey());
+    const user = userEvent.setup();
 
-    render(<DateNextButton />, {
-      wrapper: wrap(
-        withApollo(buildMockApolloClient()),
-        withDate(today),
-        withPageRoute(today.getKey())
-      ),
-    });
+    render(
+      <HistoryRouter initialPath={todayPath}>
+        <Route path={todayPath}>
+          <DateNextButton />
+        </Route>
+        <Route path={tomorrowPath}>OK</Route>
+      </HistoryRouter>,
+      {
+        wrapper: wrap(withApollo(buildMockApolloClient()), withDate(today)),
+      }
+    );
 
-    expect(getNextButton()).toHaveAttribute("aria-disabled");
+    await user.click(getNextButton());
 
-    await userEvent.click(getNextButton());
-
-    expect(onPathChange).not.toHaveBeenCalledWith(today.getNext().getKey());
+    expect(screen.queryByText("OK")).not.toBeInTheDocument();
   });
 });
