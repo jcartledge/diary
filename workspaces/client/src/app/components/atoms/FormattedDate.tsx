@@ -1,9 +1,6 @@
 import { useDate } from "app/context/date/DateContext";
-import { LocaleContext } from "app/context/locale/LocaleContext";
-import { useContext } from "react";
+import { useLocale } from "app/context/locale/LocaleContext";
 
-export const FormattedDate: React.FC = () => {
-  const locale = useContext(LocaleContext);
-  const date = useDate();
-  return <small>{date.getFormatted(locale)}</small>;
-};
+export const FormattedDate: React.FC = () => (
+  <small>{useDate().getFormatted(useLocale())}</small>
+);

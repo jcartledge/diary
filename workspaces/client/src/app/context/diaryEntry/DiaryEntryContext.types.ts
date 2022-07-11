@@ -16,9 +16,7 @@ export const buildDiaryEntryContextValue: Builder<DiaryEntryContextValue> = (
   overrides = {}
 ) => ({
   diaryEntry: buildDiaryEntry(),
-  updateDiaryEntry: (_: keyof DiaryEntry) => (_: string) => {
-    return;
-  },
+  updateDiaryEntry: (_: keyof DiaryEntry) => (_: string) => {},
   isDirty: false,
   ...overrides,
 });
