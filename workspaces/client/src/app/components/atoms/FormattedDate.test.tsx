@@ -8,10 +8,13 @@ import { FormattedDate } from "./FormattedDate";
 
 describe("Diary", () => {
   it("renders the date in the locale passed to it", () => {
-    const date = new DiaryDate(new Date(Date.UTC(2010, 0, 1, 12, 0, 0)));
+    const date = DiaryDate.from("2010-01-01");
+    if ("error" in date) {
+      expect.fail(date.error.message);
+    }
 
     const formattedDate = render(<FormattedDate />, {
-      wrapper: wrap(withLocale("en-AU"), withDate(date)),
+      wrapper: wrap(withLocale("en-AU"), withDate(date.result)),
     });
 
     expect(

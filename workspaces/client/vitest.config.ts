@@ -10,6 +10,8 @@ export default defineConfig({
     coverage: {
       all: true,
       exclude: [
+        "**/*.test.ts",
+        "**/*.test.tsx",
         "**/*.types.ts",
         "App.tsx",
         "app/graphql/client.ts",
