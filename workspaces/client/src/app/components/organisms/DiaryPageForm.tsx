@@ -1,5 +1,5 @@
 import DiaryEntryInput from "app/components/molecules/DiaryEntryInput";
-import { useDiaryEntry } from "app/context/diaryEntry/DiaryEntryContextProvider";
+import { useDiaryEntry } from "app/context/diaryEntry/useDiaryEntry";
 
 const DiaryPageForm: React.FC = () => {
   const { diaryEntry, updateDiaryEntry } = useDiaryEntry();

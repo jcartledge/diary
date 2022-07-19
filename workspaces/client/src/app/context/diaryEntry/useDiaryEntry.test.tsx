@@ -4,8 +4,8 @@ import { withApollo } from "souvlaki-apollo";
 import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { mockConsoleError, unmockConsoleError } from "test/mockConsoleError";
 import { describe, expect, it } from "vitest";
-import { useDiaryEntry } from "./DiaryEntryContextProvider";
 import { withDiaryEntry } from "./DiaryEntryContextProvider.testWrapper";
+import { useDiaryEntry } from "./useDiaryEntry";
 
 const wrappers = () => ({
   wrapper: wrap(
@@ -14,7 +14,7 @@ const wrappers = () => ({
   ),
 });
 
-describe("DiaryEntryContextProvider", () => {
+describe("useDiaryEntry", () => {
   it("sets isDirty to false when an entry is loaded and no updates have taken place", () => {
     const { result } = renderHook(useDiaryEntry, wrappers());
 

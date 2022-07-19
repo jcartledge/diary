@@ -3,46 +3,26 @@ import {
   useUpdateDiaryEntryMutation,
 } from "app/graphql/queries";
 import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { useCallback, useEffect, useState } from "react";
 import { type DiaryEntry } from "server/src/resolvers-types";
 import { useDate } from "../date/DateContext";
+import { DiaryEntryContext } from "./DiaryEntryContext";
 
-type DiaryEntryContextProps = React.PropsWithChildren<{
-  saveTimeoutInterval?: number;
-}>;
-
-interface DiaryEntryContextValue {
-  diaryEntry: DiaryEntry;
-  updateDiaryEntry: (field: keyof DiaryEntry) => (value: string) => void;
-  isDirty: boolean;
-}
-
-const DiaryEntryContext = createContext<DiaryEntryContextValue | undefined>(
-  undefined
-);
-
-export const DiaryEntryContextProvider: React.FC<DiaryEntryContextProps> = ({
-  children,
-  saveTimeoutInterval = 1000,
-}) => {
+export const DiaryEntryContextProvider: React.FC<
+  React.PropsWithChildren<{
+    saveTimeoutInterval?: number;
+  }>
+> = ({ children, saveTimeoutInterval = 1000 }) => {
   const date = useDate();
   const { data } = useDiaryEntryQuery(date);
-  const [currentDiaryEntry, setDiaryEntry] = useState<DiaryEntry>(
-    buildDiaryEntry()
-  );
+  const [diaryEntry, setDiaryEntry] = useState(buildDiaryEntry());
   const [isDirty, setIsDirty] = useState(false);
   const [doUpdateDiaryEntryMutation] = useUpdateDiaryEntryMutation();
 
   useEffect(() => {
     if (data) {
-      const { __typename, ...diaryEntry } = data.diaryEntry;
-      setDiaryEntry(diaryEntry);
+      const { __typename, ...updatedDiaryEntry } = data.diaryEntry;
+      setDiaryEntry(updatedDiaryEntry);
       setIsDirty(false);
     }
   }, [data]);
@@ -51,9 +31,9 @@ export const DiaryEntryContextProvider: React.FC<DiaryEntryContextProps> = ({
     useState<ReturnType<typeof setTimeout>>();
 
   const updateDiaryEntry = useCallback(
-    (field: keyof DiaryEntry) => (value: string) => {
-      if (value !== currentDiaryEntry[field]) {
-        const newDiaryEntry = { ...currentDiaryEntry, [field]: value };
+    (fieldName: keyof DiaryEntry) => (fieldValue: string) => {
+      if (fieldValue !== diaryEntry[fieldName]) {
+        const newDiaryEntry = { ...diaryEntry, [fieldName]: fieldValue };
         setDiaryEntry(newDiaryEntry);
         setIsDirty(true);
         saveTimeout && clearTimeout(saveTimeout);
@@ -67,18 +47,13 @@ export const DiaryEntryContextProvider: React.FC<DiaryEntryContextProps> = ({
         );
       }
     },
-    [
-      currentDiaryEntry,
-      doUpdateDiaryEntryMutation,
-      saveTimeoutInterval,
-      saveTimeout,
-    ]
+    [diaryEntry, doUpdateDiaryEntryMutation, saveTimeoutInterval, saveTimeout]
   );
 
   return (
     <DiaryEntryContext.Provider
       value={{
-        diaryEntry: currentDiaryEntry,
+        diaryEntry,
         updateDiaryEntry,
         isDirty,
       }}
@@ -86,12 +61,4 @@ export const DiaryEntryContextProvider: React.FC<DiaryEntryContextProps> = ({
       {children}
     </DiaryEntryContext.Provider>
   );
-};
-
-export const useDiaryEntry = () => {
-  const diaryEntryContext = useContext(DiaryEntryContext);
-  if (diaryEntryContext === undefined) {
-    throw new Error("useDiaryEntry requires a valid DiaryEntryContext");
-  }
-  return diaryEntryContext;
 };
