@@ -13,7 +13,7 @@ containers:
     command: yarn workspace client dev --host
     environment:
       NODE_PATH: src
-      REACT_APP_GRAPHQL_URI: http://localhost:4000/graphql
+      VITE_GRAPHQL_URI: http://localhost:4000/graphql
     ports:
       - 3000:3000
     health_check:
@@ -65,8 +65,8 @@ tasks:
       container: diary-build-env
       command: yarn workspace client build
       environment:
-        REACT_APP_GRAPHQL_URI: __GRAPHQL_URI
-        REACT_APP_TOGGLES: __TOGGLES
+        VITE_GRAPHQL_URI: __GRAPHQL_URI
+        VITE_TOGGLES: __TOGGLES
 
   client-package:
     run:

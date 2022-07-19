@@ -6,12 +6,12 @@ This means toggles can only be boolean values - a toggle is either present and t
 
 ## Defining toggles in dev
 
-When running the app in dev mode, toggles are read from the environment variable `REACT_APP_TOGGLES`. This variable (if defined) is just a string of space separated toggle names. Any toggle named in the list is enabled.
+When running the app in dev mode, toggles are read from the environment variable `VITE_TOGGLES`. This variable (if defined) is just a string of space separated toggle names. Any toggle named in the list is enabled.
 
 To define a toggle in dev mode, create or edit `workspaces/client/.env`, and add or edit the variable as follows:
 
 ```
-REACT_APP_TOGGLES=auth suggestions
+VITE_TOGGLES=auth suggestions
 ```
 
 In the example above, the application would see two enabled toggles, `auth` and `suggestions`.
