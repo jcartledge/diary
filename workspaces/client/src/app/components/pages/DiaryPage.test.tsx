@@ -34,7 +34,7 @@ describe("DiaryPage", () => {
     };
     const queryMock = vi.fn(({ date }) =>
       Promise.resolve({
-        data: { diaryEntry: diaryEntries[date] ?? buildDiaryEntry() },
+        data: { diaryEntry: diaryEntries[date] },
       })
     );
 

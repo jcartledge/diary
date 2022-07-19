@@ -3,18 +3,29 @@ import {
   useUpdateDiaryEntryMutation,
 } from "app/graphql/queries";
 import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
-import { createContext, useCallback, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { type DiaryEntry } from "server/src/resolvers-types";
 import { useDate } from "../date/DateContext";
-import {
-  buildDiaryEntryContextValue,
-  type DiaryEntryContextProps,
-  type DiaryEntryContextValue,
-} from "./DiaryEntryContext.types";
 
-export const DiaryEntryContext = createContext<DiaryEntryContextValue>(
-  buildDiaryEntryContextValue()
-);
+export interface DiaryEntryContextProps {
+  saveTimeoutInterval?: number;
+}
+
+export interface DiaryEntryContextValue {
+  diaryEntry: DiaryEntry;
+  updateDiaryEntry: (field: keyof DiaryEntry) => (value: string) => void;
+  isDirty: boolean;
+}
+
+export const DiaryEntryContext = createContext<
+  DiaryEntryContextValue | undefined
+>(undefined);
 
 export const DiaryEntryContextProvider: React.FC<
   React.PropsWithChildren<DiaryEntryContextProps>
@@ -74,4 +85,12 @@ export const DiaryEntryContextProvider: React.FC<
       {children}
     </DiaryEntryContext.Provider>
   );
+};
+
+export const useDiaryEntry = () => {
+  const diaryEntryContext = useContext(DiaryEntryContext);
+  if (diaryEntryContext === undefined) {
+    throw new Error("useDiaryEntry requires a valid DiaryEntryContext");
+  }
+  return diaryEntryContext;
 };

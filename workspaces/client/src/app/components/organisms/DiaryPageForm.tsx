@@ -1,9 +1,8 @@
 import DiaryEntryInput from "app/components/molecules/DiaryEntryInput";
-import { DiaryEntryContext } from "app/context/diaryEntry/DiaryEntryContext";
-import { useContext } from "react";
+import { useDiaryEntry } from "app/context/diaryEntry/DiaryEntryContext";
 
 const DiaryPageForm: React.FC = () => {
-  const { diaryEntry, updateDiaryEntry } = useContext(DiaryEntryContext);
+  const { diaryEntry, updateDiaryEntry } = useDiaryEntry();
   return (
     <div>
       <div className="grid">
