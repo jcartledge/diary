@@ -1,8 +1,8 @@
-import { renderHook } from "@testing-library/react";
+import { act, renderHook, waitFor } from "@testing-library/react";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { buildMockApolloClient } from "test/buildMockApolloClient";
-import { useMount } from "test/useMount";
+import { mockConsoleError, unmockConsoleError } from "test/mockConsoleError";
 import { describe, expect, it } from "vitest";
 import { useDiaryEntry } from "./DiaryEntryContext";
 import { withDiaryEntry } from "./DiaryEntryContext.testWrapper";
@@ -22,49 +22,43 @@ describe("useDiaryEntry", () => {
   });
 
   it("sets isDirty to true when an update changes a field value", () => {
-    const { result } = renderHook(() => {
-      const { isDirty, updateDiaryEntry } = useDiaryEntry();
-      useMount(() => updateDiaryEntry("whatHappened")("asd"));
-      return { isDirty };
-    }, wrappers());
+    const { result } = renderHook(useDiaryEntry, wrappers());
+
+    act(() => result.current.updateDiaryEntry("whatHappened")("asd"));
 
     expect(result.current.isDirty).toBe(true);
   });
 
   it("does not set isDirty to true when an update does not change the entry", () => {
-    const { result } = renderHook(() => {
-      const { isDirty, updateDiaryEntry } = useDiaryEntry();
-      useMount(() => updateDiaryEntry("whatHappened")(""));
-      return { isDirty };
-    }, wrappers());
+    const { result } = renderHook(useDiaryEntry, wrappers());
+
+    act(() => result.current.updateDiaryEntry("whatHappened")(""));
 
     expect(result.current.isDirty).toBe(false);
   });
 
   it("does not set isDirty to false when an update does not change the entry", () => {
-    const { result } = renderHook(() => {
-      const { isDirty, updateDiaryEntry } = useDiaryEntry();
-      useMount(() => {
-        updateDiaryEntry("whatHappened")("foo");
-        updateDiaryEntry("whatHappened")("foo");
-      });
-      return { isDirty };
-    }, wrappers());
+    const { result } = renderHook(useDiaryEntry, wrappers());
+
+    act(() => {
+      result.current.updateDiaryEntry("whatHappened")("foo");
+      result.current.updateDiaryEntry("whatHappened")("foo");
+    });
 
     expect(result.current.isDirty).toBe(true);
   });
 
-  it("sets isDirty to false when the entry has been saved", () => {
-    const { result } = renderHook(() => {
-      const { isDirty, updateDiaryEntry } = useDiaryEntry();
-      useMount(() => updateDiaryEntry("whatHappened")("foo"));
-      return { isDirty };
-    }, wrappers());
+  it("sets isDirty to false when the entry has been saved", async () => {
+    const { result } = renderHook(useDiaryEntry, wrappers());
 
-    expect(result.current.isDirty).toBe(false);
+    act(() => result.current.updateDiaryEntry("whatHappened")("foo"));
+
+    await waitFor(() => expect(result.current.isDirty).toBe(false));
   });
 
   it("throws an error if there is no diary entry context", () => {
+    mockConsoleError();
     expect(() => renderHook(useDiaryEntry)).toThrowError();
+    unmockConsoleError();
   });
 });
