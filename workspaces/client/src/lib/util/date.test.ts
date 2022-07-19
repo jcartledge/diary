@@ -29,12 +29,29 @@ describe("DiaryDate", () => {
   describe("isToday", () => {
     it("returns true if the date is today", () => {
       const date = new DiaryDate();
+
       expect(date.isToday()).toBe(true);
     });
 
     it("returns false if the date is not today", () => {
       const date = new DiaryDate();
+
       expect(date.getPrevious().isToday()).toBe(false);
+    });
+  });
+
+  describe("from", () => {
+    it("returns a DiaryDate if the string is valid", () => {
+      const isoDateString = "2015-01-01";
+      const diaryDate = DiaryDate.from(isoDateString);
+
+      expect(diaryDate.result!.getKey()).toEqual(isoDateString);
+    });
+
+    it("returns an error if the string is not valid", () => {
+      const diaryDate = DiaryDate.from("");
+
+      expect(diaryDate.error).toBeDefined();
     });
   });
 });

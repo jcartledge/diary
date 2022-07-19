@@ -1,3 +1,5 @@
+import { isValidDate } from "iso-datestring-validator";
+
 export class DiaryDate {
   private date: Date;
 
@@ -28,6 +30,12 @@ export class DiaryDate {
 
   public isToday() {
     return DiaryDate.dateIsToday(this.date);
+  }
+
+  public static from(isoDateString: string) {
+    return isValidDate(isoDateString)
+      ? { result: new DiaryDate(new Date(isoDateString)) }
+      : { error: true };
   }
 
   private static convertDateToEntryKey(date: Date) {

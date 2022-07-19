@@ -10,7 +10,7 @@ import { DiaryFooter } from "../organisms/DiaryFooter";
 const DiaryPage = () => {
   const isoDateString = useParam("isoDateString");
   return isValidDate(isoDateString) ? (
-    <DateContext.Provider value={new DiaryDate(new Date(isoDateString))}>
+    <DateContext.Provider value={DiaryDate.from(isoDateString).result!}>
       <DiaryEntryContextProvider>
         <DiaryHeader />
         <DiaryPageForm />
