@@ -5037,7 +5037,6 @@ __metadata:
     ts-node: 10.9.1
     typescript: 4.7.4
     vite: 3.0.2
-    vite-plugin-env-compatible: 1.1.1
     vite-tsconfig-paths: 3.5.0
     vitest: 0.18.1
   languageName: unknown
@@ -11750,13 +11749,6 @@ __metadata:
   version: 1.1.2
   resolution: "vary@npm:1.1.2"
   checksum: ae0123222c6df65b437669d63dfa8c36cee20a504101b2fcd97b8bf76f91259c17f9f2b4d70a1e3c6bbcee7f51b28392833adb6b2770b23b01abec84e369660b
-  languageName: node
-  linkType: hard
-
-"vite-plugin-env-compatible@npm:1.1.1":
-  version: 1.1.1
-  resolution: "vite-plugin-env-compatible@npm:1.1.1"
-  checksum: 5e7737844250c9184e9f94696ad59d46eb93178e5333d257e7d6e5d868efbbdb482c84830bf07fda3f26bc1455e7eec7c6a35a46d9e29c71f101a351e974cc10
   languageName: node
   linkType: hard
 
