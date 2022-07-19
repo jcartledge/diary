@@ -13,23 +13,24 @@ import {
 import { type DiaryEntry } from "server/src/resolvers-types";
 import { useDate } from "../date/DateContext";
 
-export interface DiaryEntryContextProps {
+type DiaryEntryContextProps = React.PropsWithChildren<{
   saveTimeoutInterval?: number;
-}
+}>;
 
-export interface DiaryEntryContextValue {
+interface DiaryEntryContextValue {
   diaryEntry: DiaryEntry;
   updateDiaryEntry: (field: keyof DiaryEntry) => (value: string) => void;
   isDirty: boolean;
 }
 
-export const DiaryEntryContext = createContext<
-  DiaryEntryContextValue | undefined
->(undefined);
+const DiaryEntryContext = createContext<DiaryEntryContextValue | undefined>(
+  undefined
+);
 
-export const DiaryEntryContextProvider: React.FC<
-  React.PropsWithChildren<DiaryEntryContextProps>
-> = ({ children, saveTimeoutInterval = 1000 }) => {
+export const DiaryEntryContextProvider: React.FC<DiaryEntryContextProps> = ({
+  children,
+  saveTimeoutInterval = 1000,
+}) => {
   const date = useDate();
   const { data } = useDiaryEntryQuery(date);
   const [currentDiaryEntry, setDiaryEntry] = useState<DiaryEntry>(

@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { withDate } from "app/context/date/DateContext.testWrapper";
-import { withDiaryEntry } from "app/context/diaryEntry/DiaryEntryContext.testWrapper";
+import { withDiaryEntry } from "app/context/diaryEntry/DiaryEntryContextProvider.testWrapper";
 import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
 import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
 import { DiaryDate } from "lib/util/date";
