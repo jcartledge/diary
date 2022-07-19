@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { withDate } from "app/context/date/DateContext.testWrapper";
 import { buildDiaryPageRoute } from "app/routes/buildDiaryPageRoute";
 import { HistoryRouter, Route } from "lib/router";
-import { DiaryDate } from "lib/util/date";
+import { DiaryDate } from "lib/util/DiaryDate";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { buildMockApolloClient } from "test/buildMockApolloClient";

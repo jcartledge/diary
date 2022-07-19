@@ -1,4 +1,4 @@
-import { DiaryDate } from "lib/util/date";
+import { DiaryDate } from "lib/util/DiaryDate";
 import { createContext, useContext } from "react";
 
 export const DateContext = createContext(new DiaryDate());

@@ -1,5 +1,5 @@
 import { DateContext } from "app/context/date/DateContext";
-import { DiaryDate } from "lib/util/date";
+import { DiaryDate } from "lib/util/DiaryDate";
 import { createHelper } from "souvlaki";
 
 export const withDate = createHelper(

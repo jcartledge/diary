@@ -5,7 +5,7 @@ import {
   withToggle,
   withToggles,
 } from "lib/toggles/TogglesProvider.testWrapper";
-import { DiaryDate } from "lib/util/date";
+import { DiaryDate } from "lib/util/DiaryDate";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
 import { buildMockApolloClient } from "test/buildMockApolloClient";

@@ -4,7 +4,7 @@ import { DateContext } from "app/context/date/DateContext";
 import { DiaryEntryContextProvider } from "app/context/diaryEntry/DiaryEntryContextProvider";
 import { isValidDate } from "iso-datestring-validator";
 import { useParam } from "lib/router";
-import { DiaryDate } from "lib/util/date";
+import { DiaryDate } from "lib/util/DiaryDate";
 import { DiaryFooter } from "../organisms/DiaryFooter";
 
 const DiaryPage = () => {

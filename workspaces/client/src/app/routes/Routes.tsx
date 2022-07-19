@@ -4,7 +4,7 @@ import { Authenticated } from "lib/auth/Authenticated";
 import { UnauthenticatedRoute } from "lib/auth/UnauthenticatedRoute";
 import { Redirect, Route } from "lib/router";
 import { Toggle } from "lib/toggles/Toggle";
-import { DiaryDate } from "lib/util/date";
+import { DiaryDate } from "lib/util/DiaryDate";
 import { buildDiaryPageRoute } from "./buildDiaryPageRoute";
 
 const todayDiaryPageRoute = buildDiaryPageRoute(new DiaryDate().getKey());
