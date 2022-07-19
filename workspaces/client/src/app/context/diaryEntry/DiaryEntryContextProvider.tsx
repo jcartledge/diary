@@ -14,18 +14,19 @@ export const DiaryEntryContextProvider: React.FC<
   }>
 > = ({ children, saveTimeoutInterval = 1000 }) => {
   const date = useDate();
-  const { data } = useDiaryEntryQuery(date);
+  const { data: diaryEntryQueryData } = useDiaryEntryQuery(date);
   const [diaryEntry, setDiaryEntry] = useState(buildDiaryEntry());
   const [isDirty, setIsDirty] = useState(false);
   const [doUpdateDiaryEntryMutation] = useUpdateDiaryEntryMutation();
 
   useEffect(() => {
-    if (data) {
-      const { __typename, ...updatedDiaryEntry } = data.diaryEntry;
+    if (diaryEntryQueryData) {
+      const { __typename, ...updatedDiaryEntry } =
+        diaryEntryQueryData.diaryEntry;
       setDiaryEntry(updatedDiaryEntry);
       setIsDirty(false);
     }
-  }, [data]);
+  }, [diaryEntryQueryData]);
 
   const [saveTimeout, setSaveTimeout] =
     useState<ReturnType<typeof setTimeout>>();
