@@ -38,20 +38,15 @@ describe("DiaryPage", () => {
       })
     );
 
-    render(
-      <>
-        <DiaryPage />
-      </>,
-      {
-        wrapper: wrap(
-          withPageRoute(today.getKey()),
-          withLocale("en-AU"),
-          withDate(today),
-          withApollo(buildMockApolloClient({}, { queryMock })),
-          withDiaryEntry()
-        ),
-      }
-    );
+    render(<DiaryPage />, {
+      wrapper: wrap(
+        withPageRoute(today.getKey()),
+        withLocale("en-AU"),
+        withDate(today),
+        withApollo(buildMockApolloClient({}, { queryMock })),
+        withDiaryEntry()
+      ),
+    });
 
     await waitFor(() => {
       expect(screen.queryByText("Today's entry")).toBeInTheDocument();
