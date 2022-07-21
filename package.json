@@ -12,5 +12,5 @@
     "@types/node": "17.0.39",
     "audit-ci": "6.3.0"
   },
-  "packageManager": "yarn@3.2.1"
+  "packageManager": "yarn@3.2.2"
 }
