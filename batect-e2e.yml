@@ -1,6 +1,6 @@
 containers:
   e2e:
-    image: mcr.microsoft.com/playwright:v1.23.4-bionic
+    image: mcr.microsoft.com/playwright:v1.24.0-bionic
     working_directory: /app
     command: yarn workspace e2e start
     dependencies:
