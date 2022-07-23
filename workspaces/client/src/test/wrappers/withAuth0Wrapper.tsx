@@ -1,5 +1,5 @@
 import { Auth0Context, type Auth0ContextInterface } from "@auth0/auth0-react";
-import { type Builder } from "lib/util/builder.types";
+import { type Builder } from "lib/util/types/builder.types";
 import { createHelper } from "souvlaki";
 import { vi } from "vitest";
 

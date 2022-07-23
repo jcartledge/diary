@@ -1,5 +1,5 @@
 import { isValidDate } from "iso-datestring-validator";
-import { type ResultOrError } from "./either.types";
+import { type ResultOrError } from "./types/either.types";
 
 export class DiaryDate {
   private date: Date;
