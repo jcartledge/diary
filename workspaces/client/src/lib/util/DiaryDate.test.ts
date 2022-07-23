@@ -1,15 +1,13 @@
 import { describe, expect, it } from "vitest";
+import { failWithError } from "../../test/failWithError";
 import { DiaryDate } from "./DiaryDate";
-import { withError } from "./withError";
 import { withResult } from "./withResult";
-
-const failWithError = (error: Error) => expect.fail(error.message);
 
 describe("DiaryDate", () => {
   describe("getKey", () => {
     it("returns a date key", () => {
       const diaryDateResult = DiaryDate.from("2010-01-01");
-      withError(diaryDateResult, failWithError);
+      failWithError(diaryDateResult);
       withResult(diaryDateResult, (date) =>
         expect(date.getKey()).toEqual("2010-01-01")
       );
@@ -19,7 +17,7 @@ describe("DiaryDate", () => {
   describe("getPrevious", () => {
     it("returns an object representing the previous date", () => {
       const diaryDateResult = DiaryDate.from("2010-01-01");
-      withError(diaryDateResult, failWithError);
+      failWithError(diaryDateResult);
       withResult(diaryDateResult, (date) =>
         expect(date.getPrevious().getKey()).toEqual("2009-12-31")
       );
@@ -29,7 +27,7 @@ describe("DiaryDate", () => {
   describe("getNext", () => {
     it("returns an object representing the next date", () => {
       const diaryDateResult = DiaryDate.from("2010-01-01");
-      withError(diaryDateResult, failWithError);
+      failWithError(diaryDateResult);
       withResult(diaryDateResult, (date) =>
         expect(date.getNext().getKey()).toEqual("2010-01-02")
       );
@@ -54,7 +52,7 @@ describe("DiaryDate", () => {
     it("returns a DiaryDate if the string is valid", () => {
       const isoDateString = "2015-01-01";
       const diaryDateResult = DiaryDate.from(isoDateString);
-      withError(diaryDateResult, failWithError);
+      failWithError(diaryDateResult);
       withResult(diaryDateResult, (date) =>
         expect(date.getKey()).toEqual(isoDateString)
       );
