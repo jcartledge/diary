@@ -1,37 +1,38 @@
 import { describe, expect, it } from "vitest";
 import { DiaryDate } from "./DiaryDate";
+import { withError } from "./withError";
+import { withResult } from "./withResult";
+
+const failWithError = (error: Error) => expect.fail(error.message);
 
 describe("DiaryDate", () => {
   describe("getKey", () => {
     it("returns a date key", () => {
-      const date = DiaryDate.from("2010-01-01");
-      if ("error" in date) {
-        expect.fail(date.error.message);
-      }
-
-      expect(date.result.getKey()).toEqual("2010-01-01");
+      const diaryDateResult = DiaryDate.from("2010-01-01");
+      withError(diaryDateResult, failWithError);
+      withResult(diaryDateResult, (date) =>
+        expect(date.getKey()).toEqual("2010-01-01")
+      );
     });
   });
 
   describe("getPrevious", () => {
     it("returns an object representing the previous date", () => {
-      const date = DiaryDate.from("2010-01-01");
-      if ("error" in date) {
-        expect.fail(date.error.message);
-      }
-
-      expect(date.result.getPrevious().getKey()).toEqual("2009-12-31");
+      const diaryDateResult = DiaryDate.from("2010-01-01");
+      withError(diaryDateResult, failWithError);
+      withResult(diaryDateResult, (date) =>
+        expect(date.getPrevious().getKey()).toEqual("2009-12-31")
+      );
     });
   });
 
   describe("getNext", () => {
     it("returns an object representing the next date", () => {
-      const date = DiaryDate.from("2010-01-01");
-      if ("error" in date) {
-        expect.fail(date.error.message);
-      }
-
-      expect(date.result.getNext().getKey()).toEqual("2010-01-02");
+      const diaryDateResult = DiaryDate.from("2010-01-01");
+      withError(diaryDateResult, failWithError);
+      withResult(diaryDateResult, (date) =>
+        expect(date.getNext().getKey()).toEqual("2010-01-02")
+      );
     });
   });
 
@@ -52,12 +53,11 @@ describe("DiaryDate", () => {
   describe("from", () => {
     it("returns a DiaryDate if the string is valid", () => {
       const isoDateString = "2015-01-01";
-      const diaryDate = DiaryDate.from(isoDateString);
-      if ("error" in diaryDate) {
-        expect.fail(diaryDate.error.message);
-      }
-
-      expect(diaryDate.result!.getKey()).toEqual(isoDateString);
+      const diaryDateResult = DiaryDate.from(isoDateString);
+      withError(diaryDateResult, failWithError);
+      withResult(diaryDateResult, (date) =>
+        expect(date.getKey()).toEqual(isoDateString)
+      );
     });
 
     it("returns an error if the string is not valid", () => {
