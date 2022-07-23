@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { failWithError } from "../../test/failWithError";
 import { DiaryDate } from "./DiaryDate";
-import { withResult } from "./withResult";
+import { withResult } from "./ResultOrError/withResult";
 
 describe("DiaryDate", () => {
   describe("getKey", () => {

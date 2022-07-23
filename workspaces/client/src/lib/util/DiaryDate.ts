@@ -1,4 +1,6 @@
 import { isValidDate } from "iso-datestring-validator";
+import { error } from "./ResultOrError/error";
+import { result } from "./ResultOrError/result";
 import { type ResultOrError } from "./types/either.types";
 
 export class DiaryDate {
@@ -35,8 +37,8 @@ export class DiaryDate {
 
   public static from(isoDateString: string): ResultOrError<DiaryDate> {
     return isValidDate(isoDateString)
-      ? { result: new DiaryDate(new Date(isoDateString))}
-      : { error: new Error()};
+      ? result(new DiaryDate(new Date(isoDateString)))
+      : error(new Error());
   }
 
   private static convertDateToEntryKey(date: Date) {

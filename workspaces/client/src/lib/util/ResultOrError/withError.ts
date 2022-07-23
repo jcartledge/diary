@@ -1,5 +1,5 @@
 import { isError } from "./isError";
-import { type ResultOrError } from "./types/either.types";
+import { type ResultOrError } from "../types/either.types";
 
 export function withError<E extends Error>(
   resultOrError: ResultOrError<unknown, E>,

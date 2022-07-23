@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import { withDate } from "app/context/date/DateContext.testWrapper";
 import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
 import { DiaryDate } from "lib/util/DiaryDate";
-import { withResult } from "lib/util/withResult";
+import { withResult } from "lib/util/ResultOrError/withResult";
 import { wrap } from "souvlaki";
 import { failWithError } from "test/failWithError";
 import { describe, expect, it } from "vitest";

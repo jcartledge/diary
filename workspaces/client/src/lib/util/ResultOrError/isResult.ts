@@ -1,4 +1,4 @@
-import { SuccessResult, type ResultOrError } from "./types/either.types";
+import { type ResultOrError, type SuccessResult } from "../types/either.types";
 
 export function isResult<T>(
   resultOrError: ResultOrError<T>

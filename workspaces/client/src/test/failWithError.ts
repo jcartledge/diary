@@ -1,5 +1,5 @@
 import { ResultOrError } from "lib/util/types/either.types";
-import { withError } from "lib/util/withError";
+import { withError } from "lib/util/ResultOrError/withError";
 import { expect } from "vitest";
 
 export function failWithError<E extends Error>(
