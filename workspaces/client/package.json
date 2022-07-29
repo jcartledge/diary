@@ -41,7 +41,7 @@
     "@types/styled-components": "5.1.25",
     "@virtualstate/navigation": "1.0.1-alpha.109",
     "@vitejs/plugin-react": "2.0.0",
-    "autoprefixer": "10.4.7",
+    "autoprefixer": "10.4.8",
     "c8": "7.12.0",
     "eslint": "8.20.0",
     "eslint-config-react-app": "7.0.1",
