@@ -43,7 +43,7 @@
     "@vitejs/plugin-react": "2.0.0",
     "autoprefixer": "10.4.8",
     "c8": "7.12.0",
-    "eslint": "8.20.0",
+    "eslint": "8.21.0",
     "eslint-config-react-app": "7.0.1",
     "graphql": "16.5.0",
     "iso-datestring-validator": "2.2.2",
