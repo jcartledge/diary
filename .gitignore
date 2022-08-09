@@ -1,12 +1,12 @@
-.batect/caches
-.certs
-.env
-coverage
-e2e/test-results
+.batect/
+.certs/
+build/
+coverage/
 node_modules/
+test-results/
+
+.env
 resolvers-types.ts
-workspaces/client/build
-workspaces/server/build
 yarn-debug.log*
 yarn-error.log*
 
