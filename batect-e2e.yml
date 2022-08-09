@@ -42,3 +42,4 @@ tasks:
           TOGGLES: auth
     run:
       container: e2e
+      command: yarn workspace e2e start-toggle-auth
