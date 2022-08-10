@@ -1,10 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
 import { withRouter } from "lib/router";
-import {
-  withToggle,
-  withToggles,
-} from "lib/toggles/TogglesProvider.testWrapper";
+import { withToggles } from "lib/toggles/TogglesProvider.testWrapper";
 import { DiaryDate } from "lib/util/DiaryDate";
 import { wrap } from "souvlaki";
 import { withApollo } from "souvlaki-apollo";
@@ -15,13 +12,14 @@ import { buildDiaryPageRoute } from "./buildDiaryPageRoute";
 import { Routes } from "./Routes";
 
 describe("Routes", () => {
-  describe("auth toggle off", () => {
-    const withAuthToggleOff = withToggles();
+  describe("authenticated", () => {
+    const withAuthenticatedUser = withAuth0Wrapper({ isAuthenticated: true });
 
     it("renders the diary entry for the date in the route", () => {
       render(<Routes />, {
         wrapper: wrap(
-          withAuthToggleOff,
+          withToggles(),
+          withAuthenticatedUser,
           withRouter(buildDiaryPageRoute("2020-01-01")),
           withApollo(buildMockApolloClient()),
           withLocale("en-AU")
@@ -34,7 +32,8 @@ describe("Routes", () => {
     it("redirects to the current date if no path is provided", () => {
       render(<Routes />, {
         wrapper: wrap(
-          withAuthToggleOff,
+          withToggles(),
+          withAuthenticatedUser,
           withRouter("/"),
           withApollo(buildMockApolloClient()),
           withLocale("en-AU")
@@ -47,61 +46,19 @@ describe("Routes", () => {
     });
   });
 
-  describe("auth toggle on", () => {
-    const withAuthToggleOn = withToggle("auth");
-
-    describe("authenticated", () => {
-      const withAuthenticatedUser = withAuth0Wrapper({ isAuthenticated: true });
-
-      it("renders the diary entry for the date in the route", () => {
-        render(<Routes />, {
-          wrapper: wrap(
-            withAuthToggleOn,
-            withAuthenticatedUser,
-            withRouter(buildDiaryPageRoute("2020-01-01")),
-            withApollo(buildMockApolloClient()),
-            withLocale("en-AU")
-          ),
-        });
-
-        expect(screen.getByText(/1 January 2020/)).toBeInTheDocument();
-      });
-
-      it("redirects to the current date if no path is provided", () => {
-        render(<Routes />, {
-          wrapper: wrap(
-            withAuthToggleOn,
-            withAuthenticatedUser,
-            withRouter("/"),
-            withApollo(buildMockApolloClient()),
-            withLocale("en-AU")
-          ),
-        });
-
-        expect(
-          screen.getByText(new DiaryDate().getFormatted("en-AU"))
-        ).toBeInTheDocument();
-      });
+  describe("Unauthenticated", () => {
+    const withUnauthenticatedUser = withAuth0Wrapper({
+      isAuthenticated: false,
     });
 
-    describe("Unauthenticated", () => {
-      const withUnauthenticatedUser = withAuth0Wrapper({
-        isAuthenticated: false,
+    it("displays the landing page", () => {
+      render(<Routes />, {
+        wrapper: wrap(withToggles(), withUnauthenticatedUser, withRouter("/")),
       });
 
-      it("displays the landing page", () => {
-        render(<Routes />, {
-          wrapper: wrap(
-            withAuthToggleOn,
-            withUnauthenticatedUser,
-            withRouter("/")
-          ),
-        });
-
-        expect(
-          screen.getByRole("button", { name: /Log in/ })
-        ).toBeInTheDocument();
-      });
+      expect(
+        screen.getByRole("button", { name: /Log in/ })
+      ).toBeInTheDocument();
     });
   });
 });

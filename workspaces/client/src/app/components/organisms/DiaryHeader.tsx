@@ -1,4 +1,3 @@
-import { Toggle } from "lib/toggles/Toggle";
 import { FormattedDate } from "../atoms/FormattedDate";
 import { UserNav } from "../molecules/UserNav";
 
@@ -16,9 +15,7 @@ const DiaryHeader: React.FC = () => (
   <header>
     <nav>
       <Brand />
-      <Toggle name="auth">
-        <UserNav />
-      </Toggle>
+      <UserNav />
     </nav>
   </header>
 );
