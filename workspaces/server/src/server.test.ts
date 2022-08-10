@@ -1,4 +1,4 @@
-import { gql, type ApolloServer } from "apollo-server";
+import { ExpressContext, gql, type ApolloServer } from "apollo-server-express";
 import { type Client } from "pg";
 import { describe, expect, it } from "vitest";
 import {
@@ -12,7 +12,7 @@ import { buildServer } from "./server";
 
 const buildServerWithMockedDb = async (
   client: Client
-): Promise<ApolloServer> => {
+): Promise<ApolloServer<ExpressContext>> => {
   const diaryEntriesDataSource = new DiaryEntriesDataSource(client);
   const dataSources = () => ({ diaryEntriesDataSource });
   return buildServer(dataSources);

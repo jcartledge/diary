@@ -1,5 +1,5 @@
 import { DataSource } from "apollo-datasource";
-import { ApolloServer } from "apollo-server";
+import { ApolloServer } from "apollo-server-express";
 import { resolvers } from "./resolvers";
 import { typeDefs } from "./schema";
 
@@ -9,9 +9,10 @@ type DataSources<TContext> = {
 
 export const buildServer = (
   dataSources: () => DataSources<Record<string, unknown>>
-): ApolloServer =>
-  new ApolloServer({
+): ApolloServer => {
+  return new ApolloServer({
     typeDefs,
     dataSources,
     resolvers,
   });
+};
