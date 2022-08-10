@@ -67,6 +67,9 @@ tasks:
       environment:
         VITE_GRAPHQL_URI: __GRAPHQL_URI
         VITE_TOGGLES: __TOGGLES
+        VITE_AUTH0_DOMAIN: __AUTH0_DOMAIN
+        VITE_AUTH0_CLIENT_ID: __AUTH0_CLIENT_ID
+        VITE_AUTH0_CALLBACK_URI: __AUTH0_CALLBACK_URI
 
   client-package:
     run:

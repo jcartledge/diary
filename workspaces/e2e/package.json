@@ -5,12 +5,13 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "playwright install chromium && playwright test",
+    "start": "playwright install chromium && playwright test index.spec.ts",
     "start-toggle-auth": "playwright install chromium && playwright test index.toggle-auth.spec.ts"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.18.6",
     "@playwright/test": "1.24.2",
+    "dotenv": "^16.0.1",
     "playwright-testing-library": "4.3.0"
   }
 }

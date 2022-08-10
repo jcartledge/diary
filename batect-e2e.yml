@@ -8,7 +8,6 @@ containers:
       - diary-client
     environment:
       CLIENT_URI: "https://diary-client"
-      DATABASE_URL: postgresql://dev:dev@diary-db:5432/dev
     volumes:
       - local: .
         container: /app
@@ -31,6 +30,9 @@ tasks:
       diary-client:
         environment:
           GRAPHQL_URI: https://diary-server-gateway/graphql
+          AUTH0_CALLBACK_URI: https://diary-client
+          AUTH0_DOMAIN: dev-dgeyym9v.au.auth0.com
+          AUTH0_CLIENT_ID: OIpPvf351DRBU1InkCPZGZc3sJXf6JaY
     run:
       container: e2e
 
@@ -39,6 +41,9 @@ tasks:
       diary-client:
         environment:
           GRAPHQL_URI: https://diary-server-gateway/graphql
+          AUTH0_CALLBACK_URI: https://diary-client
+          AUTH0_DOMAIN: dev-dgeyym9v.au.auth0.com
+          AUTH0_CLIENT_ID: OIpPvf351DRBU1InkCPZGZc3sJXf6JaY
           TOGGLES: auth
     run:
       container: e2e
