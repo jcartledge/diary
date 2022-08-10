@@ -8,7 +8,7 @@ describe("DiaryDate", () => {
     it("returns a date key", () => {
       const diaryDateResult = DiaryDate.from("2010-01-01");
       failWithError(diaryDateResult);
-      withResult<DiaryDate>(diaryDateResult, (date) =>
+      withResult(diaryDateResult, (date) =>
         expect(date.getKey()).toEqual("2010-01-01")
       );
     });
@@ -18,7 +18,7 @@ describe("DiaryDate", () => {
     it("returns an object representing the previous date", () => {
       const diaryDateResult = DiaryDate.from("2010-01-01");
       failWithError(diaryDateResult);
-      withResult<DiaryDate>(diaryDateResult, (date) =>
+      withResult(diaryDateResult, (date) =>
         expect(date.getPrevious().getKey()).toEqual("2009-12-31")
       );
     });
@@ -28,7 +28,7 @@ describe("DiaryDate", () => {
     it("returns an object representing the next date", () => {
       const diaryDateResult = DiaryDate.from("2010-01-01");
       failWithError(diaryDateResult);
-      withResult<DiaryDate>(diaryDateResult, (date) =>
+      withResult(diaryDateResult, (date) =>
         expect(date.getNext().getKey()).toEqual("2010-01-02")
       );
     });
@@ -53,7 +53,7 @@ describe("DiaryDate", () => {
       const isoDateString = "2015-01-01";
       const diaryDateResult = DiaryDate.from(isoDateString);
       failWithError(diaryDateResult);
-      withResult<DiaryDate>(diaryDateResult, (date) =>
+      withResult(diaryDateResult, (date) =>
         expect(date.getKey()).toEqual(isoDateString)
       );
     });

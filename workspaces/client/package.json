@@ -26,10 +26,12 @@
       "last 1 safari version"
     ]
   },
+  "dependencies":{
+    "@diary/shared": "workspace:*"
+  },
   "devDependencies": {
     "@apollo/client": "3.6.9",
     "@auth0/auth0-react": "1.10.2",
-    "@diary/shared": "workspace:*",
     "@jedmao/location": "3.0.0",
     "@picocss/pico": "1.5.3",
     "@testing-library/dom": "8.17.1",

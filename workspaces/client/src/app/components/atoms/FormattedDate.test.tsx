@@ -12,7 +12,7 @@ describe("Diary", () => {
   it("renders the date in the locale passed to it", () => {
     const diaryDateResult = DiaryDate.from("2010-01-01");
     failWithError(diaryDateResult);
-    withResult<DiaryDate>(diaryDateResult, (date) => {
+    withResult(diaryDateResult, (date) => {
       const formattedDate = render(<FormattedDate />, {
         wrapper: wrap(withLocale("en-AU"), withDate(date)),
       });
