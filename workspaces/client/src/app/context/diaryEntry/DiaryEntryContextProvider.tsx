@@ -1,10 +1,10 @@
+import { type DiaryEntry } from "@diary/server/src/resolvers-types";
 import {
   useDiaryEntryQuery,
   useUpdateDiaryEntryMutation,
 } from "app/graphql/queries";
 import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
 import { useCallback, useEffect, useState } from "react";
-import { type DiaryEntry } from "server/src/resolvers-types";
 import { useDate } from "../date/DateContext";
 import { DiaryEntryContext } from "./DiaryEntryContext";
 

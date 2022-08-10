@@ -1,9 +1,9 @@
+import { type DiaryEntry } from "@diary/server/src/resolvers-types";
 import {
   DIARY_ENTRY_QUERY,
   UPDATE_DIARY_ENTRY_MUTATION,
 } from "app/graphql/queries";
 import { createMockClient, type MockApolloClient } from "mock-apollo-client";
-import { type DiaryEntry } from "server/src/resolvers-types";
 import { vi } from "vitest";
 import { buildDiaryEntry } from "../lib/util/buildDiaryEntry";
 

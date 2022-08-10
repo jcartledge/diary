@@ -1,8 +1,8 @@
+import { withResult } from "@diary/shared/ResultOrError";
 import { render } from "@testing-library/react";
 import { withDate } from "app/context/date/DateContext.testWrapper";
 import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
 import { DiaryDate } from "lib/util/DiaryDate";
-import { withResult } from "lib/util/ResultOrError/withResult";
 import { wrap } from "souvlaki";
 import { failWithError } from "test/failWithError";
 import { describe, expect, it } from "vitest";
@@ -12,7 +12,7 @@ describe("Diary", () => {
   it("renders the date in the locale passed to it", () => {
     const diaryDateResult = DiaryDate.from("2010-01-01");
     failWithError(diaryDateResult);
-    withResult(diaryDateResult, (date) => {
+    withResult<DiaryDate>(diaryDateResult, (date) => {
       const formattedDate = render(<FormattedDate />, {
         wrapper: wrap(withLocale("en-AU"), withDate(date)),
       });

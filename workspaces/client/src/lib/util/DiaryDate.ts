@@ -1,6 +1,4 @@
-import { error } from "@diary/shared/ResultOrError/error";
-import { result } from "@diary/shared/ResultOrError/result";
-import { type ResultOrError } from "@diary/shared/types/either.types";
+import { error, result, type ResultOrError } from "@diary/shared/ResultOrError";
 import { isValidDate } from "iso-datestring-validator";
 
 export class DiaryDate {
