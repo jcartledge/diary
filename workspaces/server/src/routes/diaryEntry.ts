@@ -1,10 +1,13 @@
 import { withError, withResult } from "@diary/shared/ResultOrError";
 import { type Express } from "express";
-import { DiaryEntryResolver } from "./DiaryEntryResolver";
+import { type DiaryEntryResolver } from "../resolvers/DiaryEntryResolver";
 
 const DIARYENTRY_PATH = "/diaryentry/:isoDateString";
 
-export const applyRoutes = (app: Express, resolver: DiaryEntryResolver) => {
+export const applyDiaryEntryRoutes = (
+  app: Express,
+  resolver: DiaryEntryResolver
+) => {
   app.route(DIARYENTRY_PATH).get((req, res) => {
     const result = resolver.getDiaryEntry(req.params.isoDateString);
     withResult(result, (diaryEntry) => res.type("json").send({ diaryEntry }));

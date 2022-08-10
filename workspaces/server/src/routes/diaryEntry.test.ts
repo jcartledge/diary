@@ -3,16 +3,16 @@ import express from "express";
 import { buildDiaryEntry } from "src/datasources/diaryEntries";
 import request from "supertest";
 import { describe, expect, it, vi } from "vitest";
-import { applyRoutes } from ".";
 import {
   buildMockDiaryEntryResolver,
   DiaryEntryResolverError,
-} from "./DiaryEntryResolver";
+} from "../resolvers/DiaryEntryResolver";
+import { applyDiaryEntryRoutes } from "./diaryEntry";
 
 describe("get diaryEntry route", () => {
   it("sends a json response", async () => {
     const app = express();
-    applyRoutes(app, buildMockDiaryEntryResolver());
+    applyDiaryEntryRoutes(app, buildMockDiaryEntryResolver());
 
     const response = await request(app).get("/diaryentry/foo");
 
@@ -25,7 +25,7 @@ describe("get diaryEntry route", () => {
     });
 
     const app = express();
-    applyRoutes(app, resolver);
+    applyDiaryEntryRoutes(app, resolver);
 
     const response = await request(app).get("/diaryentry/foo");
 
@@ -36,7 +36,7 @@ describe("get diaryEntry route", () => {
 
   it("sends 200 status if resolver is successful", async () => {
     const app = express();
-    applyRoutes(app, buildMockDiaryEntryResolver());
+    applyDiaryEntryRoutes(app, buildMockDiaryEntryResolver());
 
     const response = await request(app).get("/diaryentry/foo");
 
@@ -49,7 +49,7 @@ describe("get diaryEntry route", () => {
     });
 
     const app = express();
-    applyRoutes(app, resolver);
+    applyDiaryEntryRoutes(app, resolver);
 
     const response = await request(app).get("/diaryentry/foo");
 
@@ -64,7 +64,7 @@ describe("get diaryEntry route", () => {
     });
 
     const app = express();
-    applyRoutes(app, resolver);
+    applyDiaryEntryRoutes(app, resolver);
 
     const response = await request(app).get("/diaryentry/foo");
 
