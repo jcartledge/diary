@@ -48,3 +48,6 @@ export class DiaryEntriesRepository {
     return response.rows[0];
   }
 }
+
+type PublicInterface<T> = { [K in keyof T]: T[K] };
+export type DiaryEntriesRepositoryMethods = PublicInterface<DiaryEntriesRepository>;

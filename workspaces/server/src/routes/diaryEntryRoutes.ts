@@ -1,15 +1,15 @@
+import { type DiaryEntriesResolver } from "src/resolvers/diaryEntriesResolver";
 import { withError, withResult } from "@diary/shared/ResultOrError";
 import { type Express } from "express";
-import { type DiaryEntryResolver } from "../resolvers/diaryEntryResolver";
 
 const DIARYENTRY_PATH = "/diaryentry/:isoDateString";
 
 export const applyDiaryEntryRoutes = (
   app: Express,
-  resolver: DiaryEntryResolver
+  resolver: DiaryEntriesResolver
 ) => {
-  app.route(DIARYENTRY_PATH).get((req, res) => {
-    const result = resolver.getDiaryEntry(req.params.isoDateString);
+  app.route(DIARYENTRY_PATH).get(async (req, res) => {
+    const result = await resolver.getDiaryEntry(req.params.isoDateString);
     withResult(result, (diaryEntry) => res.type("json").send({ diaryEntry }));
     withError(result, ({ message }) => res.status(404).send({ message }));
   });
