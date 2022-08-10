@@ -1,23 +1,14 @@
 import { withError, withResult } from "@diary/shared/ResultOrError";
-import { Builder } from "@diary/shared/types/builder.types";
 import { buildDiaryEntry } from "src/buildDiaryEntry";
-import { DiaryEntriesRepositoryMethods } from "src/repositories/diaryEntriesRepository";
 import { describe, expect, it, vi } from "vitest";
+import { buildMockDiaryEntriesRepository } from "../repositories/buildMockDiaryEntriesRepository";
 import { DiaryEntriesResolver } from "./diaryEntriesResolver";
-
-const buildMockDiaryEntryRepository: Builder<DiaryEntriesRepositoryMethods> = (
-  overrides = {}
-) => ({
-  getByDate: vi.fn(),
-  save: vi.fn(),
-  ...overrides,
-});
 
 describe("getDiaryEntry", () => {
   it("returns a diaryEntry if found", async () => {
     const diaryEntry = buildDiaryEntry();
     const resolver = new DiaryEntriesResolver(
-      buildMockDiaryEntryRepository({
+      buildMockDiaryEntriesRepository({
         getByDate: vi.fn().mockResolvedValue(diaryEntry),
       })
     );
@@ -32,7 +23,7 @@ describe("getDiaryEntry", () => {
 
   it("returns an error if the repository throws", async () => {
     const resolver = new DiaryEntriesResolver(
-      buildMockDiaryEntryRepository({
+      buildMockDiaryEntriesRepository({
         getByDate: vi.fn(() => {
           throw new Error("test error");
         }),
@@ -48,7 +39,7 @@ describe("getDiaryEntry", () => {
 describe("post diary entry route", () => {
   it("returns diaryEntry if one is found", async () => {
     const resolver = new DiaryEntriesResolver(
-      buildMockDiaryEntryRepository({
+      buildMockDiaryEntriesRepository({
         save: vi.fn((diaryEntry) => Promise.resolve(diaryEntry)),
       })
     );
@@ -64,7 +55,7 @@ describe("post diary entry route", () => {
 
   it("returns an error if the repository throws", async () => {
     const resolver = new DiaryEntriesResolver(
-      buildMockDiaryEntryRepository({
+      buildMockDiaryEntriesRepository({
         save: vi.fn(() => {
           throw new Error("test error 2");
         }),
