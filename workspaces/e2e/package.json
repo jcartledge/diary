@@ -1,5 +1,5 @@
 {
-  "name": "e2e",
+  "name": "@diary/e2e",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",

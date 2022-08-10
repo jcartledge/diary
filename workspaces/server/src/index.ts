@@ -14,6 +14,8 @@ getDbClient().then(async (client) => {
   const httpServer = http.createServer(app);
   await server.start();
   server.applyMiddleware({ app });
+
+  
   await new Promise<void>((resolve) =>
     httpServer.listen({ port: 4000 }, resolve)
   );

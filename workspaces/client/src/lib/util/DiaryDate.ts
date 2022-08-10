@@ -1,7 +1,7 @@
+import { error } from "@diary/shared/ResultOrError/error";
+import { result } from "@diary/shared/ResultOrError/result";
+import { type ResultOrError } from "@diary/shared/types/either.types";
 import { isValidDate } from "iso-datestring-validator";
-import { error } from "./ResultOrError/error";
-import { result } from "./ResultOrError/result";
-import { type ResultOrError } from "./types/either.types";
 
 export class DiaryDate {
   private date: Date;

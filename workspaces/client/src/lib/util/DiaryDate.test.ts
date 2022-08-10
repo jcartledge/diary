@@ -1,7 +1,7 @@
+import { withResult } from "@diary/shared/ResultOrError/withResult";
 import { describe, expect, it } from "vitest";
 import { failWithError } from "../../test/failWithError";
 import { DiaryDate } from "./DiaryDate";
-import { withResult } from "./ResultOrError/withResult";
 
 describe("DiaryDate", () => {
   describe("getKey", () => {

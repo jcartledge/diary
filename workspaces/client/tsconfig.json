@@ -27,5 +27,5 @@
     "noFallthroughCasesInSwitch": true,
     "noEmit": true
   },
-  "include": ["src"]
+  "include": ["src", "../shared/types", "../shared/ResultOrError"]
 }

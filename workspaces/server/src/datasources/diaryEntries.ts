@@ -5,7 +5,7 @@ import { type DiaryEntry } from "../resolvers-types";
 export const diaryEntriesTableName = "diary_entries";
 
 export const buildDiaryEntry = (
-  overrides: Partial<DiaryEntry>
+  overrides: Partial<DiaryEntry> = {}
 ): DiaryEntry => ({
   date: "",
   whatHappened: "",
