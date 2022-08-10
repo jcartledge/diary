@@ -10,7 +10,7 @@ containers:
   diary-client-dev:
     image: node:18.7.0
     working_directory: /app
-    command: yarn workspace client dev --host
+    command: yarn workspace @diary/client dev --host
     environment:
       NODE_PATH: src
       VITE_GRAPHQL_URI: http://localhost:4000/graphql
@@ -46,24 +46,24 @@ tasks:
   client-lint:
     run:
       container: diary-build-env
-      command: yarn workspace client lint
+      command: yarn workspace @diary/client lint
 
   client-test:
     prerequisites:
       - setup
     run:
       container: diary-build-env
-      command: yarn workspace client test
+      command: yarn workspace @diary/client test
 
   client-coverage:
     run:
       container: diary-build-env
-      command: yarn workspace client coverage
+      command: yarn workspace @diary/client coverage
 
   client-build:
     run:
       container: diary-build-env
-      command: yarn workspace client build
+      command: yarn workspace @diary/client build
       environment:
         VITE_GRAPHQL_URI: __GRAPHQL_URI
         VITE_TOGGLES: __TOGGLES
