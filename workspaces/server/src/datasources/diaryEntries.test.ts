@@ -1,4 +1,4 @@
-import { getDbClient } from "server/src/getDbClient";
+import { getDbClient } from "../getDbClient";
 import { describe, expect, it } from "vitest";
 import {
   buildDiaryEntry,
