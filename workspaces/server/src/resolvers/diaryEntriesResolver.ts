@@ -1,8 +1,7 @@
 import { error, result, ResultOrError } from "@diary/shared/ResultOrError";
 import { type DiaryEntriesRepositoryMethods } from "src/repositories/diaryEntriesRepository";
 import { DiaryEntry } from "src/resolvers-types";
-
-export class DiaryEntriesResolverError extends Error {}
+import { DiaryEntriesResolverError } from "./DiaryEntriesResolverError";
 
 export class DiaryEntriesResolver {
   constructor(private repository: DiaryEntriesRepositoryMethods) {}
@@ -14,7 +13,7 @@ export class DiaryEntriesResolver {
       return result(await this.repository.getByDate(date));
     } catch (e: unknown) {
       const { message } = e as Error;
-      return error(new DiaryEntriesResolverError(message ?? ""));
+      return error(new DiaryEntriesResolverError(message));
     }
   }
 
@@ -25,7 +24,7 @@ export class DiaryEntriesResolver {
       return result(await this.repository.save(diaryEntry));
     } catch (e: unknown) {
       const { message } = e as Error;
-      return error(new DiaryEntriesResolverError(message ?? ""));
+      return error(new DiaryEntriesResolverError(message));
     }
   }
 }
