@@ -12,7 +12,7 @@ fileignoreconfig:
     checksum: 77d22db7019962d6f5047e76375fdf29d18dfcd72c0c106e1ae40b4efbab6cf8
     ignore_detectors: []
   - filename: .github/workflows/ci.yml
-    checksum: bd68b22046f54b9e5fb1463478624fc9d3ac1c61d22d7476e7fcd9b3cffa2bed
+    checksum: 0911dd13105ac8d49233822bbdea47313a83253eeacdaad4b20983ff5504bef4
     ignore_detectors: []
   - filename: workspaces/server/initdb.d/diary_entries.table.sql
     checksum: 8ec06f9343c598b1a92b2ffbdb92e7b1f62f62a6b6a9f53268ffe9e50276cf9f

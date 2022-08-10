@@ -132,8 +132,6 @@ jobs:
       TERM: xterm-256color
       BATECT_CACHE_TYPE: directory
       BATECT_ENABLE_TELEMETRY: true
-      E2E_USER: ${{ secrets.E2E_USER }}
-      E2E_PASS: ${{ secrets.E2E_PASS }}
 
     steps:
       - uses: actions/checkout@v3
@@ -164,6 +162,9 @@ jobs:
         run: ./batect client-cert
 
       - name: e2e
+        env:
+          E2E_USER: ${{ secrets.E2E_USER }}
+          E2E_PASS: ${{ secrets.E2E_PASS }}
         run: ./batect e2e
 
       - name: Upload artifacts
