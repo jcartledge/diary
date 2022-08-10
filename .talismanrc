@@ -18,7 +18,7 @@ fileignoreconfig:
     checksum: 8ec06f9343c598b1a92b2ffbdb92e7b1f62f62a6b6a9f53268ffe9e50276cf9f
     ignore_detectors: []
   - filename: batect-e2e.yml
-    checksum: b55228bed2850fb2d663565c769ad6b0f33c9c614c11b28fd6d12161c22abac8
+    checksum: a29c0bbf0b68f0d1bbac4db203ab6637a11f49ec46507fe3108f7e9aa609e277
     ignore_detectors: []
 scopeconfig:
   - scope: node

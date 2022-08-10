@@ -8,6 +8,8 @@ containers:
       - diary-client
     environment:
       CLIENT_URI: "https://diary-client"
+      E2E_USER: ${E2E_USER:-}
+      E2E_PASS: ${E2E_PASS:-}
     volumes:
       - local: .
         container: /app
