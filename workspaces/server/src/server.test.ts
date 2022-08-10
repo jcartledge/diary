@@ -1,19 +1,21 @@
 import { ExpressContext, gql, type ApolloServer } from "apollo-server-express";
 import { type Client } from "pg";
 import { describe, expect, it } from "vitest";
-import {
-  buildDiaryEntry,
-  DiaryEntriesDataSource,
-  diaryEntriesTableName,
-} from "./datasources/diaryEntries";
+import { buildDiaryEntry } from "./buildDiaryEntry";
+import { DiaryEntriesDataSource } from "./datasources/diaryEntriesDataSource";
 import { getDbClient } from "./getDbClient";
+import {
+  DiaryEntriesRepository,
+  DIARY_ENTRIES_TABLE_NAME,
+} from "./repositories/diaryEntriesRepository";
 import { type DiaryEntry } from "./resolvers-types";
 import { buildServer } from "./server";
 
 const buildServerWithMockedDb = async (
   client: Client
 ): Promise<ApolloServer<ExpressContext>> => {
-  const diaryEntriesDataSource = new DiaryEntriesDataSource(client);
+  const repository = new DiaryEntriesRepository(client);
+  const diaryEntriesDataSource = new DiaryEntriesDataSource(repository);
   const dataSources = () => ({ diaryEntriesDataSource });
   return buildServer(dataSources);
 };
@@ -51,7 +53,7 @@ const setup = async (diaryEntries: DiaryEntry[] = []) => {
   await createDiaryEntries(dbClient, diaryEntries);
   const apolloServer = await buildServerWithMockedDb(dbClient);
   const cleanup = async () => {
-    await dbClient.query(`DELETE FROM "${diaryEntriesTableName}"`);
+    await dbClient.query(`DELETE FROM "${DIARY_ENTRIES_TABLE_NAME}"`);
     await dbClient.end();
   };
   return { apolloServer, dbClient, cleanup };
@@ -61,7 +63,9 @@ const createDiaryEntries = async (
   dbClient: Client,
   diaryEntries: DiaryEntry[]
 ): Promise<void> => {
-  const diaryEntriesDataSource = new DiaryEntriesDataSource(dbClient);
+  const diaryEntriesDataSource = new DiaryEntriesDataSource(
+    new DiaryEntriesRepository(dbClient)
+  );
   diaryEntries.forEach(
     async (diaryEntry) => await diaryEntriesDataSource.save(diaryEntry)
   );

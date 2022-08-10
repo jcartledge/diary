@@ -1,6 +1,6 @@
 import { withError, withResult } from "@diary/shared/ResultOrError";
 import { type Express } from "express";
-import { type DiaryEntryResolver } from "../resolvers/DiaryEntryResolver";
+import { type DiaryEntryResolver } from "../resolvers/diaryEntryResolver";
 
 const DIARYENTRY_PATH = "/diaryentry/:isoDateString";
 

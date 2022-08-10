@@ -1,12 +1,14 @@
 import express from "express";
 import http from "http";
-import { DiaryEntriesDataSource } from "./datasources/diaryEntries";
+import { DiaryEntriesDataSource } from "./datasources/diaryEntriesDataSource";
 import { getDbClient } from "./getDbClient";
+import { DiaryEntriesRepository } from "./repositories/diaryEntriesRepository";
 import { buildServer } from "./server";
 
 getDbClient().then(async (client) => {
+  const repository = new DiaryEntriesRepository(client);
   const dataSources = () => ({
-    diaryEntriesDataSource: new DiaryEntriesDataSource(client),
+    diaryEntriesDataSource: new DiaryEntriesDataSource(repository),
   });
 
   const server = buildServer(dataSources);
@@ -15,7 +17,6 @@ getDbClient().then(async (client) => {
   await server.start();
   server.applyMiddleware({ app });
 
-  
   await new Promise<void>((resolve) =>
     httpServer.listen({ port: 4000 }, resolve)
   );

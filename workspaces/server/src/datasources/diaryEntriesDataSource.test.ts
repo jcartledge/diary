@@ -1,16 +1,16 @@
-import { getDbClient } from "../getDbClient";
+import { buildDiaryEntry } from "src/buildDiaryEntry";
 import { describe, expect, it } from "vitest";
+import { getDbClient } from "../getDbClient";
+import { DiaryEntriesRepository, DIARY_ENTRIES_TABLE_NAME } from "../repositories/diaryEntriesRepository";
 import {
-  buildDiaryEntry,
-  DiaryEntriesDataSource,
-  diaryEntriesTableName,
-} from "./diaryEntries";
+  DiaryEntriesDataSource
+} from "./diaryEntriesDataSource";
 
 const setup = async () => {
   const client = await getDbClient();
-  const diaryEntriesDataSource = new DiaryEntriesDataSource(client);
+  const diaryEntriesDataSource = new DiaryEntriesDataSource(new DiaryEntriesRepository(client));
   const cleanup = async () => {
-    await client.query(`DELETE FROM "${diaryEntriesTableName}"`);
+    await client.query(`DELETE FROM "${DIARY_ENTRIES_TABLE_NAME}"`);
     await client.end();
   };
   return { diaryEntriesDataSource, cleanup };

@@ -1,13 +1,11 @@
 import { error, result } from "@diary/shared/ResultOrError";
 import express from "express";
-import { buildDiaryEntry } from "src/datasources/diaryEntries";
+import { buildDiaryEntry } from "src/buildDiaryEntry";
 import request from "supertest";
 import { describe, expect, it, vi } from "vitest";
-import {
-  buildMockDiaryEntryResolver,
-  DiaryEntryResolverError,
-} from "../resolvers/DiaryEntryResolver";
-import { applyDiaryEntryRoutes } from "./diaryEntry";
+import { buildMockDiaryEntryResolver } from "../resolvers/buildMockDiaryEntryResolver";
+import { DiaryEntryResolverError } from "../resolvers/diaryEntryResolver";
+import { applyDiaryEntryRoutes } from "./diaryEntryRoutes";
 
 describe("get diaryEntry route", () => {
   it("sends a json response", async () => {
