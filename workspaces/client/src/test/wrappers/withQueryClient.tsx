@@ -6,7 +6,18 @@ export const withQueryClient = createHelper(
   (): React.FC<PropsWithChildren> =>
     ({ children }) =>
       (
-        <QueryClientProvider client={new QueryClient()}>
+        <QueryClientProvider
+          client={
+            new QueryClient({
+              defaultOptions: { queries: { retry: false } },
+              logger: {
+                log: console.log,
+                warn: console.warn,
+                error: () => {},
+              },
+            })
+          }
+        >
           {children}
         </QueryClientProvider>
       )
