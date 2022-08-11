@@ -4,6 +4,7 @@ import matchers, {
 } from "@testing-library/jest-dom/matchers";
 import { cleanup } from "@testing-library/react";
 import { afterEach, beforeEach, expect } from "vitest";
+import "whatwg-fetch";
 
 declare global {
   namespace Vi {
