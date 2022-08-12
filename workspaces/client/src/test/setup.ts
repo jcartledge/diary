@@ -3,8 +3,9 @@ import matchers, {
   TestingLibraryMatchers,
 } from "@testing-library/jest-dom/matchers";
 import { cleanup } from "@testing-library/react";
-import { afterEach, beforeEach, expect } from "vitest";
+import { afterAll, afterEach, beforeAll, beforeEach, expect } from "vitest";
 import "whatwg-fetch";
+import { server } from "./mocks/server";
 
 declare global {
   namespace Vi {
@@ -23,3 +24,8 @@ beforeEach(() => {
 afterEach(() => {
   cleanup();
 });
+
+// mock service worker setup
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
