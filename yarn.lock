@@ -2151,7 +2151,7 @@ __metadata:
     iso-datestring-validator: 2.2.2
     jsdom: 20.0.0
     mock-apollo-client: 1.2.0
-    msw: ^0.44.2
+    msw: 0.44.2
     react: 18.2.0
     react-dom: 18.2.0
     react-is: 18.2.0
@@ -2164,7 +2164,7 @@ __metadata:
     vite: 3.0.5
     vite-tsconfig-paths: 3.5.0
     vitest: 0.21.1
-    whatwg-fetch: ^3.6.2
+    whatwg-fetch: 3.6.2
   languageName: unknown
   linkType: soft
 
@@ -9625,7 +9625,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:^0.44.2":
+"msw@npm:0.44.2":
   version: 0.44.2
   resolution: "msw@npm:0.44.2"
   dependencies:
@@ -12937,7 +12937,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"whatwg-fetch@npm:^3.4.1, whatwg-fetch@npm:^3.6.2":
+"whatwg-fetch@npm:3.6.2, whatwg-fetch@npm:^3.4.1":
   version: 3.6.2
   resolution: "whatwg-fetch@npm:3.6.2"
   checksum: ee976b7249e7791edb0d0a62cd806b29006ad7ec3a3d89145921ad8c00a3a67e4be8f3fb3ec6bc7b58498724fd568d11aeeeea1f7827e7e1e5eae6c8a275afed
