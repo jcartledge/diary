@@ -52,7 +52,7 @@
     "graphql": "16.5.0",
     "iso-datestring-validator": "2.2.2",
     "jsdom": "20.0.0",
-    "mock-apollo-client": "1.2.0",
+    "mock-apollo-client": "1.2.1",
     "msw": "0.44.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
