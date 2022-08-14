@@ -47,7 +47,7 @@ containers:
         container: /app/e2e/node_modules
 
   diary-db:
-    image: postgres:14.4
+    image: postgres:14.5
     health_check:
       command: pg_isready -d postgresql://dev:dev@diary-db:5432/dev
       interval: 5s
