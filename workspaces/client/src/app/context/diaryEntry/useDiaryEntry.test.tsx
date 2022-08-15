@@ -1,17 +1,14 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
 import { wrap } from "souvlaki";
-import { withApollo } from "souvlaki-apollo";
-import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { mockConsoleError, unmockConsoleError } from "test/mockConsoleError";
+import { mockPostDiaryEntry } from "test/mocks/mockDiaryEntry";
+import { withQueryClient } from "test/wrappers/withQueryClient";
 import { describe, expect, it } from "vitest";
 import { withDiaryEntry } from "./DiaryEntryContextProvider.testWrapper";
 import { useDiaryEntry } from "./useDiaryEntry";
 
 const wrappers = () => ({
-  wrapper: wrap(
-    withApollo(buildMockApolloClient()),
-    withDiaryEntry({ saveTimeoutInterval: 1 })
-  ),
+  wrapper: wrap(withQueryClient(), withDiaryEntry({ saveTimeoutInterval: 1 })),
 });
 
 describe("useDiaryEntry", () => {
@@ -49,6 +46,7 @@ describe("useDiaryEntry", () => {
   });
 
   it("sets isDirty to false when the entry has been saved", async () => {
+    mockPostDiaryEntry();
     const { result } = renderHook(useDiaryEntry, wrappers());
 
     act(() => result.current.updateDiaryEntry("whatHappened")("foo"));

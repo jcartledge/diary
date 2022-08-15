@@ -5,8 +5,6 @@ import { buildDiaryPageRoute } from "app/routes/buildDiaryPageRoute";
 import { HistoryRouter, Route } from "lib/router";
 import { DiaryDate } from "lib/util/DiaryDate";
 import { wrap } from "souvlaki";
-import { withApollo } from "souvlaki-apollo";
-import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { describe, expect, it } from "vitest";
 import DatePrevButton from "./DatePrevButton";
 
@@ -27,7 +25,7 @@ describe("DatePrevButton", () => {
         <Route path={yesterdayPath}>OK</Route>
       </HistoryRouter>,
       {
-        wrapper: wrap(withApollo(buildMockApolloClient()), withDate(today)),
+        wrapper: wrap(withDate(today)),
       }
     );
 

@@ -4,9 +4,8 @@ import { withRouter } from "lib/router";
 import { withToggles } from "lib/toggles/TogglesProvider.testWrapper";
 import { DiaryDate } from "lib/util/DiaryDate";
 import { wrap } from "souvlaki";
-import { withApollo } from "souvlaki-apollo";
-import { buildMockApolloClient } from "test/buildMockApolloClient";
 import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
+import { withQueryClient } from "test/wrappers/withQueryClient";
 import { describe, expect, it } from "vitest";
 import { buildDiaryPageRoute } from "./buildDiaryPageRoute";
 import { Routes } from "./Routes";
@@ -18,10 +17,10 @@ describe("Routes", () => {
     it("renders the diary entry for the date in the route", () => {
       render(<Routes />, {
         wrapper: wrap(
+          withQueryClient(),
           withToggles(),
           withAuthenticatedUser,
           withRouter(buildDiaryPageRoute("2020-01-01")),
-          withApollo(buildMockApolloClient()),
           withLocale("en-AU")
         ),
       });
@@ -32,10 +31,10 @@ describe("Routes", () => {
     it("redirects to the current date if no path is provided", () => {
       render(<Routes />, {
         wrapper: wrap(
+          withQueryClient(),
           withToggles(),
           withAuthenticatedUser,
           withRouter("/"),
-          withApollo(buildMockApolloClient()),
           withLocale("en-AU")
         ),
       });

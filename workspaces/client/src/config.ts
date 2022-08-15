@@ -5,9 +5,8 @@ const auth0 = {
 };
 const toggles = (import.meta.env.VITE_TOGGLES || "").split(/\s+/);
 
-enum Toggles {
-  NEW_BACKEND = "new-backend",
-}
+// add toggle keys to this enum
+enum Toggles {}
 
 const bffUri = import.meta.env.VITE_BFF_URI ?? "";
 
