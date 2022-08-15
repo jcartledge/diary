@@ -2,7 +2,7 @@ import DiaryEntryInput from "app/components/molecules/DiaryEntryInput";
 import { useDiaryEntry } from "app/context/diaryEntry/useDiaryEntry";
 
 const DiaryPageForm: React.FC = () => {
-  const { diaryEntry, updateDiaryEntry } = useDiaryEntry();
+  const { diaryEntry, updateDiaryEntry, isDirty } = useDiaryEntry();
   return (
     <div>
       <div className="grid">
@@ -34,6 +34,11 @@ const DiaryPageForm: React.FC = () => {
           updateField={updateDiaryEntry("risk")}
         />
       </div>
+      {isDirty && (
+        <div aria-busy>
+          <small>Saving...</small>
+        </div>
+      )}
     </div>
   );
 };

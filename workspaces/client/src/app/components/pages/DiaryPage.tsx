@@ -1,3 +1,4 @@
+import { isError } from "@diary/shared/ResultOrError";
 import DiaryHeader from "app/components/organisms/DiaryHeader";
 import DiaryPageForm from "app/components/organisms/DiaryPageForm";
 import { DateContext } from "app/context/date/DateContext";
@@ -8,7 +9,7 @@ import { DiaryFooter } from "../organisms/DiaryFooter";
 
 const DiaryPage = () => {
   const date = DiaryDate.from(useParam("isoDateString"));
-  return "error" in date ? (
+  return isError(date) ? (
     <DiaryErrorPage />
   ) : (
     <DateContext.Provider value={date.result}>

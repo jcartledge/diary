@@ -5,4 +5,8 @@ const auth0 = {
 };
 const toggles = (import.meta.env.VITE_TOGGLES || "").split(/\s+/);
 
-export { auth0, toggles };
+enum Toggles {
+  NEW_BACKEND = "new-backend",
+}
+
+export { auth0, toggles, Toggles };
