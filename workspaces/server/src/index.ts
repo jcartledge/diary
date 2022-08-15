@@ -3,6 +3,8 @@ import { getApp } from "./app";
 import { DiaryEntriesDataSource } from "./datasources/diaryEntriesDataSource";
 import { getDbClient } from "./getDbClient";
 import { DiaryEntriesRepository } from "./repositories/diaryEntriesRepository";
+import { DiaryEntriesResolver } from "./resolvers/diaryEntriesResolver";
+import { applyDiaryEntryRoutes } from "./routes/diaryEntryRoutes";
 import { buildServer } from "./server";
 
 const app = getApp();
@@ -17,6 +19,8 @@ getDbClient().then(async (client) => {
   const httpServer = http.createServer(app);
   await server.start();
   server.applyMiddleware({ app });
+
+  applyDiaryEntryRoutes(app, new DiaryEntriesResolver(repository));
 
   await new Promise<void>((resolve) =>
     httpServer.listen({ port: 4000 }, resolve)

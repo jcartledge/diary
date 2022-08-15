@@ -2,7 +2,7 @@ import { ApolloClient, from, HttpLink, InMemoryCache } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 
 const httpLink = new HttpLink({
-  uri: import.meta.env.VITE_GRAPHQL_URI,
+  uri: import.meta.env.VITE_BFF_URI,
 });
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {

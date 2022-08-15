@@ -1,9 +1,10 @@
 import { DiaryEntry } from "@diary/server/src/resolvers-types";
 import { useMutation } from "@tanstack/react-query";
+import { bffUri } from "config";
 
 export const useUpdateDiaryEntryMutation = () =>
   useMutation(async (diaryEntry: DiaryEntry) => {
-    const response = await fetch(`/diaryentry/${diaryEntry.date}`, {
+    const response = await fetch(`${bffUri}/diaryentry/${diaryEntry.date}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

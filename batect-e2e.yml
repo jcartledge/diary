@@ -31,7 +31,7 @@ tasks:
     customise:
       diary-client:
         environment:
-          GRAPHQL_URI: https://diary-server-gateway/graphql
+          BFF_URI: https://diary-server-gateway/graphql
           AUTH0_CALLBACK_URI: https://diary-client
           AUTH0_DOMAIN: dev-dgeyym9v.au.auth0.com
           AUTH0_CLIENT_ID: OIpPvf351DRBU1InkCPZGZc3sJXf6JaY

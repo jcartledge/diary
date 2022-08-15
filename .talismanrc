@@ -9,7 +9,7 @@ fileignoreconfig:
     checksum: 14c978fe87bd8fe2d53a2f34a19e900e7bd20b23159da19a17585138beb2c700
     ignore_detectors: []
   - filename: workspaces/client/nginx/templates/env.conf.template
-    checksum: 77d22db7019962d6f5047e76375fdf29d18dfcd72c0c106e1ae40b4efbab6cf8
+    checksum: a4e2ef8d910d96ce4e0fac1133250ac3aa9fa5b07bb122b37d65d32e74873b83
     ignore_detectors: []
   - filename: .github/workflows/ci.yml
     checksum: 0911dd13105ac8d49233822bbdea47313a83253eeacdaad4b20983ff5504bef4

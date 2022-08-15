@@ -2284,6 +2284,7 @@ __metadata:
     apollo-server-express: ^3.10.0
     body-parser: ^1.20.0
     concurrently: ^7.2.1
+    cors: ^2.8.5
     eslint: 8.22.0
     eslint-config-airbnb-base: 15.0.0
     eslint-plugin-import: 2.26.0

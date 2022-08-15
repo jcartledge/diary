@@ -13,7 +13,7 @@ containers:
     command: yarn workspace @diary/client dev --host
     environment:
       NODE_PATH: src
-      VITE_GRAPHQL_URI: http://localhost:4000/graphql
+      VITE_BFF_URI: http://localhost:4000/graphql
     ports:
       - 3000:3000
     health_check:
@@ -65,7 +65,7 @@ tasks:
       container: diary-build-env
       command: yarn workspace @diary/client build
       environment:
-        VITE_GRAPHQL_URI: __GRAPHQL_URI
+        VITE_BFF_URI: __BFF_URI
         VITE_TOGGLES: __TOGGLES
         VITE_AUTH0_DOMAIN: __AUTH0_DOMAIN
         VITE_AUTH0_CLIENT_ID: __AUTH0_CLIENT_ID

@@ -9,4 +9,6 @@ enum Toggles {
   NEW_BACKEND = "new-backend",
 }
 
-export { auth0, toggles, Toggles };
+const bffUri = import.meta.env.VITE_BFF_URI ?? "";
+
+export { auth0, toggles, Toggles, bffUri };
