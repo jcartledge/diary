@@ -54,11 +54,15 @@ tasks:
     run:
       container: diary-build-env
       command: yarn workspace @diary/client test
+      environment:
+        VITE_BFF_URI: http://TEST
 
   client-coverage:
     run:
       container: diary-build-env
       command: yarn workspace @diary/client coverage
+      environment:
+        VITE_BFF_URI: http://TEST
 
   client-build:
     run:
