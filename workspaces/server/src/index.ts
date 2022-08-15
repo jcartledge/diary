@@ -1,30 +1,21 @@
-import http from "http";
-import { getApp } from "./app";
-import { DiaryEntriesDataSource } from "./datasources/diaryEntriesDataSource";
+import bodyParser from "body-parser";
+import cors from "cors";
+import express from "express";
 import { getDbClient } from "./getDbClient";
 import { DiaryEntriesRepository } from "./repositories/diaryEntriesRepository";
 import { DiaryEntriesResolver } from "./resolvers/diaryEntriesResolver";
 import { applyDiaryEntryRoutes } from "./routes/diaryEntryRoutes";
-import { buildServer } from "./server";
 
-const app = getApp();
+const app = express()
+  .use(bodyParser.json())
+  .use(bodyParser.urlencoded({ extended: false }))
+  .use(cors());
 
 getDbClient().then(async (client) => {
   const repository = new DiaryEntriesRepository(client);
-  const dataSources = () => ({
-    diaryEntriesDataSource: new DiaryEntriesDataSource(repository),
-  });
-
-  const server = buildServer(dataSources);
-  const httpServer = http.createServer(app);
-  await server.start();
-  server.applyMiddleware({ app });
-
   applyDiaryEntryRoutes(app, new DiaryEntriesResolver(repository));
 
-  await new Promise<void>((resolve) =>
-    httpServer.listen({ port: 4000 }, resolve)
-  );
-
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
+  app.listen(4000, () => {
+    console.log(`Diary server listening on port ${4000}`);
+  });
 });
