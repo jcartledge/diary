@@ -1,4 +1,4 @@
-import { DiaryEntry } from "@diary/server/src/resolvers-types";
+import { DiaryEntry } from "@diary/shared/types/DiaryEntry.types";
 import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
 import { rest } from "msw";
 import { diaryEntryUri } from "test/mocks/diaryEntryUriTemplate";

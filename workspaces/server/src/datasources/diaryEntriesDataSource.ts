@@ -1,6 +1,6 @@
+import { type DiaryEntry } from "@diary/shared/types/DiaryEntry.types";
 import { DataSource } from "apollo-datasource";
 import { DiaryEntriesRepository } from "src/repositories/diaryEntriesRepository";
-import { type DiaryEntry } from "../resolvers-types";
 
 export class DiaryEntriesDataSource extends DataSource {
   constructor(private repository: DiaryEntriesRepository) {

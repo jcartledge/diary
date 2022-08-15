@@ -1,5 +1,5 @@
+import { buildDiaryEntry } from "@diary/shared/types/buildDiaryEntry";
 import { getApp } from "src/app";
-import { buildDiaryEntry } from "src/buildDiaryEntry";
 import { buildMockDiaryEntriesRepository } from "src/repositories/buildMockDiaryEntriesRepository";
 import { DiaryEntriesResolver } from "src/resolvers/diaryEntriesResolver";
 import request from "supertest";

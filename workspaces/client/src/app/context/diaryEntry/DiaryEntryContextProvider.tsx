@@ -1,4 +1,4 @@
-import { type DiaryEntry } from "@diary/server/src/resolvers-types";
+import { type DiaryEntry } from "@diary/shared/types/DiaryEntry.types";
 import { useDiaryEntryQuery } from "app/queries/useDiaryEntryQuery";
 import { useUpdateDiaryEntryMutation } from "app/queries/useUpdateDiaryEntryMutation";
 import { buildDiaryEntry } from "lib/util/buildDiaryEntry";

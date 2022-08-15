@@ -1,6 +1,6 @@
+import { buildDiaryEntry } from "@diary/shared/types/buildDiaryEntry";
+import { type DiaryEntry } from "@diary/shared/types/DiaryEntry.types";
 import { type Client } from "pg";
-import { buildDiaryEntry } from "../buildDiaryEntry";
-import { type DiaryEntry } from "../resolvers-types";
 
 export const DIARY_ENTRIES_TABLE_NAME = "diary_entries";
 const SELECT_QUERY = `SELECT * FROM "${DIARY_ENTRIES_TABLE_NAME}" WHERE date = $1`;
@@ -50,4 +50,5 @@ export class DiaryEntriesRepository {
 }
 
 type PublicInterface<T> = { [K in keyof T]: T[K] };
-export type DiaryEntriesRepositoryMethods = PublicInterface<DiaryEntriesRepository>;
+export type DiaryEntriesRepositoryMethods =
+  PublicInterface<DiaryEntriesRepository>;

@@ -1,4 +1,4 @@
-import { DiaryEntry } from "@diary/server/src/resolvers-types";
+import { DiaryEntry } from "@diary/shared/types/DiaryEntry.types";
 import { useMutation } from "@tanstack/react-query";
 import { bffUri } from "config";
 

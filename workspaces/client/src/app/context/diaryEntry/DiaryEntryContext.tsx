@@ -1,5 +1,5 @@
+import { type DiaryEntry } from "@diary/shared/types/DiaryEntry.types";
 import { createContext } from "react";
-import { type DiaryEntry } from "@diary/server/src/resolvers-types";
 
 export const DiaryEntryContext = createContext<
   | {

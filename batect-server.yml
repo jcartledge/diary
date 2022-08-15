@@ -60,13 +60,6 @@ containers:
       POSTGRES_DB: dev
 
 tasks:
-  server-codegen:
-    prerequisites:
-      - setup
-    run:
-      container: diary-build-env
-      command: yarn workspace @diary/server codegen
-
   server-lint:
     prerequisites:
       - setup
@@ -77,7 +70,6 @@ tasks:
   server-test:
     prerequisites:
       - setup
-      - server-codegen
     dependencies:
       - diary-db
     customise:
@@ -112,7 +104,6 @@ tasks:
   server-build:
     prerequisites:
       - setup
-      - server-codegen
     run:
       container: diary-build-env
       command: yarn workspace @diary/server build

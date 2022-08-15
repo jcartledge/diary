@@ -85,6 +85,5 @@ tasks:
     prerequisites:
       - client-lint
       - client-coverage
-      - server-codegen
       - client-build
       - client-package

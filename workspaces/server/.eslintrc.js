@@ -16,5 +16,4 @@ module.exports = {
     quotes: ["error", "double", { allowTemplateLiterals: true }],
     semi: ["error", "always"],
   },
-  ignorePatterns: ["resolvers-types.ts"],
 };

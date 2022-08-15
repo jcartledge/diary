@@ -1,4 +1,4 @@
-import { type DiaryEntry } from "./resolvers-types";
+import { type DiaryEntry } from "@diary/shared/types/DiaryEntry.types";
 
 export const buildDiaryEntry = (
   overrides: Partial<DiaryEntry> = {}

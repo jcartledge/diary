@@ -1,6 +1,6 @@
 import { error, result, ResultOrError } from "@diary/shared/ResultOrError";
+import { DiaryEntry } from "@diary/shared/types/DiaryEntry.types";
 import { type DiaryEntriesRepositoryMethods } from "src/repositories/diaryEntriesRepository";
-import { DiaryEntry } from "src/resolvers-types";
 import { DiaryEntriesResolverError } from "./DiaryEntriesResolverError";
 
 export class DiaryEntriesResolver {

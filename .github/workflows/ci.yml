@@ -34,16 +34,7 @@ jobs:
 
       - name: Audit dependencies
         run: ./batect check-deps
-
-      - name: Generate shared types
-        run: ./batect server-codegen
-
-      - name: Cache shared types
-        uses: actions/cache@v3
-        with:
-          path: ./workspaces/server/src/resolvers-types.ts
-          key: batect-caches-${{ hashFiles('./workspaces/server/src/resolvers-types.ts') }}
-
+  
   build-client:
     name: build-client
     needs: [setup]
@@ -66,12 +57,6 @@ jobs:
         with:
           path: .batect/caches
           key: batect-caches-${{ hashFiles('yarn.lock') }}
-
-      - name: Cache shared types
-        uses: actions/cache@v3
-        with:
-          path: ./workspaces/server/src/resolvers-types.ts
-          key: batect-caches-${{ hashFiles('./workspaces/server/src/resolvers-types.ts') }}
 
       - name: Build/test/package
         run: ./batect client-ci
@@ -103,12 +88,6 @@ jobs:
         with:
           path: .batect/caches
           key: batect-caches-${{ hashFiles('yarn.lock') }}
-
-      - name: Cache shared types
-        uses: actions/cache@v3
-        with:
-          path: ./workspaces/server/src/resolvers-types.ts
-          key: batect-caches-${{ hashFiles('./workspaces/server/src/resolvers-types.ts') }}
 
       - name: Lint code
         run: ./batect server-lint
