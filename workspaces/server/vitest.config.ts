@@ -5,7 +5,7 @@ export default defineConfig({
   test: {
     coverage: {
       all: true,
-      exclude: ["app.ts", "index.ts", "DiaryEntriesResolverError.ts"],
+      exclude: ["index.ts", "DiaryEntriesResolverError.ts"],
       src: ["./src"],
       reportsDirectory: "./output/coverage/report",
       lines: 100,

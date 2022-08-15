@@ -7,7 +7,7 @@ const DIARYENTRY_PATH = "/diaryentry/:isoDateString";
 export const applyDiaryEntryRoutes = (
   app: Express,
   resolver: DiaryEntriesResolver
-) => {
+): Express => {
   app
     .route(DIARYENTRY_PATH)
     .get(async (req, res) => {
@@ -20,4 +20,5 @@ export const applyDiaryEntryRoutes = (
       withResult(result, (diaryEntry) => res.type("json").send({ diaryEntry }));
       withError(result, ({ message }) => res.status(404).send({ message }));
     });
+  return app;
 };

@@ -2,7 +2,7 @@ import { buildDiaryEntry } from "@diary/shared/types/buildDiaryEntry";
 import { type DiaryEntry } from "@diary/shared/types/DiaryEntry.types";
 import { type Client } from "pg";
 
-export const DIARY_ENTRIES_TABLE_NAME = "diary_entries";
+const DIARY_ENTRIES_TABLE_NAME = "diary_entries";
 const SELECT_QUERY = `SELECT * FROM "${DIARY_ENTRIES_TABLE_NAME}" WHERE date = $1`;
 const UPSERT_QUERY = `
 INSERT INTO "${DIARY_ENTRIES_TABLE_NAME}"
@@ -17,10 +17,11 @@ SET "whatHappened" = EXCLUDED."whatHappened",
 `;
 
 export class DiaryEntriesRepository {
-  constructor(private client: Client) {}
+  constructor(private client: Promise<Client>) {}
 
   async getByDate(date: string): Promise<DiaryEntry> {
-    const response = await this.client.query<DiaryEntry>(SELECT_QUERY, [date]);
+    const client = await this.client;
+    const response = await client.query<DiaryEntry>(SELECT_QUERY, [date]);
     return response.rows[0] ?? this.createAndReturnByDate(date);
   }
 
@@ -37,7 +38,8 @@ export class DiaryEntriesRepository {
     couldBeImproved,
     risk,
   }: DiaryEntry): Promise<DiaryEntry> {
-    const response = await this.client.query<DiaryEntry>(UPSERT_QUERY, [
+    const client = await this.client;
+    const response = await client.query<DiaryEntry>(UPSERT_QUERY, [
       date,
       whatHappened,
       wentWell,

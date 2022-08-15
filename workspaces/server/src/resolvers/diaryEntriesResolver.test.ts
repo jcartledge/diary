@@ -1,5 +1,5 @@
 import { withError, withResult } from "@diary/shared/ResultOrError";
-import { buildDiaryEntry } from "src/buildDiaryEntry";
+import { buildDiaryEntry } from "@diary/shared/types/buildDiaryEntry";
 import { describe, expect, it, vi } from "vitest";
 import { buildMockDiaryEntriesRepository } from "../repositories/buildMockDiaryEntriesRepository";
 import { DiaryEntriesResolver } from "./diaryEntriesResolver";
