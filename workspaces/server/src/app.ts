@@ -4,7 +4,8 @@ import express from "express";
 import { getDbClient } from "./getDbClient";
 import { DiaryEntriesRepository } from "./repositories/diaryEntriesRepository";
 import { DiaryEntriesResolver } from "./resolvers/diaryEntriesResolver";
-import { applyDiaryEntryRoutes } from "./routes/diaryEntryRoutes";
+import { diaryEntryRoutes } from "./routes/diaryEntryRoutes";
+import { healthCheckRoute } from "./routes/healthCheckRoute";
 
 export const getApp = () =>
   express()
@@ -14,7 +15,10 @@ export const getApp = () =>
     .use(cors());
 
 export const getConfiguredApp = () =>
-  applyDiaryEntryRoutes(
-    getApp(),
-    new DiaryEntriesResolver(new DiaryEntriesRepository(getDbClient()))
-  );
+  getApp()
+    .use(healthCheckRoute)
+    .use(
+      diaryEntryRoutes(
+        new DiaryEntriesResolver(new DiaryEntriesRepository(getDbClient()))
+      )
+    );
