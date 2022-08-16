@@ -11,4 +11,10 @@ describe("app", () => {
       diaryEntry: buildDiaryEntry({ date: "TEST" }),
     });
   });
+
+  it("has a working helathcheck endpoint", async () => {
+    const response = await request(getConfiguredApp()).get("/healthcheck");
+
+    expect(response.status).toEqual(200);
+  });
 });
