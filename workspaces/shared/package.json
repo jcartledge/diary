@@ -1,7 +1,11 @@
 {
   "name": "@diary/shared",
   "packageManager": "yarn@3.2.2",
+  "scripts": {
+    "test": "vitest"
+  },
   "dependencies": {
+    "vitest": "^0.22.0",
     "zod": "^3.18.0"
   }
 }
