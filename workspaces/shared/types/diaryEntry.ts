@@ -1,11 +1,15 @@
-export type DiaryEntry = {
-  couldBeImproved: string;
-  date: string;
-  notWell: string;
-  risk: string;
-  wentWell: string;
-  whatHappened: string;
-};
+import { z } from "zod";
+
+export const DiaryEntrySchema = z.object({
+  couldBeImproved: z.string(),
+  date: z.string(),
+  notWell: z.string(),
+  risk: z.string(),
+  wentWell: z.string(),
+  whatHappened: z.string(),
+});
+
+export type DiaryEntry = z.infer<typeof DiaryEntrySchema>;
 
 export const buildDiaryEntry = (
   overrides: Partial<DiaryEntry> = {}
