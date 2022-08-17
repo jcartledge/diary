@@ -1,5 +1,7 @@
-import { buildDiaryEntry } from "@diary/shared/types/buildDiaryEntry";
-import { type DiaryEntry } from "@diary/shared/types/DiaryEntry.types";
+import {
+  buildDiaryEntry,
+  type DiaryEntry,
+} from "@diary/shared/types/diaryEntry";
 import { type Client } from "pg";
 
 const DIARY_ENTRIES_TABLE_NAME = "diary_entries";

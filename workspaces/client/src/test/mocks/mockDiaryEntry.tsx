@@ -1,5 +1,4 @@
-import { DiaryEntry } from "@diary/shared/types/DiaryEntry.types";
-import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
+import { buildDiaryEntry, DiaryEntry } from "@diary/shared/types/diaryEntry";
 import { rest } from "msw";
 import { diaryEntryUri } from "test/mocks/diaryEntryUriTemplate";
 import { server } from "test/mocks/server";

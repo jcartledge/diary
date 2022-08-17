@@ -1,4 +1,4 @@
-import { DiaryEntry } from "@diary/shared/types/DiaryEntry.types";
+import { DiaryEntry } from "@diary/shared/types/diaryEntry";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { bffUri } from "config";
 

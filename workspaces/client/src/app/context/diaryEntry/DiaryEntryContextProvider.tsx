@@ -1,7 +1,9 @@
-import { type DiaryEntry } from "@diary/shared/types/DiaryEntry.types";
+import {
+  buildDiaryEntry,
+  type DiaryEntry,
+} from "@diary/shared/types/diaryEntry";
 import { useDiaryEntryQuery } from "app/queries/useDiaryEntryQuery";
 import { useUpdateDiaryEntryMutation } from "app/queries/useUpdateDiaryEntryMutation";
-import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
 import { useCallback, useEffect, useState } from "react";
 import { useDate } from "../date/DateContext";
 import { DiaryEntryContext } from "./DiaryEntryContext";

@@ -1,5 +1,5 @@
+import { buildDiaryEntry } from "@diary/shared/types/diaryEntry";
 import { renderHook, waitFor } from "@testing-library/react";
-import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
 import { rest } from "msw";
 import { wrap } from "souvlaki";
 import { diaryEntryUriTemplate } from "test/mocks/diaryEntryUriTemplate";

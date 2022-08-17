@@ -1,4 +1,4 @@
-import { buildDiaryEntry } from "lib/util/buildDiaryEntry";
+import { buildDiaryEntry } from "@diary/shared/types/diaryEntry";
 import { rest } from "msw";
 import { diaryEntryUriTemplate } from "./diaryEntryUriTemplate";
 

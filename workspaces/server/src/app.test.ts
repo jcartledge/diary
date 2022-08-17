@@ -1,4 +1,4 @@
-import { buildDiaryEntry } from "@diary/shared/types/buildDiaryEntry";
+import { buildDiaryEntry } from "@diary/shared/types/diaryEntry";
 import request from "supertest";
 import { describe, expect, it } from "vitest";
 import { getConfiguredApp } from "./app";

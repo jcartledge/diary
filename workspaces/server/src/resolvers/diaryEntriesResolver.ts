@@ -1,5 +1,5 @@
 import { error, result, ResultOrError } from "@diary/shared/ResultOrError";
-import { DiaryEntry } from "@diary/shared/types/DiaryEntry.types";
+import { DiaryEntry } from "@diary/shared/types/diaryEntry";
 import { type DiaryEntriesRepositoryMethods } from "src/repositories/diaryEntriesRepository";
 import { DiaryEntriesResolverError } from "./DiaryEntriesResolverError";
 

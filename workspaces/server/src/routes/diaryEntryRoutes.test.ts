@@ -1,4 +1,4 @@
-import { buildDiaryEntry } from "@diary/shared/types/buildDiaryEntry";
+import { buildDiaryEntry } from "@diary/shared/types/diaryEntry";
 import { getApp } from "src/app";
 import { buildMockDiaryEntriesRepository } from "src/repositories/buildMockDiaryEntriesRepository";
 import { DiaryEntriesResolver } from "src/resolvers/diaryEntriesResolver";
