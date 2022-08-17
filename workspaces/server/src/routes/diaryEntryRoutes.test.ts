@@ -1,4 +1,4 @@
-import { buildDiaryEntry } from "@diary/shared/types/diaryEntry";
+import { buildDiaryEntry, DiaryEntry } from "@diary/shared/types/diaryEntry";
 import { getApp } from "src/app";
 import { buildMockDiaryEntriesRepository } from "src/repositories/buildMockDiaryEntriesRepository";
 import { DiaryEntriesResolver } from "src/resolvers/diaryEntriesResolver";
@@ -162,6 +162,21 @@ describe("post diary entry route", () => {
       .send({ diaryEntry });
 
     expect(response.status).toEqual(404);
+  });
+
+  it("sends a 400 error if the payload is invalid", async () => {
+    const app = getApp().use(
+      diaryEntryRoutes(
+        new DiaryEntriesResolver(buildMockDiaryEntriesRepository())
+      )
+    );
+    const diaryEntry = {} as DiaryEntry;
+
+    const response = await request(app)
+      .post("/diaryentry/foo")
+      .send({ diaryEntry });
+
+    expect(response.status).toEqual(400);
   });
 
   it("sends the error object as the response body", async () => {
