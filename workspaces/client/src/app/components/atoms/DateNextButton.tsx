@@ -3,10 +3,10 @@ import { Link } from "lib/router";
 
 const DateNextButton: React.FC = () => {
   const date = useDate();
-  return date.isToday() ? (
-    <span aria-disabled>next</span>
-  ) : (
-    <Link to={`/page/${date.getNext().getKey()}`}>next</Link>
+  return (
+    <Link disabled={date.isToday()} to={`/page/${date.getNext().getKey()}`}>
+      next
+    </Link>
   );
 };
 

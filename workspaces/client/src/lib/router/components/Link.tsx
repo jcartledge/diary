@@ -1,15 +1,22 @@
 import { useSetPath } from "../contexts/RouterContext";
 
 type LinkProps = React.PropsWithChildren<
-  { to: string } & Omit<
+  { to: string; disabled?: boolean } & Omit<
     React.AnchorHTMLAttributes<HTMLAnchorElement>,
     "href" | "onClick"
   >
 >;
 
-export const Link: React.FC<LinkProps> = ({ children, to, ...anchorAttrs }) => {
+export const Link: React.FC<LinkProps> = ({
+  children,
+  to,
+  disabled = false,
+  ...anchorAttrs
+}) => {
   const setPath = useSetPath();
-  return (
+  return disabled ? (
+    <span aria-disabled>{children}</span>
+  ) : (
     <a
       href={to}
       onClick={(event) => {

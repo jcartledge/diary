@@ -23,4 +23,18 @@ describe("Link", () => {
       expect(screen.queryByText("Hello")).toBeInTheDocument();
     });
   });
+
+  it("can be disabled", () => {
+    const linkText = "link text";
+    render(
+      <Link to="" disabled>
+        {linkText}
+      </Link>
+    );
+
+    expect(
+      screen.queryByRole("link", { name: linkText })
+    ).not.toBeInTheDocument();
+    expect(screen.queryByText(linkText)).toBeInTheDocument();
+  });
 });
