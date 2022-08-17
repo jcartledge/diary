@@ -31,4 +31,21 @@ describe("useDiaryEntryQuery", () => {
 
     await waitFor(() => expect(result.current.isError).toBe(true));
   });
+
+  it("returns an error if the response is not a valid diaryEntry", async () => {
+    server.use(
+      rest.get(diaryEntryUriTemplate, (_, res, ctx) =>
+        res(
+          ctx.status(200),
+          ctx.body(JSON.stringify({ diaryEntry: "not a diary entry" }))
+        )
+      )
+    );
+
+    const { result } = renderHook(() => useDiaryEntryQuery("TEST"), {
+      wrapper: wrap(withQueryClient()),
+    });
+
+    await waitFor(() => expect(result.current.isError).toBe(true));
+  });
 });

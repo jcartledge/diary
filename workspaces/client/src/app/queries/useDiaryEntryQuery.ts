@@ -1,4 +1,6 @@
+import { withError } from "@diary/shared/ResultOrError";
 import { DiaryEntry } from "@diary/shared/types/diaryEntry";
+import { validateDiaryEntry } from "@diary/shared/types/validateDiaryEntry";
 import { useQuery } from "@tanstack/react-query";
 import { bffUri } from "config";
 
@@ -10,6 +12,12 @@ export const useDiaryEntryQuery = (isoDateString: string) =>
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      return await response.json();
+
+      const { diaryEntry } = await response.json();
+      withError(validateDiaryEntry(diaryEntry), (validationError) => {
+        throw validationError;
+      });
+
+      return { diaryEntry };
     }
   );
