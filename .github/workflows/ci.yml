@@ -151,7 +151,7 @@ jobs:
         if: failure()
         with:
           name: screenshots
-          path: e2e/test-results
+          path: workspaces/e2e/test-results
 
   publish-client:
     name: publish-client
