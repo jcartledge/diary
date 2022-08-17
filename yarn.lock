@@ -2121,8 +2121,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@diary/shared@workspace:workspaces/shared"
   dependencies:
-    vitest: ^0.22.0
-    zod: ^3.18.0
+    vitest: 0.22.0
+    zod: 3.18.0
   languageName: unknown
   linkType: soft
 
@@ -9909,7 +9909,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:^0.22.0":
+"vitest@npm:0.22.0":
   version: 0.22.0
   resolution: "vitest@npm:0.22.0"
   dependencies:
@@ -10357,7 +10357,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:^3.18.0":
+"zod@npm:3.18.0":
   version: 3.18.0
   resolution: "zod@npm:3.18.0"
   checksum: 86a9a9928f4b40a07020d4b9832842fa4a70050c2d7bd1b2866bc1acfd734aa53a40f87a99a4312a637341a608b0105770c7a1f83b56df78e97691b4f5badcd8
