@@ -1,4 +1,4 @@
-import { buildDiaryEntry } from "@diary/shared/types/diaryEntry";
+import { buildDiaryEntry, DiaryEntry } from "@diary/shared/types/diaryEntry";
 import { renderHook, waitFor } from "@testing-library/react";
 import { rest } from "msw";
 import { wrap } from "souvlaki";
@@ -31,8 +31,17 @@ describe("useUpdateDiaryEntryMutation", () => {
     const { result } = renderHook(useUpdateDiaryEntryMutation, {
       wrapper: wrap(withQueryClient()),
     });
-    result.current.mutate(buildDiaryEntry({ date: "TEST" }));
+    result.current.mutate(buildDiaryEntry({ date: "2022-08-17" }));
 
     await waitFor(() => expect(result.current.isError).toBe(true));
   });
+
+  it("returns an error if the diaryEntry is not valid", async() => {
+    const { result } = renderHook(useUpdateDiaryEntryMutation, {
+      wrapper: wrap(withQueryClient()),
+    });
+    result.current.mutate({ date: "2022-08-17" } as DiaryEntry);
+
+    await waitFor(() => expect(result.current.isError).toBe(true)); 
+  })
 });
