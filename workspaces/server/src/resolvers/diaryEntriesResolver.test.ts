@@ -99,3 +99,35 @@ describe("postDiaryEntryOld", () => {
     withError(result, ({ message }) => expect(message).toEqual("test error 2"));
   });
 });
+
+describe("postDiaryEntry", () => {
+  it("returns diaryEntry if one is found", async () => {
+    const resolver = new DiaryEntriesResolver(
+      buildMockDiaryEntriesRepository({
+        save: vi.fn((diaryEntry) => Promise.resolve(result(diaryEntry))),
+      })
+    );
+    const diaryEntry = buildDiaryEntry();
+
+    const resultOfPost = await resolver.postDiaryEntry(diaryEntry);
+
+    withResult(resultOfPost, (resultDiaryEntry) =>
+      expect(resultDiaryEntry).toEqual(diaryEntry)
+    );
+    withError(resultOfPost, ({ message }) => expect.fail(message));
+  });
+
+  it("returns an error if the repository throws", async () => {
+    const resolver = new DiaryEntriesResolver(
+      buildMockDiaryEntriesRepository({
+        save: vi.fn().mockResolvedValue(new Error("test error 2")),
+      })
+    );
+    const diaryEntry = buildDiaryEntry();
+
+    const resultOfPost = await resolver.postDiaryEntry(diaryEntry);
+
+    withResult(resultOfPost, () => expect.fail("error expected, result found!"));
+    withError(resultOfPost, ({ message }) => expect(message).toEqual("test error 2"));
+  });
+});

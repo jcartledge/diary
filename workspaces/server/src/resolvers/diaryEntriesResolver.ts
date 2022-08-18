@@ -1,4 +1,9 @@
-import { error, result, ResultOrError } from "@diary/shared/ResultOrError";
+import {
+  AsyncResultOrError,
+  error,
+  result,
+  ResultOrError,
+} from "@diary/shared/ResultOrError";
 import { DiaryEntry } from "@diary/shared/types/diaryEntry";
 import { type DiaryEntriesRepositoryMethods } from "src/repositories/diaryEntriesRepository";
 import { DiaryEntriesResolverError } from "./DiaryEntriesResolverError";
@@ -22,7 +27,7 @@ export class DiaryEntriesResolver {
 
   public async getDiaryEntry(
     date: string
-  ): Promise<ResultOrError<DiaryEntry, DiaryEntriesResolverError>> {
+  ): AsyncResultOrError<DiaryEntry, DiaryEntriesResolverError> {
     return this.repository.getByDate(date);
   }
 
@@ -38,5 +43,11 @@ export class DiaryEntriesResolver {
       const { message } = e as Error;
       return error(new DiaryEntriesResolverError(message));
     }
+  }
+
+  public async postDiaryEntry(
+    diaryEntry: DiaryEntry
+  ): AsyncResultOrError<DiaryEntry, DiaryEntriesResolverError> {
+    return this.repository.save(diaryEntry);
   }
 }
