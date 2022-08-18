@@ -1,3 +1,5 @@
+import { error, result } from "@diary/shared/ResultOrError";
+import { AsyncResultOrError } from "@diary/shared/ResultOrError/ResultOrError.types";
 import {
   buildDiaryEntry,
   type DiaryEntry,
@@ -19,7 +21,43 @@ SET "whatHappened" = EXCLUDED."whatHappened",
 `;
 
 export class DiaryEntriesRepository {
-  constructor(private client: Promise<Client>) {}
+  constructor(private client: Promise<Pick<Client, "query">>) {}
+
+  async getByDate(date: string): AsyncResultOrError<DiaryEntry> {
+    const client = await this.client;
+    try {
+      const response = await client.query<DiaryEntry>(SELECT_QUERY, [date]);
+      return response.rows.length
+        ? result(response.rows[0])
+        : this.save(buildDiaryEntry({ date }));
+    } catch (e: unknown) {
+      return error(e as Error);
+    }
+  }
+
+  async save({
+    date,
+    whatHappened,
+    wentWell,
+    notWell,
+    couldBeImproved,
+    risk,
+  }: DiaryEntry): AsyncResultOrError<DiaryEntry> {
+    const client = await this.client;
+    try {
+      await client.query<DiaryEntry>(UPSERT_QUERY, [
+        date,
+        whatHappened,
+        wentWell,
+        notWell,
+        couldBeImproved,
+        risk,
+      ]);
+      return this.getByDate(date);
+    } catch (e: unknown) {
+      return error(e as Error);
+    }
+  }
 
   /**
    * @deprecated
@@ -27,15 +65,21 @@ export class DiaryEntriesRepository {
   async getByDateOld(date: string): Promise<DiaryEntry> {
     const client = await this.client;
     const response = await client.query<DiaryEntry>(SELECT_QUERY, [date]);
-    return response.rows[0] ?? this.createAndReturnByDate(date);
+    return response.rows[0] ?? this.createAndReturnByDateOld(date);
   }
 
-  private async createAndReturnByDate(date: string): Promise<DiaryEntry> {
-    await this.save(buildDiaryEntry({ date }));
+  /**
+   * @deprecated
+   */
+  private async createAndReturnByDateOld(date: string): Promise<DiaryEntry> {
+    await this.saveOld(buildDiaryEntry({ date }));
     return this.getByDateOld(date);
   }
 
-  async save({
+  /**
+   * @deprecated
+   */
+  async saveOld({
     date,
     whatHappened,
     wentWell,

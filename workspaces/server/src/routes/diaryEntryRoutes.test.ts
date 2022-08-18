@@ -108,7 +108,7 @@ describe("post diary entry route", () => {
       diaryEntryRoutes(
         new DiaryEntriesResolver(
           buildMockDiaryEntriesRepository({
-            save: vi.fn((diaryEntry) => Promise.resolve(diaryEntry)),
+            saveOld: vi.fn((diaryEntry) => Promise.resolve(diaryEntry)),
           })
         )
       )
@@ -129,7 +129,7 @@ describe("post diary entry route", () => {
       diaryEntryRoutes(
         new DiaryEntriesResolver(
           buildMockDiaryEntriesRepository({
-            save: vi.fn((diaryEntry) => Promise.resolve(diaryEntry)),
+            saveOld: vi.fn((diaryEntry) => Promise.resolve(diaryEntry)),
           })
         )
       )
@@ -148,7 +148,7 @@ describe("post diary entry route", () => {
       diaryEntryRoutes(
         new DiaryEntriesResolver(
           buildMockDiaryEntriesRepository({
-            save: vi.fn(() => {
+            saveOld: vi.fn(() => {
               throw new Error();
             }),
           })
@@ -184,7 +184,7 @@ describe("post diary entry route", () => {
       diaryEntryRoutes(
         new DiaryEntriesResolver(
           buildMockDiaryEntriesRepository({
-            save: vi.fn(() => {
+            saveOld: vi.fn(() => {
               throw new Error("error message");
             }),
           })

@@ -21,7 +21,7 @@ export class DiaryEntriesResolver {
     diaryEntry: DiaryEntry
   ): Promise<ResultOrError<DiaryEntry, DiaryEntriesResolverError>> {
     try {
-      return result(await this.repository.save(diaryEntry));
+      return result(await this.repository.saveOld(diaryEntry));
     } catch (e: unknown) {
       const { message } = e as Error;
       return error(new DiaryEntriesResolverError(message));

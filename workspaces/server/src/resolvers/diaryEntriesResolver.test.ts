@@ -40,7 +40,7 @@ describe("post diary entry route", () => {
   it("returns diaryEntry if one is found", async () => {
     const resolver = new DiaryEntriesResolver(
       buildMockDiaryEntriesRepository({
-        save: vi.fn((diaryEntry) => Promise.resolve(diaryEntry)),
+        saveOld: vi.fn((diaryEntry) => Promise.resolve(diaryEntry)),
       })
     );
     const diaryEntry = buildDiaryEntry();
@@ -56,7 +56,7 @@ describe("post diary entry route", () => {
   it("returns an error if the repository throws", async () => {
     const resolver = new DiaryEntriesResolver(
       buildMockDiaryEntriesRepository({
-        save: vi.fn(() => {
+        saveOld: vi.fn(() => {
           throw new Error("test error 2");
         }),
       })
