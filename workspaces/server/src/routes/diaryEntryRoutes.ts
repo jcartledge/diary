@@ -7,21 +7,21 @@ const DIARYENTRY_PATH = "/diaryentry/:isoDateString";
 
 const getDiaryEntryRoute =
   (resolver: DiaryEntriesResolver) => async (req: Request, res: Response) => {
-    const getResult = await resolver.getDiaryEntryOld(req.params.isoDateString);
-    withError(getResult, ({ message }) => res.status(404).send({ message }));
-    withResult(getResult, (diaryEntry) =>
+    const resultOfGet = await resolver.getDiaryEntry(req.params.isoDateString);
+    withError(resultOfGet, () => res.status(404).send("Not found"));
+    withResult(resultOfGet, (diaryEntry) =>
       res.type("json").send({ diaryEntry })
     );
   };
 
 const postDiaryEntryRoute =
   (resolver: DiaryEntriesResolver) => async (req: Request, res: Response) => {
-    const validationResult = validateDiaryEntry(req.body.diaryEntry);
-    withError(validationResult, () => res.status(400).send("Invalid request"));
-    withResult(validationResult, async (diaryEntry) => {
-      const postResult = await resolver.postDiaryEntryOld(diaryEntry);
-      withError(postResult, ({ message }) => res.status(404).send({ message }));
-      withResult(postResult, (diaryEntry) =>
+    const resultOfValidate = validateDiaryEntry(req.body.diaryEntry);
+    withError(resultOfValidate, () => res.status(400).send("Invalid request"));
+    withResult(resultOfValidate, async (diaryEntry) => {
+      const resultOfPost = await resolver.postDiaryEntry(diaryEntry);
+      withError(resultOfPost, () => res.status(404).send("Not found"));
+      withResult(resultOfPost, (diaryEntry) =>
         res.type("json").send({ diaryEntry })
       );
     });

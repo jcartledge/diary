@@ -1,3 +1,4 @@
+import { error, result } from "@diary/shared/ResultOrError";
 import { buildDiaryEntry, DiaryEntry } from "@diary/shared/types/diaryEntry";
 import { getApp } from "src/app";
 import { buildMockDiaryEntriesRepository } from "src/repositories/buildMockDiaryEntriesRepository";
@@ -24,8 +25,8 @@ describe("get diaryEntry route", () => {
       diaryEntryRoutes(
         new DiaryEntriesResolver(
           buildMockDiaryEntriesRepository({
-            getByDateOld: vi.fn((date) =>
-              Promise.resolve(buildDiaryEntry({ date }))
+            getByDate: vi.fn((date) =>
+              Promise.resolve(result(buildDiaryEntry({ date })))
             ),
           })
         )
@@ -56,9 +57,7 @@ describe("get diaryEntry route", () => {
       diaryEntryRoutes(
         new DiaryEntriesResolver(
           buildMockDiaryEntriesRepository({
-            getByDateOld: vi.fn(() => {
-              throw new Error();
-            }),
+            getByDate: vi.fn().mockResolvedValue(error(new Error())),
           })
         )
       )
@@ -67,24 +66,6 @@ describe("get diaryEntry route", () => {
     const response = await request(app).get("/diaryentry/foo");
 
     expect(response.status).toEqual(404);
-  });
-
-  it("sends the error object as the response body", async () => {
-    const app = getApp().use(
-      diaryEntryRoutes(
-        new DiaryEntriesResolver(
-          buildMockDiaryEntriesRepository({
-            getByDateOld: vi.fn(() => {
-              throw new Error("error message");
-            }),
-          })
-        )
-      )
-    );
-
-    const response = await request(app).get("/diaryentry/foo");
-
-    expect(response.body.message).toEqual("error message");
   });
 });
 
@@ -108,7 +89,7 @@ describe("post diary entry route", () => {
       diaryEntryRoutes(
         new DiaryEntriesResolver(
           buildMockDiaryEntriesRepository({
-            saveOld: vi.fn((diaryEntry) => Promise.resolve(diaryEntry)),
+            save: vi.fn((diaryEntry) => Promise.resolve(result(diaryEntry))),
           })
         )
       )
@@ -129,7 +110,7 @@ describe("post diary entry route", () => {
       diaryEntryRoutes(
         new DiaryEntriesResolver(
           buildMockDiaryEntriesRepository({
-            saveOld: vi.fn((diaryEntry) => Promise.resolve(diaryEntry)),
+            save: vi.fn((diaryEntry) => Promise.resolve(result(diaryEntry))),
           })
         )
       )
@@ -148,9 +129,7 @@ describe("post diary entry route", () => {
       diaryEntryRoutes(
         new DiaryEntriesResolver(
           buildMockDiaryEntriesRepository({
-            saveOld: vi.fn(() => {
-              throw new Error();
-            }),
+            save: vi.fn().mockResolvedValue(error(new Error())),
           })
         )
       )
@@ -177,26 +156,5 @@ describe("post diary entry route", () => {
       .send({ diaryEntry });
 
     expect(response.status).toEqual(400);
-  });
-
-  it("sends the error object as the response body", async () => {
-    const app = getApp().use(
-      diaryEntryRoutes(
-        new DiaryEntriesResolver(
-          buildMockDiaryEntriesRepository({
-            saveOld: vi.fn(() => {
-              throw new Error("error message");
-            }),
-          })
-        )
-      )
-    );
-    const diaryEntry = buildDiaryEntry();
-
-    const response = await request(app)
-      .post("/diaryentry/foo")
-      .send({ diaryEntry });
-
-    expect(response.body.message).toEqual("error message");
   });
 });

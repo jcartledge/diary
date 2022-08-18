@@ -57,46 +57,6 @@ export class DiaryEntriesRepository {
       return error(e as Error);
     }
   }
-
-  /**
-   * @deprecated
-   */
-  async getByDateOld(date: string): Promise<DiaryEntry> {
-    const client = await this.client;
-    const response = await client.query<DiaryEntry>(SELECT_QUERY, [date]);
-    return response.rows[0] ?? this.createAndReturnByDateOld(date);
-  }
-
-  /**
-   * @deprecated
-   */
-  private async createAndReturnByDateOld(date: string): Promise<DiaryEntry> {
-    await this.saveOld(buildDiaryEntry({ date }));
-    return this.getByDateOld(date);
-  }
-
-  /**
-   * @deprecated
-   */
-  async saveOld({
-    date,
-    whatHappened,
-    wentWell,
-    notWell,
-    couldBeImproved,
-    risk,
-  }: DiaryEntry): Promise<DiaryEntry> {
-    const client = await this.client;
-    const response = await client.query<DiaryEntry>(UPSERT_QUERY, [
-      date,
-      whatHappened,
-      wentWell,
-      notWell,
-      couldBeImproved,
-      risk,
-    ]);
-    return response.rows[0];
-  }
 }
 
 type PublicInterface<T> = { [K in keyof T]: T[K] };
