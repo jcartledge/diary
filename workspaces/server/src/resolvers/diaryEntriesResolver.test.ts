@@ -1,10 +1,10 @@
-import { withError, withResult } from "@diary/shared/ResultOrError";
+import { result, withError, withResult } from "@diary/shared/ResultOrError";
 import { buildDiaryEntry } from "@diary/shared/types/diaryEntry";
 import { describe, expect, it, vi } from "vitest";
 import { buildMockDiaryEntriesRepository } from "../repositories/buildMockDiaryEntriesRepository";
 import { DiaryEntriesResolver } from "./diaryEntriesResolver";
 
-describe("getDiaryEntry", () => {
+describe("getDiaryEntryOld", () => {
   it("returns a diaryEntry if found", async () => {
     const diaryEntry = buildDiaryEntry();
     const resolver = new DiaryEntriesResolver(
@@ -13,7 +13,7 @@ describe("getDiaryEntry", () => {
       })
     );
 
-    const result = await resolver.getDiaryEntry("");
+    const result = await resolver.getDiaryEntryOld("");
 
     withResult(result, (resultDiaryEntry) =>
       expect(resultDiaryEntry).toBe(diaryEntry)
@@ -30,13 +30,43 @@ describe("getDiaryEntry", () => {
       })
     );
 
-    const result = await resolver.getDiaryEntry("");
+    const result = await resolver.getDiaryEntryOld("");
     withResult(result, () => expect.fail("error expected, result found!"));
     withError(result, ({ message }) => expect(message).toEqual("test error"));
   });
 });
 
-describe("post diary entry route", () => {
+describe("getDiaryEntry", () => {
+  it("returns a diaryEntry if found", async () => {
+    const diaryEntry = buildDiaryEntry();
+    const resolver = new DiaryEntriesResolver(
+      buildMockDiaryEntriesRepository({
+        getByDate: vi.fn().mockResolvedValue(result(diaryEntry)),
+      })
+    );
+
+    const resultOfGet = await resolver.getDiaryEntry("");
+
+    withResult(resultOfGet, (resultDiaryEntry) =>
+      expect(resultDiaryEntry).toBe(diaryEntry)
+    );
+    withError(resultOfGet, ({ message }) => expect.fail(message));
+  });
+
+  it("returns an error if the repository throws", async () => {
+    const resolver = new DiaryEntriesResolver(
+      buildMockDiaryEntriesRepository({
+        getByDate: vi.fn().mockResolvedValue(new Error("test error")),
+      })
+    );
+
+    const resultOfGet = await resolver.getDiaryEntry("");
+    withResult(resultOfGet, () => expect.fail("error expected, result found!"));
+    withError(resultOfGet, ({ message }) => expect(message).toEqual("test error"));
+  });
+});
+
+describe("postDiaryEntryOld", () => {
   it("returns diaryEntry if one is found", async () => {
     const resolver = new DiaryEntriesResolver(
       buildMockDiaryEntriesRepository({
@@ -45,7 +75,7 @@ describe("post diary entry route", () => {
     );
     const diaryEntry = buildDiaryEntry();
 
-    const result = await resolver.postDiaryEntry(diaryEntry);
+    const result = await resolver.postDiaryEntryOld(diaryEntry);
 
     withResult(result, (resultDiaryEntry) =>
       expect(resultDiaryEntry).toEqual(diaryEntry)
@@ -63,7 +93,7 @@ describe("post diary entry route", () => {
     );
     const diaryEntry = buildDiaryEntry();
 
-    const result = await resolver.postDiaryEntry(diaryEntry);
+    const result = await resolver.postDiaryEntryOld(diaryEntry);
 
     withResult(result, () => expect.fail("error expected, result found!"));
     withError(result, ({ message }) => expect(message).toEqual("test error 2"));

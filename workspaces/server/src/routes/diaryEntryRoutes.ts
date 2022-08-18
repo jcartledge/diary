@@ -7,7 +7,7 @@ const DIARYENTRY_PATH = "/diaryentry/:isoDateString";
 
 const getDiaryEntryRoute =
   (resolver: DiaryEntriesResolver) => async (req: Request, res: Response) => {
-    const getResult = await resolver.getDiaryEntry(req.params.isoDateString);
+    const getResult = await resolver.getDiaryEntryOld(req.params.isoDateString);
     withError(getResult, ({ message }) => res.status(404).send({ message }));
     withResult(getResult, (diaryEntry) =>
       res.type("json").send({ diaryEntry })
@@ -19,7 +19,7 @@ const postDiaryEntryRoute =
     const validationResult = validateDiaryEntry(req.body.diaryEntry);
     withError(validationResult, () => res.status(400).send("Invalid request"));
     withResult(validationResult, async (diaryEntry) => {
-      const postResult = await resolver.postDiaryEntry(diaryEntry);
+      const postResult = await resolver.postDiaryEntryOld(diaryEntry);
       withError(postResult, ({ message }) => res.status(404).send({ message }));
       withResult(postResult, (diaryEntry) =>
         res.type("json").send({ diaryEntry })

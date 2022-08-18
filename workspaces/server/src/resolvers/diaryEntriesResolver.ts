@@ -6,7 +6,10 @@ import { DiaryEntriesResolverError } from "./DiaryEntriesResolverError";
 export class DiaryEntriesResolver {
   constructor(private repository: DiaryEntriesRepositoryMethods) {}
 
-  public async getDiaryEntry(
+  /**
+   * @deprecated
+   */
+  public async getDiaryEntryOld(
     date: string
   ): Promise<ResultOrError<DiaryEntry, DiaryEntriesResolverError>> {
     try {
@@ -17,7 +20,16 @@ export class DiaryEntriesResolver {
     }
   }
 
-  public async postDiaryEntry(
+  public async getDiaryEntry(
+    date: string
+  ): Promise<ResultOrError<DiaryEntry, DiaryEntriesResolverError>> {
+    return this.repository.getByDate(date);
+  }
+
+  /**
+   * @deprecated
+   */
+  public async postDiaryEntryOld(
     diaryEntry: DiaryEntry
   ): Promise<ResultOrError<DiaryEntry, DiaryEntriesResolverError>> {
     try {
