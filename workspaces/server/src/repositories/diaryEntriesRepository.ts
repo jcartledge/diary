@@ -1,5 +1,4 @@
-import { error, result } from "@diary/shared/ResultOrError";
-import { AsyncResultOrError } from "@diary/shared/ResultOrError/ResultOrError.types";
+import { AsyncResultOrError, error, result } from "@diary/shared/ResultOrError";
 import {
   buildDiaryEntry,
   type DiaryEntry,
