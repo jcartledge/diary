@@ -21,7 +21,10 @@ SET "whatHappened" = EXCLUDED."whatHappened",
 export class DiaryEntriesRepository {
   constructor(private client: Promise<Client>) {}
 
-  async getByDate(date: string): Promise<DiaryEntry> {
+  /**
+   * @deprecated
+   */
+  async getByDateOld(date: string): Promise<DiaryEntry> {
     const client = await this.client;
     const response = await client.query<DiaryEntry>(SELECT_QUERY, [date]);
     return response.rows[0] ?? this.createAndReturnByDate(date);
@@ -29,7 +32,7 @@ export class DiaryEntriesRepository {
 
   private async createAndReturnByDate(date: string): Promise<DiaryEntry> {
     await this.save(buildDiaryEntry({ date }));
-    return this.getByDate(date);
+    return this.getByDateOld(date);
   }
 
   async save({

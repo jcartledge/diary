@@ -9,7 +9,7 @@ describe("getDiaryEntry", () => {
     const diaryEntry = buildDiaryEntry();
     const resolver = new DiaryEntriesResolver(
       buildMockDiaryEntriesRepository({
-        getByDate: vi.fn().mockResolvedValue(diaryEntry),
+        getByDateOld: vi.fn().mockResolvedValue(diaryEntry),
       })
     );
 
@@ -24,7 +24,7 @@ describe("getDiaryEntry", () => {
   it("returns an error if the repository throws", async () => {
     const resolver = new DiaryEntriesResolver(
       buildMockDiaryEntriesRepository({
-        getByDate: vi.fn(() => {
+        getByDateOld: vi.fn(() => {
           throw new Error("test error");
         }),
       })

@@ -10,7 +10,7 @@ export class DiaryEntriesResolver {
     date: string
   ): Promise<ResultOrError<DiaryEntry, DiaryEntriesResolverError>> {
     try {
-      return result(await this.repository.getByDate(date));
+      return result(await this.repository.getByDateOld(date));
     } catch (e: unknown) {
       const { message } = e as Error;
       return error(new DiaryEntriesResolverError(message));

@@ -24,7 +24,7 @@ describe("get diaryEntry route", () => {
       diaryEntryRoutes(
         new DiaryEntriesResolver(
           buildMockDiaryEntriesRepository({
-            getByDate: vi.fn((date) =>
+            getByDateOld: vi.fn((date) =>
               Promise.resolve(buildDiaryEntry({ date }))
             ),
           })
@@ -56,7 +56,7 @@ describe("get diaryEntry route", () => {
       diaryEntryRoutes(
         new DiaryEntriesResolver(
           buildMockDiaryEntriesRepository({
-            getByDate: vi.fn(() => {
+            getByDateOld: vi.fn(() => {
               throw new Error();
             }),
           })
@@ -74,7 +74,7 @@ describe("get diaryEntry route", () => {
       diaryEntryRoutes(
         new DiaryEntriesResolver(
           buildMockDiaryEntriesRepository({
-            getByDate: vi.fn(() => {
+            getByDateOld: vi.fn(() => {
               throw new Error("error message");
             }),
           })

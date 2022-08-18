@@ -5,7 +5,7 @@ import { vi } from "vitest";
 export const buildMockDiaryEntriesRepository: Builder<
   DiaryEntriesRepositoryMethods
 > = (overrides = {}) => ({
-  getByDate: vi.fn(),
+  getByDateOld: vi.fn(),
   save: vi.fn(),
   ...overrides,
 });
