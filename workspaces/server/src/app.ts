@@ -14,7 +14,7 @@ export const getApp = () =>
     /* c8 ignore next */
     .use(cors());
 
-export const getConfiguredApp = () =>
+export const getAppWithRoutes = () =>
   getApp()
     .use(healthCheckRoute)
     .use(
