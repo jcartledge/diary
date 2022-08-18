@@ -2,7 +2,7 @@ import { withError, withResult } from "@diary/shared/ResultOrError";
 import { DiaryEntry } from "@diary/shared/types/diaryEntry";
 import { validateDiaryEntry } from "@diary/shared/types/validateDiaryEntry";
 import express, { IRouter, Response } from "express";
-import { DiaryEntriesRepositoryMethods } from "src/repositories/diaryEntriesRepository";
+import { DiaryEntriesModelMethods } from "src/models/diaryEntriesModel";
 
 const DIARYENTRY_PATH = "/diaryentry/:isoDateString";
 
@@ -15,15 +15,13 @@ const badRequest = (response: Response) => () =>
 const ok = (response: Response) => (diaryEntry: DiaryEntry) =>
   response.type("json").send({ diaryEntry });
 
-export const diaryEntryRoutes = (
-  repository: DiaryEntriesRepositoryMethods
-): IRouter => {
+export const diaryEntryRoutes = (model: DiaryEntriesModelMethods): IRouter => {
   const router = express.Router();
   router
     .route(DIARYENTRY_PATH)
 
     .get(async ({ params: { isoDateString } }, response) => {
-      const resultOfGet = await repository.getByDate(isoDateString);
+      const resultOfGet = await model.getByDate(isoDateString);
       withError(resultOfGet, notFound(response));
       withResult(resultOfGet, ok(response));
     })
@@ -32,7 +30,7 @@ export const diaryEntryRoutes = (
       const resultOfValidate = validateDiaryEntry(diaryEntry);
       withError(resultOfValidate, badRequest(response));
       withResult(resultOfValidate, async (diaryEntry) => {
-        const resultOfSave = await repository.save(diaryEntry);
+        const resultOfSave = await model.save(diaryEntry);
         withError(resultOfSave, notFound(response));
         withResult(resultOfSave, ok(response));
       });

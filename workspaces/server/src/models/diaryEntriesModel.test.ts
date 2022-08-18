@@ -2,14 +2,14 @@ import { withError, withResult } from "@diary/shared/ResultOrError";
 import { buildDiaryEntry } from "@diary/shared/types/diaryEntry";
 import { getDbClient } from "src/getDbClient";
 import { describe, expect, it } from "vitest";
-import { DiaryEntriesRepository } from "./diaryEntriesRepository";
+import { DiaryEntriesModel } from "./diaryEntriesModel";
 
-describe("diaryEntriesRepository", () => {
+describe("diaryEntriesModel", () => {
   describe("getByDate", () => {
     it("retrieves an empty diary entry", async () => {
       const date = "2020-10-10";
-      const repository = new DiaryEntriesRepository(getDbClient());
-      const resultOfGetByDate = await repository.getByDate(date);
+      const model = new DiaryEntriesModel(getDbClient());
+      const resultOfGetByDate = await model.getByDate(date);
 
       withError(resultOfGetByDate, () => expect.fail());
       withResult(resultOfGetByDate, (diaryEntry) =>
@@ -19,14 +19,14 @@ describe("diaryEntriesRepository", () => {
 
     it("returns an error if the query fails", async () => {
       const date = "2020-10-10";
-      const repository = new DiaryEntriesRepository(
+      const model = new DiaryEntriesModel(
         Promise.resolve({
           query: () => {
             throw new Error("failed");
           },
         })
       );
-      const resultOfGetByDate = await repository.getByDate(date);
+      const resultOfGetByDate = await model.getByDate(date);
 
       withResult(resultOfGetByDate, () => expect.fail());
       withError(resultOfGetByDate, ({ message }) =>
@@ -38,8 +38,8 @@ describe("diaryEntriesRepository", () => {
   describe("save", () => {
     it("returns the saved record", async () => {
       const diaryEntry = buildDiaryEntry({ date: "2020-10-10" });
-      const repository = new DiaryEntriesRepository(getDbClient());
-      const resultOfGetByDate = await repository.save(diaryEntry);
+      const model = new DiaryEntriesModel(getDbClient());
+      const resultOfGetByDate = await model.save(diaryEntry);
 
       withError(resultOfGetByDate, () => expect.fail());
       withResult(resultOfGetByDate, (savedDiaryEntry) =>
@@ -49,14 +49,14 @@ describe("diaryEntriesRepository", () => {
 
     it("returns an error if the query fails", async () => {
       const diaryEntry = buildDiaryEntry({ date: "2020-10-10" });
-      const repository = new DiaryEntriesRepository(
+      const model = new DiaryEntriesModel(
         Promise.resolve({
           query: () => {
             throw new Error("failed");
           },
         })
       );
-      const resultOfGetByDate = await repository.save(diaryEntry);
+      const resultOfGetByDate = await model.save(diaryEntry);
 
       withResult(resultOfGetByDate, () => expect.fail());
       withError(resultOfGetByDate, ({ message }) =>

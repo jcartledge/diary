@@ -19,7 +19,7 @@ SET "whatHappened" = EXCLUDED."whatHappened",
     "risk" = EXCLUDED."risk"
 `;
 
-export class DiaryEntriesRepository {
+export class DiaryEntriesModel {
   constructor(private client: Promise<Pick<Client, "query">>) {}
 
   async getByDate(date: string): AsyncResultOrError<DiaryEntry> {
@@ -60,5 +60,4 @@ export class DiaryEntriesRepository {
 }
 
 type PublicInterface<T> = { [K in keyof T]: T[K] };
-export type DiaryEntriesRepositoryMethods =
-  PublicInterface<DiaryEntriesRepository>;
+export type DiaryEntriesModelMethods = PublicInterface<DiaryEntriesModel>;

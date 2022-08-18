@@ -2,7 +2,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 import { getDbClient } from "./getDbClient";
-import { DiaryEntriesRepository } from "./repositories/diaryEntriesRepository";
+import { DiaryEntriesModel } from "./models/diaryEntriesModel";
 import { diaryEntryRoutes } from "./routes/diaryEntryRoutes";
 import { healthCheckRoute } from "./routes/healthCheckRoute";
 
@@ -16,4 +16,4 @@ export const getApp = () =>
 export const getAppWithRoutes = () =>
   getApp()
     .use(healthCheckRoute)
-    .use(diaryEntryRoutes(new DiaryEntriesRepository(getDbClient())));
+    .use(diaryEntryRoutes(new DiaryEntriesModel(getDbClient())));
