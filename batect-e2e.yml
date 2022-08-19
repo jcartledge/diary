@@ -35,5 +35,8 @@ tasks:
           AUTH0_CALLBACK_URI: https://diary-client
           AUTH0_DOMAIN: dev-dgeyym9v.au.auth0.com
           AUTH0_CLIENT_ID: OIpPvf351DRBU1InkCPZGZc3sJXf6JaY
+      diary-server:
+        environment:
+          CORS_ORIGIN: ${CORS_ORIGIN:-}
     run:
       container: e2e
