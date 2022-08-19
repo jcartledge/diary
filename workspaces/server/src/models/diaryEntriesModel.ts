@@ -30,6 +30,7 @@ export class DiaryEntriesModel {
         ? result(response.rows[0])
         : this.save(buildDiaryEntry({ date }));
     } catch (e: unknown) {
+      console.error(e);
       return error(e as Error);
     }
   }
@@ -54,6 +55,7 @@ export class DiaryEntriesModel {
       ]);
       return this.getByDate(date);
     } catch (e: unknown) {
+      console.error(e);
       return error(e as Error);
     }
   }
