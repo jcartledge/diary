@@ -144,6 +144,7 @@ jobs:
         env:
           E2E_USER: ${{ secrets.E2E_USER }}
           E2E_PASS: ${{ secrets.E2E_PASS }}
+          CORS_ORIGIN: ${{ secrets.CORS_ORIGIN }}
         run: ./batect e2e
 
       - name: Upload artifacts
