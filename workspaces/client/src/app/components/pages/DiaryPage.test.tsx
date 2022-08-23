@@ -4,6 +4,7 @@ import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
 import { DiaryDate } from "lib/util/DiaryDate";
 import { wrap } from "souvlaki";
 import { mockGetDiaryEntry } from "test/mocks/mockDiaryEntry";
+import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
 import { withPageRouteForDate } from "test/wrappers/withPageRouteForDate";
 import { withQueryClient } from "test/wrappers/withQueryClient";
 import { describe, expect, it } from "vitest";
@@ -11,7 +12,12 @@ import DiaryPage from "./DiaryPage";
 
 describe("DiaryPage", () => {
   const wrappers = (date: string) =>
-    wrap(withLocale("en-AU"), withQueryClient(), withPageRouteForDate(date));
+    wrap(
+      withLocale("en-AU"),
+      withQueryClient(),
+      withAuth0Wrapper({ isAuthenticated: true }),
+      withPageRouteForDate(date)
+    );
 
   it("shows an error page if an invalid date is supplied", () => {
     render(<DiaryPage />, {

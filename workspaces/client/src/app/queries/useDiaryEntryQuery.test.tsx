@@ -4,20 +4,26 @@ import { rest } from "msw";
 import { wrap } from "souvlaki";
 import { diaryEntryUriTemplate } from "test/mocks/diaryEntryUriTemplate";
 import { server } from "test/mocks/server";
+import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
 import { withQueryClient } from "test/wrappers/withQueryClient";
 import { describe, expect, it } from "vitest";
 import { useDiaryEntryQuery } from "./useDiaryEntryQuery";
 
+const wrapper = wrap(
+  withQueryClient(),
+  withAuth0Wrapper({ isAuthenticated: true })
+);
+
 describe("useDiaryEntryQuery", () => {
   it("returns response.json", async () => {
     const date = "2022-08-14";
-    const { result } = renderHook(() => useDiaryEntryQuery(date), {
-      wrapper: wrap(withQueryClient()),
-    });
+    const { result } = renderHook(() => useDiaryEntryQuery(date), { wrapper });
 
-    await waitFor(() =>
-      expect(result.current.data?.diaryEntry).toEqual(buildDiaryEntry({ date }))
-    );
+    await waitFor(() => {
+      return expect(result.current.data?.diaryEntry).toEqual(
+        buildDiaryEntry({ date })
+      );
+    });
   });
 
   it("returns an error if fetch fails", async () => {
@@ -26,7 +32,7 @@ describe("useDiaryEntryQuery", () => {
     );
 
     const { result } = renderHook(() => useDiaryEntryQuery("TEST"), {
-      wrapper: wrap(withQueryClient()),
+      wrapper,
     });
 
     await waitFor(() => expect(result.current.isError).toBe(true));
@@ -43,7 +49,7 @@ describe("useDiaryEntryQuery", () => {
     );
 
     const { result } = renderHook(() => useDiaryEntryQuery("TEST"), {
-      wrapper: wrap(withQueryClient()),
+      wrapper,
     });
 
     await waitFor(() => expect(result.current.isError).toBe(true));

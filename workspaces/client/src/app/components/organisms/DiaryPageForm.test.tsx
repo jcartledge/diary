@@ -8,13 +8,19 @@ import {
   mockGetDiaryEntry,
   mockPostDiaryEntry,
 } from "test/mocks/mockDiaryEntry";
+import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
 import { withQueryClient } from "test/wrappers/withQueryClient";
 import { describe, expect, it } from "vitest";
 import DiaryPageForm from "./DiaryPageForm";
 
 describe("DiaryPageForm", () => {
   const wrappers = (date: DiaryDate = new DiaryDate()) =>
-    wrap(withQueryClient(), withDate(date), withDiaryEntry());
+    wrap(
+      withQueryClient(),
+      withAuth0Wrapper({ isAuthenticated: true }),
+      withDate(date),
+      withDiaryEntry()
+    );
 
   it("renders the diary content from backend", async () => {
     mockGetDiaryEntry({
