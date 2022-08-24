@@ -35,7 +35,26 @@ describe("useUpdateDiaryEntryMutation", () => {
     const { result } = renderHook(useUpdateDiaryEntryMutation, { wrapper });
     result.current.mutate(buildDiaryEntry({ date: "2022-08-17" }));
 
-    await waitFor(() => expect(result.current.isError).toBe(true));
+    await waitFor(() =>
+      expect(result.current.error).toEqual(
+        expect.objectContaining({ message: "Not Found" })
+      )
+    );
+  });
+
+  it("returns an error if fetch fails", async () => {
+    server.use(
+      rest.post(diaryEntryUriTemplate, (_, res, ctx) => res(ctx.status(403)))
+    );
+
+    const { result } = renderHook(useUpdateDiaryEntryMutation, { wrapper });
+    result.current.mutate(buildDiaryEntry({ date: "2022-08-17" }));
+
+    await waitFor(() =>
+      expect(result.current.error).toEqual(
+        expect.objectContaining({ message: "Forbidden" })
+      )
+    );
   });
 
   it("returns an error if the diaryEntry is not valid", async () => {

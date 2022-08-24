@@ -18,11 +18,14 @@ export const useDiaryEntryQuery = (isoDateString: string) => {
     async () => {
       isAuthenticated || fail("Not authenticated");
 
-      const accessToken = await getAccessTokenSilently(readDiaryEntriesScopes);
       const response = await fetch(`${bffUri}/diaryentry/${isoDateString}`, {
-        headers: { Authorization: `Bearer: ${accessToken}` },
+        headers: {
+          Authorization: `Bearer: ${await getAccessTokenSilently(
+            readDiaryEntriesScopes
+          )}`,
+        },
       });
-      response.ok || fail("Network response was not ok");
+      response.ok || fail(response.statusText);
 
       const { diaryEntry } = await response.json();
       withError(validateDiaryEntry(diaryEntry), fail);

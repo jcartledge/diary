@@ -28,7 +28,7 @@ export const useUpdateDiaryEntryMutation = () => {
         },
         body: JSON.stringify({ diaryEntry }),
       });
-      response.ok || fail("Network response was not ok");
+      response.ok || fail(response.statusText);
       return await response.json();
     },
     {

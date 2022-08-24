@@ -26,7 +26,7 @@ describe("useDiaryEntryQuery", () => {
     });
   });
 
-  it("returns an error if fetch fails", async () => {
+  it("returns an error if fetch responds with 404", async () => {
     server.use(
       rest.get(diaryEntryUriTemplate, (_, res, ctx) => res(ctx.status(404)))
     );
@@ -35,7 +35,27 @@ describe("useDiaryEntryQuery", () => {
       wrapper,
     });
 
-    await waitFor(() => expect(result.current.isError).toBe(true));
+    await waitFor(() => {
+      expect(result.current.error).toEqual(
+        expect.objectContaining({ message: "Not Found" })
+      );
+    });
+  });
+
+  it("returns an error if fetch responds with 403", async () => {
+    server.use(
+      rest.get(diaryEntryUriTemplate, (_, res, ctx) => res(ctx.status(403)))
+    );
+
+    const { result } = renderHook(() => useDiaryEntryQuery("TEST"), {
+      wrapper,
+    });
+
+    await waitFor(() => {
+      expect(result.current.error).toEqual(
+        expect.objectContaining({ message: "Forbidden" })
+      );
+    });
   });
 
   it("returns an error if the response is not a valid diaryEntry", async () => {
