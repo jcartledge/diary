@@ -2104,6 +2104,7 @@ __metadata:
     eslint-config-airbnb-base: 15.0.0
     eslint-plugin-import: 2.26.0
     express: ^4.18.1
+    express-oauth2-jwt-bearer: ^1.1.0
     http: ^0.0.1-security
     nodemon: 2.0.19
     pg: ^8.7.3
@@ -5696,6 +5697,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"express-oauth2-jwt-bearer@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "express-oauth2-jwt-bearer@npm:1.1.0"
+  dependencies:
+    jose: ^4.3.7
+  checksum: af81c9b83cc54b880f761ac467b437c867b6cc7624ca517e7cad2ffa2c7a82b95b3ad67c86dc06e8c9029b39f1674e60b273354d1942cc26a1bd3f06383af2d9
+  languageName: node
+  linkType: hard
+
 "express@npm:^4.18.1":
   version: 4.18.1
   resolution: "express@npm:4.18.1"
@@ -6839,6 +6849,13 @@ __metadata:
   version: 1.4.0
   resolution: "jju@npm:1.4.0"
   checksum: 3790481bd2b7827dd6336e6e3dc2dcc6d425679ba7ebde7b679f61dceb4457ea0cda330972494de608571f4973c6dfb5f70fab6f3c5037dbab19ac449a60424f
+  languageName: node
+  linkType: hard
+
+"jose@npm:^4.3.7":
+  version: 4.9.0
+  resolution: "jose@npm:4.9.0"
+  checksum: fc1e71f49327206eb58b23a2c5d463c3b1c84cd60ba2b8f8ab74db4a96ec079915fc71bc8b7d57d77b25d1426cd02eb218bf426738e803ab1a52adc1d96d0912
   languageName: node
   linkType: hard
 
