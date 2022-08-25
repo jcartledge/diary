@@ -11,6 +11,6 @@
     "@babel/preset-typescript": "7.18.6",
     "@playwright/test": "1.25.1",
     "dotenv": "16.0.1",
-    "playwright-testing-library": "4.3.0"
+    "playwright-testing-library": "4.3.1"
   }
 }

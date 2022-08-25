@@ -2082,7 +2082,7 @@ __metadata:
     "@babel/preset-typescript": 7.18.6
     "@playwright/test": 1.25.1
     dotenv: 16.0.1
-    playwright-testing-library: 4.3.0
+    playwright-testing-library: 4.3.1
   languageName: unknown
   linkType: soft
 
@@ -8098,9 +8098,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-testing-library@npm:4.3.0":
-  version: 4.3.0
-  resolution: "playwright-testing-library@npm:4.3.0"
+"playwright-testing-library@npm:4.3.1":
+  version: 4.3.1
+  resolution: "playwright-testing-library@npm:4.3.1"
   dependencies:
     "@testing-library/dom": ^7.31.2
     wait-for-expect: ^3.0.2
@@ -8112,7 +8112,7 @@ __metadata:
       optional: true
     playwright:
       optional: true
-  checksum: 0944d2b4ef60718513e4f491f86bec1dd87e690e49777d3050c498a963ee4cb2c4853995dd37ccd4b4f4443b4595ba048229dc9bea4c5e03d764a959ced5c49b
+  checksum: 50c19e22eeddb602c747093b376e24867e1e9bb4897357e10fdaac00615a96ddee9b183db74b652d855ae31608f25f74901fa2e41fd8a23f0d88fb84613087f1
   languageName: node
   linkType: hard
 
