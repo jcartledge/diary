@@ -10,7 +10,7 @@
   "devDependencies": {
     "@babel/preset-typescript": "7.18.6",
     "@playwright/test": "1.25.1",
-    "dotenv": "16.0.1",
+    "dotenv": "16.0.2",
     "playwright-testing-library": "4.3.1"
   }
 }
