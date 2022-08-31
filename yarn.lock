@@ -2064,7 +2064,7 @@ __metadata:
     react-dom: 18.2.0
     react-is: 18.2.0
     slugify: 1.6.5
-    souvlaki: 0.1.1
+    souvlaki: 0.3.0
     styled-components: 5.3.5
     ts-node: 10.9.1
     typescript: 4.8.2
@@ -9009,13 +9009,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"souvlaki@npm:0.1.1":
-  version: 0.1.1
-  resolution: "souvlaki@npm:0.1.1"
+"souvlaki@npm:0.3.0":
+  version: 0.3.0
+  resolution: "souvlaki@npm:0.3.0"
   peerDependencies:
     react: "*"
     react-dom: "*"
-  checksum: c50c39b6ccac686659f1c6b4e9028d49e7a75293ad26e9289f532e528e5cd70c4e9a359bff42064630d8210677b74997c859b0dbd72db63ab91434633794d3f3
+  checksum: 9c9835b9c4c80a27467044748193bae90ff2af30d76900ea84b100b6ffa1595eec5c2373c852d55ae2baa4f084ac6423d13393029fec6a152804be913e962ecf
   languageName: node
   linkType: hard
 
