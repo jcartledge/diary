@@ -3,7 +3,7 @@ import { HistoryRouter, Route } from "lib/router";
 import { createHelper } from "souvlaki";
 
 export const withPageRouteForDate = createHelper(
-  (isoDateString): React.FC<React.PropsWithChildren> =>
+  (isoDateString: string): React.FC<React.PropsWithChildren> =>
     ({ children }) =>
       (
         <HistoryRouter initialPath={buildDiaryPageRoute(isoDateString)}>
