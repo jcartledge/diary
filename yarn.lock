@@ -2071,7 +2071,7 @@ __metadata:
     typescript: 4.8.2
     vite: 3.0.9
     vite-tsconfig-paths: 3.5.0
-    vitest: 0.22.1
+    vitest: 0.23.0
     whatwg-fetch: 3.6.2
   languageName: unknown
   linkType: soft
@@ -2114,7 +2114,7 @@ __metadata:
     ts-loader: 9.3.1
     ts-node: 10.9.1
     typescript: 4.8.2
-    vitest: 0.22.1
+    vitest: 0.23.0
     webpack: 5.74.0
     webpack-cli: 4.10.0
   languageName: unknown
@@ -2124,7 +2124,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@diary/shared@workspace:workspaces/shared"
   dependencies:
-    vitest: 0.22.1
+    vitest: 0.23.0
     zod: 3.18.0
   languageName: unknown
   linkType: soft
@@ -9902,42 +9902,6 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: 93a19bae089007236813e2ee95f9fdf342b8abc76a3c39ef2fd08f2bdbe2801bfb3473c7c1812253aad04fd2bda198b5e77bf24b4fb525d72b0003ee15fb4d42
-  languageName: node
-  linkType: hard
-
-"vitest@npm:0.22.1":
-  version: 0.22.1
-  resolution: "vitest@npm:0.22.1"
-  dependencies:
-    "@types/chai": ^4.3.3
-    "@types/chai-subset": ^1.3.3
-    "@types/node": "*"
-    chai: ^4.3.6
-    debug: ^4.3.4
-    local-pkg: ^0.4.2
-    tinypool: ^0.2.4
-    tinyspy: ^1.0.2
-    vite: ^2.9.12 || ^3.0.0-0
-  peerDependencies:
-    "@edge-runtime/vm": "*"
-    "@vitest/browser": "*"
-    "@vitest/ui": "*"
-    happy-dom: "*"
-    jsdom: "*"
-  peerDependenciesMeta:
-    "@edge-runtime/vm":
-      optional: true
-    "@vitest/browser":
-      optional: true
-    "@vitest/ui":
-      optional: true
-    happy-dom:
-      optional: true
-    jsdom:
-      optional: true
-  bin:
-    vitest: vitest.mjs
-  checksum: 7abe50ceb51181e77cd62eb3a07c2da17f13078f09be34cc2e98f1f94a77eba33a56c644d48ae16bb474945ffc1cfc8664b1f4976c3de495c5e474057420c4ca
   languageName: node
   linkType: hard
 
