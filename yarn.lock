@@ -2014,7 +2014,7 @@ __metadata:
     "@diary/shared": "workspace:*"
     "@jedmao/location": 3.0.0
     "@picocss/pico": 1.5.3
-    "@tanstack/react-query": 4.2.3
+    "@tanstack/react-query": 4.3.1
     "@testing-library/dom": 8.17.1
     "@testing-library/jest-dom": 5.16.5
     "@testing-library/react": 13.4.0
@@ -2440,19 +2440,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:4.2.3":
-  version: 4.2.3
-  resolution: "@tanstack/query-core@npm:4.2.3"
-  checksum: b37efdc32b1731575eba398eda3b7a4cd3ed25ee1032d5200124c37ab4e58711d310e2e29e9e51284553a7c03c85e55cf8da6833bc3b1e215e0e43e7399ab3ca
+"@tanstack/query-core@npm:4.3.1":
+  version: 4.3.1
+  resolution: "@tanstack/query-core@npm:4.3.1"
+  checksum: af3fba99af5cd0ac018e400c96b1a7817cc0a252d6a8760d63812b73e0b6b8dcddf389529ba47db11b96f4f67edc38e8407e662ed623c60402f38f4fb93ca886
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:4.2.3":
-  version: 4.2.3
-  resolution: "@tanstack/react-query@npm:4.2.3"
+"@tanstack/react-query@npm:4.3.1":
+  version: 4.3.1
+  resolution: "@tanstack/react-query@npm:4.3.1"
   dependencies:
-    "@tanstack/query-core": 4.2.3
-    "@types/use-sync-external-store": ^0.0.3
+    "@tanstack/query-core": 4.3.1
     use-sync-external-store: ^1.2.0
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -2463,7 +2462,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 0a38ae05271e1669c6efd5cc77608103b6dfde577ecdc88c3f0e72953aea11c102c9b5a49fa2ca822f260a68f9f9646c5e847e7d87c99117b2c2e3b1356cbc8b
+  checksum: 11c707e1ab77e5d41a7e95ec2ad0fd0bf025346c151ca6dbacb13177d188a96147671d7d54b771d1a103feeb2f08b5ba9b65d04344cca457b0f954acda84e68b
   languageName: node
   linkType: hard
 
@@ -2947,13 +2946,6 @@ __metadata:
   dependencies:
     "@types/jest": "*"
   checksum: dcb05416758fe88c1f4f3aa97b4699fcb46a5ed8f53c6b81721e66155452a48caf12ecb97dfdfd4130678e65efd66b9fca0ac434b3d63affec84842a84a6bf38
-  languageName: node
-  linkType: hard
-
-"@types/use-sync-external-store@npm:^0.0.3":
-  version: 0.0.3
-  resolution: "@types/use-sync-external-store@npm:0.0.3"
-  checksum: 161ddb8eec5dbe7279ac971531217e9af6b99f7783213566d2b502e2e2378ea19cf5e5ea4595039d730aa79d3d35c6567d48599f69773a02ffcff1776ec2a44e
   languageName: node
   linkType: hard
 
