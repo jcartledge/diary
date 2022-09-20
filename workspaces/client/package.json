@@ -34,7 +34,7 @@
     "@jedmao/location": "3.0.0",
     "@picocss/pico": "1.5.5",
     "@tanstack/react-query": "4.3.9",
-    "@testing-library/dom": "8.18.0",
+    "@testing-library/dom": "8.18.1",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "14.4.3",
