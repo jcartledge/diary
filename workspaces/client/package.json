@@ -45,7 +45,7 @@
     "@virtualstate/navigation": "1.0.1-alpha.153",
     "@vitejs/plugin-react": "2.1.0",
     "@vitest/coverage-c8": "0.23.4",
-    "autoprefixer": "10.4.11",
+    "autoprefixer": "10.4.12",
     "c8": "7.12.0",
     "eslint": "8.23.1",
     "eslint-config-react-app": "7.0.1",
