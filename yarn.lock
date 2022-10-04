@@ -2013,7 +2013,7 @@ __metadata:
     "@auth0/auth0-react": 1.11.0
     "@diary/shared": "workspace:*"
     "@jedmao/location": 3.0.0
-    "@picocss/pico": 1.5.5
+    "@picocss/pico": 1.5.6
     "@tanstack/react-query": 4.9.0
     "@testing-library/dom": 8.18.1
     "@testing-library/jest-dom": 5.16.5
@@ -2407,10 +2407,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@picocss/pico@npm:1.5.5":
-  version: 1.5.5
-  resolution: "@picocss/pico@npm:1.5.5"
-  checksum: 539ffcc53c80161a034f5709fff99e86fc0b70ff168d37e743c213dd51b38827ccf6cd60e8b94ec16fd00639681a13888e1f8ec664944aefd3c33f68c27f6c7c
+"@picocss/pico@npm:1.5.6":
+  version: 1.5.6
+  resolution: "@picocss/pico@npm:1.5.6"
+  checksum: 84f730aadd5dcfcb6ca3e96ee0d9641b1674b9d18cb29489aeb4da141c0433b1f658169ffa84c3082d4d84a7775f2ec5f5abb7255b6d2cd5e6bd3923aca578e0
   languageName: node
   linkType: hard
 
