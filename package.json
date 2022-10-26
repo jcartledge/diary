@@ -9,7 +9,7 @@
     "workspaces/*"
   ],
   "devDependencies": {
-    "@types/node": "17.0.39",
+    "@types/node": "18.11.7",
     "audit-ci": "6.3.0"
   },
   "packageManager": "yarn@3.2.4"
