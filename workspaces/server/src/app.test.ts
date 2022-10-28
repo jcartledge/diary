@@ -12,7 +12,7 @@ describe("app", () => {
     });
   });
 
-  it("has a working helathcheck endpoint", async () => {
+  it("has a working healthcheck endpoint", async () => {
     const response = await request(getAppWithRoutes()).get("/healthcheck");
 
     expect(response.status).toEqual(200);
