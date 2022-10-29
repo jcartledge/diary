@@ -3,7 +3,7 @@ import { TogglesProvider } from "lib/toggles/TogglesProvider";
 import { createHelper } from "souvlaki";
 
 export const withToggles = createHelper(
-  (toggles: FeatureToggles = []): React.FC<React.PropsWithChildren> =>
+  (toggles: FeatureToggles = []) =>
     ({ children }) =>
       <TogglesProvider toggles={toggles}>{children}</TogglesProvider>
 );
