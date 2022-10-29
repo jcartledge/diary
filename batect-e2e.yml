@@ -37,6 +37,6 @@ tasks:
           AUTH0_CLIENT_ID: OIpPvf351DRBU1InkCPZGZc3sJXf6JaY
       diary-server:
         environment:
-          CORS_ORIGIN: ${CORS_ORIGIN:-}
+          CORS_ORIGIN: https://diary-client
     run:
       container: e2e
