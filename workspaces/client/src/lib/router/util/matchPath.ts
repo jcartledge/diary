@@ -16,6 +16,19 @@ const PLACEHOLDER_REPLACE = "(?<$1>[^/]+)";
 export const matchPath = (
   pathTemplate: string,
   testPath: string
+): MatchPathResult =>
+  pathTemplate === "*"
+    ? matchWildcardPath()
+    : matchNonWildcardPath(pathTemplate, testPath);
+
+const matchWildcardPath = (): MatchPathResult => ({
+  isMatch: true,
+  params: {},
+});
+
+const matchNonWildcardPath = (
+  pathTemplate: string,
+  testPath: string
 ): MatchPathResult => {
   const matches = [
     ...testPath.matchAll(

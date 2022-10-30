@@ -36,6 +36,10 @@ describe("matchPath", () => {
     );
   });
 
+  it("matches any path if a single asterisk is passed", () => {
+    expect(matchPath("*", "/any/thing").isMatch).toBe(true);
+  });
+
   it("extracts placeholder values from the supplied path", () => {
     expect(
       matchPath("/user/:username/:action", "/user/foo/bury").params
