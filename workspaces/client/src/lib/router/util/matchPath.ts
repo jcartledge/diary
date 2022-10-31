@@ -13,20 +13,7 @@ export type MatchPathResult = MatchPathMatchedResult | MatchPathUnmatchedResult;
 const PLACEHOLDER_SEARCH = /:([a-z]+)/gi;
 const PLACEHOLDER_REPLACE = "(?<$1>[^/]+)";
 
-export const matchPath = (
-  pathTemplate: string,
-  testPath: string
-): MatchPathResult =>
-  pathTemplate === "*"
-    ? matchWildcardPath()
-    : matchNonWildcardPath(pathTemplate, testPath);
-
-const matchWildcardPath = (): MatchPathResult => ({
-  isMatch: true,
-  params: {},
-});
-
-const matchNonWildcardPath = (
+export const matchNonWildcardPath = (
   pathTemplate: string,
   testPath: string
 ): MatchPathResult => {
@@ -43,3 +30,8 @@ const matchNonWildcardPath = (
     params: matches?.groups ?? {},
   };
 };
+
+export const matchWildcardPath = (path: string): MatchPathResult => ({
+  isMatch: path === "*",
+  params: {},
+});
