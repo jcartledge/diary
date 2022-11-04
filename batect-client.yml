@@ -8,7 +8,7 @@ containers:
         container: /etc/ssl
 
   diary-client-dev:
-    image: node:16.17.1
+    image: node:16.18.0
     working_directory: /app
     command: yarn workspace @diary/client dev --host
     environment:
