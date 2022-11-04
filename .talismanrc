@@ -20,5 +20,8 @@ fileignoreconfig:
   - filename: batect-e2e.yml
     checksum: a29c0bbf0b68f0d1bbac4db203ab6637a11f49ec46507fe3108f7e9aa609e277
     ignore_detectors: []
+  - filename: workspaces/e2e/config.ts
+    checksum: 591b1fd0b7a2c28d7369e85f45c4574af6de741b8524bbdb8dddf60abb18f539
+    ignore_detectors: []
 scopeconfig:
   - scope: node

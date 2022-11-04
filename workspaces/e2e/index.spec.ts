@@ -1,12 +1,9 @@
 import { expect, Page, test } from "@playwright/test";
-import dotenv from "dotenv";
 import { getDocument, queries, waitFor } from "playwright-testing-library";
 import { ElementHandle } from "playwright-testing-library/dist/typedefs";
+import { CLIENT_URI, E2E_PASS, E2E_USER } from "./config";
 
-dotenv.config();
 const { findByLabelText, findByText, findByRole, queryByRole } = queries;
-const CLIENT_URI = process.env.CLIENT_URI ?? "";
-
 type PageElements = { [key: string]: ElementHandle };
 const getPageElements = async (page: Page): Promise<PageElements> => {
   const document = await getDocument(page);
@@ -32,17 +29,13 @@ const failOnConsoleErrorOrWarning = (page: Page): void => {
 
 const login = async (page: Page): Promise<void> => {
   await page.goto(CLIENT_URI);
-  let document = await getDocument(page);
-  const loginButton = await queryByRole(document, "button", { name: "Log in" });
+  const loginButton = page.getByRole("button", { name: "Log in" });
   if (loginButton) {
     await loginButton.click();
 
-    document = await getDocument(page);
-    const emailField = await findByLabelText(document, "Email address");
-    await emailField.type(process.env.E2E_USER);
-    const passwordField = await findByLabelText(document, "Password");
-    await passwordField.type(process.env.E2E_PASS);
-    const continueButton = await findByRole(document, "button", {
+    await page.getByRole("textbox", { name: "Email address" }).type(E2E_USER);
+    await page.getByRole("textbox", { name: "Password" }).type(E2E_PASS);
+    const continueButton = page.getByRole("button", {
       name: "Continue",
     });
     await Promise.all([page.waitForNavigation(), continueButton.click()]);
