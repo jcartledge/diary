@@ -49,6 +49,18 @@ describe("DiaryPageForm", () => {
     });
   });
 
+  it("disables the fields while the entry is loading", () => {
+    render(<DiaryPageForm />, {
+      wrapper: wrappers(),
+    });
+
+    expect(screen.getByLabelText("What happened?")).toBeDisabled();
+    expect(screen.getByLabelText("Went well")).toBeDisabled();
+    expect(screen.getByLabelText("Could be improved")).toBeDisabled();
+    expect(screen.getByLabelText("Didn't go well")).toBeDisabled();
+    expect(screen.getByLabelText("Might be a risk")).toBeDisabled();
+  });
+
   it("calls the query with the date from the context", async () => {
     const date = new DiaryDate().getPrevious();
     const spy = mockGetDiaryEntry();
@@ -65,6 +77,10 @@ describe("DiaryPageForm", () => {
     const user = userEvent.setup();
     render(<DiaryPageForm />, { wrapper: wrappers() });
 
+    await waitFor(() =>
+      expect(screen.getByLabelText(/What happened/)).not.toBeDisabled()
+    );
+
     await act(async () => {
       await user.type(
         screen.getByLabelText(/What happened/),
@@ -72,7 +88,9 @@ describe("DiaryPageForm", () => {
       );
     });
 
-    expect(screen.queryByText("Saving...")).toBeInTheDocument();
+    await waitFor(() =>
+      expect(screen.queryByText("Saving...")).toBeInTheDocument()
+    );
     await waitFor(() =>
       expect(screen.queryByText("Saving...")).not.toBeInTheDocument()
     );
