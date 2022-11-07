@@ -10,28 +10,28 @@ test.describe("Diary", () => {
   test("retains input when navigating between days", async ({ page }) => {
     const $ = diaryPageLocators(page);
 
-    await expect($.whatHappened).toBeEnabled();
+    await expect($.whatHappenedField).toBeEnabled();
 
-    await $.whatHappened.type("Nothing happened today");
-    await $.wentWell.type("Boss remembered my name");
-    await $.couldBeImproved.type("Drink more water");
-    await $.didntGoWell.type("Forgot name of boss");
-    await $.risk.type("Glass too close to edge of table");
+    await $.whatHappenedField.type("Nothing happened today");
+    await $.wentWellField.type("Boss remembered my name");
+    await $.couldBeImprovedField.type("Drink more water");
+    await $.didntGoWellField.type("Forgot name of boss");
+    await $.riskField.type("Glass too close to edge of table");
 
-    await $.prev.click();
+    await $.prevLink.click();
 
-    await expect($.whatHappened).toHaveText("");
-    await expect($.wentWell).toHaveText("");
-    await expect($.couldBeImproved).toHaveText("");
-    await expect($.didntGoWell).toHaveText("");
-    await expect($.risk).toHaveText("");
+    await expect($.whatHappenedField).toHaveText("");
+    await expect($.wentWellField).toHaveText("");
+    await expect($.couldBeImprovedField).toHaveText("");
+    await expect($.didntGoWellField).toHaveText("");
+    await expect($.riskField).toHaveText("");
 
-    await $.next.click();
+    await $.nextLink.click();
 
-    await expect($.whatHappened).toHaveText("Nothing happened today");
-    await expect($.wentWell).toHaveText("Boss remembered my name");
-    await expect($.couldBeImproved).toHaveText("Drink more water");
-    await expect($.didntGoWell).toHaveText("Forgot name of boss");
-    await expect($.risk).toHaveText("Glass too close to edge of table");
+    await expect($.whatHappenedField).toHaveText("Nothing happened today");
+    await expect($.wentWellField).toHaveText("Boss remembered my name");
+    await expect($.couldBeImprovedField).toHaveText("Drink more water");
+    await expect($.didntGoWellField).toHaveText("Forgot name of boss");
+    await expect($.riskField).toHaveText("Glass too close to edge of table");
   });
 });
