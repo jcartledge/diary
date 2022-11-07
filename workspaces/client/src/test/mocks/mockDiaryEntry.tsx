@@ -28,20 +28,3 @@ export const mockGetDiaryEntry = (
   );
   return spy;
 };
-
-export const mockPostDiaryEntry = (diaryEntry: Partial<DiaryEntry> = {}) => {
-  const spy = vi.fn();
-  server.use(
-    rest.post(
-      diaryEntryUri(""),
-      spy.mockImplementation((_, res, ctx) =>
-        res(
-          ctx.status(200),
-          ctx.json({
-            diaryEntry: buildDiaryEntry(diaryEntry),
-          })
-        )
-      )
-    )
-  );
-};

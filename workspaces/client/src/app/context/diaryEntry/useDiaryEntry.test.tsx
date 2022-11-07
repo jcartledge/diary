@@ -1,7 +1,6 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
 import { wrap } from "souvlaki";
 import { mockConsoleError, unmockConsoleError } from "test/mockConsoleError";
-import { mockPostDiaryEntry } from "test/mocks/mockDiaryEntry";
 import { withQueryClient } from "test/wrappers/withQueryClient";
 import { describe, expect, it } from "vitest";
 import { withDiaryEntry } from "./DiaryEntryContextProvider.testWrapper";
@@ -46,7 +45,6 @@ describe("useDiaryEntry", () => {
   });
 
   it("sets isDirty to false when the entry has been saved", async () => {
-    mockPostDiaryEntry();
     const { result } = renderHook(useDiaryEntry, wrappers());
 
     act(() => result.current.updateDiaryEntry("whatHappened")("foo"));

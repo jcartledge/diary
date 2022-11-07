@@ -16,7 +16,6 @@ export const useUpdateDiaryEntryMutation = () => {
   return useMutation(
     async (diaryEntry: DiaryEntry) => {
       isAuthenticated || fail("Not authenticated");
-
       withError(validateDiaryEntry(diaryEntry), fail);
 
       const accessToken = await getAccessTokenSilently(writeDiaryEntriesScopes);

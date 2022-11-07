@@ -4,10 +4,7 @@ import { withDate } from "app/context/date/DateContext.testWrapper";
 import { withDiaryEntry } from "app/context/diaryEntry/DiaryEntryContextProvider.testWrapper";
 import { DiaryDate } from "lib/util/DiaryDate";
 import { wrap } from "souvlaki";
-import {
-  mockGetDiaryEntry,
-  mockPostDiaryEntry,
-} from "test/mocks/mockDiaryEntry";
+import { mockGetDiaryEntry } from "test/mocks/mockDiaryEntry";
 import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
 import { withQueryClient } from "test/wrappers/withQueryClient";
 import { describe, expect, it } from "vitest";
@@ -65,8 +62,6 @@ describe("DiaryPageForm", () => {
   });
 
   it("saves the updated content to update the entry", async () => {
-    mockPostDiaryEntry();
-
     const user = userEvent.setup();
     render(<DiaryPageForm />, { wrapper: wrappers() });
 

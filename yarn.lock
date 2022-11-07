@@ -2120,6 +2120,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@diary/shared@workspace:workspaces/shared"
   dependencies:
+    iso-datestring-validator: 2.2.2
     vitest: 0.24.5
     zod: 3.19.1
   languageName: unknown
