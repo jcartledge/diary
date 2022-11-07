@@ -6,6 +6,7 @@ export const DiaryEntryContext = createContext<
       diaryEntry: DiaryEntry;
       updateDiaryEntry: (field: keyof DiaryEntry) => (value: string) => void;
       isDirty: boolean;
+      isLoading: boolean;
     }
   | undefined
 >(undefined);

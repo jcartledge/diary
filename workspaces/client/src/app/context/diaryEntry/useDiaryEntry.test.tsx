@@ -11,6 +11,20 @@ const wrappers = () => ({
 });
 
 describe("useDiaryEntry", () => {
+  it("sets isLoading while loading", () => {
+    const { result } = renderHook(useDiaryEntry, wrappers());
+
+    expect(result.current.isLoading).toBe(true);
+  });
+
+  it("sets isLoading false when diaryEntry has loaded", async () => {
+    const { result } = renderHook(useDiaryEntry, wrappers());
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+  });
+
   it("sets isDirty to false when an entry is loaded and no updates have taken place", () => {
     const { result } = renderHook(useDiaryEntry, wrappers());
 
