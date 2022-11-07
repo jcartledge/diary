@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { failOnConsoleErrorOrWarning } from "./helpers/failOnConsoleErrorOrWarning";
 import { login } from "./helpers/login";
-import { diaryPageLocators } from "./pages/diaryPageLocators";
+import { diaryPageLocators } from "./helpers/pages/diaryPageLocators";
 
 test.describe("Diary", () => {
   test.beforeEach(failOnConsoleErrorOrWarning);
