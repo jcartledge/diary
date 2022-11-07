@@ -1,4 +1,4 @@
-import { E2eHelper } from "./types/e2eHelper";
+import { type E2eHelper } from "./e2eHelper";
 
 export const failOnConsoleErrorOrWarning: E2eHelper = ({ page }) => {
   page.on("console", (message) => {
