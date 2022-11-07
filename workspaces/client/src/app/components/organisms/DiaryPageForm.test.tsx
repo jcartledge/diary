@@ -1,7 +1,7 @@
 import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { withDate } from "app/context/date/DateContext.testWrapper";
-import { withDiaryEntry } from "app/context/diaryEntry/DiaryEntryContextProvider.testWrapper";
+import { withDiaryEntryContextProvider } from "app/context/diaryEntry/DiaryEntryContextProvider.testWrapper";
 import { DiaryDate } from "lib/util/DiaryDate";
 import { wrap } from "souvlaki";
 import { mockGetDiaryEntry } from "test/mocks/mockDiaryEntry";
@@ -16,7 +16,7 @@ describe("DiaryPageForm", () => {
       withQueryClient(),
       withAuth0Wrapper({ isAuthenticated: true }),
       withDate(date),
-      withDiaryEntry()
+      withDiaryEntryContextProvider()
     );
 
   it("renders the diary content from backend", async () => {

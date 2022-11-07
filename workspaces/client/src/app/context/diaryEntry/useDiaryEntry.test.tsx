@@ -3,11 +3,14 @@ import { wrap } from "souvlaki";
 import { mockConsoleError, unmockConsoleError } from "test/mockConsoleError";
 import { withQueryClient } from "test/wrappers/withQueryClient";
 import { describe, expect, it } from "vitest";
-import { withDiaryEntry } from "./DiaryEntryContextProvider.testWrapper";
+import { withDiaryEntryContextProvider } from "./DiaryEntryContextProvider.testWrapper";
 import { useDiaryEntry } from "./useDiaryEntry";
 
 const wrappers = () => ({
-  wrapper: wrap(withQueryClient(), withDiaryEntry({ saveTimeoutInterval: 1 })),
+  wrapper: wrap(
+    withQueryClient(),
+    withDiaryEntryContextProvider({ saveTimeoutInterval: 1 })
+  ),
 });
 
 describe("useDiaryEntry", () => {

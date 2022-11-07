@@ -1,13 +1,17 @@
+import { useDiaryEntry } from "app/context/diaryEntry/useDiaryEntry";
 import DateNextButton from "../atoms/DateNextButton";
 import DatePrevButton from "../atoms/DatePrevButton";
 
-export const DiaryNav = () => (
-  <ul>
-    <li>
-      <DatePrevButton />
-    </li>
-    <li>
-      <DateNextButton />
-    </li>
-  </ul>
-);
+export const DiaryNav = () => {
+  const { isDirty } = useDiaryEntry();
+  return (
+    <ul>
+      <li>
+        <DatePrevButton disabled={isDirty} />
+      </li>
+      <li>
+        <DateNextButton disabled={isDirty} />
+      </li>
+    </ul>
+  );
+};

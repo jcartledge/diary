@@ -2,7 +2,7 @@ import { DiaryEntryContextProvider } from "app/context/diaryEntry/DiaryEntryCont
 import React from "react";
 import { createHelper } from "souvlaki";
 
-export const withDiaryEntry = createHelper(
+export const withDiaryEntryContextProvider = createHelper(
   (
       props?: React.ComponentProps<typeof DiaryEntryContextProvider>
     ): React.FC<React.PropsWithChildren> =>
