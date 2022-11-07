@@ -1,8 +1,8 @@
-import { type Page } from "@playwright/test";
 import { CLIENT_URI, E2E_PASS, E2E_USER } from "./config";
+import { type E2eHelper } from "./types/e2eHelper";
 import { loginPageLocators } from "./pages/loginPageLocators";
 
-export const login = async ({ page }: { page: Page }) => {
+export const login: E2eHelper = async ({ page }) => {
   await page.goto(CLIENT_URI);
   const $ = loginPageLocators(page);
 

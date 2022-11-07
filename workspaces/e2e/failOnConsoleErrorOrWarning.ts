@@ -1,6 +1,6 @@
-import { type Page } from "@playwright/test";
+import { E2eHelper } from "./types/e2eHelper";
 
-export const failOnConsoleErrorOrWarning = ({ page }: { page: Page }) => {
+export const failOnConsoleErrorOrWarning: E2eHelper = ({ page }) => {
   page.on("console", (message) => {
     const messageType = message.type();
     if (messageType === "error" || messageType === "warning") {
