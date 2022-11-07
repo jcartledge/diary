@@ -10,6 +10,8 @@ test.describe("Diary", () => {
   test("retains input when navigating between days", async ({ page }) => {
     const $ = diaryPageLocators(page);
 
+    await expect($.whatHappened).toBeEnabled();
+
     await $.whatHappened.type("Nothing happened today");
     await $.wentWell.type("Boss remembered my name");
     await $.couldBeImproved.type("Drink more water");
