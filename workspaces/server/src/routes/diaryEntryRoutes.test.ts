@@ -12,7 +12,7 @@ describe("get diaryEntry route", () => {
       diaryEntryRoutes(buildMockDiaryEntriesModel())
     );
 
-    const response = await request(app).get("/diaryentry/foo");
+    const response = await request(app).get("/diaryentry/2020-11-11");
 
     expect(response.headers["content-type"]).toContain("application/json");
   });
@@ -65,10 +65,11 @@ describe("post diary entry route", () => {
     const app = getAppWithMiddleware().use(
       diaryEntryRoutes(buildMockDiaryEntriesModel())
     );
+    const date = "2020-11-11";
 
     const response = await request(app)
-      .post("/diaryentry/foo")
-      .send({ diaryEntry: buildDiaryEntry() });
+      .post(`/diaryentry/${date}`)
+      .send({ diaryEntry: buildDiaryEntry({ date }) });
 
     expect(response.headers["content-type"]).toContain("application/json");
   });
@@ -81,10 +82,11 @@ describe("post diary entry route", () => {
         })
       )
     );
-    const diaryEntry = buildDiaryEntry();
+    const date = "2020-11-11";
+    const diaryEntry = buildDiaryEntry({ date });
 
     const response = await request(app)
-      .post("/diaryentry/foo")
+      .post(`/diaryentry/${date}`)
       .send({ diaryEntry });
 
     expect(response.body).toEqual({
@@ -100,10 +102,11 @@ describe("post diary entry route", () => {
         })
       )
     );
-    const diaryEntry = buildDiaryEntry();
+    const date = "2020-11-11";
+    const diaryEntry = buildDiaryEntry({ date });
 
     const response = await request(app)
-      .post("/diaryentry/foo")
+      .post(`/diaryentry/${date}`)
       .send({ diaryEntry });
 
     expect(response.status).toEqual(200);
@@ -117,10 +120,11 @@ describe("post diary entry route", () => {
         })
       )
     );
-    const diaryEntry = buildDiaryEntry();
+    const date = "2020-11-11";
+    const diaryEntry = buildDiaryEntry({ date });
 
     const response = await request(app)
-      .post("/diaryentry/foo")
+      .post(`/diaryentry/${date}`)
       .send({ diaryEntry });
 
     expect(response.status).toEqual(404);

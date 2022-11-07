@@ -7,7 +7,11 @@ import { vi } from "vitest";
 export const buildMockDiaryEntriesModel: Builder<DiaryEntriesModelMethods> = (
   overrides = {}
 ) => ({
-  getByDate: vi.fn().mockResolvedValue(result(buildDiaryEntry())),
-  save: vi.fn().mockResolvedValue(result(buildDiaryEntry())),
+  getByDate: vi
+    .fn()
+    .mockResolvedValue(result(buildDiaryEntry({ date: "2020-11-11" }))),
+  save: vi
+    .fn()
+    .mockResolvedValue(result(buildDiaryEntry({ date: "2020-11-11" }))),
   ...overrides,
 });
