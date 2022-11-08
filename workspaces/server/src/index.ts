@@ -1,6 +1,6 @@
 import { getAppWithRoutes } from "./app";
-import { port } from "./config";
+import { PORT } from "./config";
 
-getAppWithRoutes().listen(port, () => {
-  console.log(`Diary server listening on port ${port}`);
+getAppWithRoutes().listen(PORT, () => {
+  console.log(`Diary server listening on port ${PORT}`);
 });

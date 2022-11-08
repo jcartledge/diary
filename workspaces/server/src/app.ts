@@ -2,7 +2,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
-import { corsOrigin } from "./config";
+import { CORS_ORIGIN } from "./config";
 import { getDbClient } from "./getDbClient";
 import { DiaryEntriesModel } from "./models/diaryEntriesModel";
 import { diaryEntryRoutes } from "./routes/diaryEntryRoutes";
@@ -14,7 +14,7 @@ export const getAppWithMiddleware = () =>
     .use(bodyParser.urlencoded({ extended: false }))
     .use(helmet())
     /* c8 ignore next */
-    .use(cors({ origin: corsOrigin }));
+    .use(cors({ origin: CORS_ORIGIN }));
 
 export const getAppWithRoutes = () =>
   getAppWithMiddleware()
