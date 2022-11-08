@@ -2102,6 +2102,7 @@ __metadata:
     eslint-plugin-import: 2.26.0
     express: ^4.18.1
     express-oauth2-jwt-bearer: ^1.1.0
+    helmet: ^6.0.0
     http: ^0.0.1-security
     nodemon: 2.0.20
     pg: ^8.7.3
@@ -6228,6 +6229,13 @@ __metadata:
   version: 3.1.0
   resolution: "headers-polyfill@npm:3.1.0"
   checksum: a95257065684653b7185efbb9a380c547ea832002991b5adf0d90cd222073da2701be9dc2849d1970ecf15e8c35b383984358566afe6e76ca8ff1dbd7cdce3af
+  languageName: node
+  linkType: hard
+
+"helmet@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "helmet@npm:6.0.0"
+  checksum: 0dd89d5b77c5334e815f5d29376ca7af0ad1007136890f497be3455d9ed9734e7203e13d9931e29e4d2ced1c632c52440f16d2a02e8835fd8b8706a12052faad
   languageName: node
   linkType: hard
 
