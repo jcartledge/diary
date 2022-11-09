@@ -23,7 +23,7 @@ export const useUpdateDiaryEntryMutation = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer: ${accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify({ diaryEntry }),
       });

@@ -3,6 +3,7 @@ import { DiaryEntry } from "@diary/shared/types/diaryEntry";
 import { validateDiaryEntry } from "@diary/shared/types/validateDiaryEntry";
 import express, { IRouter, Response } from "express";
 import { DiaryEntriesModelMethods } from "src/models/diaryEntriesModel";
+import { checkJwt } from "./auth/checkJwt";
 
 const DIARYENTRY_PATH = "/diaryentry/:date";
 
@@ -20,13 +21,13 @@ export const diaryEntryRoutes = (model: DiaryEntriesModelMethods): IRouter => {
   router
     .route(DIARYENTRY_PATH)
 
-    .get(async ({ params: { date } }, response) => {
+    .get(checkJwt, async ({ params: { date } }, response) => {
       const resultOfGet = await model.getByDate(date);
       withError(resultOfGet, sendNotFound(response));
       withResult(resultOfGet, sendOk(response));
     })
 
-    .post(async ({ body: { diaryEntry } }, response) => {
+    .post(checkJwt, async ({ body: { diaryEntry } }, response) => {
       const resultOfValidate = validateDiaryEntry(diaryEntry);
       withError(resultOfValidate, sendBadRequest(response));
       withResult(resultOfValidate, async (diaryEntry) => {
