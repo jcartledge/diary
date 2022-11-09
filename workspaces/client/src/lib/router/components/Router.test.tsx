@@ -75,32 +75,4 @@ describe("Router", () => {
       expect(updatePath).toHaveBeenCalledWith("/foo");
     });
   });
-
-  it("renders a wildcard match", () => {
-    render(
-      <Router initialPath="/something">
-        <Route path="*">
-          <p>Anything</p>
-        </Route>
-      </Router>
-    );
-
-    expect(screen.queryByText("Anything")).toBeInTheDocument();
-  });
-
-  // it("only renders the first matched route", () => {
-  //   render(
-  //     <Router initialPath="/test">
-  //       <Route path="/test">
-  //         <p>test route 1</p>
-  //       </Route>
-  //       <Route path="/test">
-  //         <p>test route 2</p>
-  //       </Route>
-  //     </Router>
-  //   );
-
-  //   expect(screen.queryByText("test route 1")).toBeInTheDocument();
-  //   expect(screen.queryByText("test route 2")).not.toBeInTheDocument();
-  // });
 });
