@@ -28,8 +28,12 @@ export const diaryEntryRoutes = (model: DiaryEntriesModelMethods): IRouter => {
     .get(
       checkJwt,
       checkGetDiaryScopes,
-      async ({ params: { date } }, response) => {
-        const resultOfGet = await model.getByDate(date);
+      async ({ auth, params: { date } }, response) => {
+        const resultOfGet = await model.getByDate(
+          /* c8 ignore next */
+          auth?.payload.sub ?? "",
+          date
+        );
         withError(resultOfGet, sendNotFound(response));
         withResult(resultOfGet, sendOk(response));
       }
@@ -38,11 +42,15 @@ export const diaryEntryRoutes = (model: DiaryEntriesModelMethods): IRouter => {
     .post(
       checkJwt,
       checkPostDiaryScopes,
-      async ({ body: { diaryEntry } }, response) => {
+      async ({ auth, body: { diaryEntry } }, response) => {
         const resultOfValidate = validateDiaryEntry(diaryEntry);
         withError(resultOfValidate, sendBadRequest(response));
         withResult(resultOfValidate, async (diaryEntry) => {
-          const resultOfSave = await model.save(diaryEntry);
+          const resultOfSave = await model.save(
+            /* c8 ignore next */
+            auth?.payload.sub ?? "",
+            diaryEntry
+          );
           withError(resultOfSave, sendNotFound(response));
           withResult(resultOfSave, sendOk(response));
         });

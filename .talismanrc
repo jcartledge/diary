@@ -15,7 +15,7 @@ fileignoreconfig:
     checksum: 0911dd13105ac8d49233822bbdea47313a83253eeacdaad4b20983ff5504bef4
     ignore_detectors: []
   - filename: workspaces/server/initdb.d/diary_entries.table.sql
-    checksum: 8ec06f9343c598b1a92b2ffbdb92e7b1f62f62a6b6a9f53268ffe9e50276cf9f
+    checksum: de079a8273d21ef3745f8c4b09d7faccbcc1c4e2a362e2b3d3df4c6269d18601
     ignore_detectors: []
   - filename: batect-e2e.yml
     checksum: a29c0bbf0b68f0d1bbac4db203ab6637a11f49ec46507fe3108f7e9aa609e277

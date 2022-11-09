@@ -5,13 +5,15 @@ import { describe, expect, it } from "vitest";
 import { DiaryEntriesModel } from "./diaryEntriesModel";
 
 describe("diaryEntriesModel", () => {
+  const userId = "test_user";
+
   describe("getByDate", () => {
     it("retrieves an empty diary entry", async () => {
       const date = "2020-10-10";
       const model = new DiaryEntriesModel(getDbClient());
-      const resultOfGetByDate = await model.getByDate(date);
+      const resultOfGetByDate = await model.getByDate(userId, date);
 
-      withError(resultOfGetByDate, () => expect.fail());
+      withError(resultOfGetByDate, ({ message }) => expect.fail(message));
       withResult(resultOfGetByDate, (diaryEntry) =>
         expect(diaryEntry).toEqual(buildDiaryEntry({ date }))
       );
@@ -26,7 +28,7 @@ describe("diaryEntriesModel", () => {
           },
         })
       );
-      const resultOfGetByDate = await model.getByDate(date);
+      const resultOfGetByDate = await model.getByDate(userId, date);
 
       withResult(resultOfGetByDate, () => expect.fail());
       withError(resultOfGetByDate, ({ message }) =>
@@ -39,9 +41,9 @@ describe("diaryEntriesModel", () => {
     it("returns the saved record", async () => {
       const diaryEntry = buildDiaryEntry({ date: "2020-10-10" });
       const model = new DiaryEntriesModel(getDbClient());
-      const resultOfGetByDate = await model.save(diaryEntry);
+      const resultOfGetByDate = await model.save(userId, diaryEntry);
 
-      withError(resultOfGetByDate, () => expect.fail());
+      withError(resultOfGetByDate, ({ message }) => expect.fail(message));
       withResult(resultOfGetByDate, (savedDiaryEntry) =>
         expect(savedDiaryEntry).toEqual(diaryEntry)
       );
@@ -56,7 +58,7 @@ describe("diaryEntriesModel", () => {
           },
         })
       );
-      const resultOfGetByDate = await model.save(diaryEntry);
+      const resultOfGetByDate = await model.save(userId, diaryEntry);
 
       withResult(resultOfGetByDate, () => expect.fail());
       withError(resultOfGetByDate, ({ message }) =>

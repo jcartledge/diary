@@ -53,7 +53,7 @@ describe("get diaryEntry route", () => {
     const app = getAppWithMiddleware().use(
       diaryEntryRoutes(
         buildMockDiaryEntriesModel({
-          getByDate: vi.fn((date) =>
+          getByDate: vi.fn((_, date) =>
             Promise.resolve(result(buildDiaryEntry({ date })))
           ),
         })
@@ -167,7 +167,7 @@ describe("post diary entry route", () => {
     const app = getAppWithMiddleware().use(
       diaryEntryRoutes(
         buildMockDiaryEntriesModel({
-          save: vi.fn((diaryEntry) => Promise.resolve(result(diaryEntry))),
+          save: vi.fn((_, diaryEntry) => Promise.resolve(result(diaryEntry))),
         })
       )
     );
@@ -190,7 +190,7 @@ describe("post diary entry route", () => {
     const app = getAppWithMiddleware().use(
       diaryEntryRoutes(
         buildMockDiaryEntriesModel({
-          save: vi.fn((diaryEntry) => Promise.resolve(result(diaryEntry))),
+          save: vi.fn((_, diaryEntry) => Promise.resolve(result(diaryEntry))),
         })
       )
     );
