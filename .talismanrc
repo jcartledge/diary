@@ -23,5 +23,8 @@ fileignoreconfig:
   - filename: workspaces/e2e/config.ts
     checksum: 591b1fd0b7a2c28d7369e85f45c4574af6de741b8524bbdb8dddf60abb18f539
     ignore_detectors: []
+  - filename: workspaces/e2e/.env.example
+    checksum: 63ee32cb8ed03f26f22515b57824f3a18293032d1c49a0b01c828e2d287cd40e
+    ignore_detectors: []
 scopeconfig:
   - scope: node
