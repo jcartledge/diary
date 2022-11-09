@@ -3,7 +3,11 @@ import { DiaryEntry } from "@diary/shared/types/diaryEntry";
 import { validateDiaryEntry } from "@diary/shared/types/validateDiaryEntry";
 import express, { IRouter, Response } from "express";
 import { DiaryEntriesModelMethods } from "src/models/diaryEntriesModel";
-import { checkJwt } from "./auth/checkJwt";
+import {
+  checkGetDiaryScopes,
+  checkJwt,
+  checkPostDiaryScopes,
+} from "./auth/checkToken";
 
 const DIARYENTRY_PATH = "/diaryentry/:date";
 
@@ -21,21 +25,29 @@ export const diaryEntryRoutes = (model: DiaryEntriesModelMethods): IRouter => {
   router
     .route(DIARYENTRY_PATH)
 
-    .get(checkJwt, async ({ params: { date } }, response) => {
-      const resultOfGet = await model.getByDate(date);
-      withError(resultOfGet, sendNotFound(response));
-      withResult(resultOfGet, sendOk(response));
-    })
+    .get(
+      checkJwt,
+      checkGetDiaryScopes,
+      async ({ params: { date } }, response) => {
+        const resultOfGet = await model.getByDate(date);
+        withError(resultOfGet, sendNotFound(response));
+        withResult(resultOfGet, sendOk(response));
+      }
+    )
 
-    .post(checkJwt, async ({ body: { diaryEntry } }, response) => {
-      const resultOfValidate = validateDiaryEntry(diaryEntry);
-      withError(resultOfValidate, sendBadRequest(response));
-      withResult(resultOfValidate, async (diaryEntry) => {
-        const resultOfSave = await model.save(diaryEntry);
-        withError(resultOfSave, sendNotFound(response));
-        withResult(resultOfSave, sendOk(response));
-      });
-    });
+    .post(
+      checkJwt,
+      checkPostDiaryScopes,
+      async ({ body: { diaryEntry } }, response) => {
+        const resultOfValidate = validateDiaryEntry(diaryEntry);
+        withError(resultOfValidate, sendBadRequest(response));
+        withResult(resultOfValidate, async (diaryEntry) => {
+          const resultOfSave = await model.save(diaryEntry);
+          withError(resultOfSave, sendNotFound(response));
+          withResult(resultOfSave, sendOk(response));
+        });
+      }
+    );
 
   return router;
 };

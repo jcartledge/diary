@@ -101,7 +101,17 @@ describe("get diaryEntry route", () => {
     expect(response.status).toEqual(404);
   });
 
-  it<AuthTestContext>("sends a 401 error if the token is invalid", async ({
+  it("sends a 401 error if the user is not authenticated (no token)", async () => {
+    const app = getAppWithMiddleware().use(
+      diaryEntryRoutes(buildMockDiaryEntriesModel())
+    );
+
+    const response = await request(app).get("/diaryentry/2020-11-11");
+
+    expect(response.status).toEqual(401);
+  });
+
+  it<AuthTestContext>("sends a 401 error if the user is not authenticated (invalid token)", async ({
     jwksMockServer,
   }) => {
     const app = getAppWithMiddleware().use(
@@ -112,10 +122,27 @@ describe("get diaryEntry route", () => {
       .get("/diaryentry/2020-11-11")
       .set(
         "Authorization",
-        `Bearer ${getToken(jwksMockServer, "invalidIssuer")}`
+        `Bearer ${getToken(jwksMockServer, { iss: "invalidIssuer" })}`
       );
 
     expect(response.status).toEqual(401);
+  });
+
+  it<AuthTestContext>("sends a 403 error if the user is not authorised (does not have required scope)", async ({
+    jwksMockServer,
+  }) => {
+    const app = getAppWithMiddleware().use(
+      diaryEntryRoutes(buildMockDiaryEntriesModel())
+    );
+
+    const response = await request(app)
+      .get("/diaryentry/2020-11-11")
+      .set(
+        "Authorization",
+        `Bearer ${getToken(jwksMockServer, { scope: "" })}`
+      );
+
+    expect(response.status).toEqual(403);
   });
 });
 
@@ -215,7 +242,20 @@ describe("post diary entry route", () => {
     expect(response.status).toEqual(400);
   });
 
-  it<AuthTestContext>("sends a 401 error if the token is invalid", async ({
+  it("sends a 401 error if the user is not authenticated (no token)", async () => {
+    const app = getAppWithMiddleware().use(
+      diaryEntryRoutes(buildMockDiaryEntriesModel())
+    );
+    const date = "2020-11-11";
+
+    const response = await request(app)
+      .post(`/diaryentry/${date}`)
+      .send({ diaryEntry: buildDiaryEntry({ date }) });
+
+    expect(response.status).toEqual(401);
+  });
+
+  it<AuthTestContext>("sends a 401 error if the user is not authenticated (invalid token)", async ({
     jwksMockServer,
   }) => {
     const app = getAppWithMiddleware().use(
@@ -227,10 +267,26 @@ describe("post diary entry route", () => {
       .post(`/diaryentry/${date}`)
       .set(
         "Authorization",
-        `Bearer ${getToken(jwksMockServer, "invalidIssuer")}`
+        `Bearer ${getToken(jwksMockServer, { iss: "invalidIssuer" })}`
       )
       .send({ diaryEntry: buildDiaryEntry({ date }) });
 
     expect(response.status).toEqual(401);
+  });
+
+  it<AuthTestContext>("sends a 403 error if the user is not authorised (does not have required scope)", async ({
+    jwksMockServer,
+  }) => {
+    const app = getAppWithMiddleware().use(
+      diaryEntryRoutes(buildMockDiaryEntriesModel())
+    );
+    const date = "2020-11-11";
+
+    const response = await request(app)
+      .post(`/diaryentry/${date}`)
+      .set("Authorization", `Bearer ${getToken(jwksMockServer, { scope: "" })}`)
+      .send({ diaryEntry: buildDiaryEntry({ date }) });
+
+    expect(response.status).toEqual(403);
   });
 });

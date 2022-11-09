@@ -7,14 +7,20 @@ export const startAuthServer = () => {
   return jwks;
 };
 
-export const getToken = (
-  jwks: JWKSMock,
-  audience = AUTH0_AUDIENCE,
-  issuer = AUTH0_ISSUER_BASE_URL
-) =>
+interface Token {
+  aud: [string, string];
+  iss: string;
+  exp: number;
+  sub: string;
+  scope: string;
+}
+
+export const getToken = (jwks: JWKSMock, overrides: Partial<Token> = {}) =>
   jwks.token({
-    aud: [audience, `${issuer}/userinfo`],
-    iss: issuer,
+    aud: [AUTH0_AUDIENCE, `${AUTH0_ISSUER_BASE_URL}/userinfo`],
+    iss: AUTH0_ISSUER_BASE_URL,
     exp: new Date().getTime() / 1000 + 3600,
     sub: "testprovider|12345678",
+    scope: "read:diary_entries_for_user write:diary_entries_for_user",
+    ...overrides,
   });
