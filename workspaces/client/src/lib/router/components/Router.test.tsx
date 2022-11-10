@@ -75,4 +75,45 @@ describe("Router", () => {
       expect(updatePath).toHaveBeenCalledWith("/foo");
     });
   });
+
+  it("renders the fallback component if no matching route is found", () => {
+    const Fallback: React.FC = () => <>This is the fallback</>;
+    render(
+      <Router initialPath="/something" fallback={Fallback}>
+        <Route path="/another-thing">Hello</Route>
+      </Router>
+    );
+
+    expect(screen.queryByText("This is the fallback")).toBeInTheDocument();
+  });
+
+  it("does not render the fallback component if a matching route is found", () => {
+    const Fallback: React.FC = () => <>This is the fallback</>;
+    render(
+      <Router initialPath="/something" fallback={Fallback}>
+        <Route path="/something">
+          <>Hello</>
+        </Route>
+      </Router>
+    );
+
+    expect(screen.queryByText("This is the fallback")).not.toBeInTheDocument();
+  });
+
+  it("renders the fallback component when navigating to an unmatched route", async () => {
+    const Fallback: React.FC = () => <>This is the fallback</>;
+    render(
+      <Router initialPath="/something" fallback={Fallback}>
+        <Route path="/something">
+          <Link to="/nothing">Go</Link>
+        </Route>
+      </Router>
+    );
+
+    expect(screen.queryByText("This is the fallback")).not.toBeInTheDocument();
+    screen.getByRole("link", { name: "Go" }).click();
+    await waitFor(() => {
+      expect(screen.queryByText("This is the fallback")).toBeInTheDocument();
+    });
+  });
 });

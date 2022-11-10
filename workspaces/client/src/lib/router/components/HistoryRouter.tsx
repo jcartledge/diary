@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { Router } from "./Router";
+import { Router, RouterProps } from "./Router";
 import { usePopState } from "./usePopState";
 
-type HistoryRouterProps = React.PropsWithChildren<{
-  initialPath?: string;
-}>;
+type HistoryRouterProps = Omit<RouterProps, "updatePath">;
 
 export const HistoryRouter: React.FC<HistoryRouterProps> = ({
   children,
   initialPath,
+  ...restProps
 }) => {
   const [path, setPath] = useState(window.location.pathname);
   const updatePath = (newPath: string) => {
@@ -25,7 +24,7 @@ export const HistoryRouter: React.FC<HistoryRouterProps> = ({
   }, [initialPath]);
 
   return (
-    <Router initialPath={path} updatePath={updatePath}>
+    <Router initialPath={path} updatePath={updatePath} {...restProps}>
       {children}
     </Router>
   );
