@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "iso-datestring-validator": "2.2.2",
-    "vitest": "0.25.2",
+    "vitest": "0.25.3",
     "zod": "3.19.1"
   }
 }
