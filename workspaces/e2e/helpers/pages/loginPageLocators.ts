@@ -6,5 +6,5 @@ export const loginPageLocators = (page: Page) =>
     loginButton: getButtonByName("Log in"),
     emailField: getTextboxByName("Email address"),
     passwordField: getTextboxByName("Password"),
-    continueButton: getButtonByName("Continue"),
+    continueButton: getButtonByName(/^Continue$/),
   }));
