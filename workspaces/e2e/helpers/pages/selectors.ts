@@ -8,9 +8,7 @@ const selectors = (page: Page) => ({
   getLinkByName: (name: SelectorName) => page.getByRole("link", { name }),
 });
 
-export function withSelectors<T>(
+export const withSelectors = <T>(
   page: Page,
   callback: (_selectors: ReturnType<typeof selectors>) => T
-) {
-  return callback(selectors(page));
-}
+) => callback(selectors(page));

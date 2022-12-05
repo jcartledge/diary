@@ -1,8 +1,6 @@
 import { type SuccessResult } from "../types/either.types";
 import { type ResultOrError } from "./ResultOrError.types";
 
-export function isResult<T>(
+export const isResult = <T>(
   resultOrError: ResultOrError<T>
-): resultOrError is SuccessResult<T> {
-  return "result" in resultOrError;
-}
+): resultOrError is SuccessResult<T> => "result" in resultOrError;
