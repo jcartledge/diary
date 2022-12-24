@@ -13,5 +13,7 @@ export default defineConfig({
       branches: 100,
       statements: 100,
     },
+    deps: { interopDefault: true },
+    environment: "node",
   },
 });
