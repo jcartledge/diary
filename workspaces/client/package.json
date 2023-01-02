@@ -52,6 +52,7 @@
     "iso-datestring-validator": "2.2.2",
     "jsdom": "20.0.3",
     "msw": "0.49.2",
+    "postcss": "^8.4.20",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-is": "18.2.0",
