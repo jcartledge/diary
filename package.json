@@ -10,7 +10,7 @@
   ],
   "devDependencies": {
     "@types/node": "17.0.39",
-    "audit-ci": "6.4.1"
+    "audit-ci": "6.5.0"
   },
   "packageManager": "yarn@3.3.1"
 }
