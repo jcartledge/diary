@@ -1536,7 +1536,7 @@ __metadata:
     "@diary/shared": "workspace:*"
     "@jedmao/location": 3.0.0
     "@picocss/pico": 1.5.6
-    "@tanstack/react-query": 4.22.0
+    "@tanstack/react-query": 4.22.3
     "@testing-library/dom": 8.20.0
     "@testing-library/jest-dom": 5.16.5
     "@testing-library/react": 13.4.0
@@ -2115,9 +2115,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:4.22.0":
-  version: 4.22.0
-  resolution: "@tanstack/react-query@npm:4.22.0"
+"@tanstack/react-query@npm:4.22.3":
+  version: 4.22.3
+  resolution: "@tanstack/react-query@npm:4.22.3"
   dependencies:
     "@tanstack/query-core": 4.22.0
     use-sync-external-store: ^1.2.0
@@ -2130,7 +2130,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: b146774b44a79dd5a6412d981ce04790e66da5a36f907a03c85c36f50a38fb4e4dfbfca7b1561c86b39fb0df1c0c1ae0a0ef2930c06b444da3f430b9bad450f1
+  checksum: c683b26b0b74d1fce4e9b1451d4efa5ab6aa6bd26f006727cc9be7fb5dfa30102992da4f9fe4e88d8efceaadaba8f3bcfbb7d7101114db6f921ae480822adf7f
   languageName: node
   linkType: hard
 
