@@ -30,7 +30,7 @@
     "@diary/shared": "workspace:*"
   },
   "devDependencies": {
-    "@auth0/auth0-react": "1.12.1",
+    "@auth0/auth0-react": "2.0.0",
     "@jcartledge/react-conditional": "^1.0.9",
     "@jedmao/location": "3.0.0",
     "@picocss/pico": "1.5.6",
