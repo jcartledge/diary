@@ -1,4 +1,4 @@
-import { Conditional } from "lib/util/Conditional";
+import { Conditional } from "@jcartledge/react-conditional";
 import { RouteParamsContext } from "../contexts/RouteParamsContext";
 import { useMatch } from "../contexts/RouterContext";
 

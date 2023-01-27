@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Conditional } from "lib/util/Conditional";
+import { Conditional } from "@jcartledge/react-conditional";
 
 export const Unauthenticated: React.FC<React.PropsWithChildren> = ({
   children,
