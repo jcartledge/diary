@@ -1,4 +1,4 @@
-import { useAuth0 } from "@auth0/auth0-react";
+import { GetTokenSilentlyOptions, useAuth0 } from "@auth0/auth0-react";
 import { withError } from "@diary/shared/ResultOrError";
 import { DiaryEntry } from "@diary/shared/types/diaryEntry";
 import { validateDiaryEntry } from "@diary/shared/types/validateDiaryEntry";
@@ -6,9 +6,11 @@ import { useQuery } from "@tanstack/react-query";
 import { auth0, bffUri } from "config";
 import { fail } from "lib/util/fail";
 
-const readDiaryEntriesScopes = {
-  audience: auth0.audience,
-  scope: "read:diary_entries_for_user",
+const readDiaryEntriesScopes: GetTokenSilentlyOptions = {
+  authorizationParams: {
+    audience: auth0.authorizationParams?.audience,
+    scope: "read:diary_entries_for_user",
+  },
 };
 
 export const useDiaryEntryQuery = (isoDateString: string) => {
