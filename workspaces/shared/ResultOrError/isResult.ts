@@ -1,5 +1,4 @@
-import { type SuccessResult } from "../types/either.types";
-import { type ResultOrError } from "./ResultOrError.types";
+import { type ResultOrError, type SuccessResult } from "./ResultOrError.types";
 
 export const isResult = <T>(
   resultOrError: ResultOrError<T>
