@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "audit:ci": "audit-ci --high --config=./yarn-audit-ci.config.json"
+    "audit:ci": "audit-ci --high --config=./yarn-audit-ci.config.json",
+    "client": "yarn workspace @diary/client",
+    "e2e": "yarn workspace @diary/e2e",
+    "server": "yarn workspace @diary/server"
   },
   "workspaces": [
     "workspaces/*"

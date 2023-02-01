@@ -2,7 +2,7 @@ containers:
   e2e:
     image: mcr.microsoft.com/playwright:v1.28.1-bionic
     working_directory: /app
-    command: yarn workspace @diary/e2e start
+    command: yarn e2e start
     dependencies:
       - diary-server-gateway
       - diary-client

@@ -19,7 +19,7 @@ containers:
   diary-server-dev:
     image: node:16.19.0
     working_directory: /app
-    command: yarn workspace @diary/server dev
+    command: yarn server dev
     ports:
       - 4000:4000
     dependencies:
@@ -65,7 +65,7 @@ tasks:
       - setup
     run:
       container: diary-build-env
-      command: yarn workspace @diary/server lint
+      command: yarn server lint
 
   server-test:
     prerequisites:
@@ -80,7 +80,7 @@ tasks:
           POSTGRES_DB: test
     run:
       container: diary-build-env
-      command: yarn workspace @diary/server test
+      command: yarn server test
       environment:
         DATABASE_URL: postgresql://test:test@diary-db:5432/test
 
@@ -97,7 +97,7 @@ tasks:
           POSTGRES_DB: test
     run:
       container: diary-build-env
-      command: yarn workspace @diary/server coverage
+      command: yarn server coverage
       environment:
         DATABASE_URL: postgresql://test:test@diary-db:5432/test
 
@@ -106,7 +106,7 @@ tasks:
       - setup
     run:
       container: diary-build-env
-      command: yarn workspace @diary/server build
+      command: yarn server build
 
   server-package:
     prerequisites:
