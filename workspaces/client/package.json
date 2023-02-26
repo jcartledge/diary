@@ -48,7 +48,7 @@
     "@vitest/coverage-c8": "0.28.5",
     "autoprefixer": "10.4.13",
     "c8": "7.13.0",
-    "eslint": "8.34.0",
+    "eslint": "8.35.0",
     "eslint-config-react-app": "7.0.1",
     "iso-datestring-validator": "2.2.2",
     "jsdom": "21.1.0",
