@@ -68,7 +68,7 @@ describe("DiaryPageForm", () => {
     render(<DiaryPageForm />, { wrapper: wrappers(date) });
 
     await waitFor(() => {
-      const req = spy.mock.calls[0][0];
+      const req = spy.mock.calls[1][0];
       expect(req.params.date).toEqual(date.getKey());
     });
   });
