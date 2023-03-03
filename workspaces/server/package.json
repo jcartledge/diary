@@ -28,7 +28,7 @@
     "eslint-plugin-import": "2.27.5",
     "mock-jwks": "1.0.9",
     "nock": "^13.2.9",
-    "nodemon": "2.0.20",
+    "nodemon": "2.0.21",
     "supertest": "6.3.3",
     "ts-loader": "9.4.2",
     "ts-node": "10.9.1",
