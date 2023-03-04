@@ -1669,7 +1669,7 @@ __metadata:
     "@types/react": 18.0.28
     "@types/react-dom": 18.0.11
     "@types/styled-components": 5.1.26
-    "@virtualstate/navigation": 1.0.1-alpha.177
+    "@virtualstate/navigation": 1.0.1-alpha.187
     "@vitejs/plugin-react": 3.1.0
     "@vitest/coverage-c8": 0.29.2
     autoprefixer: 10.4.13
@@ -3179,6 +3179,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ungap/structured-clone@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@ungap/structured-clone@npm:1.0.2"
+  checksum: aaf0854a66b8a64db90b1ca211f6e7c8b54f15c6cc6f14bab5b509777c296ad4a8e83e057fc5d904060b264cd29eb4de6d8069db07304517da4303e222b358c2
+  languageName: node
+  linkType: hard
+
 "@virtualstate/composite-key@npm:^1.0.0":
   version: 1.0.0
   resolution: "@virtualstate/composite-key@npm:1.0.0"
@@ -3186,15 +3193,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@virtualstate/navigation@npm:1.0.1-alpha.177":
-  version: 1.0.1-alpha.177
-  resolution: "@virtualstate/navigation@npm:1.0.1-alpha.177"
+"@virtualstate/navigation@npm:1.0.1-alpha.187":
+  version: 1.0.1-alpha.187
+  resolution: "@virtualstate/navigation@npm:1.0.1-alpha.187"
   dependencies:
+    "@ungap/structured-clone": ^1.0.2
     "@virtualstate/composite-key": ^1.0.0
     abort-controller: ^3.0.0
     uuid: ^8.3.2
-    whatwg-url: ^9.1.0
-  checksum: d1f0dd8874f3e28e67446da258090d3a2787049a2c81fadc051feb67665f1548b19ebb793610039d5606c30cb8c958b210a3c6a6bec5dc0e0e683808e77ed874
+  checksum: 94ade6df6cb37d486303bb7bf9ac11e9c5328dcaa62bc04ecacd68aa38e6f5799c4bd827be75062c36e97c9bfc3f6634fe19c3db618baf86d01aa500c6e7e7c2
   languageName: node
   linkType: hard
 
@@ -9677,15 +9684,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tr46@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "tr46@npm:2.1.0"
-  dependencies:
-    punycode: ^2.1.1
-  checksum: ffe6049b9dca3ae329b059aada7f515b0f0064c611b39b51ff6b53897e954650f6f63d9319c6c008d36ead477c7b55e5f64c9dc60588ddc91ff720d64eb710b3
-  languageName: node
-  linkType: hard
-
 "tr46@npm:^3.0.0":
   version: 3.0.0
   resolution: "tr46@npm:3.0.0"
@@ -10276,13 +10274,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webidl-conversions@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "webidl-conversions@npm:6.1.0"
-  checksum: 1f526507aa491f972a0c1409d07f8444e1d28778dfa269a9971f2e157182f3d496dc33296e4ed45b157fdb3bf535bb90c90bf10c50dcf1dd6caacb2a34cc84fb
-  languageName: node
-  linkType: hard
-
 "webidl-conversions@npm:^7.0.0":
   version: 7.0.0
   resolution: "webidl-conversions@npm:7.0.0"
@@ -10416,16 +10407,6 @@ __metadata:
     tr46: ~0.0.3
     webidl-conversions: ^3.0.0
   checksum: b8daed4ad3356cc4899048a15b2c143a9aed0dfae1f611ebd55073310c7b910f522ad75d727346ad64203d7e6c79ef25eafd465f4d12775ca44b90fa82ed9e2c
-  languageName: node
-  linkType: hard
-
-"whatwg-url@npm:^9.1.0":
-  version: 9.1.0
-  resolution: "whatwg-url@npm:9.1.0"
-  dependencies:
-    tr46: ^2.1.0
-    webidl-conversions: ^6.1.0
-  checksum: cfee81bb7f87036e1151da15cefd3076fa97a4a4a658c4b58f6e74891acf25f180aa955e761cda77995f6e260b8dc3c4326ebc83d539ed978a50062c6b3bd0d1
   languageName: node
   linkType: hard
 
