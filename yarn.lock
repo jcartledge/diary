@@ -1765,7 +1765,7 @@ __metadata:
     "@testing-library/jest-dom": 5.16.5
     "@testing-library/react": 14.0.0
     "@testing-library/user-event": 14.4.3
-    "@types/node": ^18.11.18
+    "@types/node": 18.15.3
     "@types/react": 18.0.28
     "@types/react-dom": 18.0.11
     "@types/styled-components": 5.1.26
@@ -2873,7 +2873,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.11.18":
+"@types/node@npm:18.15.3, @types/node@npm:^18.11.18":
   version: 18.15.3
   resolution: "@types/node@npm:18.15.3"
   checksum: 31b1d92475a82c30de29aa6c0771b18a276552d191283b4423ba2d61b3f01159bf0d02576c0b7cc834b043997893800db6bb47f246083ed85aa45e79c80875d7
@@ -5010,7 +5010,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "diary@workspace:."
   dependencies:
-    "@types/node": ^18.11.18
+    "@types/node": 18.15.3
     audit-ci: 6.6.1
   languageName: unknown
   linkType: soft
@@ -7926,14 +7926,14 @@ __metadata:
   linkType: hard
 
 "nock@npm:^13.2.9":
-  version: 13.2.9
-  resolution: "nock@npm:13.2.9"
+  version: 13.3.0
+  resolution: "nock@npm:13.3.0"
   dependencies:
     debug: ^4.1.0
     json-stringify-safe: ^5.0.1
     lodash: ^4.17.21
     propagate: ^2.0.0
-  checksum: 04a2dc60b4b55fd1240f28fe34865bbc744088a4570db3781fcf66021644cc3cc9178fd86a0cb0c1f28ea77b83e8f1c9288535f6b39a6d07100059f156ccc23b
+  checksum: 118d04e95a17f493898a82b5dfecc03762776e1980d9c3b2077479747e60b77109c5f7c0df969d1a8f6039260abe5961733553a5841f0f627bb35238576a0009
   languageName: node
   linkType: hard
 
