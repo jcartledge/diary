@@ -1669,7 +1669,7 @@ __metadata:
     "@types/react": 18.0.28
     "@types/react-dom": 18.0.11
     "@types/styled-components": 5.1.26
-    "@virtualstate/navigation": 1.0.1-alpha.188
+    "@virtualstate/navigation": 1.0.1-alpha.192
     "@vitejs/plugin-react": 3.1.0
     "@vitest/coverage-c8": 0.29.3
     autoprefixer: 10.4.14
@@ -3227,15 +3227,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@virtualstate/navigation@npm:1.0.1-alpha.188":
-  version: 1.0.1-alpha.188
-  resolution: "@virtualstate/navigation@npm:1.0.1-alpha.188"
+"@virtualstate/navigation@npm:1.0.1-alpha.192":
+  version: 1.0.1-alpha.192
+  resolution: "@virtualstate/navigation@npm:1.0.1-alpha.192"
   dependencies:
     "@ungap/structured-clone": ^1.0.2
     "@virtualstate/composite-key": ^1.0.0
     abort-controller: ^3.0.0
     uuid: ^8.3.2
-  checksum: e98fa4c19b3c6b0b3780a50aecdf04bae286baf7e3aea7c74c73b35597b61372a9472faed0f75e4078e250b5d3235d658baf38e54087f52aebe0e28ad0c25195
+  checksum: b3fa6f6eab3b88c91d97ca2f0ee0e288e1e3116a26db321ca342ac0898a3fc4c673db0166a5e4219c1b4ad012cd8720872b5172c8a76e6a1ebfebed596c4d9f2
   languageName: node
   linkType: hard
 
