@@ -1867,7 +1867,7 @@ __metadata:
     "@diary/shared": "workspace:*"
     "@jcartledge/react-conditional": ^1.0.9
     "@jedmao/location": 3.0.0
-    "@picocss/pico": 1.5.7
+    "@picocss/pico": 1.5.8
     "@tanstack/react-query": 4.28.0
     "@testing-library/dom": 9.2.0
     "@testing-library/jest-dom": 5.16.5
@@ -2593,10 +2593,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@picocss/pico@npm:1.5.7":
-  version: 1.5.7
-  resolution: "@picocss/pico@npm:1.5.7"
-  checksum: 8146b311c919123f2d4a4a752259c9d437c9c05f4c5e0fcbe5b64ccd62f767410903ea92ce8af5642255cf2e86dfee8131cbc8581cba56919abc76c8a25fe822
+"@picocss/pico@npm:1.5.8":
+  version: 1.5.8
+  resolution: "@picocss/pico@npm:1.5.8"
+  checksum: 3194edb94602e59131b1b952ba04562e4e442b89836ebc2380df0787545a0a7a43e7e6c0053d048966da5fc344679012dbbce3caeb27409ca9e66826ba8a2b38
   languageName: node
   linkType: hard
 
