@@ -6597,9 +6597,9 @@ __metadata:
   linkType: hard
 
 "helmet@npm:^6.0.0":
-  version: 6.0.1
-  resolution: "helmet@npm:6.0.1"
-  checksum: 1ca20d0b7888b6208130bbb50d183e68d53bb5fa0caead2106226d6d53216dfc893b4b5c07528304e342884f75d87702003b80884b065cb5dcbc705fb4a6ad52
+  version: 6.1.1
+  resolution: "helmet@npm:6.1.1"
+  checksum: ba6614ff0f3c6a979350ae8747365988a45c97aa092a22ca6da740bcf8206729982791f91973ec15538f1890b24f617e789b417c07acee11f763e1d920fd2323
   languageName: node
   linkType: hard
 
