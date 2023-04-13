@@ -1,4 +1,4 @@
-FROM node:19.8-alpine
+FROM node:19.9-alpine
 ENV NODE_ENV=production
 WORKDIR /app
 COPY build .
