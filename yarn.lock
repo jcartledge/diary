@@ -6023,11 +6023,11 @@ __metadata:
   linkType: hard
 
 "express-oauth2-jwt-bearer@npm:^1.2.0":
-  version: 1.4.0
-  resolution: "express-oauth2-jwt-bearer@npm:1.4.0"
+  version: 1.4.1
+  resolution: "express-oauth2-jwt-bearer@npm:1.4.1"
   dependencies:
     jose: ^4.13.1
-  checksum: ccf98163e98081fa4b5b2e928aa93f5065c5ac474966cc529e72c9aecccecb0039245437154c108fbe2fe179ac88c3a15dbafdb38882c9ed0e3ba71f5ea7793c
+  checksum: babcfa28a7e1b42e86da9bd1495faf8ac7dc2c46da3bd6a31744de251158c5d0b4037b078784a77c08bea516ce990c71f1079db54b6acf3c73823f7ac954610a
   languageName: node
   linkType: hard
 
