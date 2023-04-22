@@ -44,7 +44,7 @@
     "@types/react-dom": "18.0.11",
     "@types/styled-components": "5.1.26",
     "@virtualstate/navigation": "1.0.1-alpha.192",
-    "@vitejs/plugin-react": "3.1.0",
+    "@vitejs/plugin-react": "4.0.0",
     "@vitest/coverage-c8": "0.30.1",
     "autoprefixer": "10.4.14",
     "c8": "7.13.0",
