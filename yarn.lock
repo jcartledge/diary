@@ -22,15 +22,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auth0/auth0-react@npm:2.0.1":
-  version: 2.0.1
-  resolution: "@auth0/auth0-react@npm:2.0.1"
+"@auth0/auth0-react@npm:2.0.2":
+  version: 2.0.2
+  resolution: "@auth0/auth0-react@npm:2.0.2"
   dependencies:
     "@auth0/auth0-spa-js": ^2.0.4
   peerDependencies:
     react: ^16.11.0 || ^17 || ^18
     react-dom: ^16.11.0 || ^17 || ^18
-  checksum: b2119c5d2112141072ce99f7053a8f38723928ff4336f0cc2bf189c34b91e18ba0dd19cacd3f62c1bc89b115eece7e20323c91dc6669a3246be0e282b8c8b457
+  checksum: be4c471f7ceedb5da0d66754be5eae529e88ad38a2bb638e17bbc5a9f98b14d7bd7db9d8ebc911d7aee955eb2baa1ecc0893bb9207617bb657d572f041d81f74
   languageName: node
   linkType: hard
 
@@ -1813,7 +1813,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@diary/client@workspace:workspaces/client"
   dependencies:
-    "@auth0/auth0-react": 2.0.1
+    "@auth0/auth0-react": 2.0.2
     "@diary/shared": "workspace:*"
     "@jcartledge/react-conditional": ^1.0.9
     "@jedmao/location": 3.0.0
