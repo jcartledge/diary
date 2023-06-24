@@ -43,5 +43,6 @@
     "dev": "nodemon 'src/index.ts' --exec 'ts-node' src/index.ts -e ts,graphql",
     "lint": "eslint src/",
     "test": "vitest"
-  }
+  },
+  "packageManager": "yarn@3.5.1"
 }
