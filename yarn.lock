@@ -1875,7 +1875,7 @@ __metadata:
     "@vitejs/plugin-react": 4.0.1
     "@vitest/coverage-c8": 0.30.1
     autoprefixer: 10.4.14
-    c8: 7.13.0
+    c8: 8.0.0
     eslint: 8.43.0
     eslint-config-react-app: 7.0.1
     iso-datestring-validator: 2.2.2
@@ -4399,7 +4399,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"c8@npm:7.13.0, c8@npm:^7.13.0":
+"c8@npm:8.0.0":
+  version: 8.0.0
+  resolution: "c8@npm:8.0.0"
+  dependencies:
+    "@bcoe/v8-coverage": ^0.2.3
+    "@istanbuljs/schema": ^0.1.3
+    find-up: ^5.0.0
+    foreground-child: ^2.0.0
+    istanbul-lib-coverage: ^3.2.0
+    istanbul-lib-report: ^3.0.0
+    istanbul-reports: ^3.1.4
+    rimraf: ^3.0.2
+    test-exclude: ^6.0.0
+    v8-to-istanbul: ^9.0.0
+    yargs: ^16.2.0
+    yargs-parser: ^20.2.9
+  bin:
+    c8: bin/c8.js
+  checksum: 9b107e412a3ba2af89c8188d8f65864d6584d9043e61982957318bb4e0d0a8da3fcde6996a2eae3f413a17fb10feb25074899dcd2c770ee4cc467965ff4f93c4
+  languageName: node
+  linkType: hard
+
+"c8@npm:^7.13.0":
   version: 7.13.0
   resolution: "c8@npm:7.13.0"
   dependencies:
