@@ -53,6 +53,13 @@ tasks:
       container: diary-build-env
       command: yarn audit:ci
 
+  new-images:
+    prerequisites:
+      - client-build
+      - client-package
+      - server-build
+      - server-package
+
 include:
   - batect-e2e.yml
   - batect-client.yml
