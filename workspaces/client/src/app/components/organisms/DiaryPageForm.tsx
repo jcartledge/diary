@@ -9,13 +9,13 @@ const DiaryPageForm: React.FC = () => {
         <DiaryEntryInput
           label="What happened?"
           value={diaryEntry.whatHappened}
-          updateField={updateDiaryEntry("whatHappened")}
+          fieldUpdater={updateDiaryEntry("whatHappened")}
           disabled={isLoading}
         />
         <DiaryEntryInput
           label="Went well"
           value={diaryEntry.wentWell}
-          updateField={updateDiaryEntry("wentWell")}
+          fieldUpdater={updateDiaryEntry("wentWell")}
           disabled={isLoading}
         />
       </div>
@@ -23,19 +23,19 @@ const DiaryPageForm: React.FC = () => {
         <DiaryEntryInput
           label="Could be improved"
           value={diaryEntry.couldBeImproved}
-          updateField={updateDiaryEntry("couldBeImproved")}
+          fieldUpdater={updateDiaryEntry("couldBeImproved")}
           disabled={isLoading}
         />
         <DiaryEntryInput
           label="Didn't go well"
           value={diaryEntry.notWell}
-          updateField={updateDiaryEntry("notWell")}
+          fieldUpdater={updateDiaryEntry("notWell")}
           disabled={isLoading}
         />
         <DiaryEntryInput
           label="Might be a risk"
           value={diaryEntry.risk}
-          updateField={updateDiaryEntry("risk")}
+          fieldUpdater={updateDiaryEntry("risk")}
           disabled={isLoading}
         />
       </div>
