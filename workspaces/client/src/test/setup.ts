@@ -7,15 +7,11 @@ import { afterAll, afterEach, beforeAll, beforeEach, expect } from "vitest";
 import "whatwg-fetch";
 import { server } from "./mocks/server";
 
-declare global {
-  namespace Vi {
-    interface JestAssertion<T = any>
-      extends jest.Matchers<void, T>,
-        TestingLibraryMatchers<T, void> {}
-  }
-}
-
 expect.extend(matchers);
+
+declare module "vitest" {
+  interface Assertion<T = any> extends TestingLibraryMatchers<T, void> {}
+}
 
 beforeEach(() => {
   window.location = new LocationMock("http://localhost/");
