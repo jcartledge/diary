@@ -45,7 +45,7 @@
     "@types/styled-components": "5.1.26",
     "@virtualstate/navigation": "1.0.1-alpha.193",
     "@vitejs/plugin-react": "4.0.1",
-    "@vitest/coverage-c8": "0.30.1",
+    "@vitest/coverage-c8": "0.32.2",
     "autoprefixer": "10.4.14",
     "c8": "8.0.0",
     "eslint": "8.43.0",
@@ -64,7 +64,7 @@
     "typescript": "5.1.5",
     "vite": "4.3.9",
     "vite-tsconfig-paths": "4.2.0",
-    "vitest": "0.30.1",
+    "vitest": "0.32.2",
     "whatwg-fetch": "3.6.2"
   },
   "packageManager": "yarn@3.6.0"
