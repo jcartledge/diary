@@ -5,7 +5,8 @@ export default defineConfig({
   test: {
     coverage: {
       all: true,
-      exclude: ["index.ts", "test", "src/config.ts"],
+      include: ["**/*.ts"],
+      exclude: ["**/build", "**/test", "src/index.ts"],
       src: ["./src"],
       reportsDirectory: "./output/coverage/report",
       lines: 100,
