@@ -9,14 +9,12 @@ export default defineConfig({
     setupFiles: "./src/test/setup.ts",
     coverage: {
       all: true,
+      include: ["**/*.ts", "**/*.tsx"],
       exclude: [
-        "**/*.test.ts",
-        "**/*.test.tsx",
-        "**/*.types.ts",
-        "App.tsx",
-        "app/graphql/client.ts",
-        "index.tsx",
+        "src/App.tsx",
         "src/config.ts",
+        "src/index.tsx",
+        "**/*.types.ts",
       ],
       excludeNodeModules: true,
       reporter: ["text", "json", "html"],
