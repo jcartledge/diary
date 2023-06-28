@@ -1,19 +1,26 @@
 import TextArea from "app/components/atoms/TextArea";
 import slugify from "slugify";
 
+type FieldUpdater = (value: string) => void;
+
 interface DiaryEntryInputProps {
   label: string;
   value: string;
-  updateField: (value: string) => void;
+  fieldUpdater: FieldUpdater;
   disabled?: boolean;
 }
 
 const slugFieldName = (label: string) => slugify(label, { lower: true });
 
+const updateHandler =
+  (updateField: FieldUpdater): React.ChangeEventHandler<HTMLTextAreaElement> =>
+  ({ target }) =>
+    updateField(target.value);
+
 const DiaryEntryInput: React.FC<DiaryEntryInputProps> = ({
   label,
   value,
-  updateField,
+  fieldUpdater,
   disabled = false,
 }) => {
   const fieldLabel = slugFieldName(label);
@@ -28,7 +35,7 @@ const DiaryEntryInput: React.FC<DiaryEntryInputProps> = ({
         id={fieldLabel}
         aria-labelledby={`${fieldLabel}-label`}
         value={value}
-        onChange={({ target }) => updateField(target.value)}
+        onChange={updateHandler(fieldUpdater)}
         disabled={disabled}
       />
     </article>
