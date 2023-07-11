@@ -1,6 +1,6 @@
 containers:
   diary-build-env:
-    image: node:20.3.1
+    image: node:20.4.0
     working_directory: /app
     command: yarn install
     volumes:
