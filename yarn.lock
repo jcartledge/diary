@@ -2979,7 +2979,7 @@ __metadata:
     express-oauth2-jwt-bearer: ^1.2.0
     helmet: ^7.0.0
     http: ^0.0.1-security
-    mock-jwks: 2.0.3
+    mock-jwks: 2.1.1
     nock: ^13.2.9
     nodemon: 3.0.1
     pg: ^8.7.3
@@ -9026,9 +9026,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mock-jwks@npm:2.0.3":
-  version: 2.0.3
-  resolution: "mock-jwks@npm:2.0.3"
+"mock-jwks@npm:2.1.1":
+  version: 2.1.1
+  resolution: "mock-jwks@npm:2.1.1"
   dependencies:
     base64-url: ^2.3.3
     jsonwebtoken: ^9.0.0
@@ -9036,7 +9036,7 @@ __metadata:
     node-rsa: ^1.1.1
   peerDependencies:
     nock: ^11 || ^12 || ^13
-  checksum: 7bfd967e642ae575988f41cf55f2df5a62ca055adb1de525839fb5613cb83069884291464159a5138b0d652a0a0a7a4e152418f917828c71ff4faaff569c0a50
+  checksum: 8f195efaf449499470c00ee89bb74262a0a6c7c918ad99d58ab822fe137ceb5dc2e48f5cf3b7fdd06f9045399b3273e73d309e9bc9162024fe45dda6278206dd
   languageName: node
   linkType: hard
 
