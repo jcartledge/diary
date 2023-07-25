@@ -1,6 +1,6 @@
 containers:
   e2e:
-    image: mcr.microsoft.com/playwright:v1.36.1-jammy
+    image: mcr.microsoft.com/playwright:v1.36.2-jammy
     working_directory: /app
     command: yarn e2e start
     dependencies:
