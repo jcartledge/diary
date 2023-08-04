@@ -2935,7 +2935,7 @@ __metadata:
     "@jcartledge/react-conditional": ^1.0.9
     "@jedmao/location": 3.0.0
     "@picocss/pico": 1.5.10
-    "@tanstack/react-query": 4.32.1
+    "@tanstack/react-query": 4.32.5
     "@testing-library/dom": 9.3.1
     "@testing-library/jest-dom": 5.17.0
     "@testing-library/react": 14.0.0
@@ -3737,18 +3737,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:4.32.1":
-  version: 4.32.1
-  resolution: "@tanstack/query-core@npm:4.32.1"
-  checksum: 7676e367219bfddb3e153ac3771c40b47a5bd2609699351a3342c03e5c17dd5d39dc24c4a27e64a0b2628d5fff99b22d9f29ef19b0eb693ee8f1f86ddfb28b0b
+"@tanstack/query-core@npm:4.32.5":
+  version: 4.32.5
+  resolution: "@tanstack/query-core@npm:4.32.5"
+  checksum: 91f0123e903acaa33bb34025d872832cb080ee61167e711c5ea37a34d2012340219e9e970fa2bf5aa344734ca8925c054863d5af809026ca44d8b0c4cfcc4165
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:4.32.1":
-  version: 4.32.1
-  resolution: "@tanstack/react-query@npm:4.32.1"
+"@tanstack/react-query@npm:4.32.5":
+  version: 4.32.5
+  resolution: "@tanstack/react-query@npm:4.32.5"
   dependencies:
-    "@tanstack/query-core": 4.32.1
+    "@tanstack/query-core": 4.32.5
     use-sync-external-store: ^1.2.0
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -3759,7 +3759,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 31cdf93896ea0a5903c62e60fee937495cd3db1a1e3220b36012337e026c967034b5cfdd5b522339a5cc982fbb0000dad700991690e992e13f67cae41a72a589
+  checksum: dd36cc8dbdb4bb10d79a18c9ddc842b52b4e85ba09a13aac169028bef04a864dc1a06cf5b5e70dc8308b93bd20b2d40d2a37f5efaeaa43ffaf261bc6ec01d140
   languageName: node
   linkType: hard
 
