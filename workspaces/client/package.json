@@ -66,5 +66,5 @@
     "vitest": "0.33.0",
     "whatwg-fetch": "3.6.17"
   },
-  "packageManager": "yarn@3.6.1"
+  "packageManager": "yarn@3.6.2"
 }
