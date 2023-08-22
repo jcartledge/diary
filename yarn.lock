@@ -39,22 +39,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auth0/auth0-react@npm:2.2.0":
-  version: 2.2.0
-  resolution: "@auth0/auth0-react@npm:2.2.0"
+"@auth0/auth0-react@npm:2.2.1":
+  version: 2.2.1
+  resolution: "@auth0/auth0-react@npm:2.2.1"
   dependencies:
-    "@auth0/auth0-spa-js": ^2.1.0
+    "@auth0/auth0-spa-js": ^2.1.2
   peerDependencies:
     react: ^16.11.0 || ^17 || ^18
     react-dom: ^16.11.0 || ^17 || ^18
-  checksum: 309d5c287670667a4e67a939ce3ae2e1701e522786b29b0dfa11d22e918a158a38fc492cd509783b9b4eea1cdf3bcaeb95997cc8fffe99fb7fd1c9bfb6e104f5
+  checksum: a0fa04741e9556a8e2248406cf7185ca3be5e96d5df26ea3b91d92e60af4e3b4ca677d8eadf10a0bd210303e8b1c728065715561c756f0993eb13279c285b1bb
   languageName: node
   linkType: hard
 
-"@auth0/auth0-spa-js@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@auth0/auth0-spa-js@npm:2.1.0"
-  checksum: 43151a56b9d1408071cbf2094a2b034d1ea3819cf0c4667f14afd8b6410d0268f12489e0b271a3e00fa24d52de4072cfad7089c002a1c82fca65b68c57962d73
+"@auth0/auth0-spa-js@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "@auth0/auth0-spa-js@npm:2.1.2"
+  checksum: b376f4f2e7cbc7ae6197603b05dbef1c919887412b68e2dbc1c054296f2c50ea3bd9028b077d7f256365703e478d96135c3f81cf090157820debf31cc42e4a36
   languageName: node
   linkType: hard
 
@@ -3025,7 +3025,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@diary/client@workspace:workspaces/client"
   dependencies:
-    "@auth0/auth0-react": 2.2.0
+    "@auth0/auth0-react": 2.2.1
     "@diary/shared": "workspace:*"
     "@jcartledge/react-conditional": ^1.0.9
     "@jedmao/location": 3.0.0
