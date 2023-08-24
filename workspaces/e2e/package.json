@@ -12,5 +12,5 @@
     "@babel/preset-typescript": "7.22.5",
     "@playwright/test": "1.37.1"
   },
-  "packageManager": "yarn@3.6.2"
+  "packageManager": "yarn@3.6.3"
 }
