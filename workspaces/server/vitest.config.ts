@@ -1,13 +1,12 @@
 // vite.config.ts
-import { defineConfig } from "vitest/config";
+import { defineConfig,type UserConfigExport } from "vitest/config";
 
-export default defineConfig({
+const config:UserConfigExport = {
   test: {
     coverage: {
       all: true,
       include: ["**/*.ts"],
       exclude: ["**/build", "**/test", "src/index.ts"],
-      src: ["./src"],
       reportsDirectory: "./output/coverage/report",
       lines: 100,
       functions: 100,
@@ -17,4 +16,6 @@ export default defineConfig({
     deps: { interopDefault: true },
     environment: "node",
   },
-});
+};
+
+export default defineConfig(config);
