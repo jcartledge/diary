@@ -2,7 +2,7 @@ containers:
   e2e:
     image: mcr.microsoft.com/playwright:v1.39.0-jammy
     working_directory: /app
-    command: pnpm --filter e2e start
+    command: npm run --prefix ./workspaces/e2e start
     dependencies:
       - diary-server-gateway
       - diary-client
@@ -13,18 +13,6 @@ containers:
     volumes:
       - local: .
         container: /app
-      - type: cache
-        name: node-modules
-        container: /app/node_modules
-      - type: cache
-        name: client-node-modules
-        container: /app/client/node_modules
-      - type: cache
-        name: server-node-modules
-        container: /app/server/node_modules
-      - type: cache
-        name: e2e-node-modules
-        container: /app/e2e/node_modules
 
 tasks:
   e2e:
