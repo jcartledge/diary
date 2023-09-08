@@ -1,8 +1,8 @@
 containers:
   diary-build-env:
-    image: node:21.0.0
+    image: guergeiro/pnpm:18-8
     working_directory: /app
-    command: yarn install
+    command: pnpm install
     volumes:
       - local: .
         container: /app
@@ -51,7 +51,7 @@ tasks:
       - setup
     run:
       container: diary-build-env
-      command: yarn audit:ci
+      command: pnpm audit:ci
 
   new-images:
     prerequisites:

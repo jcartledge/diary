@@ -2,7 +2,7 @@ containers:
   e2e:
     image: mcr.microsoft.com/playwright:v1.39.0-jammy
     working_directory: /app
-    command: yarn e2e start
+    command: pnpm --filter e2e start
     dependencies:
       - diary-server-gateway
       - diary-client

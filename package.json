@@ -3,17 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "audit:ci": "audit-ci --high --config=./yarn-audit-ci.config.json",
-    "client": "yarn workspace @diary/client",
-    "e2e": "yarn workspace @diary/e2e",
-    "server": "yarn workspace @diary/server"
+    "audit:ci": "audit-ci --high --config=./pnpm-audit-ci.config.json",
+    "client": "pnpm --filter @diary/client",
+    "e2e": "pnpm --filter @diary/e2e",
+    "server": "pnpm --filter @diary/server"
   },
-  "workspaces": [
-    "workspaces/*"
-  ],
   "devDependencies": {
     "@types/node": "20.8.8",
     "audit-ci": "6.6.1"
   },
-  "packageManager": "yarn@4.0.0"
+  "packageManager": "pnpm@8.7.4"
 }

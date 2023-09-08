@@ -1,0 +1,6 @@
+prefer-workspace-packages: true
+packages:
+  - 'workspaces/client'
+  - 'workspaces/e2e'
+  - 'workspaces/server'
+  - 'workspaces/shared'

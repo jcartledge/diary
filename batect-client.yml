@@ -10,7 +10,7 @@ containers:
   diary-client-dev:
     image: node:21.0.0
     working_directory: /app
-    command: yarn client dev --host
+    command: pnpm --filter client dev --host
     environment:
       NODE_PATH: src
       VITE_BFF_URI: http://localhost:4000/graphql
@@ -46,28 +46,28 @@ tasks:
   client-lint:
     run:
       container: diary-build-env
-      command: yarn client lint
+      command: pnpm --filter client lint
 
   client-test:
     prerequisites:
       - setup
     run:
       container: diary-build-env
-      command: yarn client test
+      command: pnpm --filter client test
       environment:
         VITE_BFF_URI: http://TEST
 
   client-coverage:
     run:
       container: diary-build-env
-      command: yarn client coverage
+      command: pnpm --filter client coverage
       environment:
         VITE_BFF_URI: http://TEST
 
   client-build:
     run:
       container: diary-build-env
-      command: yarn client build
+      command: pnpm --filter client build
       environment:
         VITE_BFF_URI: __BFF_URI
         VITE_TOGGLES: __TOGGLES
