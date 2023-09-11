@@ -27,7 +27,7 @@ fileignoreconfig:
     checksum: 63ee32cb8ed03f26f22515b57824f3a18293032d1c49a0b01c828e2d287cd40e
     ignore_detectors: []
   - filename: pnpm-lock.yaml
-    checksum: 7a088d81c1fdc8f8115766ef1ddcead0efda9ee09d8c43274e301ae00792eae2
+    checksum: a42324e8dadce66a389c3aaf1ad5dea023d2ed6722594e48586b103d70e51116
     ignore_detectors: []
 scopeconfig: []
 scopeconfig:
