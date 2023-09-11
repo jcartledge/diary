@@ -13,6 +13,9 @@ containers:
     volumes:
       - local: .
         container: /app
+      - type: cache
+        name: e2e-node-modules
+        container: /app/workspaces/e2e/node_modules
 
 tasks:
   e2e:

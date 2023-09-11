@@ -28,13 +28,13 @@ containers:
         container: /app/node_modules
       - type: cache
         name: client-node-modules
-        container: /app/client/node_modules
+        container: /app/workspaces/client/node_modules
       - type: cache
         name: server-node-modules
-        container: /app/server/node_modules
+        container: /app/workspaces/server/node_modules
       - type: cache
         name: e2e-node-modules
-        container: /app/e2e/node_modules
+        container: /app/workspaces/e2e/node_modules
 
 tasks:
   client-cert:
