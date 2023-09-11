@@ -26,5 +26,7 @@ tasks:
       diary-server:
         environment:
           CORS_ORIGIN: https://diary-client
+    prerequisites:
+      - setup
     run:
       container: e2e
