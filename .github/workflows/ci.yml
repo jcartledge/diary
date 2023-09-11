@@ -17,16 +17,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Cache Batect
-        uses: actions/cache@v3
-        with:
-          path: ~/.batect/cache
-          key: batect-${{ hashFiles('batect') }}
-
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
-          path: .batect/caches
+          path: ~/.batect/caches
           key: batect-caches-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: Download dependencies
@@ -46,16 +40,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Cache Batect
-        uses: actions/cache@v3
-        with:
-          path: .batect/caches
-          key: batect-${{ hashFiles('batect') }}
-
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
-          path: .batect/caches
+          path: ~/.batect/caches
           key: batect-caches-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: Build/test/package
@@ -77,16 +65,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Cache Batect
-        uses: actions/cache@v3
-        with:
-          path: ~/.batect/cache
-          key: batect-${{ hashFiles('batect') }}
-
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
-          path: .batect/caches
+          path: ~/.batect/caches
           key: batect-caches-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: Lint code
@@ -125,16 +107,10 @@ jobs:
         with:
           image: "diary-server"
 
-      - name: Cache Batect
+      - name: Cache dependencies
         uses: actions/cache@v3
         with:
-          path: ~/.batect/cache
-          key: batect-${{ hashFiles('batect') }}
-
-      - name: Cache NPM dependencies
-        uses: actions/cache@v3
-        with:
-          path: .batect/caches
+          path: ~/.batect/caches
           key: batect-caches-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: certificate
