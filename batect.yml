@@ -2,7 +2,7 @@ containers:
   diary-build-env:
     image: guergeiro/pnpm:18-8
     working_directory: /app
-    command: pnpm install
+    command: pnpm install --frozen-lockfile
     volumes:
       - local: .
         container: /app
