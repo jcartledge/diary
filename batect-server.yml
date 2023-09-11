@@ -17,7 +17,7 @@ containers:
       SELF_SIGNED: true
 
   diary-server-dev:
-    image: node:20.6.0
+    image: node:20.6.1
     working_directory: /app
     command: yarn server dev
     ports:
