@@ -1,8 +1,8 @@
 containers:
   e2e:
-    image: mcr.microsoft.com/playwright:v1.39.0-jammy
-    working_directory: /app
-    command: npm run --prefix ./workspaces/e2e start
+    image: mcr.microsoft.com/playwright:v1.37.1-jammy
+    working_directory: /app/workspaces/e2e
+    command: npm start
     dependencies:
       - diary-server-gateway
       - diary-client
