@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "npx playwright install chromium && npx playwright test"
+    "start": "pnpm exec playwright install chromium --with-deps && pnpm exec playwright test"
   },
   "devDependencies": {
     "@babel/core": "7.23.2",

@@ -1,8 +1,8 @@
 containers:
   e2e:
-    image: mcr.microsoft.com/playwright:v1.37.1-jammy
-    working_directory: /app/workspaces/e2e
-    command: npm start
+    image: guergeiro/pnpm:18-8
+    working_directory: /app
+    command: pnpm --filter e2e start
     dependencies:
       - diary-server-gateway
       - diary-client
@@ -39,3 +39,4 @@ tasks:
       - setup
     run:
       container: e2e
+

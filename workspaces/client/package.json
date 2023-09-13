@@ -81,6 +81,5 @@
     "vite-tsconfig-paths": "4.2.1",
     "vitest": "0.34.6",
     "whatwg-fetch": "3.6.19"
-  },
-  "packageManager": "yarn@4.0.0"
+  }
 }
