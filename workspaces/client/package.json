@@ -41,7 +41,7 @@
     "@testing-library/user-event": "14.5.1",
     "@types/node": "18.18.4",
     "@types/react": "18.2.25",
-    "@types/react-dom": "18.2.10",
+    "@types/react-dom": "18.2.11",
     "@virtualstate/navigation": "1.0.1-alpha.199",
     "@vitejs/plugin-react": "4.1.0",
     "@vitest/coverage-v8": "^0.34.0",
