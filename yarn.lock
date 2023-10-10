@@ -7545,11 +7545,11 @@ __metadata:
   linkType: hard
 
 "express-oauth2-jwt-bearer@npm:^1.2.0":
-  version: 1.5.0
-  resolution: "express-oauth2-jwt-bearer@npm:1.5.0"
+  version: 1.6.0
+  resolution: "express-oauth2-jwt-bearer@npm:1.6.0"
   dependencies:
     jose: ^4.13.1
-  checksum: 642650d56b2b59a3df001fa09682d78432e4b36aa25a614a220ef1ac9aad3f2a02ef23bc53ae5606c01d05a667866bd6c5bacb0bd4489d3e1d9905a2df23a0c2
+  checksum: 9ad8634d5484a287f7b9a7d29845b44a9902c802fd0e081b2b0ed83cf3f6ce77b5a93274b4a915f3b45a378564be370a0e901cb85a70d38c9ff851127b22961b
   languageName: node
   linkType: hard
 
