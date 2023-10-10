@@ -3259,7 +3259,7 @@ __metadata:
     "@types/cors": 2.8.14
     "@types/express": 4.17.19
     "@types/node": ^18.11.18
-    "@types/pg": 8.10.4
+    "@types/pg": 8.10.5
     "@types/supertest": 2.0.14
     "@typescript-eslint/eslint-plugin": 6.7.5
     "@typescript-eslint/parser": 6.7.5
@@ -4378,14 +4378,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/pg@npm:8.10.4":
-  version: 8.10.4
-  resolution: "@types/pg@npm:8.10.4"
+"@types/pg@npm:8.10.5":
+  version: 8.10.5
+  resolution: "@types/pg@npm:8.10.5"
   dependencies:
     "@types/node": "*"
     pg-protocol: "*"
     pg-types: ^4.0.1
-  checksum: cde1acdf39b195822f31fb3df929cc9add6d24881314677572d1f3597e58cd42643fa6655a666774d65072cf7f670574a09cefcf8c31be19cd0a36c30fb9169d
+  checksum: 532a3104ed7898e3c7806e00cbde486dcfc803d2e99e236066f1b675ff0546a1cb232fe6f2ffc60dac81d3df209b69dbe62a597b565bff0965dd622fef957afe
   languageName: node
   linkType: hard
 
