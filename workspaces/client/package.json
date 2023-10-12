@@ -6,7 +6,7 @@
     "dev": "vite --port 3000",
     "build": "tsc && vite build",
     "test": "tsc && vitest",
-    "lint": "eslint src/**.{ts,tsx}",
+    "lint": "eslint ./src/**.{ts,tsx}",
     "coverage": "CI=true pnpm run test --coverage"
   },
   "eslintConfig": {
