@@ -10,7 +10,6 @@
   "devDependencies": {
     "@babel/core": "7.23.2",
     "@babel/preset-typescript": "7.23.2",
-    "@playwright/test": "1.39.0"
-  },
-  "packageManager": "yarn@4.0.0"
+    "@playwright/test": "1.38.1"
+  }
 }
