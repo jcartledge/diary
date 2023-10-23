@@ -750,7 +750,7 @@ __metadata:
     "@types/cors": "npm:2.8.15"
     "@types/express": "npm:4.17.20"
     "@types/node": "npm:^18.11.18"
-    "@types/pg": "npm:8.10.5"
+    "@types/pg": "npm:8.10.7"
     "@types/supertest": "npm:2.0.14"
     "@typescript-eslint/eslint-plugin": "npm:6.8.0"
     "@typescript-eslint/parser": "npm:6.8.0"
@@ -1841,14 +1841,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/pg@npm:8.10.5":
-  version: 8.10.5
-  resolution: "@types/pg@npm:8.10.5"
+"@types/pg@npm:8.10.7":
+  version: 8.10.7
+  resolution: "@types/pg@npm:8.10.7"
   dependencies:
     "@types/node": "npm:*"
     pg-protocol: "npm:*"
     pg-types: "npm:^4.0.1"
-  checksum: 8ac03b41bb09a22a19e383f071cbacf667e37c68a8b6ca04763bc03d8fda5683609843b1503f9de671d3f4014b36b95f3bb144449a003521d0f2dbacceb45897
+  checksum: beea456e9f4011d07e318b57d8c96af26379c658ad30d242a3194520d41406ca7bfa19a941405b7db36e401aa07f34cd035bdc5ac3d7681712c47a48df3cd09e
   languageName: node
   linkType: hard
 
