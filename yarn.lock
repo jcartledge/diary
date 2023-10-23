@@ -747,7 +747,7 @@ __metadata:
   dependencies:
     "@diary/shared": "workspace:*"
     "@types/body-parser": "npm:1.19.4"
-    "@types/cors": "npm:2.8.14"
+    "@types/cors": "npm:2.8.15"
     "@types/express": "npm:4.17.19"
     "@types/node": "npm:^18.11.18"
     "@types/pg": "npm:8.10.5"
@@ -1708,12 +1708,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/cors@npm:2.8.14":
-  version: 2.8.14
-  resolution: "@types/cors@npm:2.8.14"
+"@types/cors@npm:2.8.15":
+  version: 2.8.15
+  resolution: "@types/cors@npm:2.8.15"
   dependencies:
     "@types/node": "npm:*"
-  checksum: ab286eb87d74a03e3562b930cbfa188443537088d5fdf337391f9921f0b70b2dc198535726683711b2e019e1b9852ad5b611bff20a26fb19ce73869ed3542594
+  checksum: 196be895b257ccb2e17df80c9094d23ddfc3917ed1cda10d1a2c09a456c17175216c47a9b88b2b0f26ed332d39861761acb748169c40180d73425550db36269f
   languageName: node
   linkType: hard
 
