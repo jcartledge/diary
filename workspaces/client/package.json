@@ -77,7 +77,7 @@
     "styled-components": "6.1.0",
     "ts-node": "10.9.1",
     "typescript": "^5.2.2",
-    "vite": "4.4.11",
+    "vite": "4.5.0",
     "vite-tsconfig-paths": "4.2.1",
     "vitest": "0.34.6",
     "whatwg-fetch": "3.6.19"
