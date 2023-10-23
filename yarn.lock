@@ -751,7 +751,7 @@ __metadata:
     "@types/express": "npm:4.17.20"
     "@types/node": "npm:^18.11.18"
     "@types/pg": "npm:8.10.7"
-    "@types/supertest": "npm:2.0.14"
+    "@types/supertest": "npm:2.0.15"
     "@typescript-eslint/eslint-plugin": "npm:6.8.0"
     "@typescript-eslint/parser": "npm:6.8.0"
     "@vitest/coverage-v8": "npm:^0.34.0"
@@ -1963,12 +1963,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/supertest@npm:2.0.14":
-  version: 2.0.14
-  resolution: "@types/supertest@npm:2.0.14"
+"@types/supertest@npm:2.0.15":
+  version: 2.0.15
+  resolution: "@types/supertest@npm:2.0.15"
   dependencies:
     "@types/superagent": "npm:*"
-  checksum: 33ea559dd0e0187b75a630172c07530896f2297924cf57487da63b00ada3b42926e0acf2bfc0086b8348aef665e21000908994d17fce35272a9adba8edba5db5
+  checksum: bcb0df08b5278282ae02e0b5ce115cb672409918530b40f99f20f1b7d15208c7898d23559bc103a043be950d6e630588123f3c1e2ed10beb4e733993f7e917f1
   languageName: node
   linkType: hard
 
