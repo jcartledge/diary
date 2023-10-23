@@ -748,7 +748,7 @@ __metadata:
     "@diary/shared": "workspace:*"
     "@types/body-parser": "npm:1.19.4"
     "@types/cors": "npm:2.8.15"
-    "@types/express": "npm:4.17.19"
+    "@types/express": "npm:4.17.20"
     "@types/node": "npm:^18.11.18"
     "@types/pg": "npm:8.10.5"
     "@types/supertest": "npm:2.0.14"
@@ -1764,15 +1764,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express@npm:4.17.19":
-  version: 4.17.19
-  resolution: "@types/express@npm:4.17.19"
+"@types/express@npm:4.17.20":
+  version: 4.17.20
+  resolution: "@types/express@npm:4.17.20"
   dependencies:
     "@types/body-parser": "npm:*"
     "@types/express-serve-static-core": "npm:^4.17.33"
     "@types/qs": "npm:*"
     "@types/serve-static": "npm:*"
-  checksum: 7e2ced39478cd3580018ccdac3ac930fc06881e447973d1d4d8810468b6f965d3544cbbffb38700766732675eb72887ed88b170a25ce98321d3077622d0be4ba
+  checksum: f73f5f92bd0a0fa4697598be3122c89522caa9e3bcb14c28b5e6d58a8e47f0301027478997153ae9ee4cf3d432576fb3fb0918ea0db521cc1204f8b759828a32
   languageName: node
   linkType: hard
 
