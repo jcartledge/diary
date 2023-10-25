@@ -1,0 +1,29 @@
+import type { NavigateEvent as Spec, NavigateEventInit, NavigationDestination, NavigationIntercept, NavigationNavigationType } from "../spec/navigation";
+export declare class NavigateEvent<S = unknown> implements Spec<S> {
+    type: "navigate";
+    [key: number]: unknown;
+    [key: string]: unknown;
+    readonly canIntercept: boolean;
+    /**
+     * @deprecated
+     */
+    readonly canTransition: boolean;
+    readonly destination: NavigationDestination<S>;
+    readonly downloadRequest?: string;
+    readonly formData?: FormData;
+    readonly hashChange: boolean;
+    readonly info: unknown;
+    readonly signal: AbortSignal;
+    readonly userInitiated: boolean;
+    readonly navigationType: NavigationNavigationType;
+    constructor(type: "navigate", init: NavigateEventInit<S>);
+    commit(): void;
+    intercept(options?: NavigationIntercept<unknown | void>): void;
+    preventDefault(): void;
+    reportError(reason: unknown): void;
+    scroll(): void;
+    /**
+     * @deprecated
+     */
+    transitionWhile(options?: NavigationIntercept<unknown | void>): void;
+}

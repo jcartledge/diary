@@ -1,0 +1,40 @@
+import { NavigateEvent } from "../spec/navigation";
+import { URLPattern } from "./url-pattern";
+import { Event } from "../event-target";
+import { ErrorFn, PatternErrorFn, PatternRouteFn, PatternThenFn, RouteFn, RouteRecord, RouterListenTarget, ThenFn } from "./types";
+declare const Routes: unique symbol;
+declare const Attached: unique symbol;
+declare const Detach: unique symbol;
+declare const Target: unique symbol;
+declare const TargetType: unique symbol;
+/**
+ * @internal
+ */
+export declare function getRouterRoutes<E extends Event, R>(router: Router<E, R>): RouteRecord<E, R>;
+export declare function isRouter<E extends Event = NavigateEvent, R = void | unknown>(value: unknown): value is Router<E, R>;
+export declare class Router<E extends Event = NavigateEvent, R = void | unknown, T extends RouterListenTarget<E> = RouterListenTarget<E>> {
+    #private;
+    [Routes]: RouteRecord<E, R>;
+    [Attached]: Set<Router<E, R, RouterListenTarget<E>>>;
+    [Target]: T;
+    [TargetType]: E["type"];
+    private listening;
+    constructor(target?: T, type?: E["type"]);
+    routes(pattern: string | URLPattern, router: Router<E, R>): this;
+    routes(router: Router<E, R>): this;
+    routes(...args: [string | URLPattern, Router<E, R>] | [Router<E, R>]): this;
+    then(pattern: string | URLPattern, fn: PatternThenFn<E, R>): this;
+    then(pattern: string | URLPattern, fn: PatternThenFn<E, R>, errorFn: PatternErrorFn<E>): this;
+    then(fn: ThenFn<E, R>): this;
+    then(fn: ThenFn<E, R>, catchFn: ErrorFn<E>): this;
+    then(...args: [string | URLPattern, PatternThenFn<E, R>] | [string | URLPattern, PatternThenFn<E, R>, PatternErrorFn<E>] | [ThenFn<E, R>] | [ThenFn<E, R>, ErrorFn<E>]): this;
+    catch(pattern: string | URLPattern, fn: PatternErrorFn<E>): this;
+    catch(fn: ErrorFn<E>): this;
+    catch(...args: [string | URLPattern, PatternErrorFn<E>] | [ErrorFn<E>]): this;
+    route(pattern: string | URLPattern, fn: PatternRouteFn<E, R>): this;
+    route(fn: RouteFn<E, R>): this;
+    route(...args: [string | URLPattern, PatternRouteFn<E, R>] | [RouteFn<E, R>]): this;
+    [Detach](router: Router<E, R>): void;
+    detach: () => void;
+}
+export {};

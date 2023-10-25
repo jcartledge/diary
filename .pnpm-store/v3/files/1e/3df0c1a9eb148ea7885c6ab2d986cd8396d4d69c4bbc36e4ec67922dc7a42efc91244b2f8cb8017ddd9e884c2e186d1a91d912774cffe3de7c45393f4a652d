@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Polyfill Example</title>
+
+</head>
+<body>
+    <script src="polyfill-rollup.js"></script>
+    <script>
+        class LinkElement extends HTMLElement {
+            constructor() {
+                super();
+                const shadow = this.attachShadow({ mode: "open" });
+                shadow.innerHTML = '<a href="/">Link within Shadow DOM</a>';
+            }
+        }
+
+        window.customElements.define('link-element', LinkElement)
+
+        window.addEventListener("load", loaded)
+
+        function loaded() {
+
+            console.log("Initial History State", history.state);
+            console.log(navigation)
+
+            const urlSpan = document.getElementById("url");
+            const app = document.getElementById("app");
+
+            navigation.addEventListener(
+                "navigate",
+                event => {
+                    console.log("Navigate event", event)
+
+                    const url = new URL(event.destination.url);
+                    console.log(event.destination.url);
+                    console.log("Submitted Name:", event.formData?.get("name"));
+                    console.log("Previous State:", navigation.currentEntry.getState());
+                    console.log("State:", event.destination.getState());
+                    console.log("Same Document:", event.destination.sameDocument);
+                    urlSpan.innerText = url.pathname;
+                    app.innerHTML = "";
+
+                    if (url.pathname === "/some/other") {
+                        console.log("Preventing default");
+                        event.preventDefault();
+                        try {
+                            console.log("Navigated");
+                            navigation.navigate("/", {
+                                state: "returned"
+                            });
+                        } catch (error) {
+                            console.error(error);
+                        }
+                    } else if (url.pathname === "/some/page") {
+                        event.intercept(() => {
+
+                            app.innerHTML = `
+                            <form action="/" method="post">
+                                <input type="text" name="name" value="" placeholder="Name" />
+                                <button type="submit">Submit</button>
+                            </form>
+                            `;
+
+
+                        })
+                    } else {
+                        event.intercept()
+                    }
+
+                }
+            );
+
+            if (navigation.currentEntry) {
+                urlSpan.innerText = new URL(navigation.currentEntry.url).pathname;
+            }
+
+            console.log(navigation.currentEntry.url)
+
+
+        }
+    </script>
+
+    <p>Current Url <span id="url"></span></p>
+
+    <a href="/">Home Link</a>
+    <a href="/esm.html">ESM Link</a>
+    <link-element></link-element>
+
+    <div id="app"></div>
+</body>
+</html>

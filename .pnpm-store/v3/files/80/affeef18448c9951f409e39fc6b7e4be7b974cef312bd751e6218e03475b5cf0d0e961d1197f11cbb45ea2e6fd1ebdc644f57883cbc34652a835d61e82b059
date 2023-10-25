@@ -1,0 +1,39 @@
+import { Navigation } from "./spec/navigation";
+import { NavigationLocation, NavigationLocationOptions } from "./location";
+declare const State: unique symbol;
+export type ScrollRestoration = "auto" | "manual";
+export interface NavigationHistoryOptions extends NavigationLocationOptions {
+    navigation: Navigation;
+    [State]?: unknown;
+}
+export interface NavigationHistory<S extends object> {
+}
+/**
+ * @experimental
+ */
+export declare class NavigationHistory<S extends object> extends NavigationLocation implements History {
+    #private;
+    constructor(options: NavigationHistoryOptions);
+    get length(): number;
+    scrollRestoration: ScrollRestoration;
+    get state(): unknown;
+    back(): unknown;
+    back(): void;
+    forward(): unknown;
+    forward(): void;
+    go(delta?: number): unknown;
+    go(delta?: number): void;
+    replaceState(data: any, unused: string, url?: string | URL | null): unknown;
+    replaceState(data: any, unused: string, url?: string | URL | null): void;
+    pushState(data: object, unused: string, url?: string | URL | null): unknown;
+    pushState(data: unknown, unused: string, url?: string | URL): unknown;
+    pushState(data: object, unused: string, url?: string | URL | null): void;
+    pushState(data: unknown, unused: string, url?: string | URL): void;
+}
+/**
+ * @experimental
+ * @internal
+ */
+export declare class NavigationSync<S extends object> extends NavigationHistory<S> implements NavigationHistory<S>, NavigationLocation {
+}
+export {};

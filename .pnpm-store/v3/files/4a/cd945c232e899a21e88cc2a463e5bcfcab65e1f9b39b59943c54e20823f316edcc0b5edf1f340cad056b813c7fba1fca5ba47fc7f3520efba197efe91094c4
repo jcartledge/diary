@@ -1,0 +1,28 @@
+import { Event } from "./event";
+import { EventCallback, SyncEventCallback } from "./callback";
+import { EventDescriptor } from "./descriptor";
+import { EventTargetAddListenerOptions, EventTargetListeners as EventTargetListenersSymbol, EventTargetListenersIgnore, EventTargetListenersMatch } from "./event-target-options";
+export interface ExternalSyncEventTargetListeners<Event = unknown> {
+    addEventListener(type: string, callback: SyncEventCallback<Event>, options?: EventTargetAddListenerOptions): void;
+    removeEventListener(type: string, callback: SyncEventCallback<Event>, options?: unknown): void;
+}
+export interface EventTargetListeners extends ExternalSyncEventTargetListeners<Event> {
+    addEventListener(type: string | symbol, callback: EventCallback, options?: EventTargetAddListenerOptions): void;
+    addEventListener(type: string | symbol, callback: Function, options?: EventTargetAddListenerOptions): void;
+    removeEventListener(type: string | symbol, callback: Function, options?: unknown): void;
+    hasEventListener(type: string | symbol, callback?: Function): boolean;
+}
+declare const EventTargetDescriptors: unique symbol;
+export declare class EventTargetListeners implements EventTargetListeners {
+    [key: string]: unknown;
+    [EventTargetDescriptors]?: EventDescriptor[];
+    [EventTargetListenersIgnore]?: WeakSet<EventDescriptor>;
+    get [EventTargetListenersSymbol](): EventDescriptor[] | undefined;
+    [EventTargetListenersMatch]?(type: string | symbol): EventDescriptor[];
+    addEventListener(type: string | symbol, callback: EventCallback, options?: EventTargetAddListenerOptions): void;
+    addEventListener(type: string | symbol, callback: Function, options?: EventTargetAddListenerOptions): void;
+    removeEventListener(type: string | symbol, callback: Function, options?: unknown): void;
+    hasEventListener(type: string | symbol, callback?: Function): boolean;
+}
+export declare function isSignalHandled(event: Event, error: unknown): boolean;
+export {};

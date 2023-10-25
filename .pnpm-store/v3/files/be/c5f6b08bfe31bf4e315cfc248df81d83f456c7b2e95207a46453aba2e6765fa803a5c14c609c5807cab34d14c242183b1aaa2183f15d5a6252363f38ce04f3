@@ -1,0 +1,69 @@
+"use strict";
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var jsx_runtime_1 = require("react/jsx-runtime");
+var react_1 = require("@testing-library/react");
+var __1 = require("..");
+var fixtures_1 = require("./fixtures");
+describe('souvlaki', function () {
+    it('creates a nothing wrapper if no wrappers are given', function () {
+        var rendered = (0, react_1.render)((0, jsx_runtime_1.jsx)(fixtures_1.TestComponent, {}), { wrapper: (0, __1.wrap)() });
+        expect(rendered.container.innerHTML).toEqual('<span>Oh hey!</span>');
+    });
+    it('can do a single wrapper with no params', function () {
+        var withSection = (0, __1.createHelper)(function () { return fixtures_1.Section; });
+        var rendered = (0, react_1.render)((0, jsx_runtime_1.jsx)(fixtures_1.TestComponent, {}), {
+            wrapper: (0, __1.wrap)(withSection()),
+        });
+        expect(rendered.container.innerHTML).toEqual((0, fixtures_1.condense)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n        <section>\n          <span>Oh hey!</span>\n        </section>\n      "], ["\n        <section>\n          <span>Oh hey!</span>\n        </section>\n      "]))));
+    });
+    it('can do two wrappers with no params', function () {
+        var withSection = (0, __1.createHelper)(function () { return fixtures_1.Section; });
+        var withTitle = (0, __1.createHelper)(function () { return function (_a) {
+            var children = _a.children;
+            return ((0, jsx_runtime_1.jsx)(fixtures_1.TitlePrefixer, __assign({ title: "Some title" }, { children: children })));
+        }; });
+        var rendered = (0, react_1.render)((0, jsx_runtime_1.jsx)(fixtures_1.TestComponent, {}), {
+            wrapper: (0, __1.wrap)(withSection(), withTitle()),
+        });
+        expect(rendered.container.innerHTML).toEqual((0, fixtures_1.condense)(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n        <section>\n          <h1>Some title</h1>\n          <span>Oh hey!</span>\n        </section>\n      "], ["\n        <section>\n          <h1>Some title</h1>\n          <span>Oh hey!</span>\n        </section>\n      "]))));
+    });
+    it('can do a single wrapper with a single param', function () {
+        var withCustomTitle = (0, __1.createHelper)(function (title) { return function (_a) {
+            var children = _a.children;
+            return ((0, jsx_runtime_1.jsx)(fixtures_1.TitlePrefixer, __assign({ title: title }, { children: children })));
+        }; });
+        var rendered = (0, react_1.render)((0, jsx_runtime_1.jsx)(fixtures_1.TestComponent, {}), {
+            wrapper: (0, __1.wrap)(withCustomTitle('Hello')),
+        });
+        expect(rendered.container.innerHTML).toEqual((0, fixtures_1.condense)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n        <h1>Hello</h1>\n        <span>Oh hey!</span>\n      "], ["\n        <h1>Hello</h1>\n        <span>Oh hey!</span>\n      "]))));
+    });
+    it('can do multiple wrappers with different numbers of params', function () {
+        var withSection = (0, __1.createHelper)(function () { return fixtures_1.Section; });
+        var withTitleAndVotes = (0, __1.createHelper)(function (title, votes) {
+            return function (_a) {
+                var children = _a.children;
+                return ((0, jsx_runtime_1.jsx)(fixtures_1.TitleAndVotesPrefixer, __assign({ title: title, votes: votes }, { children: children })));
+            };
+        });
+        var rendered = (0, react_1.render)((0, jsx_runtime_1.jsx)(fixtures_1.TestComponent, {}), {
+            wrapper: (0, __1.wrap)(withSection(), withTitleAndVotes('Primary', 10)),
+        });
+        expect(rendered.container.innerHTML).toEqual((0, fixtures_1.condense)(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n        <section>\n          <h1>Primary</h1>\n          <h2>10 votes</h2>\n          <span>Oh hey!</span>\n        </section>\n      "], ["\n        <section>\n          <h1>Primary</h1>\n          <h2>10 votes</h2>\n          <span>Oh hey!</span>\n        </section>\n      "]))));
+    });
+});
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4;

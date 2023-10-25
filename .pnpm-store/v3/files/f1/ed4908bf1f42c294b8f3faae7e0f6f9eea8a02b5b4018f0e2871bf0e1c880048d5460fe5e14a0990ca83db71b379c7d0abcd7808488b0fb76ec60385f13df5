@@ -1,0 +1,16 @@
+import { Navigation, NavigateEvent } from "../navigation";
+export interface DynamicNavigationOptions {
+    hosts?: Record<string, string>;
+    baseURL?: string;
+    extension?: string;
+}
+export declare class DynamicNavigation extends Navigation {
+    modules: Record<string, unknown>;
+    options?: DynamicNavigationOptions;
+    baseURL: string;
+    extension: string;
+    constructor(options?: DynamicNavigationOptions);
+    onNavigate: (event: NavigateEvent) => void;
+    intercept(event: NavigateEvent): Promise<void>;
+    getModule(url: string): Promise<any>;
+}

@@ -1,0 +1,5 @@
+export declare function v4(): string;
+declare const _default: {
+    v4: typeof v4;
+};
+export default _default;

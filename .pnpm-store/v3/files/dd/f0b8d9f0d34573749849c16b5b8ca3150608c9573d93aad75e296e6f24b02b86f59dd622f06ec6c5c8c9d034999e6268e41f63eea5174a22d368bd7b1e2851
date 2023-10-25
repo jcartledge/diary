@@ -1,0 +1,4 @@
+/// <reference types="react" />
+export declare type ReactComponent = React.JSXElementConstructor<{
+    children: React.ReactElement;
+}>;

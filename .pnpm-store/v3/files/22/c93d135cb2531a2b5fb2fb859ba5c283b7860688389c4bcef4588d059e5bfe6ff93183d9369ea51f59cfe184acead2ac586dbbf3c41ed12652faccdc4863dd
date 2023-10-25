@@ -1,0 +1,8 @@
+import { Event } from "./event";
+export interface SignalEvent<Name extends string | symbol = string> extends Event<Name> {
+    signal: AbortSignal;
+}
+export declare function isAbortSignal(value: unknown): value is AbortSignal;
+export declare function isAbortController(value: unknown): value is AbortController;
+export declare function isSignalEvent(value: object): value is SignalEvent;
+export declare function isSignalHandled(event: Event, error: unknown): boolean;

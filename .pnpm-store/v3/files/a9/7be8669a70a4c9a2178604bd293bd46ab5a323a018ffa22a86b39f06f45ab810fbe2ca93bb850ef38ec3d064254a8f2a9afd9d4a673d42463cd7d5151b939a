@@ -1,0 +1,27 @@
+"use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createContextHelper = void 0;
+var jsx_runtime_1 = require("react/jsx-runtime");
+var simpleWrapper_1 = require("./simpleWrapper");
+// And finally this signature unites the two, with the value optional in both places
+function createContextHelper(Context, defaultValue) {
+    return (0, simpleWrapper_1.createHelper)(function (value) { return function (_a) {
+        var children = _a.children;
+        return (
+        // Between the two signatures above, the value must have been provided either
+        // at creation or when wrapping, so we can safely `as` here, removing the undefined
+        (0, jsx_runtime_1.jsx)(Context.Provider, __assign({ value: (value !== null && value !== void 0 ? value : defaultValue) }, { children: children })));
+    }; });
+}
+exports.createContextHelper = createContextHelper;

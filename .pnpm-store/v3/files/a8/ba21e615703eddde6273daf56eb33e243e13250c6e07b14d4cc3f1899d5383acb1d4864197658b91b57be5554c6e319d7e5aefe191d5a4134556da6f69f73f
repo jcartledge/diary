@@ -1,0 +1,12 @@
+import { URLPattern as polyfillURLPattern } from "urlpattern-polyfill";
+import { URLPatternResult } from "./types";
+export { URLPatternInit } from "./url-pattern-global";
+declare const URLPattern_base: typeof polyfillURLPattern;
+export declare class URLPattern extends URLPattern_base implements polyfillURLPattern {
+}
+export declare function isURLPatternStringWildcard(pattern: string): pattern is "*";
+export declare const patternParts: readonly ["protocol", "hostname", "username", "password", "port", "pathname", "search", "hash"];
+export declare function isURLPatternStringPlain(pattern: string): boolean;
+export declare function isURLPatternPlainPathname(pattern: URLPattern): boolean;
+export declare function enableURLPatternCache(): void;
+export declare function exec(pattern: URLPattern, url: URL): URLPatternResult | undefined;

@@ -1,0 +1,4 @@
+export declare function parseDOM(input: string, querySelector: string): Promise<{
+    readonly title: string;
+    readonly innerHTML: string;
+}>;

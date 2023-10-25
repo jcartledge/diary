@@ -1,0 +1,10 @@
+export const GlobalUUID = isRandomUUID(crypto)
+    ? ((crypto) => () => crypto.randomUUID())(crypto)
+    : undefined;
+function isRandomUUID(value) {
+    function isLike(value) {
+        return typeof value !== "undefined";
+    }
+    return isLike(value) && typeof value.randomUUID === "function";
+}
+//# sourceMappingURL=global-uuid.js.map

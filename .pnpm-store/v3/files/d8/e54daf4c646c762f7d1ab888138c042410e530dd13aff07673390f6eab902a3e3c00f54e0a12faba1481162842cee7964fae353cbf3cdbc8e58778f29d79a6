@@ -1,0 +1,1 @@
+{"version":3,"file":"import-abort-controller.js","sourceRoot":"","sources":["../src/import-abort-controller.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,qBAAqB,EAAE,MAAM,2BAA2B,CAAC;AAClE,0DAA0D;AAE1D,2CAA2C;AAC3C,6EAA6E;AAC7E,8BAA8B;AAC9B,IAAI;AAEJ,IAAI,CAAC,qBAAqB,EAAE;IAC1B,MAAM,IAAI,KAAK,CAAC,wDAAwD,CAAC,CAAC;CAC3E;AAED,MAAM,CAAC,MAAM,eAAe,GAAG,qBAAqB,CAAC,CAAC,iCAAiC"}

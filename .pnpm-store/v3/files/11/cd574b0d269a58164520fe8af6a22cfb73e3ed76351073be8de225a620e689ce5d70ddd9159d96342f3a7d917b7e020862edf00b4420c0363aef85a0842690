@@ -1,0 +1,11 @@
+import { PropsWithChildren } from 'react';
+export declare const condense: ([str]: TemplateStringsArray) => string;
+export declare const TestComponent: () => JSX.Element;
+export declare const Section: ({ children }: PropsWithChildren<{}>) => JSX.Element;
+export declare const TitlePrefixer: ({ title, children, }: PropsWithChildren<{
+    title: string;
+}>) => JSX.Element;
+export declare const TitleAndVotesPrefixer: ({ title, votes, children, }: PropsWithChildren<{
+    title: string;
+    votes: number;
+}>) => JSX.Element;

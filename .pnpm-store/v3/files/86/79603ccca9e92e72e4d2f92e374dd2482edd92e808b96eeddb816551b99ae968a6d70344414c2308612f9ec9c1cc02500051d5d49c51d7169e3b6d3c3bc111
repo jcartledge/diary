@@ -1,0 +1,8 @@
+import { EventCallback } from "./callback";
+export declare const EventDescriptorSymbol: unique symbol;
+export interface EventDescriptor {
+    [EventDescriptorSymbol]: true;
+    type: string | symbol;
+    callback: EventCallback;
+    once?: boolean;
+}

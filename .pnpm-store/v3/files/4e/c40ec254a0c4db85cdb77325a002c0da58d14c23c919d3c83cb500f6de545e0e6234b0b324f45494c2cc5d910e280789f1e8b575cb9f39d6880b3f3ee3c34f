@@ -1,0 +1,14 @@
+import { createContextHelper } from './createContextHelper';
+import { createHelper, SimpleHelper, SimpleHelperInstance, SimpleWrapper } from './simpleWrapper';
+import { createHelpers, CompositeHelper, CompositeHelperInstance, CompositeWrapper } from './compositeWrapper';
+import { ReactComponent } from './util';
+declare type InstanceArray = (SimpleHelperInstance<any> | CompositeHelperInstance<any, any>)[];
+export { createHelper, createHelpers, createContextHelper, SimpleHelper, SimpleHelperInstance, SimpleWrapper, CompositeHelper, CompositeHelperInstance, CompositeWrapper, ReactComponent, };
+/**
+ * Composes the given helper instances together to create a React component
+ * that you can wrap around other components.
+ *
+ * @param {...SimpleHelperInstance} ...helpers A variable number of instantiated helpers.
+ * @returns {ReactComponent} A React.js component to wrap around other components.
+ */
+export declare const wrap: (...helpers: InstanceArray) => ReactComponent;

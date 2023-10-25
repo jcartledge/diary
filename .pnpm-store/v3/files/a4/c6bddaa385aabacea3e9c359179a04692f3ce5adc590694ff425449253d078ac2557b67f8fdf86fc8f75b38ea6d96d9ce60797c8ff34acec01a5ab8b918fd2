@@ -1,0 +1,2 @@
+export declare function stringify(value: unknown): any;
+export declare function parse(value: string): any;

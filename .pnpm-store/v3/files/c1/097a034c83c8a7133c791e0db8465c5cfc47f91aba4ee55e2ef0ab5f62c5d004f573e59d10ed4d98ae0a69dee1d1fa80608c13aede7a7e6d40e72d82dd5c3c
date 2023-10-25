@@ -1,0 +1,9 @@
+import { Event } from "./event";
+import { EventDescriptor } from "./descriptor";
+export interface SyncEventCallback<TargetEvent = unknown> {
+    (event: TargetEvent): void;
+}
+export interface EventCallback<TargetEvent extends Event = Event> {
+    <E extends TargetEvent>(event: E): Promise<unknown | void> | unknown | void;
+}
+export declare function matchEventCallback(type: string | symbol, callback?: EventCallback | Function, options?: unknown): (descriptor: EventDescriptor) => boolean;

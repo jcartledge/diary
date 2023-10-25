@@ -1,0 +1,10 @@
+import { Event } from "./event";
+export interface InterceptEvent<Name extends string | symbol = string, T = unknown> extends Event<Name> {
+    /**
+     * @param value
+     * @throws InvalidStateError
+     */
+    intercept(value: T | Promise<T>): void;
+    transitionWhile?(value: T | Promise<T>): void;
+}
+export declare function isInterceptEvent<T = unknown>(value: object): value is InterceptEvent<string | symbol, T>;

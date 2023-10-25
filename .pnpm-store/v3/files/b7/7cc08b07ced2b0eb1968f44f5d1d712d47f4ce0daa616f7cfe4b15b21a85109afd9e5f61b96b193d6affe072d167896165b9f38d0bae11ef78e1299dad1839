@@ -1,0 +1,3 @@
+import { Event } from "../event-target";
+import { Router } from "./router";
+export declare function transitionEvent<E extends Event, R>(router: Router<E, R>, event: E): Promise<void>;

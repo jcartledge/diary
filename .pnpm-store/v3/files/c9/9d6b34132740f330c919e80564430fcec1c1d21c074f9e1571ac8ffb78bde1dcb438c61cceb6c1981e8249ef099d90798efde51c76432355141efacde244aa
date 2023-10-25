@@ -1,0 +1,71 @@
+import type { Navigation } from "./spec/navigation";
+import { NavigationHistory } from "./history";
+import { WindowLike } from "./global-window";
+export interface NavigationPolyfillOptions {
+    /**
+     * Integrate polyfilled Navigation API with legacy History API.
+     * Specifically, `popstate` will trigger navigation traversal and
+     * navigates will push state on History API.
+     * This enables forward/backward to work in most cases, but not after page refresh, etc.
+     * See {@link NavigationPolyfillOptions.persist} on how to recover from hard resets.
+     *
+     * __WIP__: No consideration given to iframes and other edge cases.
+     * `hashchange` not implemented (but might work anyway for most cases with {@link INTERCEPT_EVENTS}?).
+     * `scroll` not implemented.
+     */
+    history?: boolean | NavigationHistory<object>;
+    /**
+     * Persists all navigation entries in history state.
+     * This enables forward/backward to work after hard refresh, closing/reopening tab, etc.
+     * but comes at the cost of storing all navigation history entries _on every history frame_.
+     * This isn't quite as crazy as it seems, as each entry only consists of `url`, `key` and `id`,
+     * but you might want to disable it regardless.
+     *
+     * __WIP__: Maybe store entries in session storage instead and only keep an id in history state?
+     * What's worse, sync access + stringification or duplication on history state? 🤔
+     */
+    persist?: boolean;
+    /** Limits max # of entries stored in history storage */
+    limit?: number;
+    /**
+     * Like {@link NavigationPolyfillOptions.limit}, except also stores the state for each navigation entry.
+     * Note that you might not need this if you only need the state of the current navigation entry,
+     * which works with {@link NavigationPolyfillOptions.history} alone.
+     * Enabling this allows retrieving the state of *any navigation entry even after a hard refresh*.
+     *
+     * __WIP__: State is stringified and stored in `sessionStorage`. This works for small objects,
+     * but gets awkward when storing large array buffers, etc.
+     * A more advanced implementation could combine session storage with a
+     * [Storage Area](https://workers.tools/kv-storage-polyfill) (Indexed DB) for better perf...
+     * __NOTE__: Turns out session storage is easier lost than history state (in webkit at least)
+     * It will survive hard refresh (but not always?) but not closing tab and restoring it.
+     */
+    persistState?: boolean;
+    /**
+     * Monkey patches History API methods to call new Navigation API methods instead.
+     * Could solve issues when combining Navigation API with frameworks that use the legacy History API,
+     * or it might cause additional issues instead 🤷‍♂️.
+     *
+     * __NOTE__: This performs some prototype acrobatics to hide the "real" history state from the application.
+     * If this sounds scary you might want to disable this.
+     */
+    patch?: boolean;
+    /**
+     * Intercepts clicks on `a` tags and `form` submissions and conditionally calls `preventDefault` based on
+     * application code response to the `navigate` event. This is the final piece of the Navigation API puzzle,
+     * as it allows using vanilla HTML elements instead of framework specific components like `<Link/>` or `<A/>`.
+     * In practice you might want to use those anyway, in which case you wouldn't need to enable this setting.
+     */
+    interceptEvents?: boolean;
+    window?: WindowLike;
+    navigation?: Navigation;
+}
+export declare const NavigationKey = "__@virtualstate/navigation/key";
+export declare const NavigationMeta = "__@virtualstate/navigation/meta";
+export declare const DEFAULT_POLYFILL_OPTIONS: NavigationPolyfillOptions;
+export declare function getPolyfill(options?: NavigationPolyfillOptions): Navigation;
+export declare function getCompletePolyfill(options?: NavigationPolyfillOptions): {
+    navigation: Navigation;
+    history: NavigationHistory<object>;
+    apply(): void;
+};

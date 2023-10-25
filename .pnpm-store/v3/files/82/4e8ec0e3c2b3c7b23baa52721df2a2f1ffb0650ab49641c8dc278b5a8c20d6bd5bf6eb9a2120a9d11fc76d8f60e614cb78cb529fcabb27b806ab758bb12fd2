@@ -1,0 +1,9 @@
+import { JwtPayload } from 'jsonwebtoken';
+declare const createJWKSMock: (jwksBase: string, jwksPath?: string) => {
+    start: () => void;
+    stop: () => void;
+    kid: () => string;
+    token: (token?: JwtPayload) => string;
+};
+export type JWKSMock = ReturnType<typeof createJWKSMock>;
+export default createJWKSMock;

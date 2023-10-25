@@ -1,0 +1,2 @@
+export const globalURLPattern = typeof URLPattern === "undefined" ? undefined : URLPattern;
+//# sourceMappingURL=url-pattern-global.js.map

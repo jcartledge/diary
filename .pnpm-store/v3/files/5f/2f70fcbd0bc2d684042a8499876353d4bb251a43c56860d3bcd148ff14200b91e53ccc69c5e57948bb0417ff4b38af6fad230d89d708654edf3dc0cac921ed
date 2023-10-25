@@ -1,0 +1,5 @@
+import { Navigation } from "../spec/navigation";
+export declare function setState<S>(state: S, navigation?: Navigation<S>): unknown;
+export declare function getState<S>(navigation?: Navigation<S>): S;
+export declare function state<S>(navigation?: Navigation<S>): AsyncIterable<S>;
+export declare function stateGenerator<S>(navigation?: Navigation<S>): AsyncIterableIterator<S>;

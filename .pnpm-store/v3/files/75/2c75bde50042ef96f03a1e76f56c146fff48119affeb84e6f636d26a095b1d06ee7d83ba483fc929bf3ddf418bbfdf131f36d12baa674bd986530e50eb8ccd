@@ -1,0 +1,4 @@
+import { NavigateEvent, Navigation, NavigationInterceptOptions } from "../spec/navigation";
+export * from "./events";
+export * from "./create-promise";
+export declare function intercept<S>(options?: NavigationInterceptOptions<S>, navigation?: Navigation<S>): Promise<NavigateEvent<S, unknown>>;

@@ -1,0 +1,1 @@
+{"version":3,"file":"intercept-event.js","sourceRoot":"","sources":["../../src/event-target/intercept-event.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAS,MAAM,SAAS,CAAC;AAczC,MAAM,UAAU,gBAAgB,CAC9B,KAAa;IAEb,SAAS,oBAAoB,CAC3B,KAAa;QAEb,OAAO,OAAO,CAAC,KAAK,CAAC,CAAC;IACxB,CAAC;IACD,OAAO,CACH,oBAAoB,CAAC,KAAK,CAAC,IAAI,OAAO,KAAK,CAAC,SAAS,KAAK,UAAU,CACvE,CAAC;AACJ,CAAC"}

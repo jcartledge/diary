@@ -1,0 +1,11 @@
+export declare const navigate: Promise<import("..").NavigateEvent<unknown, unknown>>;
+export declare const navigateError: Promise<import("../event-target").Event<string | symbol> & {
+    error?: unknown;
+}>;
+export declare const error: Promise<import("../event-target").Event<string | symbol> & {
+    error?: unknown;
+}>;
+export declare const navigateSuccess: Promise<import("../event-target").Event<string | symbol>>;
+export declare const success: Promise<import("../event-target").Event<string | symbol>>;
+export declare const currentEntryChange: Promise<import("../navigation").NavigationCurrentEntryChangeEvent<unknown, unknown>>;
+export declare const entriesChange: Promise<import("..").NavigationEntriesChangeEvent<unknown>>;

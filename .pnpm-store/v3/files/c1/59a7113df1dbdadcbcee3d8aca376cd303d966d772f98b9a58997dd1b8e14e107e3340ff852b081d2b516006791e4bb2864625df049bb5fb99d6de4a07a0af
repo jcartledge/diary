@@ -1,0 +1,9 @@
+import type { NavigationCurrentEntryChangeEvent as Spec, NavigationCurrentEntryChangeEventInit, NavigationHistoryEntry, NavigationNavigationType } from "../spec/navigation";
+export declare class NavigationCurrentEntryChangeEvent<S = unknown> implements Spec<S> {
+    type: "currententrychange";
+    [key: number]: unknown;
+    [key: string]: unknown;
+    readonly from: NavigationHistoryEntry<S>;
+    readonly navigationType?: NavigationNavigationType;
+    constructor(type: "currententrychange", init: NavigationCurrentEntryChangeEventInit<S>);
+}

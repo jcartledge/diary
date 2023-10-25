@@ -1,0 +1,14 @@
+export interface AbortError extends Error {
+    name: "AbortError";
+}
+export declare class AbortError extends Error {
+    constructor(message?: string);
+}
+export declare function isAbortError(error: unknown): error is AbortError;
+export interface InvalidStateError extends Error {
+    name: "InvalidStateError";
+}
+export declare class InvalidStateError extends Error {
+    constructor(message?: string);
+}
+export declare function isInvalidStateError(error: unknown): error is InvalidStateError;

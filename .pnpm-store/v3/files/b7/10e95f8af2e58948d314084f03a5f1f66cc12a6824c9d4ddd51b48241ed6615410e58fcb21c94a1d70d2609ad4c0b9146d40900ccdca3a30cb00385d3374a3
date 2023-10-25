@@ -1,0 +1,9 @@
+export interface Deferred<T = void> {
+    resolve(value: T): void;
+    reject(reason: unknown): void;
+    promise: Promise<T>;
+}
+/**
+ * @param handleCatch rejected promises automatically to allow free usage
+ */
+export declare function deferred<T = void>(handleCatch?: () => T | Promise<T>): Deferred<T>;

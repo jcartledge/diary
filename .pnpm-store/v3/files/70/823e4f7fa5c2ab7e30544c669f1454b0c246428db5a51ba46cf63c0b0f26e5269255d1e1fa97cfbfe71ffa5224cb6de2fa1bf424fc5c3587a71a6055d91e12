@@ -1,0 +1,2 @@
+import { Event } from "./event";
+export declare function createEvent<E extends Event>(event: E): E;

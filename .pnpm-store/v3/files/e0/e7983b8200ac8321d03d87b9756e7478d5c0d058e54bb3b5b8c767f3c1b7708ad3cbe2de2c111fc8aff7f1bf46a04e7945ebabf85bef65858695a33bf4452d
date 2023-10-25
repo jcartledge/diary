@@ -1,0 +1,58 @@
+import { NavigationDestination, NavigationNavigateOptions as NavigationNavigateOptionsPrototype, NavigationNavigationType, NavigationEntriesChangeEventInit } from "./spec/navigation";
+import { NavigationHistoryEntry } from "./navigation-entry";
+import { NavigationTransition, InternalNavigationNavigationType } from "./navigation-transition";
+import { NavigateEvent, NavigationCurrentEntryChangeEvent } from "./events";
+export interface PreventDefaultLike {
+    preventDefault(): void;
+}
+export declare const NavigationFormData: unique symbol;
+export declare const NavigationDownloadRequest: unique symbol;
+export declare const NavigationCanIntercept: unique symbol;
+export declare const NavigationUserInitiated: unique symbol;
+export declare const NavigationOriginalEvent: unique symbol;
+export interface NavigationNavigateOptions<S = unknown> extends NavigationNavigateOptionsPrototype<S> {
+    [NavigationFormData]?: FormData;
+    [NavigationDownloadRequest]?: string;
+    [NavigationCanIntercept]?: boolean;
+    [NavigationUserInitiated]?: boolean;
+    [NavigationOriginalEvent]?: PreventDefaultLike;
+}
+export declare const EventAbortController: unique symbol;
+export interface AbortControllerEvent {
+    [EventAbortController]: AbortController;
+}
+export interface InternalNavigationNavigateOptions<S = unknown> extends NavigationNavigateOptions<S> {
+    entries?: NavigationHistoryEntry<S>[];
+    index?: number;
+    known?: Set<NavigationHistoryEntry<S>>;
+    navigationType?: NavigationNavigationType;
+}
+export interface NavigationTransitionCommitContext<S = unknown> {
+    entries: NavigationHistoryEntry<S>[];
+    index: number;
+    known?: Set<NavigationHistoryEntry<S>>;
+    entriesChange?: NavigationEntriesChangeEventInit<S>;
+}
+export interface NavigationTransitionContext<S = unknown> {
+    commit(commit: NavigationTransitionCommitContext<S>): Promise<void>;
+    transition: NavigationTransition<S>;
+    options?: InternalNavigationNavigateOptions<S>;
+    currentIndex: number;
+    known: Set<NavigationHistoryEntry<S>>;
+    startTime?: number;
+    currentEntry: NavigationHistoryEntry<S>;
+    reportError?(reason: unknown): void;
+}
+export interface NavigationTransitionResult<S = unknown> {
+    entries: NavigationHistoryEntry<S>[];
+    index: number;
+    known: Set<NavigationHistoryEntry<S>>;
+    destination: NavigationDestination<S>;
+    navigate: NavigateEvent<S>;
+    currentEntryChange: NavigationCurrentEntryChangeEvent<S>;
+    navigationType: InternalNavigationNavigationType;
+    waitForCommit: Promise<void | unknown>;
+    abortController: AbortController;
+    commit(): Promise<void> | void;
+}
+export declare function createNavigationTransition<S = unknown>(context: NavigationTransitionContext<S>): NavigationTransitionResult<S>;
