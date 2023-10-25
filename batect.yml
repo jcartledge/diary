@@ -1,6 +1,6 @@
 containers:
   diary-build-env:
-    image: guergeiro/pnpm:18-8
+    image: guergeiro/pnpm:20-8
     working_directory: /app
     command: pnpm install --frozen-lockfile
     volumes:
