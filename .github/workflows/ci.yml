@@ -29,12 +29,12 @@ jobs:
           path: .batect/caches
           key: batect-caches-${{ hashFiles('pnpm-lock.yaml') }}
 
+      - name: Audit dependencies
+        run: ./batect check-deps
+
       - name: Download dependencies
         run: ./batect setup
 
-      - name: Audit dependencies
-        run: ./batect check-deps
-  
   build-client:
     name: build-client
     needs: [setup]
