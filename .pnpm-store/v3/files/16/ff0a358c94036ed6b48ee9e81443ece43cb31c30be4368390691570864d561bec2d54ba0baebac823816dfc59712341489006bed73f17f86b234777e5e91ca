@@ -1,2 +1,0 @@
-import type { Navigation } from "./spec/navigation";
-export declare function getNavigation(): Navigation;

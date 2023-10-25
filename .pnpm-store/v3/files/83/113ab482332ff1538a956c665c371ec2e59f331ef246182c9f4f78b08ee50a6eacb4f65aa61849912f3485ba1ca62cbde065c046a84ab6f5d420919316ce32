@@ -1,2 +1,0 @@
-import { Navigation } from "./spec/navigation";
-export declare function transition<S>(navigation: Navigation<S>): Promise<import("./spec/navigation").NavigationHistoryEntry<S>>;

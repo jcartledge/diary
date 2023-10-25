@@ -1,9 +1,0 @@
-import { Event } from "./event";
-import { FetchEvent } from "../tests/examples/fetch";
-import { EventTargetAddListenerOptions } from "./event-target-options";
-import { EventCallback } from "./callback";
-export declare function dispatchEvent(event: Event): Promise<void>;
-export declare function addEventListener(type: "fetch", callback: EventCallback<FetchEvent>, options?: EventTargetAddListenerOptions): void;
-export declare function addEventListener(type: string | symbol, callback: EventCallback, options?: EventTargetAddListenerOptions): void;
-export declare function removeEventListener(type: string | symbol, callback: EventCallback, options?: EventTargetAddListenerOptions): void;
-export declare function removeEventListener(type: string | symbol, callback: Function, options?: EventTargetAddListenerOptions): void;

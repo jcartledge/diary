@@ -1,1 +1,0 @@
-{"version":3,"file":"parallel-event.js","sourceRoot":"","sources":["../../src/event-target/parallel-event.ts"],"names":[],"mappings":"AAAA,OAAO,EAAS,OAAO,EAAE,MAAM,SAAS,CAAC;AAOzC,MAAM,UAAU,eAAe,CAAC,KAAa;IAC3C,OAAO,OAAO,CAAC,KAAK,CAAC,IAAI,KAAK,CAAC,QAAQ,KAAK,KAAK,CAAC;AACpD,CAAC"}

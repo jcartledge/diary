@@ -1,1 +1,0 @@
-export declare function getBaseURL(url?: string | URL): URL;

@@ -1,3 +1,0 @@
-import { NavigationPolyfillOptions } from "./get-polyfill";
-export declare function applyPolyfill(options?: NavigationPolyfillOptions): import("./spec/navigation").Navigation<unknown, unknown>;
-export declare function shouldApplyPolyfill(navigation?: import("./spec/navigation").Navigation<unknown, unknown>): boolean;

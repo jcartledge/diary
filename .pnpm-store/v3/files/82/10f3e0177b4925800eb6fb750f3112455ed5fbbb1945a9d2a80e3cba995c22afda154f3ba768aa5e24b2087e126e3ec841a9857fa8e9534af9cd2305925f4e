@@ -1,9 +1,0 @@
-export type DeferredStatus = "pending" | "fulfilled" | "rejected";
-export interface Deferred<T = void> {
-    resolve(value: T): void;
-    reject(reason: unknown): void;
-    promise: Promise<T>;
-    readonly settled: boolean;
-    readonly status: DeferredStatus;
-}
-export declare function defer<T = void>(): Deferred<T>;

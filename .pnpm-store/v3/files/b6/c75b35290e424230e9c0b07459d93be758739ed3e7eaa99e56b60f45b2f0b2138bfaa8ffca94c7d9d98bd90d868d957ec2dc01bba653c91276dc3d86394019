@@ -1,4 +1,0 @@
-import { AsyncEventTarget } from "./async-event-target";
-export declare class EventTarget extends AsyncEventTarget {
-    constructor(...args: unknown[]);
-}

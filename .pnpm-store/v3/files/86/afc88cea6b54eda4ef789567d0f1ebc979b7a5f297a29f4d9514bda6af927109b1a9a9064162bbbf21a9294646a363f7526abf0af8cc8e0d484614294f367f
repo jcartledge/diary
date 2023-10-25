@@ -1,1 +1,0 @@
-{"version":3,"file":"respond-event.js","sourceRoot":"","sources":["../../src/event-target/respond-event.ts"],"names":[],"mappings":"AAAA,OAAO,EAAS,OAAO,EAAE,MAAM,SAAS,CAAC;AAazC,MAAM,UAAU,cAAc,CAC5B,KAAa;IAEb,SAAS,kBAAkB,CACzB,KAAa;QAEb,OAAO,OAAO,CAAC,KAAK,CAAC,CAAC;IACxB,CAAC;IACD,OAAO,kBAAkB,CAAC,KAAK,CAAC,IAAI,OAAO,KAAK,CAAC,WAAW,KAAK,UAAU,CAAC;AAC9E,CAAC"}

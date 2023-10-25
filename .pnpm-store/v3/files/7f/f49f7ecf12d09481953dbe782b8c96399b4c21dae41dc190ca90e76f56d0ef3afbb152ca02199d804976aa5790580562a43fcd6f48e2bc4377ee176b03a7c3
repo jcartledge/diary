@@ -1,4 +1,0 @@
-export declare const GlobalAbortController: {
-    new (): AbortController;
-    prototype: AbortController;
-};

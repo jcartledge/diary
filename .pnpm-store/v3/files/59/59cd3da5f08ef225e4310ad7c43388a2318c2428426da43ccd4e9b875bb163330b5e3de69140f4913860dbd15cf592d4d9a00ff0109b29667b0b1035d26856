@@ -1,5 +1,0 @@
-/// <reference types="react" />
-export declare type ConditionalProps = React.PropsWithChildren<{
-    predicate: boolean;
-}>;
-export declare const Conditional: React.FC<ConditionalProps>;

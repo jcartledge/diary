@@ -1,2 +1,0 @@
-/** post rollup replace importUuid **/
-export declare function v4(): any;
