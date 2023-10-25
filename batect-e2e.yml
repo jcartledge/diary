@@ -1,6 +1,6 @@
 containers:
   e2e:
-    image: guergeiro/pnpm:18-8
+    build_directory: .batect/images/e2e
     working_directory: /app
     command: pnpm --filter e2e start
     dependencies:
