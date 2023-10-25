@@ -1,8 +1,7 @@
 containers:
   e2e:
-    build_directory: .batect/images/e2e
-    working_directory: /app
-    command: pnpm --filter e2e start
+    image: diary-e2e:latest
+    command: pnpm start
     dependencies:
       - diary-server-gateway
       - diary-client
@@ -10,9 +9,6 @@ containers:
       CLIENT_URI: "https://diary-client"
       E2E_USER: ${E2E_USER:-}
       E2E_PASS: ${E2E_PASS:-}
-    volumes:
-      - local: .
-        container: /app
 
 tasks:
   e2e:
@@ -28,6 +24,12 @@ tasks:
           CORS_ORIGIN: https://diary-client
     prerequisites:
       - setup
+      - e2e-package
     run:
       container: e2e
 
+  e2e-package:
+    run:
+      container: diary-package-env
+      command: docker build -t diary-e2e .
+      working_directory: /app/workspaces/e2e
