@@ -1,4 +1,4 @@
-import { withError, withResult } from "@diary/shared/ResultOrError";
+import { withError, withResult } from "../ResultOrError";
 import { describe, expect, it } from "vitest";
 import { buildDiaryEntry } from "./diaryEntry";
 import { validateDiaryEntry } from "./validateDiaryEntry";

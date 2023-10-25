@@ -1,8 +1,7 @@
 containers:
   e2e:
-    image: mcr.microsoft.com/playwright:v1.39.0-jammy
-    working_directory: /app
-    command: yarn e2e start
+    image: diary-e2e:latest
+    command: pnpm start
     dependencies:
       - diary-server-gateway
       - diary-client
@@ -10,21 +9,6 @@ containers:
       CLIENT_URI: "https://diary-client"
       E2E_USER: ${E2E_USER:-}
       E2E_PASS: ${E2E_PASS:-}
-    volumes:
-      - local: .
-        container: /app
-      - type: cache
-        name: node-modules
-        container: /app/node_modules
-      - type: cache
-        name: client-node-modules
-        container: /app/client/node_modules
-      - type: cache
-        name: server-node-modules
-        container: /app/server/node_modules
-      - type: cache
-        name: e2e-node-modules
-        container: /app/e2e/node_modules
 
 tasks:
   e2e:
@@ -38,5 +22,14 @@ tasks:
       diary-server:
         environment:
           CORS_ORIGIN: https://diary-client
+    prerequisites:
+      - setup
+      - e2e-package
     run:
       container: e2e
+
+  e2e-package:
+    run:
+      container: diary-package-env
+      command: docker build -t diary-e2e .
+      working_directory: /app/workspaces/e2e

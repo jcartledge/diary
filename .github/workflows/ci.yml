@@ -27,7 +27,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .batect/caches
-          key: batect-caches-${{ hashFiles('yarn.lock') }}
+          key: batect-caches-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: Download dependencies
         run: ./batect setup
@@ -56,7 +56,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .batect/caches
-          key: batect-caches-${{ hashFiles('yarn.lock') }}
+          key: batect-caches-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: Build/test/package
         run: ./batect client-ci
@@ -87,7 +87,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .batect/caches
-          key: batect-caches-${{ hashFiles('yarn.lock') }}
+          key: batect-caches-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: Lint code
         run: ./batect server-lint
@@ -135,7 +135,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .batect/caches
-          key: batect-caches-${{ hashFiles('yarn.lock') }}
+          key: batect-caches-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: certificate
         run: ./batect client-cert

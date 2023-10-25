@@ -19,7 +19,7 @@ containers:
   diary-server-dev:
     image: node:21.0.0
     working_directory: /app
-    command: yarn server dev
+    command: pnpm --filter server dev
     ports:
       - 4000:4000
     dependencies:
@@ -38,13 +38,13 @@ containers:
         container: /app/node_modules
       - type: cache
         name: client-node-modules
-        container: /app/client/node_modules
+        container: /app/workspaces/client/node_modules
       - type: cache
         name: server-node-modules
-        container: /app/server/node_modules
+        container: /app/workspaces/server/node_modules
       - type: cache
         name: e2e-node-modules
-        container: /app/e2e/node_modules
+        container: /app/workspaces/e2e/node_modules
 
   diary-db:
     image: postgres:16.0
@@ -65,7 +65,7 @@ tasks:
       - setup
     run:
       container: diary-build-env
-      command: yarn server lint
+      command: pnpm --filter server lint
 
   server-test:
     prerequisites:
@@ -80,7 +80,7 @@ tasks:
           POSTGRES_DB: test
     run:
       container: diary-build-env
-      command: yarn server test
+      command: pnpm --filter server test
       environment:
         DATABASE_URL: postgresql://test:test@diary-db:5432/test
 
@@ -97,7 +97,7 @@ tasks:
           POSTGRES_DB: test
     run:
       container: diary-build-env
-      command: yarn server coverage
+      command: pnpm --filter server coverage
       environment:
         DATABASE_URL: postgresql://test:test@diary-db:5432/test
 
@@ -106,7 +106,7 @@ tasks:
       - setup
     run:
       container: diary-build-env
-      command: yarn server build
+      command: pnpm --filter server build
 
   server-package:
     prerequisites:
