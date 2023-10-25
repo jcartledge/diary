@@ -47,11 +47,9 @@ tasks:
       container: diary-server-dev
 
   check-deps:
-    prerequisites:
-      - setup
     run:
       container: diary-build-env
-      command: pnpm audit:ci
+      command: pnpm audit
 
   new-images:
     prerequisites:

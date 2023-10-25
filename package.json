@@ -3,14 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "audit:ci": "audit-ci --high --config=./pnpm-audit-ci.config.json",
     "client": "pnpm --filter @diary/client",
     "e2e": "pnpm --filter @diary/e2e",
     "server": "pnpm --filter @diary/server"
   },
   "devDependencies": {
-    "@types/node": "20.8.8",
-    "audit-ci": "6.6.1"
+    "@types/node": "20.8.8"
   },
   "packageManager": "pnpm@8.9.2"
 }
