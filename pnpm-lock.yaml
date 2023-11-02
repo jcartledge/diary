@@ -19,8 +19,8 @@ importers:
         version: link:../shared
     devDependencies:
       '@auth0/auth0-react':
-        specifier: 2.2.2
-        version: 2.2.2(react-dom@18.2.0)(react@18.2.0)
+        specifier: 2.2.3
+        version: 2.2.3(react-dom@18.2.0)(react@18.2.0)
       '@jcartledge/react-conditional':
         specifier: ^1.0.9
         version: 1.0.9
@@ -267,8 +267,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.19
     dev: true
 
-  /@auth0/auth0-react@2.2.2(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-+E0Cj2J4v14ael56pBdoaGO2m5LLB4qLShhw3E/okmUeA7WmKOrveRn19wl0f6cl0YzwrDKXAkmqFlP6ARMznw==}
+  /@auth0/auth0-react@2.2.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-3B0KA/ky1yA6iQK8045N8U0ZBkmDB3ElCSwJuxNbAoKmZBc4+DjzZhWRxYsgb9PrfHC14Lr2h4950A3PEFDULA==}
     peerDependencies:
       react: ^16.11.0 || ^17 || ^18
       react-dom: ^16.11.0 || ^17 || ^18
