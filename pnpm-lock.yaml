@@ -182,8 +182,8 @@ importers:
         specifier: ^20.0.0
         version: 20.8.8
       '@types/pg':
-        specifier: 8.10.8
-        version: 8.10.8
+        specifier: 8.10.9
+        version: 8.10.9
       '@types/supertest':
         specifier: 2.0.16
         version: 2.0.16
@@ -1304,8 +1304,8 @@ packages:
       undici-types: 5.25.3
     dev: true
 
-  /@types/pg@8.10.8:
-    resolution: {integrity: sha512-EqSUgXvnbEnMkIdffX1cDsmbvNt5Fzoim17JRwdaHaCpeTz440FocCxcStU9GgJvA+1aqtHEjHgFlH0d8ZCjAg==}
+  /@types/pg@8.10.9:
+    resolution: {integrity: sha512-UksbANNE/f8w0wOMxVKKIrLCbEMV+oM1uKejmwXr39olg4xqcfBDbXxObJAt6XxHbDa4XTKOlUEcEltXDX+XLQ==}
     dependencies:
       '@types/node': 20.8.10
       pg-protocol: 1.6.0
