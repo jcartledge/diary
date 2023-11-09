@@ -8,8 +8,8 @@
     "start": "pnpm exec playwright install chromium --with-deps && pnpm exec playwright test"
   },
   "devDependencies": {
-    "@babel/core": "7.23.2",
-    "@babel/preset-typescript": "7.23.2",
+    "@babel/core": "7.23.3",
+    "@babel/preset-typescript": "7.23.3",
     "@playwright/test": "1.39.0"
   }
 }
