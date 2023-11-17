@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.39.0-jammy as e2e
+FROM mcr.microsoft.com/playwright:v1.40.0-jammy as e2e
 
 RUN corepack enable
 
