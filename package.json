@@ -8,7 +8,7 @@
     "server": "pnpm --filter @diary/server"
   },
   "devDependencies": {
-    "@types/node": "20.9.3"
+    "@types/node": "20.9.4"
   },
   "packageManager": "pnpm@8.10.5"
 }
