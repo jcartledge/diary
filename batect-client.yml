@@ -83,6 +83,7 @@ tasks:
 
   client-ci:
     prerequisites:
+      - setup
       - client-lint
       - client-coverage
       - client-build
