@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "client": "pnpm --filter @diary/client",
     "e2e": "pnpm --filter @diary/e2e",
     "server": "pnpm --filter @diary/server"
