@@ -63,6 +63,6 @@
     "vite": "5.0.4",
     "vite-tsconfig-paths": "4.2.3",
     "vitest": "0.34.6",
-    "whatwg-fetch": "3.6.19"
+    "whatwg-fetch": "3.6.20"
   }
 }
