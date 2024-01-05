@@ -6,11 +6,6 @@ export const withQueryClient = createHelper(() => ({ children }) => (
     client={
       new QueryClient({
         defaultOptions: { queries: { retry: false } },
-        logger: {
-          log: console.log,
-          warn: console.warn,
-          error: () => {},
-        },
       })
     }
   >

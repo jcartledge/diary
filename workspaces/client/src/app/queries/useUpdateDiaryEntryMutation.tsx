@@ -16,8 +16,8 @@ const writeDiaryEntriesScopes: GetTokenSilentlyOptions = {
 export const useUpdateDiaryEntryMutation = () => {
   const queryClient = useQueryClient();
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
-  return useMutation(
-    async (diaryEntry: DiaryEntry) => {
+  return useMutation({
+    mutationFn: async (diaryEntry: DiaryEntry) => {
       isAuthenticated || fail("Not authenticated");
       withError(validateDiaryEntry(diaryEntry), fail);
 
@@ -33,12 +33,14 @@ export const useUpdateDiaryEntryMutation = () => {
       response.ok || fail(response.statusText);
       return await response.json();
     },
-    {
-      onSuccess: (_, diaryEntry) =>
-        queryClient.invalidateQueries([
+
+    onSuccess: (_, diaryEntry) =>
+      queryClient.invalidateQueries({
+        queryKey: [
           "diaryEntry",
           { isoDateString: diaryEntry.date },
-        ]),
-    }
+        ]
+      }),
+  }
   );
 };

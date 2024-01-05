@@ -15,9 +15,9 @@ const readDiaryEntriesScopes: GetTokenSilentlyOptions = {
 
 export const useDiaryEntryQuery = (isoDateString: string) => {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
-  return useQuery<{ diaryEntry: DiaryEntry }>(
-    ["diaryEntry", { isoDateString }],
-    async () => {
+  return useQuery<{ diaryEntry: DiaryEntry }>({
+    queryKey: ["diaryEntry", { isoDateString }],
+    queryFn: async () => {
       isAuthenticated || fail("Not authenticated");
 
       const response = await fetch(`${bffUri}/diaryentry/${isoDateString}`, {
@@ -33,5 +33,5 @@ export const useDiaryEntryQuery = (isoDateString: string) => {
       withError(validateDiaryEntry(diaryEntry), fail);
       return { diaryEntry };
     }
-  );
+  });
 };
