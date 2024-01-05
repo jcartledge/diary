@@ -21,7 +21,7 @@ export const buildDiaryEntryContextValue: Builder<DiaryEntryContextValue> = (
 ) => ({
   diaryEntry: buildDiaryEntry(),
   /* c8 ignore next */
-  updateDiaryEntry: (_) => (_) => {},
+  updateDiaryEntry: () => () => {},
   isDirty: false,
   isLoading: false,
   ...overrides,
