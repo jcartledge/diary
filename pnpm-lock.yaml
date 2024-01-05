@@ -128,8 +128,8 @@ importers:
         specifier: '>=5.0.5'
         version: 5.0.10(@types/node@20.10.6)
       vite-tsconfig-paths:
-        specifier: 4.2.1
-        version: 4.2.1(typescript@5.3.3)(vite@5.0.10)
+        specifier: 4.2.3
+        version: 4.2.3(typescript@5.3.3)(vite@5.0.10)
       vitest:
         specifier: 0.34.6
         version: 0.34.6(jsdom@23.0.1)
@@ -6252,8 +6252,8 @@ packages:
       - supports-color
       - terser
 
-  /vite-tsconfig-paths@4.2.1(typescript@5.3.3)(vite@5.0.10):
-    resolution: {integrity: sha512-GNUI6ZgPqT3oervkvzU+qtys83+75N/OuDaQl7HmOqFTb0pjZsuARrRipsyJhJ3enqV8beI1xhGbToR4o78nSQ==}
+  /vite-tsconfig-paths@4.2.3(typescript@5.3.3)(vite@5.0.10):
+    resolution: {integrity: sha512-xVsA2xe6QSlzBujtWF8q2NYexh7PAUYfzJ4C8Axpe/7d2pcERYxuxGgph9F4f0iQO36g5tyGq6eBUYIssdUrVw==}
     peerDependencies:
       vite: '>=5.0.5'
     peerDependenciesMeta:
