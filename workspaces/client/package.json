@@ -6,28 +6,10 @@
     "dev": "vite --port 3000",
     "build": "tsc && vite build",
     "test": "tsc && vitest",
-    "lint": "eslint ./src/**.{ts,tsx}",
+    "lint": "eslint ./src",
     "coverage": "CI=true pnpm run test --coverage"
   },
-  "eslintConfig": {
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:react/recommended",
-      "plugin:react/jsx-runtime"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-      "@typescript-eslint",
-      "eslint-plugin-react"
-    ],
-    "root": true
-  },
+  "type": "module",
   "browserslist": {
     "production": [
       ">0.2%",
