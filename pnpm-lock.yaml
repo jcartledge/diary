@@ -134,8 +134,8 @@ importers:
         specifier: 0.34.6
         version: 0.34.6(jsdom@23.0.1)
       whatwg-fetch:
-        specifier: 3.6.19
-        version: 3.6.19
+        specifier: 3.6.20
+        version: 3.6.20
 
   workspaces/e2e:
     devDependencies:
@@ -6498,8 +6498,8 @@ packages:
     dependencies:
       iconv-lite: 0.6.3
 
-  /whatwg-fetch@3.6.19:
-    resolution: {integrity: sha512-d67JP4dHSbm2TrpFj8AbO8DnL1JXL5J9u0Kq2xW6d0TFDbCA3Muhdt8orXC22utleTVj7Prqt82baN6RBvnEgw==}
+  /whatwg-fetch@3.6.20:
+    resolution: {integrity: sha512-EqhiFU6daOA8kpjOWTL0olhVOF3i7OrFzSYiGsEMB8GcXS+RrzauAERX65xMeNWVqxA6HXH2m69Z9LaKKdisfg==}
     dev: true
 
   /whatwg-mimetype@4.0.0:
