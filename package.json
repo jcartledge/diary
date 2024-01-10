@@ -9,7 +9,7 @@
     "server": "pnpm --filter @diary/server"
   },
   "devDependencies": {
-    "@types/node": "20.10.7"
+    "@types/node": "20.10.8"
   },
   "packageManager": "pnpm@8.14.1",
   "pnpm": {
