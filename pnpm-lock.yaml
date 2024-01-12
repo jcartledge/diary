@@ -77,8 +77,8 @@ importers:
         specifier: 10.4.16
         version: 10.4.16(postcss@8.4.33)
       c8:
-        specifier: 9.0.0
-        version: 9.0.0
+        specifier: 9.1.0
+        version: 9.1.0
       eslint:
         specifier: 8.56.0
         version: 8.56.0
@@ -2239,8 +2239,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
-  /c8@9.0.0:
-    resolution: {integrity: sha512-nFJhU2Cz6Frh2awk3IW7wwk3wx27/U2v8ojQCHGc1GWTCHS6aMu4lal327/ZnnYj7oSThGF1X3qUP1yzAJBcOQ==}
+  /c8@9.1.0:
+    resolution: {integrity: sha512-mBWcT5iqNir1zIkzSPyI3NCR9EZCVI3WUD+AVO17MVWTSFNyUueXE82qTeampNtTr+ilN/5Ua3j24LgbCKjDVg==}
     engines: {node: '>=14.14.0'}
     hasBin: true
     dependencies:
