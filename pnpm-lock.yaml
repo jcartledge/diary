@@ -35,8 +35,8 @@ importers:
         specifier: 1.5.11
         version: 1.5.11
       '@tanstack/react-query':
-        specifier: 5.17.12
-        version: 5.17.12(react@18.2.0)
+        specifier: 5.17.14
+        version: 5.17.14(react@18.2.0)
       '@testing-library/dom':
         specifier: 9.3.4
         version: 9.3.4
@@ -1114,16 +1114,16 @@ packages:
   /@sinclair/typebox@0.27.8:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
 
-  /@tanstack/query-core@5.17.10:
-    resolution: {integrity: sha512-bJ2oQUDBftvHcEkLS3gyzzShSeZpJyzNNRu8oHK13iNdsofyaDXtNO/c1Zy/PZYVX+PhqOXwoT42gMiEMRSSfQ==}
+  /@tanstack/query-core@5.17.14:
+    resolution: {integrity: sha512-k56eLuGfO8Rih0SqFJKq+XGrk3rmyiGBcNmbL+P+IiaRBeQtymkCgh5A2+v63SDGKzjaiBUSlbTLQcMCD6boQw==}
     dev: true
 
-  /@tanstack/react-query@5.17.12(react@18.2.0):
-    resolution: {integrity: sha512-mJQ+3da1ug4t9b+GycUuNzMs5hd6t+F4tJ1hqyaN/dlETP+bWwYwrv2GXFIbZIfI1K1Hu+XWZ6HUhRPbNtZ4QQ==}
+  /@tanstack/react-query@5.17.14(react@18.2.0):
+    resolution: {integrity: sha512-yFGs/KIB2ionNrjkL2EZSL4kyFcijGOQUheQU3TxCv58GY3JoNMrmvfT6T3J75seRUE1EscxJT+h7WDr4AITJw==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-core': 5.17.10
+      '@tanstack/query-core': 5.17.14
       react: 18.2.0
     dev: true
 
