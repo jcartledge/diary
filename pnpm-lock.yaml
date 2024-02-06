@@ -189,8 +189,8 @@ importers:
         specifier: ^20.0.0
         version: 20.8.8
       '@types/pg':
-        specifier: 8.10.9
-        version: 8.10.9
+        specifier: 8.11.0
+        version: 8.11.0
       '@types/supertest':
         specifier: 6.0.2
         version: 6.0.2
@@ -1461,10 +1461,10 @@ packages:
       undici-types: 5.25.3
     dev: true
 
-  /@types/pg@8.10.9:
-    resolution: {integrity: sha512-UksbANNE/f8w0wOMxVKKIrLCbEMV+oM1uKejmwXr39olg4xqcfBDbXxObJAt6XxHbDa4XTKOlUEcEltXDX+XLQ==}
+  /@types/pg@8.11.0:
+    resolution: {integrity: sha512-sDAlRiBNthGjNFfvt0k6mtotoVYVQ63pA8R4EMWka7crawSR60waVYR0HAgmPRs/e2YaeJTD/43OoZ3PFw80pw==}
     dependencies:
-      '@types/node': 20.8.8
+      '@types/node': 20.11.16
       pg-protocol: 1.6.0
       pg-types: 4.0.1
     dev: true
@@ -1507,7 +1507,7 @@ packages:
     resolution: {integrity: sha512-Cwo8LE/0rnvX7kIIa3QHCkcuF21c05Ayb0ZfxPiv0W8VRiZiNW/WuRupHKpqqGVGf7SUA44QSOUKaEd9lIrd/Q==}
     dependencies:
       '@types/mime': 1.3.2
-      '@types/node': 20.8.8
+      '@types/node': 20.11.16
     dev: true
 
   /@types/serve-static@1.15.2:
@@ -4045,7 +4045,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 20.8.8
+      '@types/node': 20.11.16
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: true
