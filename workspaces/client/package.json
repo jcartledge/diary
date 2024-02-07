@@ -37,7 +37,7 @@
     "@testing-library/user-event": "14.5.2",
     "@types/node": "20.11.16",
     "@types/react": "18.2.55",
-    "@types/react-dom": "18.2.18",
+    "@types/react-dom": "18.2.19",
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
     "@virtualstate/navigation": "1.0.1-alpha.199",
