@@ -32,8 +32,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       '@picocss/pico':
-        specifier: 1.5.11
-        version: 1.5.11
+        specifier: 1.5.12
+        version: 1.5.12
       '@tanstack/react-query':
         specifier: 5.20.1
         version: 5.20.1(react@18.2.0)
@@ -1107,8 +1107,8 @@ packages:
     resolution: {integrity: sha512-Aq58f5HiWdyDlFffbbSjAlv596h/cOnt2DO1w3DOC7OJ5EHs0hd/nycJfiu9RJbT6Yk6F1knnRRXNSpxoIVZ9Q==}
     dev: true
 
-  /@picocss/pico@1.5.11:
-    resolution: {integrity: sha512-cDaFiSyNPtuSTwSQt/05xsw8+g2ek4/S58tgh9Nc7miJCCdUrY9PAyl4OPWRJtYgJDdEvkUA9GuGj0J4nDP4Cw==}
+  /@picocss/pico@1.5.12:
+    resolution: {integrity: sha512-Q4s+DGqLw/0hdhGSL1T2u8mIJRkQingYqEjJvC+1st4FavBBekmjsTNykI7J7Xr1v5ZNMl/fIHULiXZt4GZvwg==}
     dev: true
 
   /@playwright/test@1.41.2:
