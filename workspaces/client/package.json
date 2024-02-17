@@ -40,7 +40,7 @@
     "@types/react-dom": "18.2.19",
     "@typescript-eslint/eslint-plugin": "7.0.1",
     "@typescript-eslint/parser": "7.0.1",
-    "@virtualstate/navigation": "1.0.1-alpha.199",
+    "@virtualstate/navigation": "1.0.1-alpha.200",
     "@vitejs/plugin-react": "4.2.1",
     "@vitest/coverage-v8": "0.34.6",
     "autoprefixer": "10.4.17",
