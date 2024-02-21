@@ -2,9 +2,9 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
 import userEvent from "@testing-library/user-event";
-import { wrap } from "souvlaki";
-import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
+import { wrapWithAuth0 } from "test/wrappers/wrapWithAuth0";
 import { LandingPage } from "./LandingPage";
+import { composeWrappers } from "lib/util/composeWrappers";
 
 describe("LandingPage", () => {
   it("Displays a login button", () => {
@@ -19,8 +19,8 @@ describe("LandingPage", () => {
     const loginWithRedirect = vi.fn();
     const user = userEvent.setup();
     render(<LandingPage />, {
-      wrapper: wrap(
-        withAuth0Wrapper({
+      wrapper: composeWrappers(
+        wrapWithAuth0({
           loginWithRedirect,
         })
       ),

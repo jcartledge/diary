@@ -112,9 +112,6 @@ importers:
       slugify:
         specifier: 1.6.6
         version: 1.6.6
-      souvlaki:
-        specifier: 0.3.0
-        version: 0.3.0(react-dom@18.2.0)(react@18.2.0)
       styled-components:
         specifier: 6.1.8
         version: 6.1.8(react-dom@18.2.0)(react@18.2.0)
@@ -5430,16 +5427,6 @@ packages:
   /source-map@0.7.4:
     resolution: {integrity: sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==}
     engines: {node: '>= 8'}
-    dev: true
-
-  /souvlaki@0.3.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-UZgG10yhl0gXzMLiVJf5Bt7g9CAfWf4y1ZYg4vD2OVc76Ppb+wExhW58z0mesqmWwr9jTA6tHRvd4BNb+azuWg==}
-    peerDependencies:
-      react: '*'
-      react-dom: '*'
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
     dev: true
 
   /split2@4.2.0:

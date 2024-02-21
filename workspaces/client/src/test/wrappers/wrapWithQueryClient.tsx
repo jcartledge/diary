@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createHelper } from "souvlaki";
 
-export const withQueryClient = createHelper(() => ({ children }) => (
+export const wrapWithQueryClient = (): React.FC<React.PropsWithChildren> => ({ children }) => (
   <QueryClientProvider
     client={
       new QueryClient({
@@ -11,4 +10,4 @@ export const withQueryClient = createHelper(() => ({ children }) => (
   >
     {children}
   </QueryClientProvider>
-));
+);

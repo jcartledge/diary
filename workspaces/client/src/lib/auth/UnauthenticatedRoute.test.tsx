@@ -1,16 +1,16 @@
 import { render, screen } from "@testing-library/react";
-import { withRouter } from "lib/router";
-import { wrap } from "souvlaki";
-import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
+import { wrapWithRouter } from "lib/router";
+import { wrapWithAuth0 } from "test/wrappers/wrapWithAuth0";
 import { describe, expect, it } from "vitest";
 import { UnauthenticatedRoute } from "./UnauthenticatedRoute";
+import { composeWrappers } from "lib/util/composeWrappers";
 
 describe("UnauthenticatedRoute", () => {
   it("renders if unauthenticated", () => {
     render(<UnauthenticatedRoute path="/">Hello</UnauthenticatedRoute>, {
-      wrapper: wrap(
-        withAuth0Wrapper({ isAuthenticated: false }),
-        withRouter("/")
+      wrapper: composeWrappers(
+        wrapWithAuth0({ isAuthenticated: false }),
+        wrapWithRouter("/")
       ),
     });
 
@@ -19,9 +19,9 @@ describe("UnauthenticatedRoute", () => {
 
   it("does not render if unauthenticated and the path doesn't match", () => {
     render(<UnauthenticatedRoute path="/one">Hello</UnauthenticatedRoute>, {
-      wrapper: wrap(
-        withAuth0Wrapper({ isAuthenticated: false }),
-        withRouter("/two")
+      wrapper: composeWrappers(
+        wrapWithAuth0({ isAuthenticated: false }),
+        wrapWithRouter("/two")
       ),
     });
 
@@ -30,9 +30,9 @@ describe("UnauthenticatedRoute", () => {
 
   it("does not render if authenticated", () => {
     render(<UnauthenticatedRoute path="/">Hello</UnauthenticatedRoute>, {
-      wrapper: wrap(
-        withAuth0Wrapper({ isAuthenticated: true }),
-        withRouter("/")
+      wrapper: composeWrappers(
+        wrapWithAuth0({ isAuthenticated: true }),
+        wrapWithRouter("/")
       ),
     });
 

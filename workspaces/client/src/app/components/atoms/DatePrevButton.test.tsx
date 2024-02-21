@@ -1,10 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { withDate } from "app/context/date/DateContext.testWrapper";
+import { wrapWithDate } from "app/context/date/DateContext.testWrapper";
 import { buildDiaryPageRoute } from "app/routes/buildDiaryPageRoute";
 import { HistoryRouter, Route } from "lib/router";
 import { DiaryDate } from "lib/util/DiaryDate";
-import { wrap } from "souvlaki";
 import { describe, expect, it } from "vitest";
 import DatePrevButton from "./DatePrevButton";
 
@@ -25,7 +24,7 @@ describe("DatePrevButton", () => {
         <Route path={yesterdayPath}>OK</Route>
       </HistoryRouter>,
       {
-        wrapper: wrap(withDate(today)),
+        wrapper: wrapWithDate(today),
       }
     );
 

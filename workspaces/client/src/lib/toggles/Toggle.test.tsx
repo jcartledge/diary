@@ -1,16 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import {
-  withToggle,
-  withToggles,
+  wrapWithToggle,
+  wrapWithToggles,
 } from "lib/toggles/TogglesProvider.testWrapper";
-import { wrap } from "souvlaki";
 import { describe, expect, it } from "vitest";
 import { Toggle } from "./Toggle";
 
 describe("Toggle", () => {
   it("renders the children if the toggle is enabled", () => {
     render(<Toggle name="test_feature">Hello</Toggle>, {
-      wrapper: wrap(withToggle("test_feature")),
+      wrapper: wrapWithToggle("test_feature"),
     });
 
     expect(screen.queryByText("Hello")).toBeInTheDocument();
@@ -18,7 +17,7 @@ describe("Toggle", () => {
 
   it("does not render the children if the toggle is not enabled", () => {
     render(<Toggle name="test_feature">Hello</Toggle>, {
-      wrapper: wrap(withToggles()),
+      wrapper: wrapWithToggles(),
     });
 
     expect(screen.queryByText("Hello")).not.toBeInTheDocument();
@@ -29,7 +28,7 @@ describe("Toggle", () => {
       <Toggle isOff name="test_feature">
         Hello
       </Toggle>,
-      { wrapper: wrap(withToggle("test_feature")) }
+      { wrapper: wrapWithToggle("test_feature") }
     );
 
     expect(screen.queryByText("Hello")).not.toBeInTheDocument();
@@ -40,7 +39,7 @@ describe("Toggle", () => {
       <Toggle isOff name="test_feature">
         Hello
       </Toggle>,
-      { wrapper: wrap(withToggles()) }
+      { wrapper: wrapWithToggles() }
     );
 
     expect(screen.queryByText("Hello")).toBeInTheDocument();
