@@ -1,28 +1,28 @@
 import { render, screen } from "@testing-library/react";
-import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
-import { withRouter } from "lib/router";
-import { withToggles } from "lib/toggles/TogglesProvider.testWrapper";
+import { wrapWithLocale } from "app/context/locale/LocaleContext.testWrapper";
+import { wrapWithRouter } from "lib/router";
+import { wrapWithToggles } from "lib/toggles/TogglesProvider.testWrapper";
 import { DiaryDate } from "lib/util/DiaryDate";
-import { wrap } from "souvlaki";
-import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
-import { withQueryClient } from "test/wrappers/withQueryClient";
+import { wrapWithAuth0 } from "test/wrappers/wrapWithAuth0";
+import { wrapWithQueryClient } from "test/wrappers/wrapWithQueryClient";
 import { describe, expect, it } from "vitest";
 import { buildDiaryPageRoute } from "./buildDiaryPageRoute";
 import { Routes } from "./Routes";
+import { composeWrappers } from "lib/util/composeWrappers";
 
 describe("Routes", () => {
   describe("authenticated", () => {
-    const withAuthenticatedUser = withAuth0Wrapper({ isAuthenticated: true });
+    const withAuthenticatedUser = wrapWithAuth0({ isAuthenticated: true });
 
     it("renders the diary entry for the date in the route", () => {
       render(<Routes />, {
-        wrapper: wrap(
-          withQueryClient(),
-          withToggles(),
+        wrapper: composeWrappers(
+          wrapWithQueryClient(),
+          wrapWithToggles(),
           withAuthenticatedUser,
-          withRouter(buildDiaryPageRoute("2020-01-01")),
-          withLocale("en-AU")
-        ),
+          wrapWithRouter(buildDiaryPageRoute("2020-01-01")),
+          wrapWithLocale("en-AU")
+        )
       });
 
       expect(screen.getByText(/1 January 2020/)).toBeInTheDocument();
@@ -30,12 +30,12 @@ describe("Routes", () => {
 
     it("redirects to the current date if no path is provided", () => {
       render(<Routes />, {
-        wrapper: wrap(
-          withQueryClient(),
-          withToggles(),
+        wrapper: composeWrappers(
+          wrapWithQueryClient(),
+          wrapWithToggles(),
           withAuthenticatedUser,
-          withRouter("/"),
-          withLocale("en-AU")
+          wrapWithRouter("/"),
+          wrapWithLocale("en-AU")
         ),
       });
 
@@ -46,13 +46,13 @@ describe("Routes", () => {
   });
 
   describe("Unauthenticated", () => {
-    const withUnauthenticatedUser = withAuth0Wrapper({
+    const withUnauthenticatedUser = wrapWithAuth0({
       isAuthenticated: false,
     });
 
     it("displays the landing page", () => {
       render(<Routes />, {
-        wrapper: wrap(withToggles(), withUnauthenticatedUser, withRouter("/")),
+        wrapper: composeWrappers(wrapWithToggles(), withUnauthenticatedUser, wrapWithRouter("/")),
       });
 
       expect(

@@ -1,6 +1,6 @@
 import { Auth0Context, type Auth0ContextInterface } from "@auth0/auth0-react";
 import { type Builder } from "@diary/shared/types/builder.types";
-import { createHelper } from "souvlaki";
+import React from "react";
 import { vi } from "vitest";
 
 const buildMockAuth0ContextValue: Builder<Auth0ContextInterface> = (
@@ -22,12 +22,11 @@ const buildMockAuth0ContextValue: Builder<Auth0ContextInterface> = (
   ...overrides,
 });
 
-export const withAuth0Wrapper = createHelper(
-  (value: Partial<Auth0ContextInterface> = {}) =>
+export const wrapWithAuth0 =
+  (value: Partial<Auth0ContextInterface> = {}): React.FC<React.PropsWithChildren> =>
     ({ children }) =>
-      (
-        <Auth0Context.Provider value={buildMockAuth0ContextValue(value)}>
-          {children}
-        </Auth0Context.Provider>
-      )
-);
+    (
+      <Auth0Context.Provider value={buildMockAuth0ContextValue(value)}>
+        {children}
+      </Auth0Context.Provider>
+    );

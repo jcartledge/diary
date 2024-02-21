@@ -1,21 +1,21 @@
 import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { withDate } from "app/context/date/DateContext.testWrapper";
+import { wrapWithDate } from "app/context/date/DateContext.testWrapper";
 import { withDiaryEntryContextProvider } from "app/context/diaryEntry/DiaryEntryContextProvider.testWrapper";
 import { DiaryDate } from "lib/util/DiaryDate";
-import { wrap } from "souvlaki";
 import { mockGetDiaryEntry } from "test/mocks/mockDiaryEntry";
-import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
-import { withQueryClient } from "test/wrappers/withQueryClient";
+import { wrapWithAuth0 } from "test/wrappers/wrapWithAuth0";
+import { wrapWithQueryClient } from "test/wrappers/wrapWithQueryClient";
 import { describe, expect, it } from "vitest";
 import DiaryPageForm from "./DiaryPageForm";
+import { composeWrappers } from "lib/util/composeWrappers";
 
 describe("DiaryPageForm", () => {
   const wrappers = (date: DiaryDate = new DiaryDate()) =>
-    wrap(
-      withQueryClient(),
-      withAuth0Wrapper({ isAuthenticated: true }),
-      withDate(date),
+    composeWrappers(
+      wrapWithQueryClient(),
+      wrapWithAuth0({ isAuthenticated: true }),
+      wrapWithDate(date),
       withDiaryEntryContextProvider()
     );
 

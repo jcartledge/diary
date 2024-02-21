@@ -60,7 +60,7 @@ Returns the state (enabled == true) of the named toggle.
 
 Any component which uses either the `Toggle` component, or the `useToggles` or `useToggle` hook needs to be wrapped in a `TogglesProvider`. This can be used to provide toggles as required for testing.
 
-There are `withToggle` and `withToggles` helpers for use with souvlaki.
+There are `wrapWithToggle` and `wrapWithToggles` helpers for testing with specified sets of toggle values.
 
 ## E2e testing with toggles
 

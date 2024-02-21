@@ -1,7 +1,6 @@
 import { renderHook } from "@testing-library/react";
-import { wrap } from "souvlaki";
 import { describe, expect, it } from "vitest";
-import { withToggles } from "./TogglesProvider.testWrapper";
+import { wrapWithToggles } from "./TogglesProvider.testWrapper";
 import { useToggles } from "./useToggles";
 
 describe("useToggles", () => {
@@ -9,7 +8,7 @@ describe("useToggles", () => {
     const testToggles = ["toggle1"];
 
     const { result } = renderHook(useToggles, {
-      wrapper: wrap(withToggles(testToggles)),
+      wrapper:wrapWithToggles(testToggles),
     });
 
     expect(result.current).toEqual(testToggles);

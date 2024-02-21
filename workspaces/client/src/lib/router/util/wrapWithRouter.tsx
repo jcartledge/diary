@@ -1,9 +1,8 @@
-import { createHelper } from "souvlaki";
 import { Router } from "../components/Router";
+import React from "react";
 
-export const withRouter = createHelper(
-  (initialPath: string) =>
+export const wrapWithRouter =
+  (initialPath: string): React.FC<React.PropsWithChildren> =>
     ({ children }) => {
       return <Router initialPath={initialPath}>{children}</Router>;
     }
-);

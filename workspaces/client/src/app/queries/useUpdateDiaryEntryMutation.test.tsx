@@ -1,17 +1,17 @@
 import { buildDiaryEntry, DiaryEntry } from "@diary/shared/types/diaryEntry";
 import { renderHook, waitFor } from "@testing-library/react";
 import { rest } from "msw";
-import { wrap } from "souvlaki";
 import { diaryEntryUriTemplate } from "test/mocks/diaryEntryUriTemplate";
 import { server } from "test/mocks/server";
-import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
-import { withQueryClient } from "test/wrappers/withQueryClient";
+import { wrapWithAuth0 } from "test/wrappers/wrapWithAuth0";
+import { wrapWithQueryClient } from "test/wrappers/wrapWithQueryClient";
 import { describe, expect, it } from "vitest";
 import { useUpdateDiaryEntryMutation } from "./useUpdateDiaryEntryMutation";
+import { composeWrappers } from "lib/util/composeWrappers";
 
-const wrapper = wrap(
-  withQueryClient(),
-  withAuth0Wrapper({ isAuthenticated: true })
+const wrapper = composeWrappers(
+  wrapWithQueryClient(),
+  wrapWithAuth0({ isAuthenticated: true })
 );
 
 describe("useUpdateDiaryEntryMutation", () => {

@@ -1,15 +1,15 @@
 import { render, screen } from "@testing-library/react";
-import { withDate } from "app/context/date/DateContext.testWrapper";
-import { withDiaryEntryContext } from "app/context/diaryEntry/DiaryEntryContext.testWrapper";
+import { wrapWithDate } from "app/context/date/DateContext.testWrapper";
+import { wrapWithDiaryEntryContext } from "app/context/diaryEntry/DiaryEntryContext.testWrapper";
 import { DiaryDate } from "lib/util/DiaryDate";
-import { wrap } from "souvlaki";
 import { describe, expect, it } from "vitest";
 import { DiaryNav } from "./DiaryNav";
+import { composeWrappers } from "lib/util/composeWrappers";
 
 describe("DiaryNav", () => {
   it("disables prev button if entry is dirty", () => {
     render(<DiaryNav />, {
-      wrapper: wrap(withDiaryEntryContext({ isDirty: true })),
+      wrapper: wrapWithDiaryEntryContext({ isDirty: true }),
     });
 
     expect(screen.getByText("prev")).toHaveAttribute("aria-disabled");
@@ -17,7 +17,7 @@ describe("DiaryNav", () => {
 
   it("does not disable prev button if entry is not dirty", () => {
     render(<DiaryNav />, {
-      wrapper: wrap(withDiaryEntryContext({ isDirty: false })),
+      wrapper: (wrapWithDiaryEntryContext({ isDirty: false })),
     });
 
     expect(screen.getByText("prev")).not.toHaveAttribute("aria-disabled");
@@ -25,9 +25,9 @@ describe("DiaryNav", () => {
 
   it("disables next button if entry is dirty", () => {
     render(<DiaryNav />, {
-      wrapper: wrap(
-        withDiaryEntryContext({ isDirty: true }),
-        withDate(new DiaryDate().getPrevious())
+      wrapper: composeWrappers(
+        wrapWithDiaryEntryContext({ isDirty: true }),
+        wrapWithDate(new DiaryDate().getPrevious())
       ),
     });
 
@@ -36,9 +36,9 @@ describe("DiaryNav", () => {
 
   it("does not disable next button if entry is not dirty", () => {
     render(<DiaryNav />, {
-      wrapper: wrap(
-        withDiaryEntryContext({ isDirty: false }),
-        withDate(new DiaryDate().getPrevious())
+      wrapper: composeWrappers(
+        wrapWithDiaryEntryContext({ isDirty: false }),
+        wrapWithDate(new DiaryDate().getPrevious())
       ),
     });
 

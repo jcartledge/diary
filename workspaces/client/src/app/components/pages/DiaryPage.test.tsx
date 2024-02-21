@@ -1,21 +1,21 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { withLocale } from "app/context/locale/LocaleContext.testWrapper";
+import { wrapWithLocale } from "app/context/locale/LocaleContext.testWrapper";
 import { DiaryDate } from "lib/util/DiaryDate";
-import { wrap } from "souvlaki";
 import { mockGetDiaryEntry } from "test/mocks/mockDiaryEntry";
-import { withAuth0Wrapper } from "test/wrappers/withAuth0Wrapper";
+import { wrapWithAuth0 } from "test/wrappers/wrapWithAuth0";
 import { withPageRouteForDate } from "test/wrappers/withPageRouteForDate";
-import { withQueryClient } from "test/wrappers/withQueryClient";
+import { wrapWithQueryClient } from "test/wrappers/wrapWithQueryClient";
 import { describe, expect, it } from "vitest";
 import DiaryPage from "./DiaryPage";
+import { composeWrappers } from "lib/util/composeWrappers";
 
 describe("DiaryPage", () => {
   const wrappers = (date: string) =>
-    wrap(
-      withLocale("en-AU"),
-      withQueryClient(),
-      withAuth0Wrapper({ isAuthenticated: true }),
+    composeWrappers(
+      wrapWithLocale("en-AU"),
+      wrapWithQueryClient(),
+      wrapWithAuth0({ isAuthenticated: true }),
       withPageRouteForDate(date)
     );
 
