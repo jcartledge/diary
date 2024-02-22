@@ -1,6 +1,6 @@
 import { buildDiaryEntry, DiaryEntry } from "@diary/shared/types/diaryEntry";
 import { renderHook, waitFor } from "@testing-library/react";
-import { rest } from "msw";
+import { http } from "msw";
 import { diaryEntryUriTemplate } from "test/mocks/diaryEntryUriTemplate";
 import { server } from "test/mocks/server";
 import { wrapWithAuth0 } from "test/wrappers/wrapWithAuth0";
@@ -8,6 +8,7 @@ import { wrapWithQueryClient } from "test/wrappers/wrapWithQueryClient";
 import { describe, expect, it } from "vitest";
 import { useUpdateDiaryEntryMutation } from "./useUpdateDiaryEntryMutation";
 import { composeWrappers } from "lib/util/composeWrappers";
+import { httpError } from "lib/util/httpError";
 
 const wrapper = composeWrappers(
   wrapWithQueryClient(),
@@ -29,7 +30,7 @@ describe("useUpdateDiaryEntryMutation", () => {
 
   it("returns an error if fetch fails", async () => {
     server.use(
-      rest.post(diaryEntryUriTemplate, (_, res, ctx) => res(ctx.status(404)))
+      http.post(diaryEntryUriTemplate, () => httpError(404, 'Not Found'))
     );
 
     const { result } = renderHook(useUpdateDiaryEntryMutation, { wrapper });
@@ -44,7 +45,7 @@ describe("useUpdateDiaryEntryMutation", () => {
 
   it("returns an error if fetch fails", async () => {
     server.use(
-      rest.post(diaryEntryUriTemplate, (_, res, ctx) => res(ctx.status(403)))
+      http.post(diaryEntryUriTemplate, () => httpError(403, 'Forbidden'))
     );
 
     const { result } = renderHook(useUpdateDiaryEntryMutation, { wrapper });
