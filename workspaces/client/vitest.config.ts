@@ -9,20 +9,20 @@ export default defineConfig({
     setupFiles: "./src/test/setup.ts",
     coverage: {
       all: true,
-      include: ["**/*.ts", "**/*.tsx"],
+      include: ["src/**/*.ts", "src/**/*.tsx"],
       exclude: [
         "src/App.tsx",
         "src/config.ts",
         "src/index.tsx",
         "**/*.types.ts",
       ],
-      excludeNodeModules: true,
       reporter: ["text", "json", "html"],
-      src: ["./src"],
-      lines: 100,
-      functions: 100,
-      branches: 100,
-      statements: 100,
+      thresholds: {
+        lines: 100,
+        functions: 100,
+        branches: 100,
+        statements: 100,
+      },
     },
   },
 });
