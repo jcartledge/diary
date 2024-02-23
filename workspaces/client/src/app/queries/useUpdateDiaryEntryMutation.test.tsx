@@ -8,7 +8,7 @@ import { wrapWithQueryClient } from "test/wrappers/wrapWithQueryClient";
 import { describe, expect, it } from "vitest";
 import { useUpdateDiaryEntryMutation } from "./useUpdateDiaryEntryMutation";
 import { composeWrappers } from "lib/util/composeWrappers";
-import { httpError } from "lib/util/httpError";
+import { http403, http404 } from "test/httpError";
 
 const wrapper = composeWrappers(
   wrapWithQueryClient(),
@@ -28,10 +28,8 @@ describe("useUpdateDiaryEntryMutation", () => {
     );
   });
 
-  it("returns an error if fetch fails", async () => {
-    server.use(
-      http.post(diaryEntryUriTemplate, () => httpError(404, 'Not Found'))
-    );
+  it("returns an error if fetch not found", async () => {
+    server.use(http.post(diaryEntryUriTemplate, http404));
 
     const { result } = renderHook(useUpdateDiaryEntryMutation, { wrapper });
     result.current.mutate(buildDiaryEntry({ date: "2022-08-17" }));
@@ -43,10 +41,8 @@ describe("useUpdateDiaryEntryMutation", () => {
     );
   });
 
-  it("returns an error if fetch fails", async () => {
-    server.use(
-      http.post(diaryEntryUriTemplate, () => httpError(403, 'Forbidden'))
-    );
+  it("returns an error if fetch forbidden", async () => {
+    server.use(http.post(diaryEntryUriTemplate, http403));
 
     const { result } = renderHook(useUpdateDiaryEntryMutation, { wrapper });
     result.current.mutate(buildDiaryEntry({ date: "2022-08-17" }));

@@ -8,7 +8,7 @@ import { wrapWithQueryClient } from "test/wrappers/wrapWithQueryClient";
 import { describe, expect, it } from "vitest";
 import { useDiaryEntryQuery } from "./useDiaryEntryQuery";
 import { composeWrappers } from "lib/util/composeWrappers";
-import { httpError } from "lib/util/httpError";
+import { http403, http404 } from "test/httpError";
 
 const wrapper = composeWrappers(
   wrapWithQueryClient(),
@@ -28,9 +28,7 @@ describe("useDiaryEntryQuery", () => {
   });
 
   it("returns an error if fetch responds with 404", async () => {
-    server.use(
-      http.get(diaryEntryUriTemplate, () => httpError(404, 'Not Found'))
-    );
+    server.use(http.get(diaryEntryUriTemplate, http404));
 
     const { result } = renderHook(() => useDiaryEntryQuery("TEST"), {
       wrapper,
@@ -42,9 +40,7 @@ describe("useDiaryEntryQuery", () => {
   });
 
   it("returns an error if fetch responds with 403", async () => {
-    server.use(
-      http.get(diaryEntryUriTemplate, () => httpError(403, 'Forbidden'))
-    );
+    server.use(http.get(diaryEntryUriTemplate, http403));
 
     const { result } = renderHook(() => useDiaryEntryQuery("TEST"), {
       wrapper,
