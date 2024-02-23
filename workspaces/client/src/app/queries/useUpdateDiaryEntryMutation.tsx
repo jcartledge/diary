@@ -36,11 +36,7 @@ export const useUpdateDiaryEntryMutation = () => {
 
     onSuccess: (_, diaryEntry) =>
       queryClient.invalidateQueries({
-        queryKey: [
-          "diaryEntry",
-          { isoDateString: diaryEntry.date },
-        ]
+        queryKey: ["diaryEntry", { isoDateString: diaryEntry.date }],
       }),
-  }
-  );
+  });
 };

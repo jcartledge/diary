@@ -26,7 +26,7 @@ describe("DateNextButton", () => {
       </HistoryRouter>,
       {
         wrapper: wrapWithDate(yesterday),
-      }
+      },
     );
 
     await user.click(getNextButton());
@@ -49,7 +49,7 @@ describe("DateNextButton", () => {
       </HistoryRouter>,
       {
         wrapper: wrapWithDate(today),
-      }
+      },
     );
 
     await user.click(getNextButton());

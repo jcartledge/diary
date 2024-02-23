@@ -10,7 +10,7 @@ describe("AuthenticatedRoute", () => {
     render(<AuthenticatedRoute path="/">Hello</AuthenticatedRoute>, {
       wrapper: composeWrappers(
         wrapWithAuth0({ isAuthenticated: false }),
-        wrapWithRouter("/")
+        wrapWithRouter("/"),
       ),
     });
 
@@ -21,7 +21,7 @@ describe("AuthenticatedRoute", () => {
     render(<AuthenticatedRoute path="/one">Hello</AuthenticatedRoute>, {
       wrapper: composeWrappers(
         wrapWithAuth0({ isAuthenticated: true }),
-        wrapWithRouter("/two")
+        wrapWithRouter("/two"),
       ),
     });
 
@@ -32,7 +32,7 @@ describe("AuthenticatedRoute", () => {
     render(<AuthenticatedRoute path="/">Hello</AuthenticatedRoute>, {
       wrapper: composeWrappers(
         wrapWithAuth0({ isAuthenticated: true }),
-        wrapWithRouter("/")
+        wrapWithRouter("/"),
       ),
     });
 

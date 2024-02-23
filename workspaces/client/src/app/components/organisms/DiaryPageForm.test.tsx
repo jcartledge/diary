@@ -16,7 +16,7 @@ describe("DiaryPageForm", () => {
       wrapWithQueryClient(),
       wrapWithAuth0({ isAuthenticated: true }),
       wrapWithDate(date),
-      withDiaryEntryContextProvider()
+      withDiaryEntryContextProvider(),
     );
 
   it("renders the diary content from backend", async () => {
@@ -35,16 +35,16 @@ describe("DiaryPageForm", () => {
     await waitFor(() => {
       expect(screen.getByLabelText("What happened?")).toHaveTextContent("Lots");
       expect(screen.getByLabelText("Went well")).toHaveTextContent(
-        "Nothing went well"
+        "Nothing went well",
       );
       expect(screen.getByLabelText("Could be improved")).toHaveTextContent(
-        "Everything"
+        "Everything",
       );
       expect(screen.getByLabelText("Didn't go well")).toHaveTextContent(
-        "Too many arguments"
+        "Too many arguments",
       );
       expect(screen.getByLabelText("Might be a risk")).toHaveTextContent(
-        "More arguments"
+        "More arguments",
       );
     });
   });
@@ -78,21 +78,21 @@ describe("DiaryPageForm", () => {
     render(<DiaryPageForm />, { wrapper: wrappers() });
 
     await waitFor(() =>
-      expect(screen.getByLabelText(/What happened/)).not.toBeDisabled()
+      expect(screen.getByLabelText(/What happened/)).not.toBeDisabled(),
     );
 
     await act(async () => {
       await user.type(
         screen.getByLabelText(/What happened/),
-        "Nothing happened"
+        "Nothing happened",
       );
     });
 
     await waitFor(() =>
-      expect(screen.queryByText("Saving...")).toBeInTheDocument()
+      expect(screen.queryByText("Saving...")).toBeInTheDocument(),
     );
     await waitFor(() =>
-      expect(screen.queryByText("Saving...")).not.toBeInTheDocument()
+      expect(screen.queryByText("Saving...")).not.toBeInTheDocument(),
     );
   });
 });

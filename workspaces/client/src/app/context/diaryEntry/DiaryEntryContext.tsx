@@ -17,7 +17,7 @@ export const DiaryEntryContext = createContext<
 >(undefined);
 
 export const buildDiaryEntryContextValue: Builder<DiaryEntryContextValue> = (
-  overrides = {}
+  overrides = {},
 ) => ({
   diaryEntry: buildDiaryEntry(),
   /* c8 ignore next */

@@ -16,7 +16,7 @@ describe("DiaryPage", () => {
       wrapWithLocale("en-AU"),
       wrapWithQueryClient(),
       wrapWithAuth0({ isAuthenticated: true }),
-      withPageRouteForDate(date)
+      withPageRouteForDate(date),
     );
 
   it("shows an error page if an invalid date is supplied", () => {
@@ -41,7 +41,7 @@ describe("DiaryPage", () => {
     mockGetDiaryEntry({ whatHappened: "Today's entry" }, today.getKey());
     mockGetDiaryEntry(
       { whatHappened: "Yesterday's entry" },
-      yesterday.getKey()
+      yesterday.getKey(),
     );
     render(<DiaryPage />, {
       wrapper: wrappers(today.getKey()),

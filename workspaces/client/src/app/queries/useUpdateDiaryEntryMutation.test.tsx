@@ -12,7 +12,7 @@ import { http403, http404 } from "test/httpError";
 
 const wrapper = composeWrappers(
   wrapWithQueryClient(),
-  wrapWithAuth0({ isAuthenticated: true })
+  wrapWithAuth0({ isAuthenticated: true }),
 );
 
 describe("useUpdateDiaryEntryMutation", () => {
@@ -24,7 +24,7 @@ describe("useUpdateDiaryEntryMutation", () => {
     result.current.mutate(diaryEntry);
 
     await waitFor(() =>
-      expect(result.current.data?.diaryEntry).toEqual(diaryEntry)
+      expect(result.current.data?.diaryEntry).toEqual(diaryEntry),
     );
   });
 
@@ -36,8 +36,8 @@ describe("useUpdateDiaryEntryMutation", () => {
 
     await waitFor(() =>
       expect(result.current.error).toEqual(
-        expect.objectContaining({ message: "Not Found" })
-      )
+        expect.objectContaining({ message: "Not Found" }),
+      ),
     );
   });
 
@@ -49,8 +49,8 @@ describe("useUpdateDiaryEntryMutation", () => {
 
     await waitFor(() =>
       expect(result.current.error).toEqual(
-        expect.objectContaining({ message: "Forbidden" })
-      )
+        expect.objectContaining({ message: "Forbidden" }),
+      ),
     );
   });
 

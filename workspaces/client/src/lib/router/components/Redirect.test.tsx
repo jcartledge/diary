@@ -10,7 +10,7 @@ describe("Redirect", () => {
       <HistoryRouter>
         <Redirect path="/" to="/foo"></Redirect>
         <Route path="/foo">Hello!</Route>
-      </HistoryRouter>
+      </HistoryRouter>,
     );
 
     await waitFor(() => {
@@ -24,7 +24,7 @@ describe("Redirect", () => {
         <Redirect path="/not-matched" to="/foo"></Redirect>
         <Route path="/">start</Route>
         <Route path="/foo">Hello!</Route>
-      </HistoryRouter>
+      </HistoryRouter>,
     );
 
     expect(screen.queryByText("start")).toBeInTheDocument();

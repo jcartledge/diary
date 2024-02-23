@@ -11,7 +11,7 @@ describe("LandingPage", () => {
     render(<LandingPage />, {});
 
     expect(
-      screen.queryByRole("button", { name: /Log in/ })
+      screen.queryByRole("button", { name: /Log in/ }),
     ).toBeInTheDocument();
   });
 
@@ -22,7 +22,7 @@ describe("LandingPage", () => {
       wrapper: composeWrappers(
         wrapWithAuth0({
           loginWithRedirect,
-        })
+        }),
       ),
     });
 

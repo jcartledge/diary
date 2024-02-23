@@ -12,7 +12,7 @@ import { http403, http404 } from "test/httpError";
 
 const wrapper = composeWrappers(
   wrapWithQueryClient(),
-  wrapWithAuth0({ isAuthenticated: true })
+  wrapWithAuth0({ isAuthenticated: true }),
 );
 
 describe("useDiaryEntryQuery", () => {
@@ -22,7 +22,7 @@ describe("useDiaryEntryQuery", () => {
 
     await waitFor(() => {
       return expect(result.current.data?.diaryEntry).toEqual(
-        buildDiaryEntry({ date })
+        buildDiaryEntry({ date }),
       );
     });
   });
@@ -53,9 +53,10 @@ describe("useDiaryEntryQuery", () => {
 
   it("returns an error if the response is not a valid diaryEntry", async () => {
     server.use(
-      http.get(diaryEntryUriTemplate, () =>
-        new Response(JSON.stringify({ diaryEntry: "not a diary entry" }))
-      )
+      http.get(
+        diaryEntryUriTemplate,
+        () => new Response(JSON.stringify({ diaryEntry: "not a diary entry" })),
+      ),
     );
 
     const { result } = renderHook(() => useDiaryEntryQuery("TEST"), {

@@ -14,7 +14,7 @@ export const DiaryEntryContextProvider: React.FC<
   }>
 > = ({ children, saveTimeoutInterval = 1000 }) => {
   const { data: diaryEntryQueryData, isLoading } = useDiaryEntryQuery(
-    useDate().getKey()
+    useDate().getKey(),
   );
   const [diaryEntry, setDiaryEntry] = useState(buildDiaryEntry());
   const [isDirty, setIsDirty] = useState(false);
@@ -41,11 +41,11 @@ export const DiaryEntryContextProvider: React.FC<
           setTimeout(() => {
             updateDiaryEntryMutation.mutate(newDiaryEntry);
             setIsDirty(false);
-          }, saveTimeoutInterval)
+          }, saveTimeoutInterval),
         );
       }
     },
-    [diaryEntry, updateDiaryEntryMutation, saveTimeoutInterval, saveTimeout]
+    [diaryEntry, updateDiaryEntryMutation, saveTimeoutInterval, saveTimeout],
   );
 
   return (

@@ -11,11 +11,10 @@ describe("UserNav", () => {
     const user = { nickname: "test nick" };
 
     render(<UserNav />, {
-      wrapper:
-        wrapWithAuth0({
-          isAuthenticated: true,
-          user,
-        })
+      wrapper: wrapWithAuth0({
+        isAuthenticated: true,
+        user,
+      }),
     });
 
     expect(screen.getByText(user.nickname)).toBeInTheDocument();
@@ -26,11 +25,10 @@ describe("UserNav", () => {
     const user = userEvent.setup();
 
     render(<UserNav />, {
-      wrapper:
-        wrapWithAuth0({
-          isAuthenticated: true,
-          logout,
-        })
+      wrapper: wrapWithAuth0({
+        isAuthenticated: true,
+        logout,
+      }),
     });
     await user.click(getLogoutButton()!);
 
@@ -41,11 +39,10 @@ describe("UserNav", () => {
     const user = { nickname: "test nick" };
 
     render(<UserNav />, {
-      wrapper:
-        wrapWithAuth0({
-          isAuthenticated: false,
-          user,
-        })
+      wrapper: wrapWithAuth0({
+        isAuthenticated: false,
+        user,
+      }),
     });
 
     expect(screen.queryByText(user.nickname)).not.toBeInTheDocument();

@@ -32,13 +32,13 @@ describe("matchNonWildcardPath", () => {
 
   it("matches a path with multiple template placeholders", () => {
     expect(matchPath("/user/:username/:action", "/user/foo/bury").isMatch).toBe(
-      true
+      true,
     );
   });
 
   it("extracts placeholder values from the supplied path", () => {
     expect(
-      matchPath("/user/:username/:action", "/user/foo/bury").params
+      matchPath("/user/:username/:action", "/user/foo/bury").params,
     ).toEqual({ username: "foo", action: "bury" });
   });
 });

@@ -23,7 +23,7 @@ export const useDiaryEntryQuery = (isoDateString: string) => {
       const response = await fetch(`${bffUri}/diaryentry/${isoDateString}`, {
         headers: {
           Authorization: `Bearer ${await getAccessTokenSilently(
-            readDiaryEntriesScopes
+            readDiaryEntriesScopes,
           )}`,
         },
       });
@@ -32,6 +32,6 @@ export const useDiaryEntryQuery = (isoDateString: string) => {
       const { diaryEntry } = await response.json();
       withError(validateDiaryEntry(diaryEntry), fail);
       return { diaryEntry };
-    }
+    },
   });
 };

@@ -15,14 +15,14 @@ const PLACEHOLDER_REPLACE = "(?<$1>[^/]+)";
 
 export const matchPath = (
   pathTemplate: string,
-  testPath: string
+  testPath: string,
 ): MatchPathResult => {
   const matches = [
     ...testPath.matchAll(
       new RegExp(
         `^${pathTemplate.replace(PLACEHOLDER_SEARCH, PLACEHOLDER_REPLACE)}$`,
-        "g"
-      )
+        "g",
+      ),
     ),
   ][0];
   return {

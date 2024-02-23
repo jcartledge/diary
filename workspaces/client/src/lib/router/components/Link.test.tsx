@@ -14,7 +14,7 @@ describe("Link", () => {
           <Link to="/hello">go</Link>
         </Route>
         <Route path="/hello">Hello</Route>
-      </Router>
+      </Router>,
     );
 
     user.click(screen.getByRole("link", { name: "go" }));
@@ -29,11 +29,11 @@ describe("Link", () => {
     render(
       <Link to="" disabled>
         {linkText}
-      </Link>
+      </Link>,
     );
 
     expect(
-      screen.queryByRole("link", { name: linkText })
+      screen.queryByRole("link", { name: linkText }),
     ).not.toBeInTheDocument();
     expect(screen.queryByText(linkText)).toBeInTheDocument();
   });

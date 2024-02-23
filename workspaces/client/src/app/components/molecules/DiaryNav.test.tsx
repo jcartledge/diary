@@ -17,7 +17,7 @@ describe("DiaryNav", () => {
 
   it("does not disable prev button if entry is not dirty", () => {
     render(<DiaryNav />, {
-      wrapper: (wrapWithDiaryEntryContext({ isDirty: false })),
+      wrapper: wrapWithDiaryEntryContext({ isDirty: false }),
     });
 
     expect(screen.getByText("prev")).not.toHaveAttribute("aria-disabled");
@@ -27,7 +27,7 @@ describe("DiaryNav", () => {
     render(<DiaryNav />, {
       wrapper: composeWrappers(
         wrapWithDiaryEntryContext({ isDirty: true }),
-        wrapWithDate(new DiaryDate().getPrevious())
+        wrapWithDate(new DiaryDate().getPrevious()),
       ),
     });
 
@@ -38,7 +38,7 @@ describe("DiaryNav", () => {
     render(<DiaryNav />, {
       wrapper: composeWrappers(
         wrapWithDiaryEntryContext({ isDirty: false }),
-        wrapWithDate(new DiaryDate().getPrevious())
+        wrapWithDate(new DiaryDate().getPrevious()),
       ),
     });
 

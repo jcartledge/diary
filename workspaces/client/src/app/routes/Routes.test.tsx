@@ -21,8 +21,8 @@ describe("Routes", () => {
           wrapWithToggles(),
           withAuthenticatedUser,
           wrapWithRouter(buildDiaryPageRoute("2020-01-01")),
-          wrapWithLocale("en-AU")
-        )
+          wrapWithLocale("en-AU"),
+        ),
       });
 
       expect(screen.getByText(/1 January 2020/)).toBeInTheDocument();
@@ -35,12 +35,12 @@ describe("Routes", () => {
           wrapWithToggles(),
           withAuthenticatedUser,
           wrapWithRouter("/"),
-          wrapWithLocale("en-AU")
+          wrapWithLocale("en-AU"),
         ),
       });
 
       expect(
-        screen.getByText(new DiaryDate().getFormatted("en-AU"))
+        screen.getByText(new DiaryDate().getFormatted("en-AU")),
       ).toBeInTheDocument();
     });
   });
@@ -52,11 +52,15 @@ describe("Routes", () => {
 
     it("displays the landing page", () => {
       render(<Routes />, {
-        wrapper: composeWrappers(wrapWithToggles(), withUnauthenticatedUser, wrapWithRouter("/")),
+        wrapper: composeWrappers(
+          wrapWithToggles(),
+          withUnauthenticatedUser,
+          wrapWithRouter("/"),
+        ),
       });
 
       expect(
-        screen.getByRole("button", { name: /Log in/ })
+        screen.getByRole("button", { name: /Log in/ }),
       ).toBeInTheDocument();
     });
   });

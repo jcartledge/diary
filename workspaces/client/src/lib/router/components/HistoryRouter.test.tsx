@@ -16,7 +16,7 @@ describe("HistoryRouter", () => {
           <Link to="/foo">go</Link>
         </Route>
         <Route path="/foo">Hello!</Route>
-      </HistoryRouter>
+      </HistoryRouter>,
     );
 
     user.click(getGoLink()!);
@@ -33,7 +33,7 @@ describe("HistoryRouter", () => {
           <Link to="/foo">go</Link>
         </Route>
         <Route path="/foo">Hello!</Route>
-      </HistoryRouter>
+      </HistoryRouter>,
     );
 
     await waitFor(() => {
@@ -49,7 +49,7 @@ describe("HistoryRouter", () => {
           <Link to="/foo">go</Link>
         </Route>
         <Route path="/foo">Hello!</Route>
-      </HistoryRouter>
+      </HistoryRouter>,
     );
 
     await user.click(getGoLink()!);

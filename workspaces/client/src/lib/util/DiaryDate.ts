@@ -50,7 +50,7 @@ export class DiaryDate {
       date.getDate() - 1,
       date.getHours(),
       date.getMinutes(),
-      date.getSeconds()
+      date.getSeconds(),
     );
   }
 
@@ -61,7 +61,7 @@ export class DiaryDate {
       date.getDate() + 1,
       date.getHours(),
       date.getMinutes(),
-      date.getSeconds()
+      date.getSeconds(),
     );
   }
 

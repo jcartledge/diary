@@ -11,7 +11,7 @@ describe("Router", () => {
     render(
       <Router initialPath="/router/test">
         <Route path="/router/test">Hello</Route>
-      </Router>
+      </Router>,
     );
 
     expect(screen.queryByText("Hello")).toBeInTheDocument();
@@ -21,7 +21,7 @@ describe("Router", () => {
     render(
       <Router initialPath="/router/test">
         <Route path="/router/notest">Hello</Route>
-      </Router>
+      </Router>,
     );
 
     expect(screen.queryByText("Hello")).not.toBeInTheDocument();
@@ -39,7 +39,7 @@ describe("Router", () => {
         <Route path="/user/:username/:action">
           <TestComponent />
         </Route>
-      </Router>
+      </Router>,
     );
   });
 
@@ -54,7 +54,7 @@ describe("Router", () => {
         <Route path="/user/foo/bar">
           <TestComponent />
         </Route>
-      </Router>
+      </Router>,
     );
   });
 
@@ -66,7 +66,7 @@ describe("Router", () => {
         <Route path="/">
           <Link to="/foo">go</Link>
         </Route>
-      </Router>
+      </Router>,
     );
 
     user.click(screen.getByRole("link", { name: "go" }));
@@ -81,7 +81,7 @@ describe("Router", () => {
     render(
       <Router initialPath="/something" fallback={Fallback}>
         <Route path="/another-thing">Hello</Route>
-      </Router>
+      </Router>,
     );
 
     expect(screen.queryByText("This is the fallback")).toBeInTheDocument();
@@ -94,7 +94,7 @@ describe("Router", () => {
         <Route path="/something">
           <>Hello</>
         </Route>
-      </Router>
+      </Router>,
     );
 
     expect(screen.queryByText("This is the fallback")).not.toBeInTheDocument();
@@ -107,7 +107,7 @@ describe("Router", () => {
         <Route path="/something">
           <Link to="/nothing">Go</Link>
         </Route>
-      </Router>
+      </Router>,
     );
 
     expect(screen.queryByText("This is the fallback")).not.toBeInTheDocument();

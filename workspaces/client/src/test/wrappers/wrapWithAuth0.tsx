@@ -4,7 +4,7 @@ import React from "react";
 import { vi } from "vitest";
 
 const buildMockAuth0ContextValue: Builder<Auth0ContextInterface> = (
-  overrides = {}
+  overrides = {},
 ) => ({
   buildAuthorizeUrl: vi.fn(),
   isAuthenticated: false,
@@ -23,10 +23,11 @@ const buildMockAuth0ContextValue: Builder<Auth0ContextInterface> = (
 });
 
 export const wrapWithAuth0 =
-  (value: Partial<Auth0ContextInterface> = {}): React.FC<React.PropsWithChildren> =>
-    ({ children }) =>
-    (
-      <Auth0Context.Provider value={buildMockAuth0ContextValue(value)}>
-        {children}
-      </Auth0Context.Provider>
-    );
+  (
+    value: Partial<Auth0ContextInterface> = {},
+  ): React.FC<React.PropsWithChildren> =>
+  ({ children }) => (
+    <Auth0Context.Provider value={buildMockAuth0ContextValue(value)}>
+      {children}
+    </Auth0Context.Provider>
+  );

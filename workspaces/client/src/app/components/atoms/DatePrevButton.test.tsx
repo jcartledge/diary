@@ -25,7 +25,7 @@ describe("DatePrevButton", () => {
       </HistoryRouter>,
       {
         wrapper: wrapWithDate(today),
-      }
+      },
     );
 
     await userEvent.click(getPrevButton());

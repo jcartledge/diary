@@ -9,7 +9,7 @@ describe("DiaryDate", () => {
       const diaryDateResult = DiaryDate.from("2010-01-01");
       failWithError(diaryDateResult);
       withResult(diaryDateResult, (date) =>
-        expect(date.getKey()).toEqual("2010-01-01")
+        expect(date.getKey()).toEqual("2010-01-01"),
       );
     });
   });
@@ -19,7 +19,7 @@ describe("DiaryDate", () => {
       const diaryDateResult = DiaryDate.from("2010-01-01");
       failWithError(diaryDateResult);
       withResult(diaryDateResult, (date) =>
-        expect(date.getPrevious().getKey()).toEqual("2009-12-31")
+        expect(date.getPrevious().getKey()).toEqual("2009-12-31"),
       );
     });
   });
@@ -29,7 +29,7 @@ describe("DiaryDate", () => {
       const diaryDateResult = DiaryDate.from("2010-01-01");
       failWithError(diaryDateResult);
       withResult(diaryDateResult, (date) =>
-        expect(date.getNext().getKey()).toEqual("2010-01-02")
+        expect(date.getNext().getKey()).toEqual("2010-01-02"),
       );
     });
   });
@@ -54,7 +54,7 @@ describe("DiaryDate", () => {
       const diaryDateResult = DiaryDate.from(isoDateString);
       failWithError(diaryDateResult);
       withResult(diaryDateResult, (date) =>
-        expect(date.getKey()).toEqual(isoDateString)
+        expect(date.getKey()).toEqual(isoDateString),
       );
     });
 

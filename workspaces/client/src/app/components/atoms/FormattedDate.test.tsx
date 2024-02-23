@@ -18,7 +18,7 @@ describe("Diary", () => {
       });
 
       expect(
-        formattedDate.queryByText(/Friday, 1 January 2010/)
+        formattedDate.queryByText(/Friday, 1 January 2010/),
       ).toBeInTheDocument();
     });
   });

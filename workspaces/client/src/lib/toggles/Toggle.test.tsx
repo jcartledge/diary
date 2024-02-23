@@ -28,7 +28,7 @@ describe("Toggle", () => {
       <Toggle isOff name="test_feature">
         Hello
       </Toggle>,
-      { wrapper: wrapWithToggle("test_feature") }
+      { wrapper: wrapWithToggle("test_feature") },
     );
 
     expect(screen.queryByText("Hello")).not.toBeInTheDocument();
@@ -39,7 +39,7 @@ describe("Toggle", () => {
       <Toggle isOff name="test_feature">
         Hello
       </Toggle>,
-      { wrapper: wrapWithToggles() }
+      { wrapper: wrapWithToggles() },
     );
 
     expect(screen.queryByText("Hello")).toBeInTheDocument();

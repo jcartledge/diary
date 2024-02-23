@@ -9,7 +9,7 @@ import { composeWrappers } from "lib/util/composeWrappers";
 const wrappers = () => ({
   wrapper: composeWrappers(
     wrapWithQueryClient(),
-    withDiaryEntryContextProvider({ saveTimeoutInterval: 1 })
+    withDiaryEntryContextProvider({ saveTimeoutInterval: 1 }),
   ),
 });
 

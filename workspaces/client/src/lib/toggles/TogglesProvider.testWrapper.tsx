@@ -4,7 +4,8 @@ import React from "react";
 
 export const wrapWithToggles =
   (toggles: FeatureToggles = []): React.FC<React.PropsWithChildren> =>
-    ({ children }) =>
-      <TogglesProvider toggles={toggles}>{children}</TogglesProvider>
+  ({ children }) => (
+    <TogglesProvider toggles={toggles}>{children}</TogglesProvider>
+  );
 
 export const wrapWithToggle = (toggle: string) => wrapWithToggles([toggle]);

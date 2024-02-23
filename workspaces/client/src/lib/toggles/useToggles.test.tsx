@@ -8,7 +8,7 @@ describe("useToggles", () => {
     const testToggles = ["toggle1"];
 
     const { result } = renderHook(useToggles, {
-      wrapper:wrapWithToggles(testToggles),
+      wrapper: wrapWithToggles(testToggles),
     });
 
     expect(result.current).toEqual(testToggles);

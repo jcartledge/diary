@@ -7,13 +7,12 @@ import {
 
 export const wrapWithDiaryEntryContext =
   (
-    contextValue: Partial<DiaryEntryContextValue> = {}
+    contextValue: Partial<DiaryEntryContextValue> = {},
   ): React.FC<React.PropsWithChildren> =>
-    ({ children }) =>
-    (
-      <DiaryEntryContext.Provider
-        value={buildDiaryEntryContextValue(contextValue)}
-      >
-        {children}
-      </DiaryEntryContext.Provider>
-    )
+  ({ children }) => (
+    <DiaryEntryContext.Provider
+      value={buildDiaryEntryContextValue(contextValue)}
+    >
+      {children}
+    </DiaryEntryContext.Provider>
+  );
