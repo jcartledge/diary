@@ -165,7 +165,7 @@ importers:
         version: 4.18.2
       express-oauth2-jwt-bearer:
         specifier: ^1.2.0
-        version: 1.5.0
+        version: 1.6.0
       helmet:
         specifier: ^7.0.0
         version: 7.0.0
@@ -3272,11 +3272,11 @@ packages:
       signal-exit: 4.1.0
       strip-final-newline: 3.0.0
 
-  /express-oauth2-jwt-bearer@1.5.0:
-    resolution: {integrity: sha512-C8avk1VfopX3zjqfTLg9EuYFjNRdmXdYncBoZGmjxQzGx7cQRiupeWV5r3G2SYGzx0gDw1uyu1cdJrmILOvd3g==}
+  /express-oauth2-jwt-bearer@1.6.0:
+    resolution: {integrity: sha512-HXnez7vocYlOqlfF3ozPcf/WE3zxT7zfUNfeg5FHJnvNwhBYlNXiPOvuCtBalis8xcigvwtInzEKhBuH87+9ug==}
     engines: {node: ^12.19.0 || ^14.15.0 || ^16.13.0 || ^18.12.0 || ^20.2.0}
     dependencies:
-      jose: 4.14.6
+      jose: 4.15.4
     dev: false
 
   /express@4.18.2:
@@ -4114,8 +4114,8 @@ packages:
       supports-color: 8.1.1
     dev: true
 
-  /jose@4.14.6:
-    resolution: {integrity: sha512-EqJPEUlZD0/CSUMubKtMaYUOtWe91tZXTWMJZoKSbLk+KtdhNdcvppH8lA9XwVu2V4Ailvsj0GBZJ2ZwDjfesQ==}
+  /jose@4.15.4:
+    resolution: {integrity: sha512-W+oqK4H+r5sITxfxpSU+MMdr/YSWGvgZMQDIsNoBDGGy4i7GBPTtvFKibQzW06n3U3TqHjhvBJsirShsEJ6eeQ==}
     dev: false
 
   /js-levenshtein@1.1.6:
