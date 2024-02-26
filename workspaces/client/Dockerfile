@@ -1,4 +1,4 @@
-FROM nginxinc/nginx-unprivileged:1.24-alpine3.18
+FROM nginxinc/nginx-unprivileged:1.25-alpine3.18
 
 RUN rm /etc/nginx/conf.d/default.conf
 COPY ./nginx/templates /etc/nginx/templates
