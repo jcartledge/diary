@@ -5,6 +5,10 @@ containers:
     dependencies:
       - diary-server-gateway
       - diary-client
+    volumes:
+      - local: workspaces/e2e
+        container: /app/workspaces/e2e
+    working_directory: /app/workspaces/e2e
     environment:
       CLIENT_URI: "https://diary-client"
       E2E_USER: ${E2E_USER:-}
