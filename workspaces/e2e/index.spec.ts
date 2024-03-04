@@ -12,11 +12,11 @@ test.describe("Diary", () => {
 
     await expect($.whatHappenedField).toBeEnabled();
 
-    await $.whatHappenedField.type("Nothing happened today");
-    await $.wentWellField.type("Boss remembered my name");
-    await $.couldBeImprovedField.type("Drink more water");
-    await $.didntGoWellField.type("Forgot name of boss");
-    await $.riskField.type("Glass too close to edge of table");
+    await $.whatHappenedField.fill("Nothing happened today");
+    await $.wentWellField.fill("Boss remembered my name");
+    await $.couldBeImprovedField.fill("Drink more water");
+    await $.didntGoWellField.fill("Forgot name of boss");
+    await $.riskField.fill("Glass too close to edge of table");
 
     await $.prevLink.click();
 

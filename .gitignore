@@ -4,6 +4,7 @@ build/
 coverage/
 node_modules/
 test-results/
+workspaces/*/pnpm-lock.yaml
 
 .env
 
