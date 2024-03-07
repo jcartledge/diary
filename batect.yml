@@ -28,9 +28,9 @@ containers:
         container: /var/run/docker.sock
 
   cert-build-env:
-    image: kolide/openssl
+    image: securefab/openssl
     entrypoint: /bin/sh -c
-    command: '''mkdir -p /app/${DOMAIN} && openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=AU/ST=VIC/L=Melbourne/O=Dis/CN=${DOMAIN}" -keyout /app/${DOMAIN}/ssl.key -out /app/${DOMAIN}/ssl.cert'''
+    command: '''mkdir -p /app/${DOMAIN} && openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=AU/ST=VIC/L=Melbourne/O=Dis/CN=${DOMAIN}" -addext "subjectAltName = DNS:${DOMAIN}" -keyout /app/${DOMAIN}/ssl.key -out /app/${DOMAIN}/ssl.cert'''
     volumes:
       - local: .certs
         container: /app
