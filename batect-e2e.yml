@@ -35,5 +35,4 @@ tasks:
   e2e-package:
     run:
       container: diary-package-env
-      command: docker build -t diary-e2e .
-      working_directory: /app/workspaces/e2e
+      command: docker build -t diary-e2e -f /app/workspaces/e2e/Dockerfile .
