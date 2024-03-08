@@ -4,11 +4,11 @@ import DiaryHeader from "app/components/organisms/DiaryHeader";
 import DiaryPageForm from "app/components/organisms/DiaryPageForm";
 import { DateContext } from "app/context/date/DateContext";
 import { DiaryEntryContextProvider } from "app/context/diaryEntry/DiaryEntryContextProvider";
-import { useParam } from "lib/router";
+import { useRouteParam } from "lib/router";
 import { DiaryDate } from "lib/util/DiaryDate";
 
 const DiaryPage = () => {
-  const date = DiaryDate.from(useParam("isoDateString"));
+  const date = DiaryDate.from(useRouteParam("isoDateString"));
   return isError(date) ? (
     <DiaryErrorPage />
   ) : (
