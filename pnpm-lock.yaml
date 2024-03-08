@@ -94,8 +94,8 @@ importers:
         specifier: 24.0.0
         version: 24.0.0
       msw:
-        specifier: 2.2.2
-        version: 2.2.2(typescript@5.4.2)
+        specifier: 2.2.3
+        version: 2.2.3(typescript@5.4.2)
       postcss:
         specifier: 8.4.35
         version: 8.4.35
@@ -4760,7 +4760,7 @@ packages:
       is-node-process: 1.2.0
       js-levenshtein: 1.1.6
       node-fetch: 2.7.0
-      outvariant: 1.4.0
+      outvariant: 1.4.2
       path-to-regexp: 6.2.1
       strict-event-emitter: 0.4.6
       type-fest: 2.19.0
@@ -4771,13 +4771,13 @@ packages:
       - supports-color
     dev: true
 
-  /msw@2.2.2(typescript@5.4.2):
-    resolution: {integrity: sha512-Vn3RGCmp14Oy1Lo9yGJMk4+qV/WdK8opNyHt0jdBnvzQ8OEhFvQ2AeM9EXOgQtGLvzUWzqrrwlfwmsCkFViUlg==}
+  /msw@2.2.3(typescript@5.4.2):
+    resolution: {integrity: sha512-84CoNCkcJ/EvY8Tv0tD/6HKVd4S5HyGowHjM5W12K8Wgryp4fikqS7IaTOceyQgP5dNedxo2icTLDXo7dkpxCg==}
     engines: {node: '>=18'}
     hasBin: true
     requiresBuild: true
     peerDependencies:
-      typescript: '>= 4.7.x <= 5.3.x'
+      typescript: '>= 4.7.x'
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -5053,10 +5053,6 @@ packages:
   /os-tmpdir@1.0.2:
     resolution: {integrity: sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==}
     engines: {node: '>=0.10.0'}
-    dev: true
-
-  /outvariant@1.4.0:
-    resolution: {integrity: sha512-AlWY719RF02ujitly7Kk/0QlV+pXGFDHrHf9O2OKqyqgBieaPOIeuSkL8sRK6j2WK+/ZAURq2kZsY0d8JapUiw==}
     dev: true
 
   /outvariant@1.4.2:
