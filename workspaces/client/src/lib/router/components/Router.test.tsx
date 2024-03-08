@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import { useParam } from "../contexts/useParam";
+import { useRouteParam } from "../contexts/useRouteParam";
 import { Link } from "./Link";
 import { Route } from "./Route";
 import { Router } from "./Router";
@@ -29,8 +29,8 @@ describe("Router", () => {
 
   it("provides the matched params", () => {
     const TestComponent = () => {
-      expect(useParam("username")).toEqual("foo");
-      expect(useParam("action")).toEqual("bar");
+      expect(useRouteParam("username")).toEqual("foo");
+      expect(useRouteParam("action")).toEqual("bar");
       return null;
     };
 
@@ -45,7 +45,7 @@ describe("Router", () => {
 
   it("provides an empty string if useParam is called with a parameter that's not in the match", () => {
     const TestComponent = () => {
-      expect(useParam("foo")).toEqual("");
+      expect(useRouteParam("foo")).toEqual("");
       return null;
     };
 
