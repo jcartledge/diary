@@ -31,7 +31,7 @@
     "@jcartledge/react-conditional": "1.0.9",
     "@jedmao/location": "3.0.0",
     "@picocss/pico": "2.0.6",
-    "@tanstack/react-query": "5.26.3",
+    "@tanstack/react-query": "5.27.5",
     "@testing-library/dom": "9.3.4",
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "14.2.1",
