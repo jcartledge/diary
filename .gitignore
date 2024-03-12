@@ -3,6 +3,7 @@
 build/
 coverage/
 node_modules/
+workspaces/e2e/playwright/.auth
 test-results/
 workspaces/*/pnpm-lock.yaml
 
