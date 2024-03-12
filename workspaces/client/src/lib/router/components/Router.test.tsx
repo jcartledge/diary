@@ -6,6 +6,12 @@ import { Link } from "./Link";
 import { Route } from "./Route";
 import { Router } from "./Router";
 
+type InitFunc = () => void;
+const testComponentFactory = (init: InitFunc) => () => {
+  init();
+  return null;
+};
+
 describe("Router", () => {
   it("renders the children of a matched route", () => {
     render(
@@ -28,11 +34,10 @@ describe("Router", () => {
   });
 
   it("provides the matched params", () => {
-    const TestComponent = () => {
+    const TestComponent = testComponentFactory(() => {
       expect(useRouteParam("username")).toEqual("foo");
       expect(useRouteParam("action")).toEqual("bar");
-      return null;
-    };
+    });
 
     render(
       <Router initialPath="/user/foo/bar">
@@ -44,10 +49,9 @@ describe("Router", () => {
   });
 
   it("provides an empty string if useParam is called with a parameter that's not in the match", () => {
-    const TestComponent = () => {
+    const TestComponent = testComponentFactory(() => {
       expect(useRouteParam("foo")).toEqual("");
-      return null;
-    };
+    });
 
     render(
       <Router initialPath="/user/foo/bar">

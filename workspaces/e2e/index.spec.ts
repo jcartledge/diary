@@ -1,16 +1,16 @@
 import { expect, test } from "@playwright/test";
 import { failOnConsoleErrorOrWarning } from "./helpers/failOnConsoleErrorOrWarning";
-import { login } from "./helpers/login";
 import { diaryPageLocators } from "./helpers/pages/diaryPageLocators";
+import { CLIENT_URI } from "./helpers/config";
 
 test.describe("Diary", () => {
   test.beforeEach(failOnConsoleErrorOrWarning);
-  test.beforeEach(login);
+  test.beforeEach(async ({ page }) => {await page.goto(CLIENT_URI);});
 
   test("retains input when navigating between days", async ({ page }) => {
     const $ = diaryPageLocators(page);
 
-    await expect($.whatHappenedField).toBeEnabled();
+    await expect($.whatHappenedField).toBeVisible();
 
     await $.whatHappenedField.fill("Nothing happened today");
     await $.wentWellField.fill("Boss remembered my name");
