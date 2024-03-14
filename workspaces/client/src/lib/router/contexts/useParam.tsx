@@ -1,5 +1,5 @@
 import { useContext } from "react";
 import { RouteParamsContext } from "./RouteParamsContext";
 
-export const useRouteParam = (paramName: string) =>
+export const useParam = (paramName: string) =>
   useContext(RouteParamsContext)[paramName] ?? "";
