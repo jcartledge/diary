@@ -11,7 +11,7 @@
   "devDependencies": {
     "@types/node": "20.11.28"
   },
-  "packageManager": "pnpm@8.15.4",
+  "packageManager": "pnpm@8.15.5",
   "pnpm": {
     "overrides": {
       "jose@>=3.0.0 <=4.15.4": ">=4.15.5"
