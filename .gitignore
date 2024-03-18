@@ -1,5 +1,5 @@
 .batect/
-.certs/
+workspaces/*/.certs/
 build/
 coverage/
 node_modules/

@@ -30,9 +30,9 @@ containers:
   cert-build-env:
     image: securefab/openssl
     entrypoint: /bin/sh -c
-    command: '''mkdir -p /app/${DOMAIN} && openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=AU/ST=VIC/L=Melbourne/O=Dis/CN=${DOMAIN}" -addext "subjectAltName = DNS:${DOMAIN}" -keyout /app/${DOMAIN}/ssl.key -out /app/${DOMAIN}/ssl.cert'''
+    command: '''mkdir -p /app/workspaces/${WORKSPACE}/.certs  && openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=AU/ST=VIC/L=Melbourne/O=Dis/CN=${DOMAIN}" -addext "subjectAltName = DNS:${DOMAIN}" -keyout /app/workspaces/${WORKSPACE}/.certs/ssl.key -out /app/workspaces/${WORKSPACE}/.certs/ssl.cert'''
     volumes:
-      - local: .certs
+      - local: .
         container: /app
 
 tasks:

@@ -29,7 +29,6 @@ tasks:
     prerequisites:
       - setup
       - e2e-package
-      - client-cert
     run:
       container: e2e
 
