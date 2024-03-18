@@ -3,9 +3,6 @@ containers:
     image: diary-client:latest
     environment:
       SERVER_NAME: diary-client
-    volumes:
-      - local: .certs/diary-client
-        container: /etc/ssl
 
   diary-client-dev:
     image: node:21.7.1
@@ -42,6 +39,7 @@ tasks:
       container: cert-build-env
       environment:
         DOMAIN: diary-client
+        WORKSPACE: client
 
   client-lint:
     run:
@@ -76,6 +74,8 @@ tasks:
         VITE_AUTH0_CALLBACK_URI: __AUTH0_CALLBACK_URI
 
   client-package:
+    prerequisites:
+      - client-cert
     run:
       container: diary-package-env
       command: docker build -t diary-client .

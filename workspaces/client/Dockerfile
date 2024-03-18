@@ -3,6 +3,7 @@ FROM nginxinc/nginx-unprivileged:1.25-alpine3.18
 RUN rm /etc/nginx/conf.d/default.conf
 COPY ./nginx/templates /etc/nginx/templates
 COPY ./build/ /usr/share/nginx/html
+COPY --chown=nginx .certs/ /usr/share/nginx/ssl
 
 ENV TOGGLES=""
 
