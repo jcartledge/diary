@@ -94,8 +94,8 @@ importers:
         specifier: 24.0.0
         version: 24.0.0
       msw:
-        specifier: 2.2.8
-        version: 2.2.8(typescript@5.4.2)
+        specifier: 2.2.9
+        version: 2.2.9(typescript@5.4.2)
       postcss:
         specifier: 8.4.37
         version: 8.4.37
@@ -4699,8 +4699,8 @@ packages:
       - supports-color
     dev: true
 
-  /msw@2.2.8(typescript@5.4.2):
-    resolution: {integrity: sha512-K2LvWq2Lgfo6lEvn4eXj9uOCXuXZdZdHtNzyx+UBZY+iaQ5fdBaev3TLmUyLOUY4N8p0pYf3Iy7RA8sDnQ1M1Q==}
+  /msw@2.2.9(typescript@5.4.2):
+    resolution: {integrity: sha512-MLIFufBe6m9c5rZKlmGl6jl1pjn7cTNiDGEgn5v2iVRs0mz+neE2r7lRyYNzvcp6FbdiUEIRp/Y2O2gRMjO8yQ==}
     engines: {node: '>=18'}
     hasBin: true
     requiresBuild: true
