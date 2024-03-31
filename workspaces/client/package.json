@@ -48,7 +48,7 @@
     "c8": "9.1.0",
     "eslint": "8.57.0",
     "eslint-plugin-react": "7.34.1",
-    "globals": "^14.0.0",
+    "globals": "^15.0.0",
     "iso-datestring-validator": "2.2.2",
     "jsdom": "24.0.0",
     "msw": "2.2.13",
