@@ -17,7 +17,7 @@ containers:
       SELF_SIGNED: true
 
   diary-server-dev:
-    image: node:21.7.1
+    image: node:21.7.2
     working_directory: /app
     command: pnpm --filter server dev
     ports:
