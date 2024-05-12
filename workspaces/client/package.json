@@ -58,7 +58,7 @@
     "react-dom": "18.2.0",
     "react-is": "18.2.0",
     "slugify": "1.6.6",
-    "styled-components": "6.1.8",
+    "styled-components": "6.1.11",
     "ts-node": "10.9.2",
     "typescript": "5.4.4",
     "vite": "5.2.8",
