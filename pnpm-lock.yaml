@@ -64,8 +64,8 @@ importers:
         specifier: 7.5.0
         version: 7.5.0(eslint@8.57.0)(typescript@5.4.4)
       '@virtualstate/navigation':
-        specifier: 1.0.1-alpha.201
-        version: 1.0.1-alpha.201
+        specifier: 1.0.1-alpha.203
+        version: 1.0.1-alpha.203
       '@vitejs/plugin-react':
         specifier: 4.2.1
         version: 4.2.1(vite@5.2.8)
@@ -1844,12 +1844,11 @@ packages:
     resolution: {integrity: sha512-5G3RT87X1w39UQyBvqQpTfsxK9FjoKlXfonvIY9esAHe9d0vOWVGtbElJppwJKWzh508Ja6gWn7W7dWHwj50Jw==}
     dev: true
 
-  /@virtualstate/navigation@1.0.1-alpha.201:
-    resolution: {integrity: sha512-PUFpM8xeoWEpnBalF3xcGKi+N57rzV7ls8uZ64+x7UfSaAO7n4k+jeJMeZuJwOp//CIQhbqCKNZrOL+YjVB89w==}
+  /@virtualstate/navigation@1.0.1-alpha.203:
+    resolution: {integrity: sha512-8q+tL5QXGP1hMCFLItHSSvVzOy3fDGwgYhCuplnrlZiprZ84+cLvwFGqBI/PGrzqMdiwwan0VDOixP8cQlRd2Q==}
     dependencies:
       '@ungap/structured-clone': 1.2.0
       '@virtualstate/composite-key': 1.0.0
-      uuid: 8.3.2
     dev: true
 
   /@vitejs/plugin-react@4.2.1(vite@5.2.8):
@@ -6373,11 +6372,6 @@ packages:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
     dev: false
-
-  /uuid@8.3.2:
-    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
-    hasBin: true
-    dev: true
 
   /v8-compile-cache-lib@3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}
