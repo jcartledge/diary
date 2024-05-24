@@ -8,7 +8,7 @@ export const validateDiaryEntry = (
   possibleDiaryEntry: unknown
 ): ResultOrError<DiaryEntry, ZodError> => {
   const parseResult = DiaryEntrySchema.safeParse(possibleDiaryEntry);
-  if ("error" in parseResult) {
+  if (parseResult.error !== undefined) {
     return error(parseResult.error);
   } else {
     return result(parseResult.data);
