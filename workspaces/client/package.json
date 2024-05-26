@@ -50,7 +50,7 @@
     "eslint-plugin-react": "7.34.1",
     "globals": "^15.0.0",
     "iso-datestring-validator": "2.2.2",
-    "jsdom": "24.0.0",
+    "jsdom": "24.1.0",
     "msw": "2.3.0",
     "postcss": "8.4.38",
     "prettier": "^3.2.5",
