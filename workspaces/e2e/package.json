@@ -8,8 +8,8 @@
     "start": "pnpm i && pnpm playwright test"
   },
   "devDependencies": {
-    "@babel/core": "7.24.6",
-    "@babel/preset-typescript": "7.24.6",
+    "@babel/core": "7.24.7",
+    "@babel/preset-typescript": "7.24.7",
     "@playwright/test": "1.42.1"
   }
 }
