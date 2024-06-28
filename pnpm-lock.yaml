@@ -76,8 +76,8 @@ importers:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.38)
       c8:
-        specifier: 10.0.0
-        version: 10.0.0
+        specifier: 10.1.2
+        version: 10.1.2
       eslint:
         specifier: 9.6.0
         version: 9.6.0
@@ -2411,10 +2411,15 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
-  /c8@10.0.0:
-    resolution: {integrity: sha512-rdQecjxw16P8kwgMBjruaQyfF+R2o/mucCCK4VPktwq2HFMWLOHGyUasb46+WlUOVJX94d6dZolcJxzjCzWmXg==}
+  /c8@10.1.2:
+    resolution: {integrity: sha512-Qr6rj76eSshu5CgRYvktW0uM0CFY0yi4Fd5D0duDXO6sYinyopmftUiJVuzBQxQcwQLor7JWDVRP+dUfCmzgJw==}
     engines: {node: '>=18'}
     hasBin: true
+    peerDependencies:
+      monocart-coverage-reports: ^2
+    peerDependenciesMeta:
+      monocart-coverage-reports:
+        optional: true
     dependencies:
       '@bcoe/v8-coverage': 0.2.3
       '@istanbuljs/schema': 0.1.3
