@@ -46,7 +46,7 @@
     "@vitest/coverage-v8": "1.6.0",
     "autoprefixer": "10.4.19",
     "c8": "10.0.0",
-    "eslint": "8.57.0",
+    "eslint": "9.6.0",
     "eslint-plugin-react": "7.34.2",
     "globals": "^15.0.0",
     "iso-datestring-validator": "2.2.2",
