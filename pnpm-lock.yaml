@@ -116,8 +116,8 @@ importers:
         specifier: 1.6.6
         version: 1.6.6
       styled-components:
-        specifier: 6.1.11
-        version: 6.1.11(react-dom@18.3.1)(react@18.3.1)
+        specifier: 6.1.12
+        version: 6.1.12(react-dom@18.3.1)(react@18.3.1)
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@types/node@20.14.2)(typescript@5.4.5)
@@ -6176,8 +6176,8 @@ packages:
       js-tokens: 9.0.0
     dev: true
 
-  /styled-components@6.1.11(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-Ui0jXPzbp1phYij90h12ksljKGqF8ncGx+pjrNPsSPhbUUjWT2tD1FwGo2LF6USCnbrsIhNngDfodhxbegfEOA==}
+  /styled-components@6.1.12(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-n/O4PzRPhbYI0k1vKKayfti3C/IGcPf+DqcrOB7O/ab9x4u/zjqraneT5N45+sIe87cxrCApXM8Bna7NYxwoTA==}
     engines: {node: '>= 16'}
     peerDependencies:
       react: '>= 16.8.0'
