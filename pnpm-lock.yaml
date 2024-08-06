@@ -75,7 +75,7 @@ importers:
         version: 1.6.0(vitest@1.6.0)
       autoprefixer:
         specifier: 10.4.20
-        version: 10.4.20(postcss@8.4.38)
+        version: 10.4.20(postcss@8.4.41)
       c8:
         specifier: 10.1.2
         version: 10.1.2
@@ -98,8 +98,8 @@ importers:
         specifier: 2.3.1
         version: 2.3.1(typescript@5.4.5)
       postcss:
-        specifier: 8.4.38
-        version: 8.4.38
+        specifier: 8.4.41
+        version: 8.4.41
       prettier:
         specifier: ^3.2.5
         version: 3.3.3
@@ -2397,7 +2397,7 @@ packages:
   /asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  /autoprefixer@10.4.20(postcss@8.4.38):
+  /autoprefixer@10.4.20(postcss@8.4.41):
     resolution: {integrity: sha512-XY25y5xSv/wEoqzDyXXME4AFfkZI0P23z6Fs3YgymDnKJkCGOnkL0iTxCa85UTqaSgfcqyf3UA6+c7wUvx/16g==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -2409,7 +2409,7 @@ packages:
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.1
-      postcss: 8.4.38
+      postcss: 8.4.41
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -5417,7 +5417,7 @@ packages:
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.7
-      picocolors: 1.0.0
+      picocolors: 1.0.1
       source-map-js: 1.2.0
     dev: true
 
@@ -6685,7 +6685,7 @@ packages:
       cac: 6.7.14
       debug: 4.3.4(supports-color@5.5.0)
       pathe: 1.1.1
-      picocolors: 1.0.0
+      picocolors: 1.0.1
       vite: 5.3.5(@types/node@20.14.2)
     transitivePeerDependencies:
       - '@types/node'
