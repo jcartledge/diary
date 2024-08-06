@@ -65,8 +65,8 @@ importers:
         specifier: 7.13.0
         version: 7.13.0(eslint@9.6.0)(typescript@5.4.5)
       '@virtualstate/navigation':
-        specifier: 1.0.1-alpha.203
-        version: 1.0.1-alpha.203
+        specifier: 1.0.1-alpha.205
+        version: 1.0.1-alpha.205
       '@vitejs/plugin-react':
         specifier: 4.3.1
         version: 4.3.1(vite@5.2.13)
@@ -1929,8 +1929,8 @@ packages:
     resolution: {integrity: sha512-5G3RT87X1w39UQyBvqQpTfsxK9FjoKlXfonvIY9esAHe9d0vOWVGtbElJppwJKWzh508Ja6gWn7W7dWHwj50Jw==}
     dev: true
 
-  /@virtualstate/navigation@1.0.1-alpha.203:
-    resolution: {integrity: sha512-8q+tL5QXGP1hMCFLItHSSvVzOy3fDGwgYhCuplnrlZiprZ84+cLvwFGqBI/PGrzqMdiwwan0VDOixP8cQlRd2Q==}
+  /@virtualstate/navigation@1.0.1-alpha.205:
+    resolution: {integrity: sha512-Jx6HF84U6Ul187TtxJAXJS6EWTNTtPwgFj/E9Y2QD6xsNDGFA3g1P66c3T2t0Sef6x6U+CHwE6yZgbjsPKvd+g==}
     dependencies:
       '@ungap/structured-clone': 1.2.0
       '@virtualstate/composite-key': 1.0.0
