@@ -14,6 +14,8 @@ export default defineConfig({
         "src/App.tsx",
         "src/config.ts",
         "src/index.tsx",
+        "src/**/*.test.ts",
+        "src/**/*.test.tsx",
         "**/*.types.ts",
       ],
       reporter: ["text", "json", "html"],
