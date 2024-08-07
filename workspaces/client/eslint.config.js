@@ -1,10 +1,10 @@
 import typescript from "@typescript-eslint/eslint-plugin";
 import react from "eslint-plugin-react";
-import js from "@eslint/js"
+import js from "@eslint/js";
 import typescriptParser from "@typescript-eslint/parser";
-import globals from 'globals';
+import globals from "globals";
 
-const files = ['**/*.{js,jsx,mjs,cjs,ts,tsx}'];
+const files = ["**/*.{js,jsx,mjs,cjs,ts,tsx}"];
 
 const reactRecommended = react.configs.recommended;
 const reactJsxRuntime = react.configs["jsx-runtime"];
@@ -24,16 +24,20 @@ export default [
       "react/display-name": 0,
       "react/prop-types": 0,
       ...typescriptRecommended.rules,
+      "@typescript-eslint/no-unused-expressions": [
+        "error",
+        { allowShortCircuit: true },
+      ],
     },
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
+    settings: {
+      react: {
+        version: "detect",
+      },
     },
     languageOptions: {
       globals: {
         ...globals.browser,
-        React: 'readonly',
+        React: "readonly",
       },
       parser: typescriptParser,
       parserOptions: {
@@ -43,4 +47,4 @@ export default [
       },
     },
   },
-]
+];
