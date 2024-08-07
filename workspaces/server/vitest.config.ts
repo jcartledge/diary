@@ -6,7 +6,7 @@ const config: UserConfigExport = {
     coverage: {
       all: true,
       include: ["**/*.ts"],
-      exclude: ["**/build", "**/test", "src/index.ts"],
+      exclude: ["**/build", "**/test", "**/*.test.ts", "**/*.config.ts", "src/index.ts"],
       reportsDirectory: "./output/coverage/report",
       thresholds: {
         lines: 100,
