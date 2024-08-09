@@ -1,6 +1,6 @@
 containers:
   diary-build-env:
-    image: guergeiro/pnpm:20-8
+    build_directory: .batect/diary-build-env
     working_directory: /app
     command: pnpm install --frozen-lockfile
     volumes:

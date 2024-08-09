@@ -1,4 +1,6 @@
-.batect/
+.batect/*
+!.batect/diary-build-env/
+
 workspaces/*/.certs/
 build/
 coverage/
