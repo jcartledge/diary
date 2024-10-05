@@ -5,15 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  micromatch@<4.0.8: '>=4.0.8'
   body-parser@<1.20.3: '>=1.20.3'
-  send@<0.19.0: '>=0.19.0'
-  serve-static@<1.16.0: '>=1.16.0'
   express@<4.20.0: '>=4.20.0'
-  path-to-regexp@>=4.0.0 <6.3.0: '>=6.3.0'
-  path-to-regexp@<0.1.10: '>=0.1.10'
   vite@>=5.4.0 <5.4.6: '>=5.4.6'
-  vite@>=5.4.0 <=5.4.5: '>=5.4.6'
   rollup@>=4.0.0 <4.22.4: '>=4.22.4'
   cookie@<0.7.0: '>=0.7.0'
 
@@ -2763,9 +2757,8 @@ packages:
   path-to-regexp@0.1.10:
     resolution: {integrity: sha512-7lf7qcQidTku0Gu3YDPc8DJ1q7OOucfa/BSsIwjuh56VU7katFvuM8hULfkwB3Fns/rsVF7PwPKVw1sl5KQS9w==}
 
-  path-to-regexp@8.1.0:
-    resolution: {integrity: sha512-Bqn3vc8CMHty6zuD+tG23s6v2kwxslHEhTj4eYaVKGIEB+YX/2wd0/rgXLFD9G9id9KCtbVy/3ZgmvZjpa0UdQ==}
-    engines: {node: '>=16'}
+  path-to-regexp@6.3.0:
+    resolution: {integrity: sha512-Yhpw4T9C6hPpgPeA28us07OJeqZ5EzQTkbfwuhsUg0c237RomFoETJgmp2sa3F/41gfLE6G5cqcYwznmeEeOlQ==}
 
   pathe@1.1.2:
     resolution: {integrity: sha512-whLdWMYL2TwI08hn8/ZqAbrVemu0LNaNNJZX73O6qaIdCTfXutsLhMkjdENX0qhsQ9uIimo4/aQOmXkoon2nDQ==}
@@ -6340,7 +6333,7 @@ snapshots:
       headers-polyfill: 4.0.2
       is-node-process: 1.2.0
       outvariant: 1.4.2
-      path-to-regexp: 8.1.0
+      path-to-regexp: 6.3.0
       strict-event-emitter: 0.5.1
       type-fest: 4.10.2
       yargs: 17.7.2
@@ -6513,7 +6506,7 @@ snapshots:
 
   path-to-regexp@0.1.10: {}
 
-  path-to-regexp@8.1.0: {}
+  path-to-regexp@6.3.0: {}
 
   pathe@1.1.2: {}
 
