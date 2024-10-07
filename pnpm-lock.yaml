@@ -170,8 +170,8 @@ importers:
         specifier: 1.6.0
         version: 1.6.0
       helmet:
-        specifier: 7.1.0
-        version: 7.1.0
+        specifier: 7.2.0
+        version: 7.2.0
       http:
         specifier: ^0.0.1-security
         version: 0.0.1-security
@@ -2067,8 +2067,8 @@ packages:
   headers-polyfill@4.0.2:
     resolution: {integrity: sha512-EWGTfnTqAO2L/j5HZgoM/3z82L7necsJ0pO9Tp0X1wil3PDLrkypTBRgVO2ExehEEvUycejZD3FuRaXpZZc3kw==}
 
-  helmet@7.1.0:
-    resolution: {integrity: sha512-g+HZqgfbpXdCkme/Cd/mZkV0aV3BZZZSugecH03kl38m/Kmdx8jKjBikpDj2cr+Iynv4KpYEviojNdTJActJAg==}
+  helmet@7.2.0:
+    resolution: {integrity: sha512-ZRiwvN089JfMXokizgqEPXsl2Guk094yExfoDXR0cBYWxtBbaSww/w+vT4WEJsBW2iTUi1GgZ6swmoug3Oy4Xw==}
     engines: {node: '>=16.0.0'}
 
   hexoid@1.0.0:
@@ -5679,7 +5679,7 @@ snapshots:
 
   headers-polyfill@4.0.2: {}
 
-  helmet@7.1.0: {}
+  helmet@7.2.0: {}
 
   hexoid@1.0.0: {}
 
