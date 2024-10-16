@@ -68,8 +68,8 @@ importers:
         specifier: 8.9.0
         version: 8.9.0(eslint@9.12.0)(typescript@5.6.3)
       '@virtualstate/navigation':
-        specifier: 1.0.1-alpha.205
-        version: 1.0.1-alpha.205
+        specifier: 1.0.1-alpha.206
+        version: 1.0.1-alpha.206
       '@vitejs/plugin-react':
         specifier: 4.3.2
         version: 4.3.2(vite@5.4.9(@types/node@20.16.11)(terser@5.27.0))
@@ -1075,14 +1075,11 @@ packages:
     resolution: {integrity: sha512-Ht4y38ubk4L5/U8xKUBfKNYGmvKvA1CANoxiTRMM+tOLk3lbF3DvzZCxJCRSE+2GdCMSh6zq9VZJc3asc1XuAA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@ungap/structured-clone@1.2.0':
-    resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
-
   '@virtualstate/composite-key@1.0.0':
     resolution: {integrity: sha512-5G3RT87X1w39UQyBvqQpTfsxK9FjoKlXfonvIY9esAHe9d0vOWVGtbElJppwJKWzh508Ja6gWn7W7dWHwj50Jw==}
 
-  '@virtualstate/navigation@1.0.1-alpha.205':
-    resolution: {integrity: sha512-Jx6HF84U6Ul187TtxJAXJS6EWTNTtPwgFj/E9Y2QD6xsNDGFA3g1P66c3T2t0Sef6x6U+CHwE6yZgbjsPKvd+g==}
+  '@virtualstate/navigation@1.0.1-alpha.206':
+    resolution: {integrity: sha512-DgwtJV2CA+e0A+jJdWKXi+HI/S9qw4HY0IkNwkJtmVfWFqn62f/7YKkBVCR/EYB9XvX5vDZsr4B/+OudB9VViw==}
 
   '@vitejs/plugin-react@4.3.2':
     resolution: {integrity: sha512-hieu+o05v4glEBucTcKMK3dlES0OeJlD9YVOAPraVMOInBCwzumaIFiUjr4bHK7NPgnAHgiskUoceKercrN8vg==}
@@ -4494,13 +4491,10 @@ snapshots:
       '@typescript-eslint/types': 8.9.0
       eslint-visitor-keys: 3.4.3
 
-  '@ungap/structured-clone@1.2.0': {}
-
   '@virtualstate/composite-key@1.0.0': {}
 
-  '@virtualstate/navigation@1.0.1-alpha.205':
+  '@virtualstate/navigation@1.0.1-alpha.206':
     dependencies:
-      '@ungap/structured-clone': 1.2.0
       '@virtualstate/composite-key': 1.0.0
 
   '@vitejs/plugin-react@4.3.2(vite@5.4.9(@types/node@20.16.11)(terser@5.27.0))':
