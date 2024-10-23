@@ -47,7 +47,7 @@
     "autoprefixer": "10.4.20",
     "c8": "10.1.2",
     "eslint": "9.13.0",
-    "eslint-plugin-react": "7.37.1",
+    "eslint-plugin-react": "7.37.2",
     "globals": "^15.0.0",
     "iso-datestring-validator": "2.2.2",
     "jsdom": "25.0.1",
