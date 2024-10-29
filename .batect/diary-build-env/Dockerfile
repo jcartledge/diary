@@ -1,3 +1,3 @@
-FROM node:21-slim
+FROM node:22-slim
 ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 RUN corepack enable pnpm
