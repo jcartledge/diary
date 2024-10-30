@@ -5,7 +5,7 @@ containers:
       SERVER_NAME: diary-client
 
   diary-client-dev:
-    image: node:22.10.0
+    image: node:22.11.0
     working_directory: /app
     command: pnpm --filter client dev --host
     environment:
