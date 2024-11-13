@@ -43,7 +43,7 @@
     "@typescript-eslint/parser": "8.14.0",
     "@virtualstate/navigation": "1.0.1-alpha.206",
     "@vitejs/plugin-react": "4.3.3",
-    "@vitest/coverage-v8": "2.1.4",
+    "@vitest/coverage-v8": "2.1.5",
     "autoprefixer": "10.4.20",
     "c8": "10.1.2",
     "eslint": "9.14.0",
@@ -63,7 +63,7 @@
     "typescript": "5.6.3",
     "vite": "5.4.11",
     "vite-tsconfig-paths": "5.1.2",
-    "vitest": "2.1.4",
+    "vitest": "2.1.5",
     "whatwg-fetch": "3.6.20"
   }
 }
