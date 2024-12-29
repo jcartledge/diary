@@ -53,14 +53,14 @@ tasks:
       container: diary-build-env
       command: pnpm --filter client test
       environment:
-        VITE_BFF_URI: http://TEST
+        VITE_BFF_URI: http://test.local
 
   client-coverage:
     run:
       container: diary-build-env
       command: pnpm --filter client coverage
       environment:
-        VITE_BFF_URI: http://TEST
+        VITE_BFF_URI: http://test.local
 
   client-build:
     run:
