@@ -58,7 +58,7 @@
     "react-dom": "19.0.0",
     "react-is": "19.0.0",
     "slugify": "1.6.6",
-    "styled-components": "6.1.13",
+    "styled-components": "6.1.14",
     "ts-node": "10.9.2",
     "typescript": "5.7.2",
     "vite": "6.0.7",
