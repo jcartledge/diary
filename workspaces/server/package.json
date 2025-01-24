@@ -20,7 +20,7 @@
     "@types/eslint__js": "^8.42.3",
     "@types/express": "5.0.0",
     "@types/node": "22.10.7",
-    "@types/pg": "8.11.10",
+    "@types/pg": "8.11.11",
     "@types/supertest": "6.0.2",
     "@typescript-eslint/eslint-plugin": "8.21.0",
     "@typescript-eslint/parser": "8.21.0",
