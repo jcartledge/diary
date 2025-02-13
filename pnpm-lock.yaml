@@ -146,8 +146,8 @@ importers:
         specifier: 7.26.0
         version: 7.26.0(@babel/core@7.26.8)
       '@playwright/test':
-        specifier: 1.42.1
-        version: 1.42.1
+        specifier: 1.50.1
+        version: 1.50.1
 
   workspaces/server:
     dependencies:
@@ -874,10 +874,9 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@playwright/test@1.42.1':
-    resolution: {integrity: sha512-Gq9rmS54mjBL/7/MvBaNOBwbfnh7beHvS6oS4srqXFcQHpQCV1+c8JXWE8VLPyRDhgS3H8x8A7hztqI9VnwrAQ==}
-    engines: {node: '>=16'}
-    deprecated: Please update to the latest version of Playwright to test up-to-date browsers.
+  '@playwright/test@1.50.1':
+    resolution: {integrity: sha512-Jii3aBg+CEDpgnuDxEp/h7BimHcUTDlpEtce89xEumlJ5ef2hqepZ+PWp1DDpYC/VO9fmWVI1IlEaoI5fK9FXQ==}
+    engines: {node: '>=18'}
     hasBin: true
 
   '@rollup/rollup-android-arm-eabi@4.34.4':
@@ -3002,14 +3001,14 @@ packages:
     resolution: {integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==}
     engines: {node: '>=8'}
 
-  playwright-core@1.42.1:
-    resolution: {integrity: sha512-mxz6zclokgrke9p1vtdy/COWBH+eOZgYUVVU34C73M+4j4HLlQJHtfcqiqqxpP0o8HhMkflvfbquLX5dg6wlfA==}
-    engines: {node: '>=16'}
+  playwright-core@1.50.1:
+    resolution: {integrity: sha512-ra9fsNWayuYumt+NiM069M6OkcRb1FZSK8bgi66AtpFoWkg2+y0bJSNmkFrWhMbEBbVKC/EruAHH3g0zmtwGmQ==}
+    engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.42.1:
-    resolution: {integrity: sha512-PgwB03s2DZBcNRoW+1w9E+VkLBxweib6KTXM0M3tkiT4jVxKSi6PmVJ591J+0u10LUrgxB7dLRbiJqO5s2QPMg==}
-    engines: {node: '>=16'}
+  playwright@1.50.1:
+    resolution: {integrity: sha512-G8rwsOQJ63XG6BbKj2w5rHeavFjy5zynBA9zsJMMtBoe/Uf757oG12NXz6e6OirF7RCrTVAKFXbLmn1RbL7Qaw==}
+    engines: {node: '>=18'}
     hasBin: true
 
   possible-typed-array-names@1.0.0:
@@ -4596,9 +4595,9 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@playwright/test@1.42.1':
+  '@playwright/test@1.50.1':
     dependencies:
-      playwright: 1.42.1
+      playwright: 1.50.1
 
   '@rollup/rollup-android-arm-eabi@4.34.4':
     optional: true
@@ -7068,11 +7067,11 @@ snapshots:
     dependencies:
       find-up: 4.1.0
 
-  playwright-core@1.42.1: {}
+  playwright-core@1.50.1: {}
 
-  playwright@1.42.1:
+  playwright@1.50.1:
     dependencies:
-      playwright-core: 1.42.1
+      playwright-core: 1.50.1
     optionalDependencies:
       fsevents: 2.3.2
 
