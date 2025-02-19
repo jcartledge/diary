@@ -52,7 +52,7 @@
     "iso-datestring-validator": "2.2.2",
     "jsdom": "26.0.0",
     "msw": "2.7.0",
-    "postcss": "8.5.2",
+    "postcss": "8.5.3",
     "prettier": "^3.2.5",
     "react": "19.0.0",
     "react-dom": "19.0.0",
