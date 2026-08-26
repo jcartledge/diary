@@ -28,7 +28,7 @@
     "eslint": "9.20.1",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "2.31.0",
-    "mock-jwks": "3.3.4",
+    "mock-jwks": "3.3.5",
     "nock": "^14.0.0",
     "nodemon": "3.1.9",
     "supertest": "7.0.0",
